@@ -7,6 +7,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
     <style>
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
@@ -20,12 +21,8 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.8; transform: scale(1.02); }
         }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        .animate-fade-in {
-            animation: fadeIn 0.5s ease-out forwards;
-        }
+        .animate-fade-in-up { animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
         .delay-100 { animation-delay: 100ms; }
         .delay-200 { animation-delay: 200ms; }
         .delay-300 { animation-delay: 300ms; }
@@ -41,7 +38,6 @@
 </head>
 <body class="bg-[#FDFDFD] selection:bg-[#065581] selection:text-white">
     
-    <!-- Contenedor principal de React -->
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
@@ -50,7 +46,7 @@
         import { 
           Eye, Monitor, Stethoscope, ChevronRight, Phone, MapPin, Instagram, Facebook,
           Linkedin, CheckCircle2, Zap, Menu, X, Target, ShieldCheck, Award, Lightbulb,
-          Mail, ArrowRight, Focus, Layout, Users, Wrench, Download, MessageCircle, Send
+          ArrowRight, Focus, Layout, Users, Wrench, Download, MessageCircle, Send, Mail
         } from 'https://esm.sh/lucide-react@0.294.0';
 
         const TikTokIcon = ({ size = 20, className = "" }) => (
@@ -180,14 +176,14 @@
                         <Icon size={24} className="text-[#065581] group-hover:text-white transition-colors duration-300" />
                       </div>
                       <h3 className="font-bold text-[#1FB4FA] text-lg">{val.name}</h3>
-                      <p className="text-xs text-gray-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Haz clic para ver más</p>
+                      <p className="text-xs text-[#065581] font-bold mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Haz clic para ver más</p>
                     </div>
                   );
                 })}
               </div>
 
               {selectedVal && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#065581]/40 backdrop-blur-sm animate-fade-in" onClick={() => setSelectedVal(null)}>
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#065581]/60 backdrop-blur-sm animate-fade-in" onClick={() => setSelectedVal(null)}>
                   <div className="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl transform transition-all animate-fade-in-up" onClick={(e) => e.stopPropagation()}>
                     <div className="flex justify-between items-center mb-6">
                       <div className="flex items-center gap-3">
@@ -196,14 +192,14 @@
                         </div>
                         <h3 className="text-2xl font-black text-[#065581]">{selectedVal.name}</h3>
                       </div>
-                      <button onClick={() => setSelectedVal(null)} className="text-gray-400 hover:text-red-500 transition-colors">
+                      <button onClick={() => setSelectedVal(null)} className="text-gray-400 hover:text-[#1FB4FA] transition-colors">
                         <X size={24} />
                       </button>
                     </div>
                     <p className="text-gray-600 leading-relaxed font-medium text-lg">
                       {selectedVal.description}
                     </p>
-                    <button onClick={() => setSelectedVal(null)} className="mt-8 w-full bg-[#1FB4FA] border border-[#065581]/20 shadow-[0_4px_14px_0_rgba(6,85,129,0.2)] text-white font-bold py-3.5 rounded-xl hover:bg-[#0ea5e9] transition-colors">
+                    <button onClick={() => setSelectedVal(null)} className="mt-8 w-full bg-[#1FB4FA] shadow-[0_4px_14px_0_rgba(6,85,129,0.3)] text-white font-bold py-3.5 rounded-xl hover:bg-[#0ea5e9] transition-colors">
                       Entendido
                     </button>
                   </div>
@@ -227,7 +223,7 @@
                 <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 animate-fade-in-up">
                   Catálogo Clínico Premium
                 </h1>
-                <p className="text-black font-black text-lg animate-fade-in-up delay-100 tracking-wide mb-8">
+                <p className="text-black font-black text-xl animate-fade-in-up delay-100 tracking-wide mb-8">
                   Precisión, tecnología y respaldo garantizado.
                 </p>
                 <a 
@@ -262,14 +258,14 @@
                         <div className="p-8 flex-grow flex flex-col">
                           <span className="text-xs font-bold text-[#065581] uppercase tracking-wider mb-2 block">{prod.category}</span>
                           <h3 className="text-3xl font-black text-black mb-2 tracking-tight drop-shadow-sm">{prod.name}</h3>
-                          <p className="text-sm font-black text-black mb-4 pb-4 border-b border-gray-100">{prod.type}</p>
+                          <p className="text-sm font-black text-black mb-4 pb-4 border-b border-gray-100 uppercase">{prod.type}</p>
                           
                           <p className="text-gray-600 text-sm mb-6 flex-grow">{prod.description}</p>
                           
                           <ul className="space-y-2 mb-8">
                             {prod.features.map((feat, i) => (
                               <li key={i} className="flex items-start text-sm text-gray-600">
-                                <CheckCircle2 size={16} className="text-[#065581] mr-2 flex-shrink-0 mt-0.5" />
+                                <CheckCircle2 size={16} className="text-[#1FB4FA] mr-2 flex-shrink-0 mt-0.5" />
                                 <span>{feat}</span>
                               </li>
                             ))}
@@ -277,7 +273,7 @@
 
                           <button 
                             onClick={() => handleQuote(prod.name)}
-                            className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white shadow-[0_4px_14px_0_rgba(6,85,129,0.35)] border border-[#065581]/20 hover:border-[#065581]/40"
+                            className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white shadow-[0_4px_14px_0_rgba(6,85,129,0.5)] border border-[#065581]"
                           >
                             Cotizar Equipo <ArrowRight size={18} />
                           </button>
@@ -320,7 +316,7 @@
                   </div>
 
                   <a href="https://wa.me/593990331482?text=Hola%20Arq.%20Laura,%20deseo%20información%20sobre%20remodelación%20de%20ópticas." target="_blank" rel="noopener noreferrer" 
-                     className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white shadow-lg shadow-[#1FB4FA]/30">
+                     className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white shadow-[0_4px_14px_0_rgba(6,85,129,0.5)] border border-[#065581]">
                     Planifiquemos tu nuevo negocio <ArrowRight size={18} />
                   </a>
                 </div>
@@ -338,7 +334,7 @@
                   </div>
 
                   <a href="https://wa.me/593958951408?text=Hola,%20deseo%20agendar%20una%20capacitación%20para%20el%20uso%20de%20equipos." target="_blank" rel="noopener noreferrer" 
-                     className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white shadow-lg shadow-[#1FB4FA]/30">
+                     className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white shadow-[0_4px_14px_0_rgba(6,85,129,0.5)] border border-[#065581]">
                     Agendar Capacitación <ArrowRight size={18} />
                   </a>
                 </div>
@@ -347,7 +343,7 @@
                   <div className="w-16 h-16 bg-[#f0f9ff] rounded-2xl flex items-center justify-center mb-6">
                     <Wrench size={32} className="text-[#1FB4FA]" strokeWidth={2} />
                   </div>
-                  <h3 className="text-2xl font-extrabold text-[#1FB4FA] mb-4">Servicio Posventa, garantía y soporte de marca</h3>
+                  <h3 className="text-2xl font-extrabold text-[#1FB4FA] mb-4">Servicio Posventa, garantía y soporte</h3>
                   <p className="text-gray-600 mb-6 flex-grow">Respaldo técnico inmediato. Consulta disponibilidad de stock, cobertura de garantías y solicita mantenimiento preventivo o correctivo de equipos.</p>
                   
                   <div className="bg-gray-50 rounded-xl p-4 mb-6 border border-gray-100">
@@ -356,123 +352,11 @@
                   </div>
 
                   <a href="https://wa.me/593987654320?text=Hola,%20necesito%20soporte%20técnico,%20consulta%20de%20garantías%20o%20stock." target="_blank" rel="noopener noreferrer" 
-                     className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white shadow-lg shadow-[#1FB4FA]/30">
+                     className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white shadow-[0_4px_14px_0_rgba(6,85,129,0.5)] border border-[#065581]">
                     Consultar Soporte <ArrowRight size={18} />
                   </a>
                 </div>
 
-              </div>
-            </div>
-          </div>
-        );
-
-        const ContactoView = () => (
-          <div className="animate-fade-in w-full pb-20">
-            <div className="bg-white py-20">
-              <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-16 animate-fade-in-up">
-                  <h1 className="text-4xl md:text-5xl font-black text-black mb-4">Hablemos de mejorar tu óptica</h1>
-                  <p className="text-lg text-gray-500 max-w-2xl mx-auto">Asesoría especializada para ópticas y oftalmólogos. Contáctanos para solicitar cotizaciones, soporte técnico o diseño de espacios.</p>
-                </div>
-
-                <div className="grid lg:grid-cols-5 gap-12">
-                  <div className="lg:col-span-2 space-y-6">
-                    <div className="bg-[#1FB4FA] rounded-3xl p-8 text-white shadow-xl animate-fade-in-up delay-100 relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-                      <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                        <Phone className="text-[#065581]" /> Líneas Directas
-                      </h3>
-                      <div className="space-y-4">
-                        <a href="https://wa.me/593963223843" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
-                          <div className="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><Phone size={20} fill="white" /></div>
-                          <div>
-                            <p className="text-xs text-[#065581] font-extrabold uppercase tracking-wider">Ventas y Cotizaciones</p>
-                            <p className="font-bold text-lg">+593 96 322 3843</p>
-                          </div>
-                        </a>
-                        <a href="https://wa.me/593990331482" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
-                          <div className="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><Phone size={20} fill="white" /></div>
-                          <div>
-                            <p className="text-xs text-[#065581] font-extrabold uppercase tracking-wider">Remodelación Ópticas</p>
-                            <p className="font-bold text-lg">+593 99 033 1482</p>
-                          </div>
-                        </a>
-                        <a href="https://wa.me/593958951408" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
-                          <div className="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><Phone size={20} fill="white" /></div>
-                          <div>
-                            <p className="text-xs text-[#065581] font-extrabold uppercase tracking-wider">Capacitación de Equipos</p>
-                            <p className="font-bold text-lg">+593 95 895 1408</p>
-                          </div>
-                        </a>
-                        <a href="https://wa.me/593987654320" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
-                          <div className="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><Phone size={20} fill="white" /></div>
-                          <div>
-                            <p className="text-[10px] md:text-xs text-[#065581] font-extrabold uppercase tracking-wider leading-tight">Servicio Posventa y Garantía</p>
-                            <p className="font-bold text-lg">+593 98 765 4320</p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100 animate-fade-in-up delay-200">
-                      <h3 className="text-xl font-bold text-[#1FB4FA] mb-6 flex items-center gap-3">
-                        <MapPin className="text-[#065581]" /> Nuestras Sedes
-                      </h3>
-                      <div className="space-y-5">
-                        {companyData.contact?.locations?.map((loc, idx) => (
-                          <div key={idx} className="flex gap-4">
-                            <div className="mt-1 w-2 h-2 rounded-full bg-[#1FB4FA] flex-shrink-0"></div>
-                            <div>
-                              <p className="font-bold text-[#065581] text-sm">{loc.city}</p>
-                              <p className="text-xs text-gray-500 leading-relaxed">{loc.address}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="lg:col-span-3 bg-white border border-gray-100 rounded-3xl p-8 md:p-12 shadow-xl shadow-gray-100/50 animate-fade-in-up delay-300">
-                    <h3 className="text-2xl font-bold text-[#1FB4FA] mb-8">Envíanos un mensaje</h3>
-                    <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-sm font-bold text-gray-600 mb-2">Nombre del Doctor/Clínica</label>
-                          <input type="text" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all" placeholder="Ej. Dr. Juan Pérez" />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-bold text-gray-600 mb-2">Teléfono / WhatsApp</label>
-                          <input type="tel" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all" placeholder="Tu número de contacto" />
-                        </div>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-bold text-gray-600 mb-2">Correo Electrónico</label>
-                        <input type="email" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all" placeholder="correo@clinica.com" />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-bold text-gray-600 mb-2">¿En qué estás interesado?</label>
-                        <select className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all text-gray-600">
-                          <option>Selecciona una opción...</option>
-                          <optgroup label="Equipos Médicos">
-                            {companyData.products.map(p => <option key={p.id}>{p.name}</option>)}
-                          </optgroup>
-                          <optgroup label="Otros Servicios">
-                            <option>Construcción y Remodelación</option>
-                            <option>Capacitación de Equipos</option>
-                            <option>Servicio Técnico / Garantías</option>
-                          </optgroup>
-                        </select>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-bold text-gray-600 mb-2">Mensaje Adicional</label>
-                        <textarea rows="4" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all" placeholder="Escribe tus dudas aquí..."></textarea>
-                      </div>
-                      <button className="w-full bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-lg shadow-[#1FB4FA]/20">
-                        <Mail size={20} /> Enviar Solicitud de Contacto
-                      </button>
-                    </form>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -508,13 +392,13 @@
                     href={`https://wa.me/${number.replace('+', '')}`} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="font-bold underline cursor-pointer hover:opacity-80 transition-opacity text-inherit"
+                    className="font-bold underline cursor-pointer hover:text-[#065581] transition-colors text-white bg-[#065581]/10 px-2 py-1 rounded-md block mt-2"
                   >
                     {part}
                   </a>
                 );
               }
-              return part;
+              return <span key={i}>{part}</span>;
             });
           };
 
@@ -533,15 +417,14 @@
               }));
               chatHistory.push({ role: 'user', parts: [{ text: userMsg }] });
 
-              const systemPrompt = "Eres el asistente virtual premium de VERSIOR IMPORT'S, importadora ecuatoriana de equipos oftalmológicos y optométricos. Responde de forma sumamente elegante, breve, directa y profesional. Conoces el catálogo: Autorrefractómetros (ARK-7610, RMK-600), Lensómetro LM-260, Pantalla Optotipo VC-235, Lámpara de Hendidura LS-4 y Unidad de Diagnóstico C-190A. También ofrecen construcción de ópticas, capacitación y servicio técnico. SIEMPRE debes ofrecer amablemente derivar la consulta con un especialista humano para una atención personalizada. Cuando ofrezcas un contacto, DEBES usar exactamente la frase 'haz clic aquí para contactarte directamente 👤' y añadir el número al lado. Contactos que debes proporcionar según el caso: Ventas/Equipos (+593 96 322 3843), Remodelación/Arquitectura (+593 99 033 1482), Capacitación (+593 95 895 1408), Posventa/Garantías (+593 98 765 4320). NUNCA inventes precios. NO uses formato markdown (asteriscos, negritas), usa solo texto plano limpio y fácil de leer.";
+              const systemPrompt = "Eres el asistente virtual premium de VERSIOR IMPORT'S, importadora ecuatoriana de equipos oftalmológicos y optométricos. Responde de forma sumamente elegante, breve, directa y profesional. Conoces el catálogo: Autorrefractómetros (ARK-7610, RMK-600), Lensómetro LM-260, Pantalla Optotipo VC-235, Lámpara de Hendidura LS-4 y Unidad de Diagnóstico C-190A. También ofrecen construcción de ópticas, capacitación y servicio técnico. SIEMPRE debes ofrecer amablemente derivar la consulta con un especialista humano para una atención personalizada. Cuando ofrezcas un contacto, DEBES usar exactamente la frase 'haz clic aquí para contactarte directamente 👤' y añadir el número al lado. Contactos que debes proporcionar según el caso: Ventas/Equipos (+593 96 322 3843), Remodelación/Arquitectura (+593 99 033 1482), Capacitación (+593 95 895 1408), Posventa/Garantías (+593 98 765 4320). NO uses formato markdown (asteriscos, negritas), usa solo texto plano.";
 
               const payload = {
                   contents: chatHistory,
                   systemInstruction: { parts: [{ text: systemPrompt }] }
               };
 
-              // Reemplazar KEY con una real si se despliega fuera del entorno Canvas
-              const apiKey = ""; 
+              const apiKey = ""; // Canvas will inject API KEY
               const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
               const response = await fetch(apiUrl, {
@@ -573,23 +456,26 @@
               </button>
               
               {isOpen && (
-                 <div className="fixed bottom-28 right-6 w-[90vw] sm:w-96 bg-white rounded-3xl shadow-[0_20px_50px_rgba(6,85,129,0.2)] z-[100] overflow-hidden flex flex-col border border-gray-100 h-[500px] max-h-[75vh] animate-fade-in-up">
+                 <div className="fixed bottom-28 right-6 w-[90vw] sm:w-96 bg-white rounded-3xl shadow-[0_20px_50px_rgba(6,85,129,0.3)] z-[100] overflow-hidden flex flex-col border border-gray-100 h-[500px] max-h-[75vh] animate-fade-in-up">
                     <div className="bg-[#065581] p-4 text-white flex justify-between items-center relative overflow-hidden">
                        <div className="absolute top-[-50%] right-[-10%] w-32 h-32 rounded-full bg-[#1FB4FA] blur-[40px] opacity-40"></div>
-                       <div className="relative z-10 flex items-center gap-3">
-                         <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20">
-                           <MessageCircle size={20} className="text-[#1FB4FA]" />
-                         </div>
-                         <div>
-                           <h3 className="font-bold text-sm tracking-wide">Asistente VERSIOR</h3>
-                           <p className="text-[10px] text-white/70 flex items-center gap-1.5 font-medium tracking-wider uppercase mt-0.5">
-                             <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse shadow-[0_0_8px_rgba(37,211,102,0.6)]"></span> En línea
-                           </p>
+                       <div className="relative z-10 flex flex-col">
+                         <div className="flex items-center gap-3">
+                           <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20">
+                             <MessageCircle size={20} className="text-[#1FB4FA]" />
+                           </div>
+                           <div>
+                             <h3 className="font-bold text-sm tracking-wide">Asistente VERSIOR</h3>
+                             <p className="text-[10px] text-white/70 flex items-center gap-1.5 font-medium tracking-wider uppercase mt-0.5">
+                               <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse shadow-[0_0_8px_rgba(37,211,102,0.6)]"></span> En línea
+                             </p>
+                           </div>
                          </div>
                        </div>
                     </div>
                     
                     <div className="flex-grow overflow-y-auto p-5 space-y-4 bg-gray-50/50">
+                       <div className="text-center mb-4"><span className="text-xs text-gray-400 font-bold bg-gray-100 px-3 py-1 rounded-full">Hablemos de mejorar tu óptica</span></div>
                        {messages.map((m, i) => (
                           <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                              <div className={`p-3.5 rounded-2xl max-w-[85%] text-sm leading-relaxed shadow-sm ${m.role === 'user' ? 'bg-[#1FB4FA] text-white rounded-tr-none' : 'bg-white text-[#065581] rounded-tl-none border border-gray-100 font-medium'}`}>
@@ -647,8 +533,7 @@
           const tabs = [
             { id: 'nosotros', label: 'Nosotros' },
             { id: 'productos', label: 'Productos Clínicos' },
-            { id: 'servicios', label: 'Otros Servicios' },
-            { id: 'contacto', label: 'Chat en línea' }
+            { id: 'servicios', label: 'Otros Servicios' }
           ];
 
           return (
@@ -657,15 +542,15 @@
                 <div className="max-w-7xl mx-auto px-6">
                   <div className="flex justify-between items-center">
                     
-                    <div className="flex items-center cursor-pointer" onClick={() => setActiveTab('nosotros')}>
+                    <div className="flex items-center cursor-pointer bg-white/80 p-2 rounded-xl backdrop-blur-sm" onClick={() => setActiveTab('nosotros')}>
                       <img 
                         src="https://raw.githubusercontent.com/alexzanderj14/Vonces-y-memorias-de-Zambiza/main/Versior.png" 
                         alt="VERSIOR IMPORT'S Logo" 
-                        className="h-12 md:h-14 w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform duration-300"
+                        className="h-10 md:h-12 w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform duration-300"
                       />
                     </div>
 
-                    <div className="hidden md:flex items-center space-x-2 bg-white/60 backdrop-blur-md px-2 py-1.5 rounded-full border border-gray-200/50 shadow-sm">
+                    <div className="hidden md:flex items-center space-x-2 bg-white/80 backdrop-blur-md px-2 py-1.5 rounded-full border border-gray-200/50 shadow-sm">
                       {tabs.map((tab) => (
                         <button
                           key={tab.id}
@@ -682,21 +567,21 @@
                     </div>
 
                     <div className="hidden md:flex items-center gap-4">
-                      <a href="https://www.tiktok.com/@versior_imports" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 drop-shadow-sm hover:drop-shadow-[0_10px_10px_rgba(31,180,250,0.5)] transition-all duration-300">
+                      <a href="https://www.tiktok.com/@versior_imports" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(31,180,250,0.8)] transition-all duration-300">
                         <TikTokIcon size={24} />
                       </a>
-                      <a href="https://www.facebook.com/profile.php?id=100089505045369&locale=es_LA" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 drop-shadow-sm hover:drop-shadow-[0_10px_10px_rgba(31,180,250,0.5)] transition-all duration-300">
+                      <a href="https://www.facebook.com/profile.php?id=100089505045369&locale=es_LA" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(31,180,250,0.8)] transition-all duration-300">
                         <Facebook size={24} />
                       </a>
-                      <a href="https://www.instagram.com/versior2/" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 drop-shadow-sm hover:drop-shadow-[0_10px_10px_rgba(31,180,250,0.5)] transition-all duration-300">
+                      <a href="https://www.instagram.com/versior2/" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(31,180,250,0.8)] transition-all duration-300">
                         <Instagram size={24} />
                       </a>
-                      <a href="#" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 drop-shadow-sm hover:drop-shadow-[0_10px_10px_rgba(31,180,250,0.5)] transition-all duration-300">
+                      <a href="#" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(31,180,250,0.8)] transition-all duration-300">
                         <Linkedin size={24} />
                       </a>
                     </div>
 
-                    <button className="md:hidden text-[#1FB4FA] p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <button className="md:hidden text-[#1FB4FA] p-2 bg-white rounded-lg shadow-sm" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                       {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
                     </button>
                   </div>
@@ -725,13 +610,13 @@
                 {activeTab === 'nosotros' && <NosotrosView />}
                 {activeTab === 'productos' && <ProductosView />}
                 {activeTab === 'servicios' && <ServiciosView />}
-                {activeTab === 'contacto' && <ContactoView />}
               </main>
 
+              {}
               <footer className="bg-[#065581] pt-16 pb-8 border-t-4 border-[#1FB4FA]">
                 <div className="max-w-7xl mx-auto px-6">
                   <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-                    <div className="flex items-center mb-6 md:mb-0 bg-white/95 p-3 rounded-2xl shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300" onClick={() => {setActiveTab('nosotros'); window.scrollTo(0,0);}}>
+                    <div className="flex items-center mb-6 md:mb-0 bg-white p-3 rounded-2xl shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300" onClick={() => {setActiveTab('nosotros'); window.scrollTo(0,0);}}>
                       <img src="https://raw.githubusercontent.com/alexzanderj14/Vonces-y-memorias-de-Zambiza/main/Versior.png" alt="VERSIOR IMPORT'S Logo" className="h-10 md:h-12 w-auto object-contain" />
                     </div>
                     
@@ -739,7 +624,6 @@
                       <button onClick={() => {setActiveTab('nosotros'); window.scrollTo(0,0);}} className="hover:text-white transition-colors">Nosotros</button>
                       <a href="/catalogo_versior.pdf" download="Catalogo_VERSIOR_2026.pdf" className="text-[#1FB4FA] hover:text-white transition-colors flex items-center gap-1"><Download size={16} /> Descargar Catálogo</a>
                       <button onClick={() => {setActiveTab('servicios'); window.scrollTo(0,0);}} className="hover:text-white transition-colors">Servicios</button>
-                      <button onClick={() => {setActiveTab('contacto'); window.scrollTo(0,0);}} className="hover:text-white transition-colors">Chat en línea</button>
                     </div>
                   </div>
                   
