@@ -118,7 +118,7 @@
           ]
         };
 
-        const NosotrosView = () => {
+        const NosotrosView = ({ setActiveTab }) => {
           const [selectedVal, setSelectedVal] = useState(null);
 
           return (
@@ -206,11 +206,21 @@
                 </div>
               )}
             </div>
+
+            {/* BOTÓN NUESTROS PRODUCTOS */}
+            <div className="max-w-7xl mx-auto px-6 mt-20 text-center animate-fade-in-up delay-300">
+              <button 
+                onClick={() => { setActiveTab('productos'); window.scrollTo(0,0); }}
+                className="inline-flex items-center gap-3 bg-[#1FB4FA] text-white px-10 py-4 rounded-full font-black text-lg hover:bg-[#0ea5e9] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(31,180,250,0.4)]"
+              >
+                Nuestros productos <ArrowRight size={22} />
+              </button>
+            </div>
           </div>
           );
         };
 
-        const ProductosView = () => {
+        const ProductosView = ({ setActiveTab }) => {
           const handleQuote = (productName) => {
             const phone = "593963223843"; 
             const message = encodeURIComponent(`Hola VERSIOR IMPORT'S, soy profesional de la salud visual y solicito cotización del equipo: ${productName}.`);
@@ -283,6 +293,17 @@
                   })}
                 </div>
               </div>
+
+              {/* BOTÓN MÁS OFERTAS */}
+              <div className="max-w-7xl mx-auto px-6 mt-16 text-center animate-fade-in-up delay-300">
+                <button 
+                  onClick={() => { setActiveTab('servicios'); window.scrollTo(0,0); }}
+                  className="inline-flex items-center gap-3 bg-[#065581] text-white px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-[#1FB4FA]/30"
+                >
+                  Más ofertas <ArrowRight size={22} />
+                </button>
+              </div>
+
             </div>
           );
         };
@@ -343,7 +364,7 @@
                   <div className="w-16 h-16 bg-[#f0f9ff] rounded-2xl flex items-center justify-center mb-6">
                     <Wrench size={32} className="text-[#1FB4FA]" strokeWidth={2} />
                   </div>
-                  <h3 className="text-2xl font-extrabold text-[#1FB4FA] mb-4">Servicio Posventa, garantía y soporte</h3>
+                  <h3 className="text-2xl font-extrabold text-[#1FB4FA] mb-4">Servicio Posventa, garantía y soporte de marca</h3>
                   <p className="text-gray-600 mb-6 flex-grow">Respaldo técnico inmediato. Consulta disponibilidad de stock, cobertura de garantías y solicita mantenimiento preventivo o correctivo de equipos.</p>
                   
                   <div className="bg-gray-50 rounded-xl p-4 mb-6 border border-gray-100">
@@ -424,6 +445,7 @@
                   systemInstruction: { parts: [{ text: systemPrompt }] }
               };
 
+              // API call setup
               const apiKey = ""; // Canvas will inject API KEY
               const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
@@ -450,24 +472,29 @@
             <>
               <button 
                 onClick={() => setIsOpen(!isOpen)} 
-                className={`fixed bottom-6 right-6 w-16 h-16 rounded-full flex items-center justify-center text-white shadow-[0_8px_30px_rgba(6,85,129,0.3)] cursor-pointer transition-all duration-300 z-[100] ${isOpen ? 'bg-red-500 hover:bg-red-600 rotate-90' : 'bg-[#1FB4FA] hover:bg-[#0ea5e9] hover:scale-110'}`}
+                className={`fixed bottom-6 right-6 rounded-full flex items-center justify-center text-white shadow-[0_8px_30px_rgba(6,85,129,0.4)] cursor-pointer transition-all duration-300 z-[100] border border-white/20 ${isOpen ? 'w-16 h-16 bg-red-500 hover:bg-red-600 rotate-90' : 'h-16 px-7 bg-[#1FB4FA] hover:bg-[#0ea5e9] hover:scale-105 hover:-translate-y-1 gap-3 hover:shadow-[#1FB4FA]/50'}`}
               >
-                {isOpen ? <X size={28} /> : <MessageCircle size={28} />}
+                {isOpen ? <X size={28} /> : (
+                  <>
+                    <MessageCircle size={28} className="animate-pulse" />
+                    <span className="font-extrabold text-lg tracking-wide drop-shadow-sm">Chat en línea</span>
+                  </>
+                )}
               </button>
               
               {isOpen && (
-                 <div className="fixed bottom-28 right-6 w-[90vw] sm:w-96 bg-white rounded-3xl shadow-[0_20px_50px_rgba(6,85,129,0.3)] z-[100] overflow-hidden flex flex-col border border-gray-100 h-[500px] max-h-[75vh] animate-fade-in-up">
-                    <div className="bg-[#065581] p-4 text-white flex justify-between items-center relative overflow-hidden">
-                       <div className="absolute top-[-50%] right-[-10%] w-32 h-32 rounded-full bg-[#1FB4FA] blur-[40px] opacity-40"></div>
+                 <div className="fixed bottom-28 right-6 w-[90vw] sm:w-[400px] bg-white rounded-3xl shadow-[0_20px_50px_rgba(6,85,129,0.3)] z-[100] overflow-hidden flex flex-col border border-gray-100 h-[550px] max-h-[75vh] animate-fade-in-up">
+                    <div className="bg-[#065581] p-5 text-white flex justify-between items-center relative overflow-hidden">
+                       <div className="absolute top-[-50%] right-[-10%] w-40 h-40 rounded-full bg-[#1FB4FA] blur-[40px] opacity-40"></div>
                        <div className="relative z-10 flex flex-col">
-                         <div className="flex items-center gap-3">
-                           <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20">
-                             <MessageCircle size={20} className="text-[#1FB4FA]" />
+                         <div className="flex items-center gap-4">
+                           <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/20 shadow-inner">
+                             <MessageCircle size={24} className="text-[#1FB4FA]" />
                            </div>
                            <div>
-                             <h3 className="font-bold text-sm tracking-wide">Asistente VERSIOR</h3>
-                             <p className="text-[10px] text-white/70 flex items-center gap-1.5 font-medium tracking-wider uppercase mt-0.5">
-                               <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse shadow-[0_0_8px_rgba(37,211,102,0.6)]"></span> En línea
+                             <h3 className="font-extrabold text-lg tracking-wide drop-shadow-sm">Asistente VERSIOR</h3>
+                             <p className="text-[11px] text-white/80 flex items-center gap-1.5 font-bold tracking-wider uppercase mt-1">
+                               <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] animate-pulse shadow-[0_0_8px_rgba(37,211,102,0.8)]"></span> En línea
                              </p>
                            </div>
                          </div>
@@ -607,12 +634,11 @@
               </nav>
 
               <main className="flex-grow pt-20">
-                {activeTab === 'nosotros' && <NosotrosView />}
-                {activeTab === 'productos' && <ProductosView />}
+                {activeTab === 'nosotros' && <NosotrosView setActiveTab={setActiveTab} />}
+                {activeTab === 'productos' && <ProductosView setActiveTab={setActiveTab} />}
                 {activeTab === 'servicios' && <ServiciosView />}
               </main>
 
-              {}
               <footer className="bg-[#065581] pt-16 pb-8 border-t-4 border-[#1FB4FA]">
                 <div className="max-w-7xl mx-auto px-6">
                   <div className="flex flex-col md:flex-row justify-between items-center mb-8">
