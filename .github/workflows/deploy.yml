@@ -1,14 +1,12 @@
- - name: Sincronizar con InfinityFree (FTP)
+  - name: Sincronizar con InfinityFree (FTP)
     uses: SamKirkland/FTP-Deploy-Action@v4.3.4
     with:
       server: ftpupload.net
       username: ${{ secrets.FTP_USERNAME }}
       password: ${{ secrets.FTP_PASSWORD }}
       server-dir: /htdocs/
-      # Configuraciones adicionales para evitar errores comunes
       protocol: ftp
       port: 21
-      # Excluir carpetas del sistema git
       exclude: |
         **/.git*
         **/.git*/**
