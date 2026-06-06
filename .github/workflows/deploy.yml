@@ -1,0 +1,15 @@
+- name: Sincronizar con InfinityFree (FTP)
+    uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+    with:
+      # El Hostname proporcionado por InfinityFree
+      server: ftpupload.net
+      # Usa los secretos que configuraremos abajo
+      username: ${{ secrets.FTP_USERNAME }}
+      password: ${{ secrets.FTP_PASSWORD }}
+      # InfinityFree REQUIERE que los archivos web esten en htdocs
+      server-dir: /htdocs/ 
+      # Excluir archivos de configuracion de git para mayor velocidad
+      exclude: |
+        **/.git*
+        **/.git*/**
+        .github/**
