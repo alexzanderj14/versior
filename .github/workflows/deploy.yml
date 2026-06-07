@@ -1,13 +1,30 @@
-  - name: Sincronizar con InfinityFree (FTP)
-    uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-    with:
-      server: ftpupload.net
-      username: ${{ secrets.FTP_USERNAME }}
-      password: ${{ secrets.FTP_PASSWORD }}
-      server-dir: versiorimports.is-best.net/htdocs/
-      protocol: ftp
-      port: 21
-      exclude: |
-        **/.git*
-        **/.git*/**
-        .github/**
+name: Despliegue automatico a InfinityFree
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Subir archivos via FTP
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el codigo del repositorio
+        uses: actions/checkout@v4
+
+      - name: Sincronizar con InfinityFree (FTP)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftpupload.net
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Esta es la ruta exacta de tu dominio que vimos en tu File Manager
+          server-dir: versiorimports.is-best.net/htdocs/
+          protocol: ftp
+          port: 21
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+```eof
