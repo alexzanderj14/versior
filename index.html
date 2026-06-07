@@ -21,6 +21,12 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.8; transform: scale(1.02); }
         }
+        /* Animación para el Carrusel Infinito */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 9)); } /* 9 imágenes originales */
+        }
+        
         .animate-fade-in-up { animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
         .delay-100 { animation-delay: 100ms; }
@@ -33,6 +39,52 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
+        
+        /* Clases del Carrusel de Marcas */
+        .slider {
+            background: #FDFDFD;
+            height: 100px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        .slider::before, .slider::after {
+            background: linear-gradient(to right, rgba(253,253,253,1) 0%, rgba(255,255,255,0) 100%);
+            content: "";
+            height: 100px;
+            position: absolute;
+            width: 150px;
+            z-index: 2;
+        }
+        .slider::after { right: 0; top: 0; transform: rotateZ(180deg); }
+        .slider::before { left: 0; top: 0; }
+        .slide-track {
+            animation: scroll 35s linear infinite;
+            display: flex;
+            width: calc(250px * 18); /* El doble para el bucle */
+        }
+        .slide {
+            height: 100px;
+            width: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+        }
+        .slide img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+            filter: grayscale(100%) opacity(0.6);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        .slide img:hover {
+            filter: grayscale(0%) opacity(1);
+            transform: scale(1.15);
+        }
+
         body { margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
     </style>
 </head>
@@ -46,7 +98,7 @@
         import { 
           Eye, Monitor, Stethoscope, ChevronRight, Phone, MapPin, Instagram, Facebook,
           Linkedin, CheckCircle2, Zap, Menu, X, Target, ShieldCheck, Award, Lightbulb,
-          ArrowRight, Focus, Layout, Users, Wrench, Download, MessageCircle, Send, Mail
+          ArrowRight, Focus, Layout, Users, Wrench, Download, MessageCircle, Send, Home
         } from 'https://esm.sh/lucide-react@0.294.0';
 
         const TikTokIcon = ({ size = 20, className = "" }) => (
@@ -118,6 +170,18 @@
           ]
         };
 
+        const trustedBrandsImages = [
+          "Captura de pantalla 2026-06-07 005748.jpg",
+          "456839696_122096646128502176_4845263082744990073_n.jpg",
+          "WhatsApp Image 2026-06-04 at 17.22.19 (4).jpeg",
+          "WhatsApp Image 2026-06-04 at 17.22.19 (3).jpeg",
+          "WhatsApp Image 2026-06-04 at 17.22.19 (2).jpeg",
+          "WhatsApp Image 2026-06-04 at 17.22.19 (1).jpeg",
+          "WhatsApp Image 2026-06-04 at 17.22.19.jpeg",
+          "WhatsApp Image 2026-06-04 at 17.32.27.jpeg",
+          "WhatsApp Image 2026-06-04 at 17.37.28.jpeg"
+        ];
+
         const NosotrosView = ({ setActiveTab }) => {
           const [selectedVal, setSelectedVal] = useState(null);
 
@@ -142,7 +206,23 @@
               </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-6 -mt-12 relative z-20">
+            {/* CARRUSEL DE MARCAS */}
+            <div className="w-full bg-white shadow-sm pt-8 pb-10 relative z-20">
+              <div className="text-center mb-6">
+                <h3 className="text-[11px] font-black text-gray-400 uppercase tracking-[0.3em]">Instituciones que confían en nuestra tecnología</h3>
+              </div>
+              <div className="slider">
+                <div className="slide-track">
+                  {trustedBrandsImages.concat(trustedBrandsImages).map((img, idx) => (
+                    <div className="slide" key={idx}>
+                      <img src={encodeURI(img)} alt={`Marca Aliada ${idx}`} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="max-w-7xl mx-auto px-6 mt-16 relative z-20">
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="glass-panel p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] animate-fade-in-up delay-100 hover:shadow-[0_8px_40px_rgba(31,180,250,0.15)] transition-all duration-300">
                   <div className="w-14 h-14 bg-[#f0f9ff] rounded-2xl flex items-center justify-center mb-6 text-[#1FB4FA]">
@@ -308,7 +388,7 @@
           );
         };
 
-        const ServiciosView = () => (
+        const ServiciosView = ({ setActiveTab }) => (
           <div className="animate-fade-in w-full bg-white pb-24">
             <div className="bg-[#1FB4FA] pt-24 pb-32 px-6 text-center">
               <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 animate-fade-in-up">
@@ -380,6 +460,16 @@
 
               </div>
             </div>
+
+            {/* BOTÓN INICIO */}
+            <div className="max-w-7xl mx-auto px-6 mt-16 text-center animate-fade-in-up delay-300">
+              <button 
+                onClick={() => { setActiveTab('nosotros'); window.scrollTo(0,0); }}
+                className="inline-flex items-center gap-3 bg-[#065581] text-white px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-[#1FB4FA]/30"
+              >
+                <Home size={22} /> Inicio 
+              </button>
+            </div>
           </div>
         );
 
@@ -445,8 +535,10 @@
                   systemInstruction: { parts: [{ text: systemPrompt }] }
               };
 
-              // API call setup
-              const apiKey = ""; // Canvas will inject API KEY
+              // API KEY y Fetch
+              // ⚠️ IMPORTANTE: Para que el bot funcione en tu web real, entra a https://aistudio.google.com/app/apikey 
+              // Crea una clave gratuita y pégala entre las comillas de abajo:
+              const apiKey = "AQ.Ab8RN6IQxCYx04ELepvFJaObdioHi7Qli0vyzuDEp7bUlWxjuw"; 
               const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
               const response = await fetch(apiUrl, {
@@ -636,7 +728,7 @@
               <main className="flex-grow pt-20">
                 {activeTab === 'nosotros' && <NosotrosView setActiveTab={setActiveTab} />}
                 {activeTab === 'productos' && <ProductosView setActiveTab={setActiveTab} />}
-                {activeTab === 'servicios' && <ServiciosView />}
+                {activeTab === 'servicios' && <ServiciosView setActiveTab={setActiveTab} />}
               </main>
 
               <footer className="bg-[#065581] pt-16 pb-8 border-t-4 border-[#1FB4FA]">
