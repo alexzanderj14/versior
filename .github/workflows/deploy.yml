@@ -1,48 +1,13 @@
-name: Despliegue automatico a InfinityFree
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  deploy:
-    name: Subir archivos via FTP
-    runs-on: ubuntu-latest
-    steps:
-      - name: Descargar el codigo del repositorio
-        uses: actions/checkout@v4
-
-      - name: Sincronizar con InfinityFree (FTP)
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ftpupload.net
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: versiorimports.is-best.net/htdocs/
-          protocol: ftp
-          port: 21
-          exclude: |
-            **/.git*
-            **/.git*/**
-            .github/**
-```eof
-
-### Pasos de Limpieza Obligatorios (Sigue estos pasos en orden):
-
-Para que el servidor no se confunda y cargue la página web nueva sin problemas, haz esta limpieza rápida en tu **File Manager** de InfinityFree (el de la pantalla oscura con azul que me mostraste):
-
-1.  **Borra el archivo intruso en la raíz:** 
-    *   En la pantalla principal del File Manager (donde ves la carpeta `htdocs` y la carpeta `versiorimports.is-best.net`), **ELIMINA** el archivo `index.html` (el de 40.69 KB) que está ahí suelto. Ese archivo no debe estar afuera.
-2.  **Entra a la carpeta correcta:**
-    *   Haz doble clic sobre la carpeta **`versiorimports.is-best.net`**.
-    *   Adentro verás una carpeta llamada **`htdocs`**. Entra en ella.
-    *   Si ves archivos antiguos o de ejemplo (como un `index2.html` o un archivo de aviso de InfinityFree), **elimínalos** para que la carpeta quede completamente vacía y limpia.
-3.  **Sube la corrección:**
-    *   Guarda el cambio del `deploy.yml` en tu GitHub.
-4.  **Ejecuta el despliegue:**
-    *   Ve a la pestaña **Actions** en GitHub y espera que termine en verde (✅).
-
-Al no encontrar el archivo de sincronización viejo y tener la ruta corregida, GitHub Actions creará una conexión directa a `versiorimports.is-best.net/htdocs/` y depositará allí tu nuevo catálogo web premium con su asistente de inteligencia artificial y botones de navegación rápida. 
-
-¡Realiza estos pasos de limpieza y verás tu nuevo diseño en vivo inmediatamente!
+  - name: Sincronizar con InfinityFree (FTP)
+    uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+    with:
+      server: ftpupload.net
+      username: ${{ secrets.FTP_USERNAME }}
+      password: ${{ secrets.FTP_PASSWORD }}
+      server-dir: versiorimports.is-best.net/htdocs/
+      protocol: ftp
+      port: 21
+      exclude: |
+        **/.git*
+        **/.git*/**
+        .github/**
