@@ -19,7 +19,6 @@ jobs:
           server: ftpupload.net
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # Dirección exacta de la subcarpeta de tu dominio en InfinityFree
           server-dir: versiorimports.is-best.net/htdocs/
           protocol: ftp
           port: 21
