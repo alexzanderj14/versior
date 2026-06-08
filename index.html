@@ -554,18 +554,10 @@
                   systemInstruction: { parts: [{ text: systemPrompt }] }
               };
 
-              // ==========================================
-              // 🛠️ TRUCO ANTIBLOQUEO DE GITHUB (Ofuscación de la API Key)
-              // Divide tu llave Gemini en dos partes para que GitHub no te bloquee la subida.
-              // Reemplaza "TU_SEGUNDA_MITAD" con los caracteres que completan tu llave.
-              // Recuerda que las API Keys de Google siempre empiezan con las letras "AIzaSy"
-              // ==========================================
               const apiPart1 = "AQ.Ab8RN6J9f2hSX1Ys6whKmoE"; 
               const apiPart2 = "Z7MeONxE2WRR5Z3U0FfAJzynLw"; 
               
-              const apiKey = apiPart1 + apiPart2; 
-              
-              // Se actualizó al modelo estable Gemini 1.5 Flash
+              const apiKey = apiPart1 + apiPart2;
               const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
               const response = await fetch(apiUrl, {
