@@ -24,7 +24,7 @@
         /* Animación para el Carrusel Infinito */
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-250px * 9)); } /* 9 imágenes originales */
+            100% { transform: translateX(calc(-300px * 9)); } /* Modificado: 300px por imagen para adaptarse a logos más grandes */
         }
         
         .animate-fade-in-up { animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
@@ -43,7 +43,7 @@
         /* Clases del Carrusel de Marcas */
         .slider {
             background: #FDFDFD;
-            height: 100px;
+            height: 150px; /* Modificado: Altura mayor */
             margin: auto;
             overflow: hidden;
             position: relative;
@@ -52,7 +52,7 @@
         .slider::before, .slider::after {
             background: linear-gradient(to right, rgba(253,253,253,1) 0%, rgba(255,255,255,0) 100%);
             content: "";
-            height: 100px;
+            height: 150px; /* Modificado: Altura mayor */
             position: absolute;
             width: 150px;
             z-index: 2;
@@ -62,11 +62,11 @@
         .slide-track {
             animation: scroll 35s linear infinite;
             display: flex;
-            width: calc(250px * 18); /* El doble para el bucle */
+            width: calc(300px * 18); /* Modificado: 300px ancho x 18 elementos */
         }
         .slide {
-            height: 100px;
-            width: 250px;
+            height: 150px; /* Modificado: Altura mayor */
+            width: 300px; /* Modificado: ancho ampliado para agrandar logos */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -74,7 +74,7 @@
         }
         .slide img {
             max-width: 100%;
-            max-height: 80px;
+            max-height: 120px; /* Modificado: Logos mucho más grandes (pasaron de 80px a 120px) */
             object-fit: contain;
             filter: grayscale(100%) opacity(0.6);
             transition: all 0.4s ease;
@@ -215,7 +215,8 @@
                 <div className="slide-track">
                   {trustedBrandsImages.concat(trustedBrandsImages).map((img, idx) => (
                     <div className="slide" key={idx}>
-                      <img src={encodeURI(img)} alt={`Marca Aliada ${idx}`} />
+                      {/* Modificado: URL directa y absoluta a tu GitHub para garantizar que carguen las 9 imágenes impecablemente */}
+                      <img src={`https://raw.githubusercontent.com/alexzanderj14/versior/main/${encodeURIComponent(img)}`} alt={`Marca Aliada ${idx}`} />
                     </div>
                   ))}
                 </div>
@@ -536,10 +537,11 @@
               };
 
               // API KEY y Fetch
-              // ⚠️ IMPORTANTE: Para que el bot funcione en tu web real, entra a https://aistudio.google.com/app/apikey 
-              // Crea una clave gratuita y pégala entre las comillas de abajo:
-              const apiKey = "AQ.Ab8RN6IQxCYx04ELepvFJaObdioHi7Qli0vyzuDEp7bUlWxjuw"; 
-              const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+              // ⚠️ IMPORTANTE: Si la API Key de abajo no empieza con "AIzaSy", el chat fallará. Copia bien la clave de AI Studio.
+              const apiKey = "AQ.Ab8RN6J9f2hSX1Ys6whKmoEZe7MeONxE2WRR5Z3U0FfAJzynLw"; 
+              
+              // Modificado: Se reemplazó el modelo preview por el modelo estable "gemini-1.5-flash"
+              const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
               const response = await fetch(apiUrl, {
                   method: 'POST',
