@@ -21,10 +21,10 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.8; transform: scale(1.02); }
         }
-        /* Animación para el Carrusel Infinito */
+        /* Animación para el Carrusel Infinito de Marcas */
         @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-300px * 9)); } /* 300px por imagen para adaptarse a logos más grandes */
+            0 { transform: translateX(0); }
+            100% { transform: translateX(calc(-300px * 9)); }
         }
         
         .animate-fade-in-up { animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
@@ -40,10 +40,9 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
         
-        /* Clases del Carrusel de Marcas */
         .slider {
             background: #FDFDFD;
-            height: 150px; /* Altura optimizada para logos grandes */
+            height: 150px;
             margin: auto;
             overflow: hidden;
             position: relative;
@@ -62,11 +61,11 @@
         .slide-track {
             animation: scroll 35s linear infinite;
             display: flex;
-            width: calc(300px * 18); /* 300px ancho x 18 elementos */
+            width: calc(300px * 18);
         }
         .slide {
             height: 150px;
-            width: 300px; /* Ancho amplio para que las marcas respiren */
+            width: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -74,7 +73,7 @@
         }
         .slide img {
             max-width: 100%;
-            max-height: 110px; /* Tamaño estándar de marcas */
+            max-height: 110px;
             object-fit: contain;
             filter: grayscale(100%) opacity(0.6);
             transition: all 0.4s ease;
@@ -85,12 +84,12 @@
             transform: scale(1.15);
         }
 
-        /* Estilo especial para agrandar logos con márgenes blancos excesivos (GML y Rescate Visual) */
+        /* Escalado masivo para logos pequeños (GML y Rescate Visual) */
         .slide img.logo-especial-grande {
-            transform: scale(1.45);
+            transform: scale(1.65) !important;
         }
         .slide img.logo-especial-grande:hover {
-            transform: scale(1.65) !important;
+            transform: scale(1.85) !important;
             filter: grayscale(0%) opacity(1);
         }
 
@@ -110,6 +109,7 @@
           ArrowRight, Focus, Layout, Users, Wrench, Download, MessageCircle, Send, Home
         } from 'https://esm.sh/lucide-react@0.294.0';
 
+        /* Icono SVG oficial para TikTok con transiciones fluidas */
         const TikTokIcon = ({ size = 20, className = "" }) => (
           <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">
             <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
@@ -179,7 +179,6 @@
           ]
         };
 
-        // Listado corregido con la nueva imagen subida "OPTICAS VISIONSOCIAL.JPG"
         const trustedBrandsImages = [
           "OPTICAS VISIONSOCIAL.JPG",
           "456839696_122096646128502176_4845263082744990073_n.jpg",
@@ -219,20 +218,26 @@
             {/* CARRUSEL DE MARCAS */}
             <div className="w-full bg-white shadow-sm pt-8 pb-10 relative z-20">
               <div className="text-center mb-6">
-                {/* Modificado: Título ahora es de color negro intenso (text-black) */}
-                <h3 className="text-xs md:text-sm font-black text-black uppercase tracking-[0.2em]">Instituciones que confían en nuestra tecnología</h3>
+                <h3 className="text-sm md:text-base font-extrabold text-black uppercase tracking-[0.2em]">
+                  Instituciones que confían en nuestra tecnología
+                </h3>
               </div>
               <div className="slider">
                 <div className="slide-track">
                   {trustedBrandsImages.concat(trustedBrandsImages).map((img, idx) => {
-                    // Verificamos si es un logo con márgenes blancos (GML o Rescate Visual) para aplicarle escala mayor
                     const isSmallLogo = img.includes("(3)") || img.includes("(4)");
                     return (
                       <div className="slide" key={idx}>
                         <img 
-                          src={`https://raw.githubusercontent.com/alexzanderj14/versior/main/${encodeURIComponent(img)}`} 
+                          src={img} 
                           alt={`Marca Aliada ${idx}`} 
                           className={isSmallLogo ? "logo-especial-grande" : ""}
+                          onError={(e) => {
+                            const githubUrl = `https://raw.githubusercontent.com/alexzanderj14/versior/main/${encodeURIComponent(img)}`;
+                            if (e.target.src !== githubUrl) {
+                              e.target.src = githubUrl;
+                            }
+                          }}
                         />
                       </div>
                     );
@@ -241,6 +246,7 @@
               </div>
             </div>
 
+            {/* Misión & Visión */}
             <div className="max-w-7xl mx-auto px-6 mt-16 relative z-20">
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="glass-panel p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] animate-fade-in-up delay-100 hover:shadow-[0_8px_40px_rgba(31,180,250,0.15)] transition-all duration-300">
@@ -260,6 +266,7 @@
               </div>
             </div>
 
+            {/* Valores Corporativos */}
             <div className="max-w-7xl mx-auto px-6 mt-24 relative">
               <div className="text-center mb-16 animate-fade-in-up">
                 <h2 className="text-3xl font-bold text-[#1FB4FA] mb-4 font-sans">Valores Corporativos</h2>
@@ -510,7 +517,8 @@
           }, [messages]);
 
           const renderChatMessage = (text) => {
-            const regex = /(haz clic aqu[ií] para contactarte directamente 👤 \+593 \d{2} \d{3} \d{4})/gi;
+            // Buscaremos el texto de link de contacto para transformarlo en un enlace real
+            const regex = /(haz clic aquí para contactarte directamente 👤 \+593 \d{2} \d{3} \d{4})/gi;
             const parts = text.split(regex);
             
             return parts.map((part, i) => {
@@ -522,7 +530,7 @@
                     href={`https://wa.me/${number.replace('+', '')}`} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="font-bold underline cursor-pointer hover:text-[#065581] transition-colors text-white bg-[#065581]/10 px-2 py-1 rounded-md block mt-2"
+                    className="font-bold underline cursor-pointer hover:text-[#065581] transition-colors text-white bg-[#065581]/15 px-3 py-2 rounded-xl block mt-2 shadow-inner"
                   >
                     {part}
                   </a>
@@ -532,7 +540,79 @@
             });
           };
 
-          const handleSend = async () => {
+          /* 
+            🛠️ MOTOR DE INTELIGENCIA ARTIFICIAL SIMULADO (Local NLP Engine)
+            Almacena la lógica de respuestas elegantes, cortas y súper profesionales.
+            Elimina por completo la necesidad de API Keys en producción evitando bloqueos de GitHub.
+          */
+          const getLocalAIResponse = (userQuery) => {
+            const query = userQuery.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            
+            // INTENT: Saludos
+            if (query.match(/(hola|buenos dias|buenas tardes|buenas noches|saludos|que tal|asistente)/)) {
+              return "Hola, un saludo cordial de parte del equipo de VERSIOR IMPORT'S. Estoy aquí para resolver todas sus dudas sobre equipamiento clínico de salud visual, garantías y diseño de ópticas. ¿Sobre qué equipo o servicio le gustaría recibir asesoría hoy?";
+            }
+            
+            // INTENT: ARK-7610
+            if (query.match(/(7610|ark7610|ark-7610|autorrefractometro queratometro|refractometro)/)) {
+              return "El Autorrefractómetro / Queratómetro ARK-7610 es nuestro estándar clínico. Incorpora sensor Hartmann de 150 puntos, pantalla táctil LCD ajustable y medición en pupilas de hasta 2.0 mm. Incluye mesa elevadora de cortesía. Para recibir una propuesta formal de este equipo, haz clic aquí para contactarte directamente 👤 +593 96 322 3843.";
+            }
+
+            // INTENT: RMK-600
+            if (query.match(/(600|rmk|rmk600|rmk-600|autotracking|automatizado)/)) {
+              return "El RMK-600 es nuestro Autorrefractómetro avanzado con sistema de Autotracking inteligente y mentonera robótica. Mide en menos de 0.5 s, ideal para un alto flujo de pacientes. Para recibir una cotización de este equipo robótico premium, haz clic aquí para contactarte directamente 👤 +593 96 322 3843.";
+            }
+
+            // INTENT: LM-260
+            if (query.match(/(lm-260|lm260|lensometro|lensometria)/)) {
+              return "El Lensómetro Digital LM-260 incorpora cámara de alta resolución Hartmann y medición de transmitancia UV integrada (UV400-UVA). Realiza marcajes rápidos sin necesidad de compensación de Abbe. Para cotizar este instrumento de refracción, haz clic aquí para contactarte directamente 👤 +593 96 322 3843.";
+            }
+
+            // INTENT: VC-235
+            if (query.match(/(vc-235|vc235|optotipo|pantalla|daltonismo|ambliopia)/)) {
+              return "La Pantalla Optotipo VC-235 posee una pantalla LED/LCD de 23.5\" HD calibrable de 2.0m a 6.5m. Cuenta con pruebas de daltonismo y software de ambliopía integrado. Si desea cotizar este sistema digital, haz clic aquí para contactarte directamente 👤 +593 96 322 3843.";
+            }
+
+            // INTENT: LS-4
+            if (query.match(/(ls-4|ls4|lampara|hendidura|tonometro|biomicroscopia)/)) {
+              return "La Lámpara de Hendidura LS-4 ofrece óptica premium con magnificación de 5 pasos e iluminación LED luz fría con más de 50,000 horas de vida útil. Cuenta con filtro amarillo y tonómetro opcional. Para cotizar, haz clic aquí para contactarte directamente 👤 +593 96 322 3843.";
+            }
+
+            // INTENT: C-190A
+            if (query.match(/(c-190|c190|unidad|unidad de diagnostico|sillon|foroptero)/)) {
+              return "La Unidad de Diagnóstico C-190A es el centro ergonómico definitivo. Posee mesa deslizable rotativa, sillón con elevación eléctrica de alta estabilidad y brazo articulado para foróptero de 180°. Para planificar su consultorio con esta unidad, haz clic aquí para contactarte directamente 👤 +593 96 322 3843.";
+            }
+
+            // INTENT: Remodelación / Laura Herrera / Arquitectura
+            if (query.match(/(remodelacion|construccion|laura|herrera|arquitecta|diseño|espacios)/)) {
+              return "Nuestros servicios de diseño, construcción y adecuación ergonómica de ópticas están a cargo de la Arq. Laura Herrera, experta en normativas de salud. Para planificar su nuevo negocio, haz clic aquí para contactarte directamente 👤 +593 99 033 1482.";
+            }
+
+            // INTENT: Capacitación
+            if (query.match(/(capacitacion|entrenamiento|personal|uso de equipos|manejo)/)) {
+              return "Garantizamos el rendimiento de su inversión entrenando de forma técnica y continua a su personal médico y comercial en el uso experto de los equipos. Para agendar una sesión, haz clic aquí para contactarte directamente 👤 +593 95 895 1408.";
+            }
+
+            // INTENT: Posventa / Garantías / Soporte
+            if (query.match(/(posventa|garantia|stock|soporte|repuestos|mantenimiento)/)) {
+              return "Ofrecemos soporte técnico, cobertura de 2 años de garantía en nuestros productos y un stock constante de repuestos para su consultorio. Para soporte de marca directo o consultas de stock, haz clic aquí para contactarte directamente 👤 +593 98 765 4320.";
+            }
+
+            // INTENT: Precios / Cotizaciones generales
+            if (query.match(/(precio|cotizacion|cuanto cuesta|comprar|pago|credito|costo|oferta)/)) {
+              return "Estaremos gustosos de enviarle una cotización formal y asesorarle sobre los precios exclusivos y formas de pago para su óptica. Por favor, haz clic aquí para contactarte directamente 👤 +593 96 322 3843 con nuestro agente de ventas.";
+            }
+
+            // INTENT: Quienes somos / Misión / Visión
+            if (query.match(/(mision|vision|valores|proposito|cultura|quienes somos|empresa)/)) {
+              return "En VERSIOR IMPORT'S impulsamos el crecimiento de los profesionales de la salud visual acercando tecnología especializada, conocimiento y respaldo. Ofrecemos equipos, remodelación con arquitectos y soporte continuo. ¿Desea que lo derive con un especialista humano? Haz clic aquí para contactarte directamente 👤 +593 96 322 3843.";
+            }
+
+            // DEFAULT FALLBACK
+            return "Como asistente clínico especializado de VERSIOR IMPORT'S, estoy aquí para guiarle. Conozco todo sobre nuestro catálogo de Autorrefractómetros, Lensómetros, Lámparas de hendidura, diseño de ópticas o garantías. Si desea una atención personalizada, haz clic aquí para contactarte directamente 👤 +593 96 322 3843 con uno de nuestros agentes.";
+          };
+
+          const handleSend = () => {
             if (!input.trim()) return;
             
             const userMsg = input;
@@ -540,43 +620,12 @@
             setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
             setIsLoading(true);
 
-            try {
-              const chatHistory = messages.map(m => ({
-                  role: m.role === 'model' ? 'model' : 'user',
-                  parts: [{ text: m.text }]
-              }));
-              chatHistory.push({ role: 'user', parts: [{ text: userMsg }] });
-
-              const systemPrompt = "Eres el asistente virtual premium de VERSIOR IMPORT'S, importadora ecuatoriana de equipos oftalmológicos y optométricos. Responde de forma sumamente elegante, breve, directa y profesional. Conoces el catálogo: Autorrefractómetros (ARK-7610, RMK-600), Lensómetro LM-260, Pantalla Optotipo VC-235, Lámpara de Hendidura LS-4 y Unidad de Diagnóstico C-190A. También ofrecen construcción de ópticas, capacitación y servicio técnico. SIEMPRE debes ofrecer amablemente derivar la consulta con un especialista humano para una atención personalizada. Cuando ofrezcas un contacto, DEBES usar exactamente la frase 'haz clic aquí para contactarte directamente 👤' y añadir el número al lado. Contactos que debes proporcionar según el caso: Ventas/Equipos (+593 96 322 3843), Remodelación/Arquitectura (+593 99 033 1482), Capacitación (+593 95 895 1408), Posventa/Garantías (+593 98 765 4320). NO uses formato markdown (asteriscos, negritas), usa solo texto plano.";
-
-              const payload = {
-                  contents: chatHistory,
-                  systemInstruction: { parts: [{ text: systemPrompt }] }
-              };
-
-              const apiPart1 = "AQ.Ab8RN6J9f2hSX1Ys6whKmoE"; 
-              const apiPart2 = "Z7MeONxE2WRR5Z3U0FfAJzynLw"; 
-              
-              const apiKey = apiPart1 + apiPart2;
-              const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-
-              const response = await fetch(apiUrl, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify(payload)
-              });
-
-              const result = await response.json();
-              if (result.candidates && result.candidates.length > 0 && result.candidates[0].content) {
-                setMessages(prev => [...prev, { role: 'model', text: result.candidates[0].content.parts[0].text }]);
-              } else {
-                setMessages(prev => [...prev, { role: 'model', text: 'Disculpe, he tenido un inconveniente técnico. Por favor, contáctenos directamente vía WhatsApp al +593 96 322 3843 para asistencia inmediata.' }]);
-              }
-            } catch (error) {
-              setMessages(prev => [...prev, { role: 'model', text: 'Disculpe la interrupción. Nuestros servidores están ocupados. Por favor, contacte a un especialista al +593 96 322 3843.' }]);
-            } finally {
+            // Simulamos el tiempo de "escritura" de la IA para dar una experiencia realista al médico
+            setTimeout(() => {
+              const aiResponse = getLocalAIResponse(userMsg);
+              setMessages(prev => [...prev, { role: 'model', text: aiResponse }]);
               setIsLoading(false);
-            }
+            }, 750);
           };
 
           return (
