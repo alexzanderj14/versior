@@ -119,8 +119,8 @@
         const companyData = {
           about: {
             mission: "Importar y comercializar tecnología optométrica y oftalmológica especializada, complementándola con capacitación profesional, asesoría en la creación de espacios ópticos y acompañamiento posventa, para impulsar el crecimiento y la excelencia de los profesionales de la salud visual.",
-            vision: "Ser la empresa referente en Ecuador en soluciones integrales para la salud visual, reconocida por combinar tecnología especializada, capacitación de alto nivel and acompañamiento estratégico para el desarrollo de ópticas y consultorios modernos.",
-            purpose: "Impulsamos una mejor salud visual acercando tecnología especializada, conocimiento y respaldo a los profesionales que cuidan la visión de las personas.",
+            vision: "Ser la empresa referente en Ecuador en soluciones integrales para la salud visual, reconocida por combinar tecnología especializada, capacitación de alto nivel y acompañamiento estratégico para el desarrollo de ópticas y consultorios modernos.",
+            purpose: "Impulsar una mejor salud visual acercando tecnología especializada, conocimiento y respaldo a los profesionales que cuidan la visión de las personas.",
             values: [
               { name: "Confianza", icon: ShieldCheck, description: "Llevamos tu equipo importado a cualquier lugar del país." },
               { name: "Excelencia", icon: Award, description: "Te asesoramos en el uso de las máquinas 24/7 y agendamos capacitaciones para el personal que lo usa." },
@@ -140,7 +140,12 @@
               id: 'rmk-600', category: 'Refracción', name: 'RMK-600', type: 'Autorrefractómetro Avanzado',
               tagline: 'Agilidad y tecnología automatizada superior.',
               description: 'Diseñado para alto volumen de pacientes, minimizando el tiempo de acomodación con enfoque inteligente.',
-              features: ['Autotracking (enfoque automático).', 'Mentonera robótica.', 'Tiempo de medición <0.5 segundos.'],
+              features: [
+                'Sistema LIO (Lente intraocular).', /* Reubicado al inicio */
+                'Autotracking (enfoque automático).',
+                'Mentonera robótica.',
+                'Tiempo de medición <0.5 segundos.'
+              ],
               highlight: true, icon: Focus
             },
             {
@@ -297,7 +302,7 @@
                         </div>
                         <h3 className="text-2xl font-black text-[#065581] font-sans">{selectedVal.name}</h3>
                       </div>
-                      <button onClick={() => setSelectedVal(null)} className="text-gray-400 hover:text-[#1FB4FA] transition-colors">
+                      <button onClick={() => setSelectedVal(null)} className="text-gray-400 hover:text-red-500 transition-colors">
                         <X size={24} />
                       </button>
                     </div>
@@ -378,12 +383,16 @@
                           <p className="text-gray-600 text-sm mb-6 flex-grow">{prod.description}</p>
                           
                           <ul className="space-y-2 mb-8">
-                            {prod.features.map((feat, i) => (
-                              <li key={i} className="flex items-start text-sm text-gray-600">
-                                <CheckCircle2 size={16} className="text-[#1FB4FA] mr-2 flex-shrink-0 mt-0.5" />
-                                <span>{feat}</span>
-                              </li>
-                            ))}
+                            {prod.features.map((feat, i) => {
+                              // Resalta la característica "Sistema LIO (Lente intraocular)" del RMK-600 con celeste pálido legible
+                              const isLio = feat.includes("Sistema LIO");
+                              return (
+                                <li key={i} className={`flex items-start text-sm text-gray-600 p-2 rounded-xl transition-all ${isLio ? 'bg-sky-100/70 text-[#065581] font-bold border border-sky-200/50 shadow-sm' : ''}`}>
+                                  <CheckCircle2 size={16} className={`${isLio ? 'text-[#065581]' : 'text-[#1FB4FA]'} mr-2 flex-shrink-0 mt-0.5`} />
+                                  <span>{feat}</span>
+                                </li>
+                              );
+                            })}
                           </ul>
 
                           <button 
@@ -397,6 +406,35 @@
                     );
                   })}
                 </div>
+
+                {/* RECUADRO ÚNICO: Recursos Exclusivos (Colocado debajo de los productos) */}
+                <div className="max-w-4xl mx-auto mt-16 p-8 bg-sky-50/70 border border-sky-100 rounded-3xl text-center shadow-sm animate-fade-in-up">
+                  <h3 className="text-2xl font-black text-[#065581] mb-3">Recursos Exclusivos</h3>
+                  <p className="text-gray-700 font-semibold text-base mb-6 max-w-2xl mx-auto">
+                    ¿Quieres un prototipo de un diseño de óptica o un manual básico de enfermedades que tratan los optómetras y oftalmólogos?
+                  </p>
+                  <div className="flex flex-col sm:flex-row justify-center gap-4">
+                    <a 
+                      href="https://wa.me/593990331482?text=Hola%20Arquitecta%20Laura%20Herrera,%20estoy%20interesado%20en%20el%20dise%C3%B1o%20de%20un%20prototipo%20de%20%C3%B3ptica." 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 border border-sky-200 hover:border-[#1FB4FA] text-[#065581] font-bold px-6 py-3 rounded-xl transition-all shadow-sm group"
+                    >
+                      <Layout size={18} className="text-[#1FB4FA] group-hover:scale-110 transition-transform" /> 
+                      <span>Prototipo de Óptica (Laura Herrera)</span>
+                    </a>
+                    <a 
+                      href="https://wa.me/593958951408?text=Hola%20Dra.%20Oftalm%C3%B3loga%20Julieta%20Siguencia,%20me%20gustar%C3%ADa%20recibir%20el%20manual%20b%C3%A1sico%20de%20enfermedades%20que%20tratan%20los%20opt%C3%B3metras%20y%20oftalm%C3%B3logos." 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 border border-sky-200 hover:border-[#1FB4FA] text-[#065581] font-bold px-6 py-3 rounded-xl transition-all shadow-sm group"
+                    >
+                      <Stethoscope size={18} className="text-[#1FB4FA] group-hover:scale-110 transition-transform" /> 
+                      <span>Manual de Enfermedades (Julieta Siguencia)</span>
+                    </a>
+                  </div>
+                </div>
+
               </div>
 
               {/* BOTÓN MÁS OFERTAS */}
@@ -434,7 +472,7 @@
               btnText: "Planificar con Arquitectura"
             },
             {
-              title: "Capacitación de Uso de Equipos",
+              title: "Capacitación de uso de equipos y personal",
               desc: "Asegura el máximo rendimiento de tu inversión. Entrenamos a tu personal médico y de ventas en el manejo experto de nuestra tecnología clínica.",
               label: "A cargo de:",
               person: "Dra. Oftalmóloga Julieta Siguencia",
@@ -443,7 +481,7 @@
               btnText: "Agendar Capacitación"
             },
             {
-              title: "Servicio Posventa, Garantía y Soporte",
+              title: "Servicio posventa, soporte de marca y garantía",
               desc: "Respaldo técnico inmediato. Consulta disponibilidad de stock, cobertura de garantías y solicita mantenimiento preventivo o correctivo de equipos.",
               label: "Soporte directo:",
               person: "Licenciado Alexander Jácome",
@@ -477,7 +515,7 @@
                         <div className="w-16 h-16 bg-[#f0f9ff] rounded-2xl flex items-center justify-center mb-6">
                           <Icon size={32} className="text-[#1FB4FA]" strokeWidth={2} />
                         </div>
-                        <h3 className="text-2xl font-extrabold text-[#065581] mb-4">{srv.title}</h3>
+                        <h3 className="text-2xl font-extrabold text-[#065581] mb-4 leading-tight">{srv.title}</h3>
                         <p className="text-gray-600 mb-6 flex-grow leading-relaxed text-sm">{srv.desc}</p>
                         
                         <div className="bg-gray-50 rounded-2xl p-4 mb-6 border border-gray-100">
@@ -497,21 +535,12 @@
                           <Phone size={18} fill="white" /> {srv.btnText} <ArrowRight size={18} />
                         </a>
 
-                        {/* Redes Sociales Circulares Adicionales (WhatsApp, Facebook, Instagram y LinkedIn) */}
+                        {/* Redes sociales corporativas oficiales */}
                         <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
                           <span className="text-xs font-semibold text-gray-400">Canales de soporte:</span>
                           <div className="flex gap-2">
                             <a 
-                              href={srv.waLink} 
-                              target="_blank" 
-                              rel="noopener noreferrer" 
-                              className="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:scale-110 shadow-sm transition-transform" 
-                              title="WhatsApp Directo"
-                            >
-                              <Phone size={14} fill="white" />
-                            </a>
-                            <a 
-                              href="https://www.facebook.com/profile.php?id=100089505045369&locale=es_LA" 
+                              href="https://www.facebook.com/share/1BNhBNCfNU/?mibextid=wwXIfr" 
                               target="_blank" 
                               rel="noopener noreferrer" 
                               className="w-8 h-8 bg-[#1877F2] text-white rounded-full flex items-center justify-center hover:scale-110 shadow-sm transition-transform" 
@@ -520,7 +549,7 @@
                               <Facebook size={14} fill="white" />
                             </a>
                             <a 
-                              href="https://www.instagram.com/versior2/" 
+                              href="https://www.instagram.com/versiorimports/" 
                               target="_blank" 
                               rel="noopener noreferrer" 
                               className="w-8 h-8 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white rounded-full flex items-center justify-center hover:scale-110 shadow-sm transition-transform" 
@@ -529,7 +558,9 @@
                               <Instagram size={14} />
                             </a>
                             <a 
-                              href="#" 
+                              href="https://www.linkedin.com/company/versior-imports" 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
                               className="w-8 h-8 bg-[#0077b5] text-white rounded-full flex items-center justify-center hover:scale-110 shadow-sm transition-transform" 
                               title="LinkedIn Corporativo"
                             >
@@ -543,13 +574,13 @@
                 </div>
               </div>
 
-              {/* BOTÓN INICIO */}
+              {/* BOTÓN MÁS INFORMACIÓN - Redirige a Contacto */}
               <div className="max-w-7xl mx-auto px-6 mt-16 text-center animate-fade-in-up delay-300">
                 <button 
-                  onClick={() => { setActiveTab('nosotros'); window.scrollTo(0,0); }}
+                  onClick={() => { setActiveTab('contacto'); window.scrollTo(0,0); }}
                   className="inline-flex items-center gap-3 bg-[#065581] text-white px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-white/20"
                 >
-                  <Home size={22} /> Inicio 
+                  Más información <ArrowRight size={22} />
                 </button>
               </div>
             </div>
@@ -557,119 +588,267 @@
         };
 
         // VISTA 4: CONTACTO
-        const ContactoView = () => (
-          <div className="animate-fade-in w-full pb-20">
-            <div className="bg-white py-20">
-              <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-16 animate-fade-in-up">
-                  <h1 className="text-4xl md:text-5xl font-black text-black mb-4">Hablemos de mejorar tu óptica</h1>
-                  <p className="text-lg text-gray-500 max-w-2xl mx-auto">Asesoría especializada para ópticas y oftalmólogos. Contáctanos para solicitar cotizaciones, soporte técnico o diseño de espacios.</p>
-                </div>
+        const ContactoView = ({ setActiveTab }) => {
+          const [nombre, setNombre] = useState('');
+          const [telefono, setTelefono] = useState('');
+          const [correo, setCorreo] = useState('');
+          const [interes, setInteres] = useState('Selecciona una opción...');
+          const [mensaje, setMensaje] = useState('');
 
-                <div className="grid lg:grid-cols-5 gap-12">
-                  {/* Info Panels */}
-                  <div className="lg:col-span-2 space-y-6">
-                    <div className="bg-[#1FB4FA] rounded-3xl p-8 text-white shadow-xl animate-fade-in-up delay-100 relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-                      <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                        <Phone className="text-[#065581]" /> Líneas Directas
-                      </h3>
-                      <div className="space-y-4">
-                        <a href="https://wa.me/593963223843" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
-                          <div className="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><Phone size={20} fill="white" /></div>
-                          <div>
-                            <p className="text-xs text-[#065581] font-extrabold uppercase tracking-wider">Ventas (Optómetra Eli Verdy)</p>
-                            <p className="font-bold text-lg">+593 96 322 3843</p>
-                          </div>
-                        </a>
-                        <a href="https://wa.me/593990331482" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
-                          <div className="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><Phone size={20} fill="white" /></div>
-                          <div>
-                            <p className="text-xs text-[#065581] font-extrabold uppercase tracking-wider">Remodelación (Arq. Laura Herrera)</p>
-                            <p className="font-bold text-lg">+593 99 033 1482</p>
-                          </div>
-                        </a>
-                        <a href="https://wa.me/593958951408" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
-                          <div className="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><Phone size={20} fill="white" /></div>
-                          <div>
-                            <p className="text-xs text-[#065581] font-extrabold uppercase tracking-wider">Capacitación (Dra. Julieta Siguencia)</p>
-                            <p className="font-bold text-lg">+593 95 895 1408</p>
-                          </div>
-                        </a>
-                        <a href="https://wa.me/593987654320" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
-                          <div className="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><Phone size={20} fill="white" /></div>
-                          <div>
-                            <p className="text-[10px] md:text-xs text-[#065581] font-extrabold uppercase tracking-wider leading-tight">Servicio Posventa (Lic. Alexander Jácome)</p>
-                            <p className="font-bold text-lg">+593 98 765 4320</p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
+          const handleSubmit = (e) => {
+            e.preventDefault();
+            const phone = "593963223843"; // Número de Eli Verdy
+            const customMessage = `Hola VERSIOR IMPORT'S (Eli Verdy),\n\nDeseo realizar una solicitud de contacto con los siguientes detalles:\n` +
+              `• *Nombre/Clínica:* ${nombre}\n` +
+              `• *WhatsApp:* ${telefono}\n` +
+              `• *Correo:* ${correo}\n` +
+              `• *Servicio/Equipo:* ${interes}\n` +
+              `• *Mensaje adicional:* ${mensaje}`;
+            
+            const encodedText = encodeURIComponent(customMessage);
+            window.open(`https://wa.me/${phone}?text=${encodedText}`, '_blank');
+          };
 
-                    <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100 animate-fade-in-up delay-200">
-                      <h3 className="text-xl font-bold text-[#1FB4FA] mb-6 flex items-center gap-3">
-                        <MapPin className="text-[#065581]" /> Nuestras Sedes
-                      </h3>
-                      <div className="space-y-5">
-                        {companyData.locations.map((loc, idx) => (
-                          <div key={idx} className="flex gap-4">
-                            <div className="mt-1 w-2 h-2 rounded-full bg-[#1FB4FA] flex-shrink-0"></div>
+          return (
+            <div className="animate-fade-in w-full pb-20">
+              <div className="bg-white py-20">
+                <div className="max-w-7xl mx-auto px-6">
+                  <div className="text-center mb-16 animate-fade-in-up">
+                    <h1 className="text-4xl md:text-5xl font-black text-black mb-4">Hablemos de mejorar tu óptica</h1>
+                    <p className="text-lg text-gray-500 max-w-2xl mx-auto">Asesoría especializada para ópticas y oftalmólogos. Contáctanos para solicitar cotizaciones, soporte técnico o diseño de espacios.</p>
+                  </div>
+
+                  <div className="grid lg:grid-cols-5 gap-12">
+                    {/* Info Panels */}
+                    <div className="lg:col-span-2 space-y-6">
+                      <div className="bg-[#1FB4FA] rounded-3xl p-8 text-white shadow-xl animate-fade-in-up delay-100 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+                        <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                          <Phone className="text-[#065581]" /> Líneas Directas
+                        </h3>
+                        <div className="space-y-4">
+                          <a href="https://wa.me/593963223843" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
+                            <div className="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><Phone size={20} fill="white" /></div>
                             <div>
-                              <p className="font-bold text-[#065581] text-sm">{loc.city}</p>
-                              <p className="text-xs text-gray-500 leading-relaxed">{loc.address}</p>
+                              <p className="text-xs text-[#065581] font-extrabold uppercase tracking-wider">Ventas (Optómetra Eli Verdy)</p>
+                              <p className="font-bold text-lg">+593 96 322 3843</p>
                             </div>
-                          </div>
-                        ))}
+                          </a>
+                          <a href="https://wa.me/593990331482" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
+                            <div className="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><Phone size={20} fill="white" /></div>
+                            <div>
+                              <p className="text-xs text-[#065581] font-extrabold uppercase tracking-wider">Remodelación (Arq. Laura Herrera)</p>
+                              <p className="font-bold text-lg">+593 99 033 1482</p>
+                            </div>
+                          </a>
+                          <a href="https://wa.me/593958951408" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
+                            <div className="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><Phone size={20} fill="white" /></div>
+                            <div>
+                              <p className="text-xs text-[#065581] font-extrabold uppercase tracking-wider">Capacitación (Dra. Julieta Siguencia)</p>
+                              <p className="font-bold text-lg">+593 95 895 1408</p>
+                            </div>
+                          </a>
+                          <a href="https://wa.me/593987654320" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
+                            <div className="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><Phone size={20} fill="white" /></div>
+                            <div>
+                              <p className="text-[10px] md:text-xs text-[#065581] font-extrabold uppercase tracking-wider leading-tight">Servicio Posventa (Lic. Alexander Jácome)</p>
+                              <p className="font-bold text-lg">+593 98 765 4320</p>
+                            </div>
+                          </a>
+                        </div>
                       </div>
+
+                      <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100 animate-fade-in-up delay-200">
+                        <h3 className="text-xl font-bold text-[#1FB4FA] mb-6 flex items-center gap-3">
+                          <MapPin className="text-[#065581]" /> Nuestras Sedes
+                        </h3>
+                        <div className="space-y-5">
+                          {companyData.locations.map((loc, idx) => (
+                            <div key={idx} className="flex gap-4">
+                              <div className="mt-1 w-2 h-2 rounded-full bg-[#1FB4FA] flex-shrink-0"></div>
+                              <div>
+                                <p className="font-bold text-[#065581] text-sm">{loc.city}</p>
+                                <p className="text-xs text-gray-500 leading-relaxed">{loc.address}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Formulario conectado a WhatsApp de Eli Verdy */}
+                    <div className="lg:col-span-3 bg-white border border-gray-100 rounded-3xl p-8 md:p-12 shadow-xl shadow-gray-100/50 animate-fade-in-up delay-300">
+                      <h3 className="text-2xl font-bold text-[#1FB4FA] mb-8">Envíanos un mensaje</h3>
+                      <form className="space-y-6" onSubmit={handleSubmit}>
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div>
+                            <label className="block text-sm font-bold text-gray-600 mb-2">Nombre del Doctor/Clínica</label>
+                            <input 
+                              type="text" 
+                              required
+                              value={nombre}
+                              onChange={(e) => setNombre(e.target.value)}
+                              className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all text-gray-800" 
+                              placeholder="Ej. Dr. Juan Pérez" 
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-bold text-gray-600 mb-2">Teléfono / WhatsApp</label>
+                            <input 
+                              type="tel" 
+                              required
+                              value={telefono}
+                              onChange={(e) => setTelefono(e.target.value)}
+                              className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all text-gray-800" 
+                              placeholder="Ej. +593 98 765 4321" 
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-bold text-gray-600 mb-2">Correo Electrónico</label>
+                          <input 
+                            type="email" 
+                            required
+                            value={correo}
+                            onChange={(e) => setCorreo(e.target.value)}
+                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all text-gray-800" 
+                            placeholder="correo@clinica.com" 
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-bold text-gray-600 mb-2">¿En qué estás interesado?</label>
+                          <select 
+                            value={interes}
+                            onChange={(e) => setInteres(e.target.value)}
+                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all text-gray-600"
+                          >
+                            <option value="Selecciona una opción...">Selecciona una opción...</option>
+                            <optgroup label="Equipos Médicos">
+                              {companyData.products.map(p => <option key={p.id} value={p.name}>{p.name}</option>)}
+                            </optgroup>
+                            <optgroup label="Otros Servicios">
+                              <option value="Construcción y Remodelación de Ópticas">Construcción y Remodelación</option>
+                              <option value="Capacitación de Equipos">Capacitación de Equipos</option>
+                              <option value="Servicio Posventa, Garantía y Soporte">Servicio Técnico / Garantías</option>
+                            </optgroup>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-bold text-gray-600 mb-2">Mensaje Adicional</label>
+                          <textarea 
+                            rows="4" 
+                            required
+                            value={mensaje}
+                            onChange={(e) => setMensaje(e.target.value)}
+                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all text-gray-800" 
+                            placeholder="Escribe tus dudas aquí..."
+                          ></textarea>
+                        </div>
+                        <button type="submit" className="w-full bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-lg shadow-[#1FB4FA]/20">
+                          <Mail size={20} /> Enviar Solicitud de Contacto
+                        </button>
+                      </form>
                     </div>
                   </div>
 
-                  {/* Form Placeholder */}
-                  <div className="lg:col-span-3 bg-white border border-gray-100 rounded-3xl p-8 md:p-12 shadow-xl shadow-gray-100/50 animate-fade-in-up delay-300">
-                    <h3 className="text-2xl font-bold text-[#1FB4FA] mb-8">Envíanos un mensaje</h3>
-                    <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-sm font-bold text-gray-600 mb-2">Nombre del Doctor/Clínica</label>
-                          <input type="text" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all" placeholder="Ej. Dr. Juan Pérez" />
+                  {/* Banners Premium Clickables de Redes Sociales (Facebook, Instagram, TikTok, LinkedIn) */}
+                  <div className="mt-16 animate-fade-in-up">
+                    <h3 className="text-2xl font-bold text-[#065581] text-center mb-8">Síguenos en nuestras Redes Sociales</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                      
+                      {/* Banner de Facebook */}
+                      <a 
+                        href="https://www.facebook.com/share/1BNhBNCfNU/?mibextid=wwXIfr" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="relative overflow-hidden rounded-3xl p-6 flex items-center justify-between bg-gradient-to-r from-[#1877F2] to-[#0A53BE] text-white shadow-lg hover:scale-105 transition-transform duration-300 group"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md">
+                            <Facebook size={24} />
+                          </div>
+                          <div className="text-left">
+                            <h4 className="font-extrabold text-lg">Facebook</h4>
+                            <p className="text-xs text-white/85 font-semibold">VERSIOR IMPORT'S</p>
+                          </div>
                         </div>
-                        <div>
-                          <label className="block text-sm font-bold text-gray-600 mb-2">Teléfono / WhatsApp</label>
-                          <input type="tel" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all" placeholder="Tu número de contacto" />
+                        <ChevronRight size={24} className="opacity-70 group-hover:translate-x-1 transition-transform" />
+                      </a>
+
+                      {/* Banner de Instagram */}
+                      <a 
+                        href="https://www.instagram.com/versiorimports/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="relative overflow-hidden rounded-3xl p-6 flex items-center justify-between bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white shadow-lg hover:scale-105 transition-transform duration-300 group"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md">
+                            <Instagram size={24} />
+                          </div>
+                          <div className="text-left">
+                            <h4 className="font-extrabold text-lg">Instagram</h4>
+                            <p className="text-xs text-white/85 font-semibold">@versiorimports</p>
+                          </div>
                         </div>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-bold text-gray-600 mb-2">Correo Electrónico</label>
-                        <input type="email" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all" placeholder="correo@clinica.com" />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-bold text-gray-600 mb-2">¿En qué estás interesado?</label>
-                        <select className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all text-gray-600">
-                          <option>Selecciona una opción...</option>
-                          <optgroup label="Equipos Médicos">
-                            {companyData.products.map(p => <option key={p.id}>{p.name}</option>)}
-                          </optgroup>
-                          <optgroup label="Otros Servicios">
-                            <option>Construcción y Remodelación</option>
-                            <option>Capacitación de Equipos</option>
-                            <option>Servicio Técnico / Garantías</option>
-                          </optgroup>
-                        </select>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-bold text-gray-600 mb-2">Mensaje Adicional</label>
-                        <textarea rows="4" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1FB4FA] transition-all" placeholder="Escribe tus dudas aquí..."></textarea>
-                      </div>
-                      <button className="w-full bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-lg shadow-[#1FB4FA]/20">
-                        <Mail size={20} /> Enviar Solicitud de Contacto
-                      </button>
-                    </form>
+                        <ChevronRight size={24} className="opacity-70 group-hover:translate-x-1 transition-transform" />
+                      </a>
+
+                      {/* Banner de TikTok */}
+                      <a 
+                        href="https://www.tiktok.com/@versior_imports" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="relative overflow-hidden rounded-3xl p-6 flex items-center justify-between bg-gradient-to-r from-gray-900 to-black text-white shadow-lg hover:scale-105 transition-transform duration-300 group border border-gray-800"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center backdrop-blur-md">
+                            <TikTokIcon size={24} />
+                          </div>
+                          <div className="text-left">
+                            <h4 className="font-extrabold text-lg">TikTok</h4>
+                            <p className="text-xs text-white/85 font-semibold">@versior_imports</p>
+                          </div>
+                        </div>
+                        <ChevronRight size={24} className="opacity-70 group-hover:translate-x-1 transition-transform" />
+                      </a>
+
+                      {/* Banner de LinkedIn */}
+                      <a 
+                        href="https://www.linkedin.com/company/versior-imports" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="relative overflow-hidden rounded-3xl p-6 flex items-center justify-between bg-[#0077b5] text-white shadow-lg hover:scale-105 transition-transform duration-300 group"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md">
+                            <Linkedin size={24} fill="white" />
+                          </div>
+                          <div className="text-left">
+                            <h4 className="font-extrabold text-lg">LinkedIn</h4>
+                            <p className="text-xs text-white/85 font-semibold">VERSIOR IMPORT'S</p>
+                          </div>
+                        </div>
+                        <ChevronRight size={24} className="opacity-70 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    </div>
                   </div>
+
+                  {/* BOTÓN INICIO - Redirige a Nosotros */}
+                  <div className="max-w-7xl mx-auto px-6 mt-16 text-center animate-fade-in-up">
+                    <button 
+                      onClick={() => { setActiveTab('nosotros'); window.scrollTo(0,0); }}
+                      className="inline-flex items-center gap-3 bg-[#065581] text-white px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-white/20"
+                    >
+                      <Home size={22} /> Inicio 
+                    </button>
+                  </div>
+
                 </div>
               </div>
             </div>
-          </div>
-        );
+          );
+        };
 
         const ChatWidget = () => {
           const [isOpen, setIsOpen] = useState(false);
@@ -778,6 +957,16 @@
               return "En VERSIOR IMPORT'S impulsamos el crecimiento de los profesionales de la salud visual. Para coordinar una cotización general de nuestros equipos, comunícate con nuestra asesora la Optómetra Eli Verdy: haz clic aquí para contactarte directamente 👤 +593 96 322 3843.";
             }
 
+            // INTENT: Prototipo de óptica ( Laura Herrera )
+            if (query.match(/(prototipo|maqueta|diseño de optica|modelo de optica|proyecto)/)) {
+              return "¡Por supuesto! Si desea coordinar y visualizar el prototipo y modelado ergonómico de su óptica, comunícate con la Arquitecta Laura Herrera: haz clic aquí para contactarte directamente 👤 +593 99 033 1482.";
+            }
+
+            // INTENT: Manual de enfermedades ( Julieta Siguencia )
+            if (query.match(/(manual basico|enfermedades|manual de enfermedades|patologias)/)) {
+              return "Disponemos de un completo Manual Básico de enfermedades y patologías visuales desarrollado por la Dra. Oftalmóloga Julieta Siguencia. Solicítaselo aquí: haz clic aquí para contactarte directamente 👤 +593 95 895 1408.";
+            }
+
             // DEFAULT FALLBACK
             return "Como asistente clínico especializado de VERSIOR IMPORT'S, estoy aquí para guiarle. Si desea cotizar equipos, comunícate con la Optómetra Eli Verdy: haz clic aquí para contactarte directamente 👤 +593 96 322 3843.";
           };
@@ -821,7 +1010,7 @@
                          <div>
                            <h3 className="font-bold text-sm tracking-wide">Asistente VERSIOR</h3>
                            <p className="text-[10px] text-white/70 flex items-center gap-1.5 font-medium tracking-wider uppercase mt-0.5">
-                             <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse shadow-[0_0_8px_rgba(37,211,102,0.6)]"></span> En línea
+                             <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] animate-pulse shadow-[0_0_8px_rgba(37,211,102,0.6)]"></span> En línea
                            </p>
                          </div>
                        </div>
@@ -932,13 +1121,13 @@
                       <a href="https://www.tiktok.com/@versior_imports" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 drop-shadow-sm hover:drop-shadow-[0_10px_10px_rgba(31,180,250,0.5)] transition-all duration-300">
                         <TikTokIcon size={24} />
                       </a>
-                      <a href="https://www.facebook.com/profile.php?id=100089505045369&locale=es_LA" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 drop-shadow-sm hover:drop-shadow-[0_10px_10px_rgba(31,180,250,0.5)] transition-all duration-300">
+                      <a href="https://www.facebook.com/share/1BNhBNCfNU/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 drop-shadow-sm hover:drop-shadow-[0_10px_10px_rgba(31,180,250,0.5)] transition-all duration-300">
                         <Facebook size={24} />
                       </a>
-                      <a href="https://www.instagram.com/versior2/" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 drop-shadow-sm hover:drop-shadow-[0_10px_10px_rgba(31,180,250,0.5)] transition-all duration-300">
+                      <a href="https://www.instagram.com/versiorimports/" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 drop-shadow-sm hover:drop-shadow-[0_10px_10px_rgba(31,180,250,0.5)] transition-all duration-300">
                         <Instagram size={24} />
                       </a>
-                      <a href="#" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 drop-shadow-sm hover:drop-shadow-[0_10px_10px_rgba(31,180,250,0.5)] transition-all duration-300">
+                      <a href="https://www.linkedin.com/company/versior-imports" target="_blank" rel="noopener noreferrer" className="text-[#065581]/70 hover:text-[#1FB4FA] transform hover:-translate-y-2 hover:scale-110 drop-shadow-sm hover:drop-shadow-[0_10px_10px_rgba(31,180,250,0.5)] transition-all duration-300">
                         <Linkedin size={24} />
                       </a>
                     </div>
@@ -979,10 +1168,10 @@
 
               {/* MAIN CONTENT AREA */}
               <main className="flex-grow pt-20">
-                {activeTab === 'nosotros' && <NosotrosView />}
-                {activeTab === 'productos' && <ProductosView />}
+                {activeTab === 'nosotros' && <NosotrosView setActiveTab={setActiveTab} />}
+                {activeTab === 'productos' && <ProductosView setActiveTab={setActiveTab} />}
                 {activeTab === 'servicios' && <ServiciosView setActiveTab={setActiveTab} />}
-                {activeTab === 'contacto' && <ContactoView />}
+                {activeTab === 'contacto' && <ContactoView setActiveTab={setActiveTab} />}
               </main>
 
               {/* GLOBAL FOOTER */}
