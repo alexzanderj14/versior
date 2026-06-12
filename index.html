@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Google Tag Manager (Script 1) - Colocado lo más arriba posible en el <head> -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MZGKQPFH');</script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Google tag (gtag.js) - Google Analytics (ID: G-PWYKXESHG4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWYKXESHG4"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -18,8 +14,6 @@
 
       gtag('config', 'G-PWYKXESHG4');
     </script>
-    <!-- End Google tag (gtag.js) -->
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VERSIOR IMPORT'S - Soluciones Integrales para la Salud Visual</title>
@@ -27,7 +21,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
-    <!-- Meta Pixel Code - Integrado de forma oficial y segura para tu pauta publicitaria -->
     <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -37,16 +30,13 @@
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-      // REEMPLAZA EL TEXTO DE ABAJO POR TU ID DE PÍXEL REAL (EJ: 123456789012345)
-      fbq('init', 'TU_ID_DE_PIXEL_AQUÍ');
+      fbq('init', '1960770704001922');
       fbq('track', 'PageView');
     </script>
     <noscript>
       <img height="1" width="1" style="display:none" 
-           src="https://www.facebook.com/tr?id=TU_ID_DE_PIXEL_AQUÍ&ev=PageView&noscript=1" />
+           src="https://www.facebook.com/tr?id=1960770704001922&ev=PageView&noscript=1" />
     </noscript>
-    <!-- End Meta Pixel Code -->
-    
     <style>
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
@@ -94,7 +84,7 @@
             position: absolute;
             width: 150px;
             z-index: 2;
-        }
+          }
         .slider::after { right: 0; top: 0; transform: rotateZ(180deg); }
         .slider::before { left: 0; top: 0; }
         .slide-track {
@@ -136,11 +126,8 @@
     </style>
 </head>
 <body class="bg-[#FDFDFD] selection:bg-[#065581] selection:text-white">
-    <!-- Google Tag Manager (noscript) (Script 2) - Insertado inmediatamente después de abrir <body> -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZGKQPFH"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
@@ -232,10 +219,6 @@
             filter: grayscale(100%) opacity(0.6);
             transition: all 0.4s ease;
             cursor: pointer;
-          }
-          .slide img:hover {
-            filter: grayscale(0%) opacity(1);
-            transform: scale(1.15);
           }
           .slide img.logo-especial-grande {
             transform: scale(1.65) !important;
@@ -479,7 +462,7 @@
                 <p className="text-black font-black text-xl animate-fade-in-up delay-100 tracking-wide mb-8">
                   Precisión, tecnología y respaldo garantizado.
                 </p>
-                {/* Modificado: href actualizado al enlace crudo de GitHub para asegurar descarga o apertura del PDF */}
+                {/* Modificado: href enlazado con la ruta cruda del repositorio GitHub con el nombre actualizado del archivo */}
                 <a 
                   href="https://raw.githubusercontent.com/alexzanderj14/versior/main/Catalogo_Versior.pdf" 
                   download="Catalogo_VERSIOR_2026.pdf" 
@@ -530,7 +513,7 @@
 
                           <button 
                             onClick={() => handleQuote(prod.name)}
-                            className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white shadow-[0_4px_14px_0_rgba(6,85,129,0.5)] border border-[#065581]"
+                            className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white shadow-[0_4px_14_0_rgba(6,85,129,0.5)] border border-[#065581]"
                           >
                             Cotizar Equipo <ArrowRight size={18} />
                           </button>
@@ -663,7 +646,7 @@
                           href={srv.waLink} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-[0_4px_14px_0_rgba(37,211,102,0.35)] border border-[#20ba5a]/20"
+                          className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-[0_4px_14_0_rgba(37,211,102,0.35)] border border-[#20ba5a]/20"
                         >
                           <Phone size={18} fill="white" /> {srv.btnText} <ArrowRight size={18} />
                         </a>
@@ -971,7 +954,7 @@
                   <div className="max-w-7xl mx-auto px-6 mt-16 text-center animate-fade-in-up">
                     <button 
                       onClick={() => { setActiveTab('nosotros'); window.scrollTo(0,0); }}
-                      className="inline-flex items-center gap-3 bg-[#065581] text-white px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-white/20"
+                      className="inline-flex items-center gap-3 bg-[#065581] text-[#FDFDFD] px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-white/20"
                     >
                       <Home size={22} /> Inicio 
                     </button>
