@@ -117,7 +117,7 @@
             filter: grayscale(100%) opacity(0.6);
             transition: all 0.4s ease;
             cursor: pointer;
-          }
+        }
         .slide img:hover {
             filter: grayscale(0%) opacity(1);
             transform: scale(1.15);
@@ -126,7 +126,7 @@
         /* Escalado masivo para logos pequeños (GML y Rescate Visual) */
         .slide img.logo-especial-grande {
             transform: scale(1.65) !important;
-          }
+        }
         .slide img.logo-especial-grande:hover {
             transform: scale(1.85) !important;
             filter: grayscale(0%) opacity(1);
@@ -454,7 +454,7 @@
             <div className="max-w-7xl mx-auto px-6 mt-20 text-center animate-fade-in-up delay-300">
               <button 
                 onClick={() => { setActiveTab('productos'); window.scrollTo(0,0); }}
-                className="inline-flex items-center gap-3 bg-[#1FB4FA] text-white px-10 py-4 rounded-full font-black text-lg hover:bg-[#0ea5e9] hover:scale-105 transition-all duration-300 shadow-[0_8px_20_rgba(31,180,250,0.4)]"
+                className="inline-flex items-center gap-3 bg-[#1FB4FA] text-white px-10 py-4 rounded-full font-black text-lg hover:bg-[#0ea5e9] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(31,180,250,0.4)]"
               >
                 Nuestros productos <ArrowRight size={22} />
               </button>
@@ -479,11 +479,11 @@
                 <p className="text-black font-black text-xl animate-fade-in-up delay-100 tracking-wide mb-8">
                   Precisión, tecnología y respaldo garantizado.
                 </p>
-                {/* Modificado: href actualizado con el nombre exacto del archivo PDF y espacios codificados (%20) */}
+                {/* Modificado: href actualizado al enlace crudo de GitHub para asegurar descarga o apertura del PDF */}
                 <a 
-                  href="./Catalogo%20Versior.pdf" 
+                  href="https://raw.githubusercontent.com/alexzanderj14/versior/main/Catalogo_Versior.pdf" 
                   download="Catalogo_VERSIOR_2026.pdf" 
-                  className="inline-flex items-center justify-center gap-2 bg-white text-[#065581] font-black px-8 py-3.5 rounded-full hover:scale-105 hover:shadow-[0_10px_25_rgba(0,0,0,0.25)] transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-2 bg-white text-[#065581] font-black px-8 py-3.5 rounded-full hover:scale-105 hover:shadow-[0_10px_25px_rgba(0,0,0,0.25)] transition-all duration-300"
                 >
                   <Download size={20} className="text-[#1FB4FA]"/> Descargar Catálogo PDF
                 </a>
@@ -574,7 +574,7 @@
               <div className="max-w-7xl mx-auto px-6 mt-16 text-center animate-fade-in-up delay-300">
                 <button 
                   onClick={() => { setActiveTab('servicios'); window.scrollTo(0,0); }}
-                  className="inline-flex items-center gap-3 bg-[#065581] text-[#FDFDFD] px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-[#1FB4FA]/30"
+                  className="inline-flex items-center gap-3 bg-[#065581] text-white px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-[#1FB4FA]/30"
                 >
                   Más ofertas <ArrowRight size={22} />
                 </button>
@@ -663,7 +663,7 @@
                           href={srv.waLink} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-[#FDFDFD] shadow-[0_4px_14_0_rgba(37,211,102,0.35)] border border-[#20ba5a]/20"
+                          className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-[0_4px_14px_0_rgba(37,211,102,0.35)] border border-[#20ba5a]/20"
                         >
                           <Phone size={18} fill="white" /> {srv.btnText} <ArrowRight size={18} />
                         </a>
@@ -711,7 +711,7 @@
               <div className="max-w-7xl mx-auto px-6 mt-16 text-center animate-fade-in-up delay-300">
                 <button 
                   onClick={() => { setActiveTab('contacto'); window.scrollTo(0,0); }}
-                  className="inline-flex items-center gap-3 bg-[#065581] text-[#FDFDFD] px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-white/20"
+                  className="inline-flex items-center gap-3 bg-[#065581] text-white px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-white/20"
                 >
                   Más información <ArrowRight size={22} />
                 </button>
@@ -971,7 +971,7 @@
                   <div className="max-w-7xl mx-auto px-6 mt-16 text-center animate-fade-in-up">
                     <button 
                       onClick={() => { setActiveTab('nosotros'); window.scrollTo(0,0); }}
-                      className="inline-flex items-center gap-3 bg-[#065581] text-[#FDFDFD] px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-white/20"
+                      className="inline-flex items-center gap-3 bg-[#065581] text-white px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-white/20"
                     >
                       <Home size={22} /> Inicio 
                     </button>
@@ -1321,8 +1321,7 @@
                     
                     <div className="flex flex-wrap justify-center gap-6 text-sm font-bold text-white/70">
                       <button onClick={() => {setActiveTab('nosotros'); window.scrollTo(0,0);}} className="hover:text-white transition-colors">Nosotros</button>
-                      {/* Modificado: href cambiado con enlace absoluto local de GitHub y espacios codificados (%20) */}
-                      <a href="./Catalogo%20Versior.pdf" download="Catalogo_VERSIOR_2026.pdf" className="text-[#1FB4FA] hover:text-white transition-colors flex items-center gap-1"><Download size={16} /> Descargar Catálogo</a>
+                      <a href="https://raw.githubusercontent.com/alexzanderj14/versior/main/Catalogo_Versior.pdf" download="Catalogo_VERSIOR_2026.pdf" className="text-[#1FB4FA] hover:text-white transition-colors flex items-center gap-1"><Download size={16} /> Descargar Catálogo</a>
                       <button onClick={() => {setActiveTab('servicios'); window.scrollTo(0,0);}} className="hover:text-white transition-colors">Servicios</button>
                       <button onClick={() => {setActiveTab('contacto'); window.scrollTo(0,0);}} className="hover:text-white transition-colors">Contacto</button>
                     </div>
