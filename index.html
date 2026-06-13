@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Google Tag Manager (Script 1) - Colocado lo más arriba posible en el <head> -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MZGKQPFH');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) - Google Analytics (ID: G-PWYKXESHG4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWYKXESHG4"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,6 +18,8 @@
 
       gtag('config', 'G-PWYKXESHG4');
     </script>
+    <!-- End Google tag (gtag.js) -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VERSIOR IMPORT'S - Soluciones Integrales para la Salud Visual</title>
@@ -21,6 +27,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
+    <!-- Meta Pixel Code - Integrado de forma oficial y segura para tu pauta publicitaria -->
     <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -30,6 +37,7 @@
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
+      // Identificador de cuenta publicitaria vinculada para el rastreo del Píxel de Meta
       fbq('init', '1960770704001922');
       fbq('track', 'PageView');
     </script>
@@ -37,6 +45,8 @@
       <img height="1" width="1" style="display:none" 
            src="https://www.facebook.com/tr?id=1960770704001922&ev=PageView&noscript=1" />
     </noscript>
+    <!-- End Meta Pixel Code -->
+    
     <style>
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
@@ -107,7 +117,7 @@
             filter: grayscale(100%) opacity(0.6);
             transition: all 0.4s ease;
             cursor: pointer;
-        }
+          }
         .slide img:hover {
             filter: grayscale(0%) opacity(1);
             transform: scale(1.15);
@@ -116,7 +126,7 @@
         /* Escalado masivo para logos pequeños (GML y Rescate Visual) */
         .slide img.logo-especial-grande {
             transform: scale(1.65) !important;
-        }
+          }
         .slide img.logo-especial-grande:hover {
             transform: scale(1.85) !important;
             filter: grayscale(0%) opacity(1);
@@ -126,8 +136,11 @@
     </style>
 </head>
 <body class="bg-[#FDFDFD] selection:bg-[#065581] selection:text-white">
+    <!-- Google Tag Manager (noscript) (Script 2) - Insertado inmediatamente después de abrir <body> -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZGKQPFH"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
@@ -136,7 +149,7 @@
         import { 
           Eye, Monitor, Stethoscope, ChevronRight, Phone, MapPin, Instagram, Facebook,
           Linkedin, CheckCircle2, Zap, Menu, X, Target, ShieldCheck, Award, Lightbulb,
-          Mail, ArrowRight, Focus, Layout, Users, Wrench, Download, MessageCircle, Send, Home
+          Mail, ArrowRight, Focus, Layout, Users, Wrench, Download, MessageCircle, Send, Home, Scale
         } from 'https://esm.sh/lucide-react@0.294.0';
 
         /* Icono SVG oficial para TikTok con transiciones fluidas */
@@ -424,7 +437,7 @@
                       <p className="text-gray-600 leading-relaxed font-medium text-lg">
                         {selectedVal.description}
                       </p>
-                      <button onClick={() => setSelectedVal(null)} className="mt-8 w-full bg-[#1FB4FA] shadow-[0_4px_14px_0_rgba(6,85,129,0.3)] text-white font-bold py-3.5 rounded-xl hover:bg-[#0ea5e9] transition-colors">
+                      <button onClick={() => setSelectedVal(null)} className="mt-8 w-full bg-[#1FB4FA] shadow-[0_4px_14_0_rgba(6,85,129,0.3)] text-white font-bold py-3.5 rounded-xl hover:bg-[#0ea5e9] transition-colors">
                         Entendido
                       </button>
                     </div>
@@ -462,7 +475,7 @@
                 <p className="text-black font-black text-xl animate-fade-in-up delay-100 tracking-wide mb-8">
                   Precisión, tecnología y respaldo garantizado.
                 </p>
-                {/* Modificado: href enlazado con la ruta cruda del repositorio GitHub con el nombre actualizado del archivo */}
+                {/* Modificado: href enlazado con la ruta cruda del repositorio GitHub con el nombre de archivo sin espacios */}
                 <a 
                   href="https://raw.githubusercontent.com/alexzanderj14/versior/main/Catalogo_Versior.pdf" 
                   download="Catalogo_VERSIOR_2026.pdf" 
@@ -513,7 +526,7 @@
 
                           <button 
                             onClick={() => handleQuote(prod.name)}
-                            className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white shadow-[0_4px_14_0_rgba(6,85,129,0.5)] border border-[#065581]"
+                            className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white shadow-[0_4px_14px_0_rgba(6,85,129,0.5)] border border-[#065581]"
                           >
                             Cotizar Equipo <ArrowRight size={18} />
                           </button>
@@ -646,7 +659,7 @@
                           href={srv.waLink} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-[0_4px_14_0_rgba(37,211,102,0.35)] border border-[#20ba5a]/20"
+                          className="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-[#FDFDFD] shadow-[0_4px_14_0_rgba(37,211,102,0.35)] border border-[#20ba5a]/20"
                         >
                           <Phone size={18} fill="white" /> {srv.btnText} <ArrowRight size={18} />
                         </a>
@@ -694,7 +707,7 @@
               <div className="max-w-7xl mx-auto px-6 mt-16 text-center animate-fade-in-up delay-300">
                 <button 
                   onClick={() => { setActiveTab('contacto'); window.scrollTo(0,0); }}
-                  className="inline-flex items-center gap-3 bg-[#065581] text-white px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-white/20"
+                  className="inline-flex items-center gap-3 bg-[#065581] text-[#FDFDFD] px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-white/20"
                 >
                   Más información <ArrowRight size={22} />
                 </button>
@@ -703,7 +716,6 @@
           );
         };
 
-        // VISTA 4: CONTACTO
         const ContactoView = ({ setActiveTab }) => {
           const [nombre, setNombre] = useState('');
           const [telefono, setTelefono] = useState('');
@@ -954,10 +966,123 @@
                   <div className="max-w-7xl mx-auto px-6 mt-16 text-center animate-fade-in-up">
                     <button 
                       onClick={() => { setActiveTab('nosotros'); window.scrollTo(0,0); }}
-                      className="inline-flex items-center gap-3 bg-[#065581] text-[#FDFDFD] px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-white/20"
+                      className="inline-flex items-center gap-3 bg-[#065581] text-white px-10 py-4 rounded-full font-black text-lg hover:bg-[#054366] hover:scale-105 transition-all duration-300 shadow-[0_8px_20px_rgba(6,85,129,0.4)] border border-white/20"
                     >
                       <Home size={22} /> Inicio 
                     </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          );
+        };
+
+        const PrivacidadView = () => {
+          return (
+            <div className="animate-fade-in w-full bg-white pb-24 pt-12">
+              <div className="max-w-4xl mx-auto px-6">
+                
+                {/* Cabecera */}
+                <div className="flex items-center gap-4 mb-8 pb-6 border-b border-gray-100">
+                  <div className="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-[#1FB4FA]">
+                    <Scale size={26} />
+                  </div>
+                  <div>
+                    <h1 className="text-3xl font-black text-[#065581] leading-tight">Política de Privacidad y Tratamiento de Datos</h1>
+                    <p className="text-sm font-bold text-gray-400 mt-1 uppercase tracking-wider">Conforme a la LOPDP de la República del Ecuador</p>
+                  </div>
+                </div>
+
+                {/* Contenido Legal */}
+                <div className="space-y-8 text-gray-700 leading-relaxed text-sm">
+                  
+                  <section className="bg-sky-50/50 border border-sky-100/50 rounded-2xl p-6">
+                    <h3 className="font-extrabold text-[#065581] text-base mb-3">1. Declaración de Responsabilidad</h3>
+                    <p className="font-medium text-gray-600">
+                      <strong>VERSIOR IMPORT'S</strong>, con sedes comerciales registradas en la ciudad de Quito (Pichincha) y la ciudad de Biblián (Cañar), República del Ecuador, declara ser el responsable único del tratamiento, almacenamiento y protección de los datos personales recopilados a través de esta plataforma web (<a href="https://versiorimports.is-best.net" className="text-[#1FB4FA] underline">versiorimports.is-best.net</a>) de conformidad con lo establecido en la <strong>Ley Orgánica de Protección de Datos Personales (LOPDP)</strong> vigente en el territorio nacional.
+                    </p>
+                  </section>
+
+                  <section>
+                    <h3 className="font-bold text-[#065581] text-base mb-3">2. Datos Recopilados y Fines del Tratamiento</h3>
+                    <p className="mb-4">
+                      Recopilamos únicamente la información necesaria para brindarte asesoría especializada en equipamiento de salud visual. Los datos solicitados voluntariamente en nuestros formularios de contacto y cotizaciones incluyen:
+                    </p>
+                    <ul className="list-disc pl-6 space-y-2 text-gray-600">
+                      <li><strong>Identificación básica:</strong> Nombre completo del profesional de la salud o nombre de la clínica/óptica para generar cotizaciones personalizadas.</li>
+                      <li><strong>Datos de contacto:</strong> Dirección de correo electrónico y número de teléfono celular (WhatsApp) para coordinar demostraciones de equipos y soporte preventivo.</li>
+                      <li><strong>Intereses comerciales:</strong> Selección del equipamiento clínico o servicios de arquitectura de tu interés.</li>
+                    </ul>
+                    <p className="mt-4">
+                      <strong>Finalidades exclusivas:</strong> Sus datos jamás serán vendidos, rentados o compartidos con terceros sin su consentimiento. Se utilizarán únicamente para:
+                    </p>
+                    <ul className="list-disc pl-6 space-y-2 text-gray-600 mt-2">
+                      <li>Procesar solicitudes de presupuesto formal de equipos optométricos u oftalmológicos.</li>
+                      <li>Coordinar capacitaciones técnicas de uso de maquinaria clínica a cargo de nuestros expertos.</li>
+                      <li>Agendar asesorías de diseño y remodelación de espacios ópticos.</li>
+                      <li>Gestionar reclamos de garantía del fabricante y soporte preventivo.</li>
+                    </ul>
+                  </section>
+
+                  <section>
+                    <h3 className="font-bold text-[#065581] text-base mb-3">3. Base Legal del Tratamiento</h3>
+                    <p>
+                      La base legal que legitima el tratamiento de sus datos personales es su <strong>consentimiento libre, específico, informado e inequívoco</strong> (conforme al Artículo 8 de la LOPDP ecuatoriana), manifestado voluntariamente al momento de presionar el botón de envío de nuestros formularios de contacto, iniciar una sesión de chat o solicitar la descarga de recursos exclusivos.
+                    </p>
+                  </section>
+
+                  <section>
+                    <h3 className="font-bold text-[#065581] text-base mb-3">4. Tecnologías de Rastreo y Cookies (Meta Pixel y Google Analytics)</h3>
+                    <p>
+                      Esta plataforma web utiliza herramientas de medición de terceros, incluyendo **Google Tag Manager**, **Google Analytics 4** y el **Píxel de Meta (Facebook Ads)**. Estas tecnologías recopilan datos analíticos anónimos (como el tipo de navegador, procedencia de la visita y secciones consultadas) con el único objetivo de optimizar la entrega de nuestras campañas publicitarias de salud visual y mejorar la usabilidad del catálogo web. No se recopilan datos de carácter sensible a través de estas cookies de optimización.
+                    </p>
+                  </section>
+
+                  <section className="border-t border-gray-100 pt-6">
+                    <h3 className="font-bold text-[#065581] text-base mb-3">5. Derechos ARCO+ (Acceso, Rectificación, Cancelación y Oposición)</h3>
+                    <p className="mb-4">
+                      Como titular de la información, usted goza de todos los derechos de protección garantizados por la ley ecuatoriana. En cualquier momento puede solicitar de forma gratuita:
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-semibold text-center mb-4">
+                      <div className="p-3 bg-gray-50 rounded-xl border border-gray-100">Acceso y Actualización</div>
+                      <div className="p-3 bg-gray-50 rounded-xl border border-gray-100">Rectificación o Corrección</div>
+                      <div className="p-3 bg-gray-50 rounded-xl border border-gray-100">Eliminación Definitiva</div>
+                    </div>
+                    <p>
+                      Para ejercer cualquiera de sus derechos, o revocar el consentimiento del uso de sus datos de contacto, simplemente puede enviarnos una solicitud directa a través de nuestro canal de soporte técnico posventa a cargo del Licenciado Alexander Jácome al número de WhatsApp de soporte oficial <strong>+593 98 765 4320</strong> o escribiéndonos a través de nuestro formulario en línea. Su solicitud será atendida en un plazo máximo de 48 horas laborables.
+                    </p>
+                  </section>
+
+                  {/* NUEVA SECCIÓN 6: DESLINDE DE RESPONSABILIDAD DE MARCAS DE TERCEROS Y DE USO DE EQUIPOS */}
+                  <section className="border-t border-gray-100 pt-6">
+                    <h3 className="font-bold text-[#065581] text-base mb-3">6. Deslinde de Alianzas Comerciales y Limitación de Responsabilidad por Uso de Equipos</h3>
+                    <p className="mb-4 text-justify">
+                      <strong>Relación con marcas y logotipos de terceros:</strong> VERSIOR IMPORT'S declara expresamente que todos los logotipos, marcas comerciales e identificadores visuales de clínicas, ópticas o laboratorios médicos externos mostrados en este sitio web (incluyendo aquellos de instituciones que confían en nuestra tecnología o respaldan nuestras compras de equipamiento) se exhiben con fines estrictamente informativos, referenciales y comerciales dentro de nuestro portafolio de clientes. La muestra de dichos identificadores visuales no constituye, bajo ningún concepto, una relación de dependencia patronal, subordinación jurídica, exclusividad de distribución corporativa, sociedad civil de hecho o asociación estratégica formal con los titulares de dichas marcas comerciales.
+                    </p>
+                    <p className="text-justify">
+                      <strong>Exclusión de responsabilidad por operación y uso clínico:</strong> Todo el equipamiento optométrico y oftalmológico especializado importado y comercializado por VERSIOR IMPORT'S está diseñado para ser manipulado única y exclusivamente por médicos oftalmólogos, licenciados en optometría o técnicos de la salud visual debidamente certificados y habilitados bajo las leyes de la República del Ecuador. Nuestra firma no asume responsabilidad civil, penal, administrativa o mercantil por ningún daño material, daño a pacientes, diagnóstico erróneo, impericia, negligencia profesional, accidentes o mal uso derivado de la operación inadecuada, falta de calibración posterior o negligencia en el uso de los instrumentos y mobiliarios clínicos distribuidos. La responsabilidad por la práctica y los resultados clínicos recae enteramente sobre el profesional adquirente y operador del equipo.
+                    </p>
+                  </section>
+
+                  {/* SECCIÓN 7: PROPIEDAD INTELECTUAL */}
+                  <section className="border-t border-gray-100 pt-6">
+                    <h3 className="font-bold text-[#065581] text-base mb-3">7. Propiedad Intelectual, Marcas Registradas y Reserva de Derechos</h3>
+                    <p className="mb-4">
+                      De conformidad con el <strong>Código Orgánico de la Economía Social de los Conocimientos, Creatividad e Innovación (COESC)</strong> y las normativas aplicadas por el <strong>Servicio Nacional de Derechos Intelectuales (SENADI)</strong> de la República del Ecuador, se establece lo siguiente sobre la identidad de marca de esta plataforma:
+                    </p>
+                    <ul className="list-disc pl-6 space-y-2 text-gray-600">
+                      <li><strong>Marcas y Signos Distintivos:</strong> El nombre comercial <strong>VERSIOR IMPORT'S</strong>, el logotipo mixto del ojo tecnológico e instrumental, los isotipos, lemas comerciales ("Importamos tecnología, entregamos confianza") y el diseño gráfico de esta plataforma web se encuentran debidamente protegidos y registrados ante el SENADI en Ecuador.</li>
+                      <li><strong>Derechos de Autor:</strong> El catálogo oficial de instrumentos clínicos (disponible en formato PDF para descarga bajo el nombre "Catalogo_Versior.pdf"), los manuales explicativos de enfermedades visuales desarrollados de manera exclusiva por la Dra. Julieta Siguencia, los esquemas de prototipo de ópticas creados por la Arq. Laura Herrera, así como todos los textos, imágenes, videos y código de programación de este sitio web, constituyen obras originales bajo exclusiva reserva de derechos de sus titulares.</li>
+                      <li><strong>Prohibición de Uso No Autorizado:</strong> Queda terminantemente prohibida la copia, reproducción, replicación, adaptación, distribución, modificación, imitación o comercialización pública o privada de cualquiera de los elementos mencionados sin el consentimiento previo, expreso y por escrito de los titulares legítimos y accionistas de la marca.</li>
+                    </ul>
+                    <p className="mt-4 text-justify">
+                      Cualquier uso ilegal o infracción marcaria detectada en el territorio ecuatoriano o a través de campañas de publicidad digital de terceros sin consentimiento será denunciado formalmente ante el SENADI y las autoridades correspondientes para la aplicación inmediata de medidas cautelares, retiro de contenidos, sanciones y las indemnizaciones correspondientes por competencia desleal o plagio de propiedad industrial.
+                    </p>
+                  </section>
+
+                  <div className="bg-sky-50/30 border border-sky-100 rounded-2xl p-4 text-center text-xs font-bold text-gray-500 mt-8">
+                    Última actualización y revisión legal: Junio 2026. <br/> VERSIOR IMPORT'S - Quito / Biblián, Ecuador.
                   </div>
 
                 </div>
@@ -1164,6 +1289,22 @@
           const [isMenuOpen, setIsMenuOpen] = useState(false);
           const [scrolled, setScrolled] = useState(false);
 
+          /* Algoritmo de enrutamiento de URL inteligente para auditoría de bots de Meta */
+          useEffect(() => {
+            const handleUrlRouting = () => {
+              const params = new URLSearchParams(window.location.search);
+              const tabParam = params.get('tab');
+              const hash = window.location.hash;
+              if (tabParam === 'privacidad' || hash === '#privacidad') {
+                setActiveTab('privacidad');
+                window.scrollTo(0,0);
+              }
+            };
+            handleUrlRouting();
+            window.addEventListener('hashchange', handleUrlRouting);
+            return () => window.removeEventListener('hashchange', handleUrlRouting);
+          }, []);
+
           useEffect(() => {
             const handleScroll = () => setScrolled(window.scrollY > 20);
             window.addEventListener('scroll', handleScroll);
@@ -1189,7 +1330,7 @@
                     {/* Logo */}
                     <div 
                       className="flex items-center cursor-pointer"
-                      onClick={() => setActiveTab('nosotros')}
+                      onClick={() => { setActiveTab('nosotros'); window.location.hash = ''; }}
                     >
                       <img 
                         src="https://raw.githubusercontent.com/alexzanderj14/Vonces-y-memorias-de-Zambiza/main/Versior.png" 
@@ -1203,7 +1344,7 @@
                       {tabs.map((tab) => (
                         <button
                           key={tab.id}
-                          onClick={() => {setActiveTab(tab.id); window.scrollTo(0,0);}}
+                          onClick={() => {setActiveTab(tab.id); window.location.hash = ''; window.scrollTo(0,0);}}
                           className={`px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
                             activeTab === tab.id 
                               ? 'bg-[#1FB4FA] text-white shadow-md' 
@@ -1251,6 +1392,7 @@
                           onClick={() => {
                             setActiveTab(tab.id);
                             setIsMenuOpen(false);
+                            window.location.hash = '';
                             window.scrollTo(0,0);
                           }}
                           className={`p-4 rounded-xl text-left font-bold transition-colors ${
@@ -1271,6 +1413,7 @@
                 {activeTab === 'productos' && <ProductosView setActiveTab={setActiveTab} />}
                 {activeTab === 'servicios' && <ServiciosView setActiveTab={setActiveTab} />}
                 {activeTab === 'contacto' && <ContactoView setActiveTab={setActiveTab} />}
+                {activeTab === 'privacidad' && <PrivacidadView />}
               </main>
 
               {/* GLOBAL FOOTER */}
@@ -1282,7 +1425,7 @@
                     <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
                       <div 
                         className="flex items-center bg-white p-3 rounded-2xl shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300 mb-4"
-                        onClick={() => {setActiveTab('nosotros'); window.scrollTo(0,0);}}
+                        onClick={() => {setActiveTab('nosotros'); window.location.hash = ''; window.scrollTo(0,0);}}
                       >
                         <img 
                           src="https://raw.githubusercontent.com/alexzanderj14/Vonces-y-memorias-de-Zambiza/main/Versior.png" 
@@ -1303,16 +1446,25 @@
                     </div>
                     
                     <div className="flex flex-wrap justify-center gap-6 text-sm font-bold text-white/70">
-                      <button onClick={() => {setActiveTab('nosotros'); window.scrollTo(0,0);}} className="hover:text-white transition-colors">Nosotros</button>
+                      <button onClick={() => {setActiveTab('nosotros'); window.location.hash = ''; window.scrollTo(0,0);}} className="hover:text-white transition-colors">Nosotros</button>
                       <a href="https://raw.githubusercontent.com/alexzanderj14/versior/main/Catalogo_Versior.pdf" download="Catalogo_VERSIOR_2026.pdf" className="text-[#1FB4FA] hover:text-white transition-colors flex items-center gap-1"><Download size={16} /> Descargar Catálogo</a>
-                      <button onClick={() => {setActiveTab('servicios'); window.scrollTo(0,0);}} className="hover:text-white transition-colors">Servicios</button>
+                      <button onClick={() => {setActiveTab('servicios'); window.location.hash = ''; window.scrollTo(0,0);}} className="hover:text-white transition-colors">Servicios</button>
                       <button onClick={() => {setActiveTab('contacto'); window.scrollTo(0,0);}} className="hover:text-white transition-colors">Contacto</button>
                     </div>
                   </div>
                   
                   <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-semibold text-white/50">
                     <p>&copy; {new Date().getFullYear()} VERSIOR IMPORT'S. Todos los derechos reservados.</p>
-                    <p className="mt-2 md:mt-0">Soluciones de vanguardia para la salud visual en Ecuador.</p>
+                    <div className="flex items-center gap-4 mt-2 md:mt-0 text-white/60">
+                      <span>Soluciones de vanguardia para la salud visual en Ecuador.</span>
+                      <span>|</span>
+                      <button 
+                        onClick={() => { setActiveTab('privacidad'); window.location.hash = 'privacidad'; window.scrollTo(0,0); }} 
+                        className="text-[#1FB4FA] hover:underline font-bold transition-all"
+                      >
+                        Política de Privacidad (LOPDP)
+                      </button>
+                    </div>
                   </div>
                 </div>
               </footer>
