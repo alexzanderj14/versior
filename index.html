@@ -660,13 +660,15 @@
                     class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 flex flex-col hover:-translate-y-1.5 hover:shadow-2xl transition-all duration-300 group animate-fade-in-up"
                     style="animation-delay: ${idx * 150}ms;"
                   >
-                    <!-- AVATARES REDISEÑADOS TIPO CLÍNICA PREMIUM CON DESLIZAMIENTO LATERAL (KEY CONECTADA A TAB) -->
-                    <div class="h-[480px] w-full relative overflow-visible flex items-end justify-center mb-6 rounded-2xl bg-gradient-to-b from-sky-50 to-gray-50 border border-gray-100">
-                      <img 
-                        src=${srv.avatarUrl} 
-                        alt=${srv.person} 
-                        class="w-full h-full object-contain filter drop-shadow-[0_20px_15px_rgba(6,85,129,0.35)] transition-all duration-500 ease-out group-hover:scale-112 transform origin-bottom animate-slide-in-left" 
-                      />
+                    <!-- AVATARES REDISEÑADOS CON CORRECCIÓN DE TAMAÑO GIGANTE Y ANIMACIÓN -->
+                    <div class="h-80 md:h-[400px] w-full relative overflow-hidden flex items-end justify-center mb-6 rounded-2xl bg-gradient-to-b from-sky-50 to-white border border-sky-100">
+                      <div class="absolute inset-0 w-full h-full animate-slide-in-left">
+                        <img 
+                          src=${srv.avatarUrl} 
+                          alt=${srv.person} 
+                          class="w-full h-full object-contain object-bottom filter drop-shadow-[0_15px_15px_rgba(6,85,129,0.3)] transition-transform duration-700 ease-out transform scale-[1.65] group-hover:scale-[1.8] origin-bottom" 
+                        />
+                      </div>
                     </div>
 
                     <h3 class="text-2xl font-extrabold text-[#065581] mb-4 leading-tight">${srv.title}</h3>
