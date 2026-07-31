@@ -523,11 +523,11 @@
               const Icon = prod.icon;
               return html`
                 <div key=${prod.id} class="relative w-full border-b border-gray-100 last:border-b-0">
-                  <div class="max-w-7xl mx-auto px-6 py-24 md:py-32 flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 md:gap-24 items-start">
+                  <div class="max-w-7xl mx-auto px-6 py-12 md:py-32 flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-24 items-start">
                     
-                    <!-- IMAGEN FIJA (STICKY) CON ZOOM INTERACTIVO -->
+                    <!-- IMAGEN CON FIX RESPONSIVO: RELATIVE EN MÓVIL, STICKY SOLO EN DESKTOP (md:sticky) -->
                     <div 
-                      class="w-full md:w-1/2 sticky top-28 h-[50vh] md:h-[75vh] bg-gray-50 rounded-[2.5rem] shadow-inner border border-gray-100 flex items-center justify-center overflow-hidden cursor-zoom-in group animate-fade-in-up"
+                      class="w-full md:w-1/2 relative md:sticky md:top-28 h-[380px] md:h-[75vh] bg-gray-50 rounded-[2.5rem] shadow-inner border border-gray-100 flex items-center justify-center overflow-hidden cursor-zoom-in group animate-fade-in-up"
                       onMouseMove=${handleMouseMove}
                       onMouseLeave=${handleMouseLeave}
                     >
@@ -555,7 +555,7 @@
                     </div>
 
                     <!-- TEXTO DESLIZANTE GIGANTE -->
-                    <div class="w-full md:w-1/2 flex flex-col justify-center min-h-[50vh] md:min-h-[75vh] animate-fade-in-up delay-100">
+                    <div class="w-full md:w-1/2 flex flex-col justify-center min-h-0 md:min-h-[75vh] animate-fade-in-up delay-100">
                       <span class="text-sm font-black text-[#1FB4FA] uppercase tracking-[0.3em] mb-4 block">${prod.category}</span>
                       <h2 class="text-5xl md:text-6xl font-black text-[#065581] mb-6 tracking-tight leading-none">${prod.name}</h2>
                       <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-8 pb-6 border-b-2 border-gray-100">${prod.type}</h3>
