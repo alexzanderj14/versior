@@ -209,31 +209,32 @@
           name: 'ARK-7610',
           type: 'Autorrefractómetro / Queratómetro',
           tagline: 'El estándar de precisión para tu clínica visual.',
-          description: 'Equipo robusto que incorpora la probada tecnología de sensor Hartmann, garantizando mediciones rápidas y seguras para el paciente.',
+          description: 'Equipo robusto con nuevo sistema óptico que incorpora la exclusiva impresión de imagen de Hartmann, garantizando mediciones rápidas y seguras.',
           features: [
-            'Pantalla Táctil LCD TFT de 7" ajustable.',
-            'Medición de energía luminosa: <30 uW.',
+            'Pantalla táctil LCD TFT de 7" (ángulo ajustable).',
+            'Medición de energía luminosa segura: <30 uW.',
             'Medición en pupila mínima de 2.0 mm.'
           ],
           icon: Eye,
-          highlight: false
+          highlight: false,
+          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/7610.png'
         },
         {
-          id: 'rmk-600',
+          id: 'rk-600',
           category: 'Refracción',
-          name: 'RMK-600',
-          type: 'Autorrefractómetro Avanzado',
-          tagline: 'Agilidad y tecnología automatizada superior.',
-          description: 'Diseñado para alto volumen de pacientes, minimizando el tiempo de acomodación con enfoque inteligente.',
+          name: 'RK-600',
+          type: 'Autorrefractómetro y Queratómetro',
+          tagline: 'Tecnología de última generación para una visión sin límites.',
+          description: 'Diseñado para un flujo de alto volumen, minimiza el tiempo de acomodación gracias a su sistema inteligente de enfoque (Autotracking).',
           features: [
-            'Sistema LIO (Lente intraocular)',
+            'Sistema LIO (Lente intraocular).',
             'Autotracking (enfoque automático).',
             'Mentonera robótica.',
             'Tiempo de medición <0.5 segundos.'
           ],
           highlight: true,
           icon: Focus,
-          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/autorefractometro%20RMK-600.png'
+          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/rk600.png'
         },
         {
           id: 'lm-260',
@@ -241,15 +242,15 @@
           name: 'LM-260',
           type: 'Lensómetro Digital',
           tagline: 'Precisión digital sin esfuerzo compensatorio.',
-          description: 'Ideal para control de calidad en ópticas con medición UV integrada.',
+          description: 'Mediciones rápidas y eficientes sin compensación de Abbe, incorporando una cámara de alta resolución.',
           features: [
-            'Sensor Hartmann de 150 puntos.',
-            'Medición sin compensación de Abbe.',
-            'Medición ultravioleta UV400-UVA.'
+            'Cámara de alta resolución Hartmann 150 puntos.',
+            'Medición de transmitancia ultravioleta UV400-UVA.',
+            'Dos tipos de bolígrafos de puntos (recargable/tinta).'
           ],
           icon: Monitor,
           highlight: false,
-          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/lensometro%20digital%20LM-260.png'
+          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/lensometro.png'
         },
         {
           id: 'vc-235',
@@ -257,31 +258,31 @@
           name: 'VC-235',
           type: 'Pantalla Optotipo Digital',
           tagline: 'Versatilidad clínica en alta definición.',
-          description: 'Sustituye proyectores tradicionales con pantalla LED de alto contraste.',
+          description: 'Sustituye proyectores tradicionales con una pantalla de diseño delgado y liviano para exámenes precisos.',
           features: [
-            'Monitor LED/LCD de 23.5" HD.',
-            'Precisión ajustable 2.0m a 6.5m.',
-            'Test de daltonismo y ambliopía.'
+            'Monitor de 23.5"/19.5" HD.',
+            'Precisión de medición de 2.0m a 6.5m.',
+            'Pruebas de daltonismo y entrenamiento de ambliopía.'
           ],
           icon: Monitor,
           highlight: false,
-          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/panta%20lla%20digital%20VC-235.png'
+          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/pantalla.png'
         },
         {
           id: 'ls-4',
           category: 'Biomicroscopía',
           name: 'LS-4',
           type: 'Lámpara de Hendidura',
-          tagline: 'Diagnóstico del segmento anterior con óptica superior.',
-          description: 'Óptica premium con iluminación LED de larga duración.',
+          tagline: 'La solución moderna para exámenes visuales precisos.',
+          description: 'Óptica premium que proporciona una luz brillante y nítida, ideal para diagnósticos confiables y detallados.',
           features: [
-            'Magnificación de 5 pasos.',
-            'Iluminación LED luz fría (>50k horas).',
-            'Filtro amarillo integrado.'
+            '5 niveles de aumento.',
+            'Iluminación LED de alto rendimiento (>50.000 horas).',
+            'Filtro amarillo integrado y control continuo.'
           ],
           icon: Stethoscope,
-          highlight: false,
-          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/Lampara%20de%20endidura%20LS-4.png'
+          highlight: true,
+          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/Lampara.png'
         },
         {
           id: 'c-190a',
@@ -289,14 +290,31 @@
           name: 'C-190A',
           type: 'Unidad de Diagnóstico',
           tagline: 'El centro de mando de tu práctica.',
-          description: 'Mobiliario ergonómico para médico y confort para el paciente.',
+          description: 'Unidad integral diseñada con estructura robusta y estable para brindar comodidad al paciente y máxima precisión al profesional.',
           features: [
-            'Mesa deslizable con rotación 45°.',
-            'Sillón elevación eléctrica.',
-            'Brazo oscilante de foróptero 180°.'
+            'Silla con elevación eléctrica.',
+            'Brazo giratorio tipo bull eye con ajuste de 180°.',
+            'Mesa de trabajo deslizante con cajón y luz optométrica.'
           ],
-          highlight: true,
-          icon: Stethoscope
+          highlight: false,
+          icon: Stethoscope,
+          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/unidad.png'
+        },
+        {
+          id: 'cp-266',
+          category: 'Diagnóstico',
+          name: 'Caja de Pruebas',
+          type: 'Set de 266 Lentillas',
+          tagline: 'Instrumento esencial para exámenes visuales.',
+          description: 'Set profesional y completo con esferas, cilindros, prismas y accesorios en vidrio óptico premium.',
+          features: [
+            'Vidrio óptico de alta calidad.',
+            'Lentillas con incrementos precisos (0.25D a 20.0D).',
+            'Incluye estuche resistente.'
+          ],
+          highlight: false,
+          icon: Eye,
+          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/caja%20de%20pruebas%20(2).png'
         }
       ],
       locations: [
@@ -490,7 +508,7 @@
               Precisión, tecnología y respaldo garantizado.
             </p>
             <a 
-              href="https://raw.githubusercontent.com/alexzanderj14/versior/main/CatalogoVersior_compressed.pdf" 
+              href="https://raw.githubusercontent.com/alexzanderj14/versior/main/Catalogo_Versior.pdf" 
               download="Catalogo_VERSIOR_2026.pdf" 
               class="inline-flex items-center justify-center gap-2 bg-white text-[#065581] font-black px-8 py-3.5 rounded-full hover:scale-105 hover:shadow-[0_10px_25px_rgba(0,0,0,0.25)] transition-all duration-300"
             >
@@ -498,25 +516,24 @@
             </a>
           </div>
 
-          <div class="max-w-7xl mx-auto px-6 -mt-20">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              ${companyData.products.map((prod, idx) => {
-                const Icon = prod.icon;
-                return html`
-                  <div 
-                    key=${prod.id} 
-                    class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-[#065581] flex flex-col opacity-0 animate-fade-in-up"
-                    style="animation-delay: ${idx * 100}ms; animation-fill-mode: forwards;"
-                  >
-                    <!-- CONTENEDOR DE FOTOS CON ZOOM INTERACTIVO DE AMAZON -->
+          <!-- INTERFAZ STICKY-SCROLL DE ALTA GAMA -->
+          <div class="w-full bg-white rounded-t-[3rem] -mt-16 relative z-20 pt-10 border-t border-gray-100">
+            ${companyData.products.map((prod, idx) => {
+              const isEven = idx % 2 === 0;
+              const Icon = prod.icon;
+              return html`
+                <div key=${prod.id} class="relative w-full border-b border-gray-100 last:border-b-0">
+                  <div class="max-w-7xl mx-auto px-6 py-24 md:py-32 flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 md:gap-24 items-start">
+                    
+                    <!-- IMAGEN FIJA (STICKY) CON ZOOM INTERACTIVO -->
                     <div 
-                      class="h-64 flex items-center justify-center relative overflow-hidden bg-white p-4 border-b border-gray-100 cursor-zoom-in"
+                      class="w-full md:w-1/2 sticky top-28 h-[50vh] md:h-[75vh] bg-gray-50 rounded-[2.5rem] shadow-inner border border-gray-100 flex items-center justify-center overflow-hidden cursor-zoom-in group animate-fade-in-up"
                       onMouseMove=${handleMouseMove}
                       onMouseLeave=${handleMouseLeave}
                     >
                       ${prod.highlight ? html`
-                        <div class="absolute top-4 right-4 bg-[#1FB4FA] text-white text-xs font-extrabold px-3 py-1 rounded-full flex items-center gap-1 z-10 shadow-sm border border-[#065581]/10">
-                          <${Zap} size=${12} class="text-white animate-pulse" /> Premium
+                        <div class="absolute top-6 right-6 bg-[#1FB4FA] text-white text-xs font-extrabold px-4 py-2 rounded-full flex items-center gap-2 z-10 shadow-lg border border-[#1FB4FA]/50">
+                          <${Zap} size=${14} class="text-white animate-pulse" /> Premium
                         </div>
                       ` : ''}
                       
@@ -524,52 +541,60 @@
                         <img 
                           src=${prod.imageUrl} 
                           alt=${prod.name} 
-                          class="zoomable-img max-h-full max-w-full object-contain transition-transform duration-150 ease-out origin-center" 
+                          class="zoomable-img w-[80%] h-[80%] object-contain transition-transform duration-150 ease-out origin-center drop-shadow-2xl" 
                         />
-                        <div class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded-md pointer-events-none z-10 flex items-center gap-1">
+                        <div class="absolute bottom-6 right-6 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-4 py-2 rounded-full pointer-events-none z-10 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl">
                           Ampliar 🔍
                         </div>
                       ` : html`
-                        <div class="absolute inset-0 flex items-center justify-center ${prod.highlight ? 'bg-gradient-to-br from-[#1FB4FA] to-[#0ea5e9]' : 'bg-gray-100'}">
-                          <${Icon} size=${64} strokeWidth=${1} class=${prod.highlight ? 'text-white/40' : 'text-[#1FB4FA]/20'} absolute transform scale-150 rotate-12 />
-                          <${Icon} size=${48} strokeWidth=${1.5} class=${prod.highlight ? 'text-white' : 'text-[#1FB4FA]'} relative z-10 />
+                        <div class="absolute inset-0 flex items-center justify-center ${prod.highlight ? 'bg-gradient-to-br from-[#1FB4FA] to-[#0ea5e9]' : 'bg-transparent'}">
+                          <${Icon} size=${120} strokeWidth=${0.5} class=${prod.highlight ? 'text-white/20' : 'text-[#1FB4FA]/10'} absolute transform scale-150 rotate-12 />
+                          <${Icon} size=${80} strokeWidth=${1} class=${prod.highlight ? 'text-white' : 'text-[#1FB4FA]'} relative z-10 />
                         </div>
                       `}
                     </div>
 
-                    <div class="p-8 flex-grow flex flex-col">
-                      <span class="text-xs font-bold text-[#065581] uppercase tracking-wider mb-2 block">${prod.category}</span>
-                      <h3 class="text-3xl font-black text-black mb-2 tracking-tight drop-shadow-sm">${prod.name}</h3>
-                      <p class="text-sm font-black text-black mb-4 pb-4 border-b border-gray-100 uppercase">${prod.type}</p>
+                    <!-- TEXTO DESLIZANTE GIGANTE -->
+                    <div class="w-full md:w-1/2 flex flex-col justify-center min-h-[50vh] md:min-h-[75vh] animate-fade-in-up delay-100">
+                      <span class="text-sm font-black text-[#1FB4FA] uppercase tracking-[0.3em] mb-4 block">${prod.category}</span>
+                      <h2 class="text-5xl md:text-6xl font-black text-[#065581] mb-6 tracking-tight leading-none">${prod.name}</h2>
+                      <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-8 pb-6 border-b-2 border-gray-100">${prod.type}</h3>
                       
-                      <p class="text-gray-600 text-sm mb-6 flex-grow leading-relaxed">${prod.description}</p>
+                      <p class="text-2xl text-gray-400 font-light italic mb-8 leading-relaxed">"${prod.tagline}"</p>
+                      <p class="text-gray-600 leading-relaxed text-lg mb-12">${prod.description}</p>
                       
-                      <ul class="space-y-2 mb-8">
+                      <div class="space-y-4 mb-14">
+                        <h4 class="text-xs font-black text-gray-400 uppercase tracking-widest mb-6">Especificaciones Técnicas</h4>
                         ${prod.features.map((feat, i) => {
-                          const isLio = feat.includes("Sistema LIO");
+                          const isLio = feat.includes("Sistema LIO") || feat.includes("Lente intraocular");
                           return html`
-                            <li key=${i} class="flex items-start text-sm text-gray-600 p-2 rounded-xl transition-all ${isLio ? 'bg-sky-100/70 text-[#065581] font-bold border border-sky-200/50 shadow-sm' : ''}">
-                              <${CheckCircle2} size=${16} class="${isLio ? 'text-[#065581]' : 'text-[#1FB4FA]'} mr-2 flex-shrink-0 mt-0.5" />
-                              <span>${feat}</span>
-                            </li>
+                            <div key=${i} class="flex items-center bg-white p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-50 hover:border-[#1FB4FA]/30 hover:shadow-lg transition-all duration-300 ${isLio ? 'bg-sky-50/50 border-sky-100' : ''}">
+                              <div class="w-12 h-12 rounded-xl bg-[#f0f9ff] flex items-center justify-center mr-5 flex-shrink-0 shadow-inner">
+                                <${CheckCircle2} size=${24} class="${isLio ? 'text-[#065581]' : 'text-[#1FB4FA]'}" strokeWidth=${2.5} />
+                              </div>
+                              <span class="text-gray-700 font-bold text-lg">${feat}</span>
+                            </div>
                           `;
                         })}
-                      </ul>
+                      </div>
 
                       <button 
                         onClick=${() => handleQuote(prod.name)}
-                        class="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white shadow-[0_4px_14px_0_rgba(6,85,129,0.5)] border border-[#065581]"
+                        class="group self-start px-10 py-5 rounded-2xl font-black text-lg transition-all duration-300 flex items-center justify-center gap-3 bg-[#1FB4FA] hover:bg-[#0ea5e9] text-white shadow-[0_10px_30px_rgba(31,180,250,0.4)] hover:shadow-[0_15px_40px_rgba(31,180,250,0.6)] transform hover:-translate-y-2 border border-[#1FB4FA]/50"
                       >
-                        Cotizar Equipo <${ArrowRight} size=${18} />
+                        Cotizar ${prod.name} <${ArrowRight} size=${22} class="group-hover:translate-x-1 transition-transform" />
                       </button>
                     </div>
-                  </div>
-                `;
-              })}
-            </div>
 
-            <!-- Recursos Exclusivos -->
-            <div class="max-w-4xl mx-auto mt-16 p-8 bg-sky-50/70 border border-sky-100 rounded-3xl text-center shadow-sm animate-fade-in-up">
+                  </div>
+                </div>
+              `;
+            })}
+          </div>
+
+          <!-- Recursos Exclusivos -->
+          <div class="max-w-7xl mx-auto px-6 mt-16">
+            <div class="max-w-4xl mx-auto p-8 bg-sky-50/70 border border-sky-100 rounded-3xl text-center shadow-sm animate-fade-in-up">
               <h3 class="text-2xl font-black text-[#065581] mb-3">Recursos Exclusivos</h3>
               <p class="text-gray-700 font-semibold text-base mb-6 max-w-2xl mx-auto">
                 ¿Quieres un prototipo de un diseño de óptica o un manual básico de enfermedades que tratan los optómetras y oftalmólogos?
