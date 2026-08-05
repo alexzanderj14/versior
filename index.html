@@ -13,13 +13,19 @@
       wait_for_update: 500
     });
   </script>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MZGKQPFH');</script>
-  <!-- End Google Tag Manager -->
+  <script>
+    let gtmLoaded = false;
+    window.loadGoogleTagManager = () => {
+      if (gtmLoaded) return;
+      gtmLoaded = true;
+      window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+      const firstScript = document.getElementsByTagName('script')[0];
+      const gtmScript = document.createElement('script');
+      gtmScript.async = true;
+      gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MZGKQPFH';
+      firstScript.parentNode.insertBefore(gtmScript, firstScript);
+    };
+  </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,18 +40,14 @@
   <meta name="twitter:card" content="summary_large_image">
   <title>Equipos Optométricos en Ecuador | VERSIOR IMPORT'S</title>
 
-  <!-- Tailwind CSS Oficial para diseño responsivo rápido -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter para alta legibilidad clínica -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/hero/equipos-opticos-versior.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/products/ark-7610.webp" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/versior-20260805.min.css">
   <link rel="preconnect" href="https://esm.sh">
-  <link rel="preconnect" href="https://raw.githubusercontent.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background-color: #FDFDFD;
       color: #0f172a;
       -webkit-font-smoothing: antialiased;
@@ -399,7 +401,9 @@
           ],
           icon: Eye,
           highlight: false,
-          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/7610.png'
+          imageUrl: 'assets/products/ark-7610.webp',
+          imageWidth: 1000,
+          imageHeight: 1000
         },
         {
           id: 'rk-600',
@@ -416,7 +420,9 @@
           ],
           highlight: true,
           icon: Focus,
-          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/rk600.png'
+          imageUrl: 'assets/products/rk-600.webp',
+          imageWidth: 1000,
+          imageHeight: 667
         },
         {
           id: 'lm-260',
@@ -432,7 +438,9 @@
           ],
           icon: Monitor,
           highlight: false,
-          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/lensometro.png'
+          imageUrl: 'assets/products/lm-260.webp',
+          imageWidth: 1000,
+          imageHeight: 667
         },
         {
           id: 'vc-235',
@@ -448,7 +456,9 @@
           ],
           icon: Monitor,
           highlight: false,
-          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/pantalla.png'
+          imageUrl: 'assets/products/vc-235.webp',
+          imageWidth: 1000,
+          imageHeight: 667
         },
         {
           id: 'ls-4',
@@ -464,7 +474,9 @@
           ],
           icon: Stethoscope,
           highlight: true,
-          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/Lampara.png'
+          imageUrl: 'assets/products/ls-4.webp',
+          imageWidth: 1000,
+          imageHeight: 667
         },
         {
           id: 'c-190a',
@@ -480,7 +492,9 @@
           ],
           highlight: false,
           icon: Stethoscope,
-          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/unidad.png'
+          imageUrl: 'assets/products/c-190a.webp',
+          imageWidth: 431,
+          imageHeight: 1000
         },
         {
           id: 'cp-266',
@@ -496,7 +510,9 @@
           ],
           highlight: false,
           icon: Eye,
-          imageUrl: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/caja%20de%20pruebas%20(2).png'
+          imageUrl: 'assets/products/cp-266.webp',
+          imageWidth: 1000,
+          imageHeight: 667
         }
       ],
       locations: [
@@ -507,43 +523,52 @@
     };
 
     const trustedBrandsImages = [
-      "OPTICAS VISIONSOCIAL.JPG",
-      "456839696_122096646128502176_4845263082744990073_n.jpg",
-      "WhatsApp Image 2026-06-04 at 17.22.19 (4).jpeg",
-      "WhatsApp Image 2026-06-04 at 17.22.19 (3).jpeg",
-      "WhatsApp Image 2026-06-04 at 17.22.19 (2).jpeg",
-      "WhatsApp Image 2026-06-04 at 17.22.19 (1).jpeg",
-      "WhatsApp Image 2026-06-04 at 17.22.19.jpeg",
-      "WhatsApp Image 2026-06-04 at 17.32.27.jpeg",
-      "WhatsApp Image 2026-06-04 at 17.37.28.jpeg"
+      { src: 'assets/brands/opticas-visionsocial.webp', alt: 'Óptica cliente de VERSIOR' },
+      { src: 'assets/brands/cliente-versior-02.webp', alt: 'Institución de salud visual cliente de VERSIOR' },
+      { src: 'assets/brands/cliente-versior-03.webp', alt: 'Profesional de salud visual cliente de VERSIOR', large: true },
+      { src: 'assets/brands/cliente-versior-04.webp', alt: 'Óptica respaldada por tecnología VERSIOR', large: true },
+      { src: 'assets/brands/cliente-versior-05.webp', alt: 'Centro visual cliente de VERSIOR' },
+      { src: 'assets/brands/cliente-versior-06.webp', alt: 'Consultorio cliente de VERSIOR' },
+      { src: 'assets/brands/cliente-versior-07.webp', alt: 'Institución cliente de VERSIOR' },
+      { src: 'assets/brands/cliente-versior-08.webp', alt: 'Óptica cliente de VERSIOR' },
+      { src: 'assets/brands/cliente-versior-09.webp', alt: 'Centro de salud visual cliente de VERSIOR' }
     ];
 
     const heroImages = [
       {
         src: 'assets/hero/equipos-opticos-versior.webp',
         fallback: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/assets/hero/equipos-opticos-versior.webp',
-        position: 'center center'
+        position: 'center center',
+        width: 1672,
+        height: 941
       },
       {
         src: 'assets/hero/pantalla-optotipo-versior.webp',
         fallback: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/assets/hero/pantalla-optotipo-versior.webp',
-        position: 'center center'
+        position: 'center center',
+        width: 1920,
+        height: 1077
       },
       {
         src: 'assets/hero/respaldo-entrega-versior.webp',
         fallback: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/assets/hero/respaldo-entrega-versior.webp',
-        position: 'center center'
+        position: 'center center',
+        width: 1920,
+        height: 1311
       },
       {
         src: 'assets/hero/autorrefractometro-instalado-versior.webp',
         fallback: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/assets/hero/autorrefractometro-instalado-versior.webp',
-        position: 'center center'
+        position: 'center center',
+        width: 1920,
+        height: 1360
       }
     ];
 
     const NosotrosView = ({ setActiveTab }) => {
       const [heroProductIndex, setHeroProductIndex] = useState(0);
       const [heroBackgroundIndex, setHeroBackgroundIndex] = useState(0);
+      const [loadedHeroIndices, setLoadedHeroIndices] = useState([0]);
       const [isCarouselUserPaused, setIsCarouselUserPaused] = useState(() =>
         window.matchMedia('(prefers-reduced-motion: reduce)').matches
       );
@@ -552,24 +577,33 @@
       const heroProduct = companyData.products[heroProductIndex];
       const isCarouselPaused = isCarouselUserPaused || isCarouselHovered;
 
-      useEffect(() => {
-        companyData.products.forEach((product) => {
-          const image = new Image();
-          image.src = product.imageUrl;
-        });
-        heroImages.forEach((item) => {
-          const image = new Image();
-          image.src = item.src;
-        });
-      }, []);
+      const showHeroBackground = (index) => {
+        if (loadedHeroIndices.includes(index)) {
+          setHeroBackgroundIndex(index);
+          return;
+        }
+
+        const item = heroImages[index];
+        const image = new Image();
+        const activate = () => {
+          setLoadedHeroIndices((current) => current.includes(index) ? current : [...current, index]);
+          setHeroBackgroundIndex(index);
+        };
+        image.onload = activate;
+        image.onerror = () => {
+          if (image.src !== item.fallback) image.src = item.fallback;
+          else activate();
+        };
+        image.src = item.src;
+      };
 
       useEffect(() => {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
-        const timer = window.setInterval(() => {
-          setHeroBackgroundIndex((current) => (current + 1) % heroImages.length);
-        }, 6500);
-        return () => window.clearInterval(timer);
-      }, []);
+        const timer = window.setTimeout(() => {
+          showHeroBackground((heroBackgroundIndex + 1) % heroImages.length);
+        }, 4000);
+        return () => window.clearTimeout(timer);
+      }, [heroBackgroundIndex]);
 
       useEffect(() => {
         if (isCarouselPaused) return undefined;
@@ -625,13 +659,16 @@
           <!-- Hero comercial -->
           <section class="relative overflow-hidden bg-[#063f61] text-white">
             <div class="absolute inset-0 z-0 overflow-hidden bg-[#063f61]" aria-hidden="true">
-              ${heroImages.map((item, index) => html`
+              ${heroImages.map((item, index) => loadedHeroIndices.includes(index) && html`
                 <img
                   key=${item.src}
                   src=${item.src}
                   alt=""
+                  width=${item.width}
+                  height=${item.height}
                   loading=${index === 0 ? 'eager' : 'lazy'}
                   fetchpriority=${index === 0 ? 'high' : 'auto'}
+                  decoding="async"
                   class=${`hero-photo ${index === heroBackgroundIndex ? 'is-active' : ''}`}
                   style=${`object-position: ${item.position}`}
                   onError=${(event) => {
@@ -661,7 +698,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick=${() => trackEvent('generate_lead', { source: 'hero_whatsapp', channel: 'whatsapp' })}
-                    class="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20ba5a] text-white px-7 py-4 rounded-2xl font-black text-base shadow-[0_12px_30px_rgba(37,211,102,.28)] transition-all hover:-translate-y-1"
+                    class="inline-flex items-center justify-center gap-3 bg-[#0F7A42] hover:bg-[#0B6E3A] text-white px-7 py-4 rounded-2xl font-black text-base shadow-[0_12px_30px_rgba(37,211,102,.28)] transition-all hover:-translate-y-1"
                   >
                     <${MessageCircle} size=${22} /> Recibir asesoría gratuita
                   </a>
@@ -681,7 +718,7 @@
                     <button
                       key=${item.src}
                       type="button"
-                      onClick=${() => setHeroBackgroundIndex(index)}
+                      onClick=${() => showHeroBackground(index)}
                       aria-label=${`Mostrar imagen ${index + 1} de la portada`}
                       aria-current=${index === heroBackgroundIndex ? 'true' : undefined}
                       class=${`h-2 rounded-full border border-white/40 transition-all duration-500 ${index === heroBackgroundIndex ? 'w-8 bg-white' : 'w-2 bg-white/35 hover:bg-white/70'}`}
@@ -698,7 +735,7 @@
                     <span class="inline-flex items-center gap-1.5 bg-sky-50 text-[#065581] px-3 py-1.5 rounded-full text-xs font-bold"><${Zap} size=${14} /> ${heroProductIndex + 1} de ${companyData.products.length}</span>
                   </div>
                   <div key=${heroProduct.id} class="product-swap">
-                    <img src=${heroProduct.imageUrl} alt=${`${heroProduct.name}, ${heroProduct.type}`} class="product-float w-full h-64 md:h-80 object-contain drop-shadow-2xl" fetchpriority=${heroProductIndex === 0 ? 'high' : 'auto'} />
+                    <img src=${heroProduct.imageUrl} alt=${`${heroProduct.name}, ${heroProduct.type}`} width=${heroProduct.imageWidth} height=${heroProduct.imageHeight} class="product-float w-full h-64 md:h-80 object-contain drop-shadow-2xl" fetchpriority=${heroProductIndex === 0 ? 'high' : 'auto'} decoding="async" />
                     <div class="border-t border-gray-100 pt-5 flex items-end justify-between gap-4">
                       <div>
                         <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">${heroProduct.type}</p>
@@ -739,7 +776,7 @@
             <div class="reveal-grid grid grid-cols-2 lg:grid-cols-4 bg-white rounded-3xl shadow-[0_16px_50px_rgba(6,85,129,.12)] border border-sky-100 overflow-hidden">
               ${benefits.map((item, idx) => html`
                 <div data-reveal key=${item.title} class="p-5 md:p-7 border-b lg:border-b-0 ${idx % 2 === 0 ? 'border-r' : ''} lg:border-r last:border-r-0 border-sky-100">
-                  <div class="w-11 h-11 rounded-xl bg-sky-50 text-[#1FB4FA] flex items-center justify-center mb-3"><${item.icon} size=${23} /></div>
+                  <div class="w-11 h-11 rounded-xl bg-sky-50 text-[#0675A8] flex items-center justify-center mb-3"><${item.icon} size=${23} /></div>
                   <h3 class="font-extrabold text-[#065581] text-sm md:text-base">${item.title}</h3>
                   <p class="text-xs md:text-sm text-gray-500 mt-1 leading-relaxed">${item.text}</p>
                 </div>
@@ -751,7 +788,7 @@
           <section data-reveal="left" class="max-w-7xl mx-auto px-6 pt-20 md:pt-28">
             <div class="rounded-[2rem] bg-[#f2faff] border border-sky-100 p-7 md:p-12 grid lg:grid-cols-[.9fr_1.1fr] gap-10 items-center">
               <div>
-                <span class="text-[#1FB4FA] font-black text-xs uppercase tracking-[0.2em]">Más que una importadora</span>
+                <span class="text-[#0675A8] font-black text-xs uppercase tracking-[0.2em]">Más que una importadora</span>
                 <h2 class="text-3xl md:text-4xl font-black text-[#065581] mt-3">No solo entregamos equipos. Acompañamos tu crecimiento.</h2>
                 <p class="text-gray-600 mt-5 leading-relaxed">Integramos tecnología, formación profesional, diseño de espacios y servicio posventa para que tu inversión funcione desde el primer día.</p>
                 <button onClick=${() => { setActiveTab('servicios'); window.scrollTo(0,0); }} class="mt-7 inline-flex items-center gap-2 bg-[#065581] text-white px-6 py-3.5 rounded-xl font-extrabold hover:bg-[#054366] transition-colors">
@@ -779,12 +816,12 @@
           <section data-reveal="scale" class="max-w-7xl mx-auto px-6 pt-16">
             <div class="grid md:grid-cols-2 gap-6 mb-16">
               <div class="p-7 md:p-9 rounded-3xl border border-gray-100 bg-white shadow-sm">
-                <div class="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-[#1FB4FA] mb-5"><${Target} size=${25} /></div>
+                <div class="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-[#0675A8] mb-5"><${Target} size=${25} /></div>
                 <h2 class="text-xl font-black text-[#065581] mb-3">Nuestra misión</h2>
                 <p class="text-gray-600 leading-relaxed text-sm md:text-base">${companyData.about.mission}</p>
               </div>
               <div class="p-7 md:p-9 rounded-3xl border border-gray-100 bg-white shadow-sm">
-                <div class="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-[#1FB4FA] mb-5"><${Eye} size=${25} /></div>
+                <div class="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-[#0675A8] mb-5"><${Eye} size=${25} /></div>
                 <h2 class="text-xl font-black text-[#065581] mb-3">Nuestra visión</h2>
                 <p class="text-gray-600 leading-relaxed text-sm md:text-base">${companyData.about.vision}</p>
               </div>
@@ -793,7 +830,7 @@
             <!-- Valores corporativos interactivos -->
             <div class="mb-16">
               <div class="text-center mb-10 md:mb-12">
-                <span class="text-[#1FB4FA] font-black text-xs uppercase tracking-[0.2em]">Lo que guía nuestro trabajo</span>
+                <span class="text-[#0675A8] font-black text-xs uppercase tracking-[0.2em]">Lo que guía nuestro trabajo</span>
                 <h2 class="text-3xl md:text-4xl font-black text-[#065581] mt-3">Valores Corporativos</h2>
                 <div class="w-20 h-1 bg-[#1FB4FA] mx-auto rounded-full mt-5"></div>
               </div>
@@ -815,7 +852,7 @@
                         <${Icon} size=${24} class="text-[#065581] group-hover:text-white transition-colors duration-300" />
                       </span>
                       <span class="block font-black text-[#065581] text-base md:text-lg">${val.name}</span>
-                      <span class="block text-[11px] md:text-xs text-[#1FB4FA] font-extrabold mt-2">Haz clic para ver más</span>
+                      <span class="block text-[11px] md:text-xs text-[#0675A8] font-extrabold mt-2">Haz clic para ver más</span>
                     </button>
                   `;
                 })}
@@ -837,16 +874,15 @@
           <!-- Instituciones: cierre de la portada -->
           <section data-reveal class="w-full bg-white pt-20 md:pt-24">
             <div class="text-center px-6 mb-5">
-              <span class="text-[#1FB4FA] font-black text-xs uppercase tracking-[0.2em]">Experiencia comprobable</span>
+              <span class="text-[#0675A8] font-black text-xs uppercase tracking-[0.2em]">Experiencia comprobable</span>
               <h2 class="text-2xl md:text-3xl font-black text-[#065581] mt-3">Instituciones que confían en nuestra tecnología</h2>
             </div>
             <div class="slider" aria-label="Logotipos de clientes de VERSIOR">
               <div class="slide-track">
-                ${trustedBrandsImages.concat(trustedBrandsImages).map((img, idx) => {
-                  const isSmallLogo = img.includes('(3)') || img.includes('(4)');
+                ${trustedBrandsImages.concat(trustedBrandsImages).map((brand, idx) => {
                   return html`
                     <div class="slide" key=${idx}>
-                      <img src=${`https://raw.githubusercontent.com/alexzanderj14/versior/main/${encodeURIComponent(img)}`} alt=${`Cliente VERSIOR ${idx + 1}`} loading="lazy" class=${isSmallLogo ? 'logo-especial-grande' : ''} />
+                      <img src=${brand.src} alt=${brand.alt} width="240" height="110" loading="lazy" decoding="async" class=${brand.large ? 'logo-especial-grande' : ''} />
                     </div>
                   `;
                 })}
@@ -859,7 +895,7 @@
               <div role="dialog" aria-modal="true" aria-label=${`Valor corporativo: ${selectedVal.name}`} class="bg-white rounded-3xl p-7 md:p-8 max-w-md w-full shadow-[0_24px_80px_rgba(6,85,129,.35)] animate-fade-in-up" onClick=${(event) => event.stopPropagation()}>
                 <div class="flex justify-between items-center gap-4 mb-6">
                   <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 bg-sky-50 rounded-full flex items-center justify-center text-[#1FB4FA]">
+                    <div class="w-12 h-12 bg-sky-50 rounded-full flex items-center justify-center text-[#0675A8]">
                       <${selectedVal.icon} size=${24} />
                     </div>
                     <h3 class="text-2xl font-black text-[#065581]">${selectedVal.name}</h3>
@@ -934,7 +970,7 @@
                 <h1 class="text-4xl md:text-5xl font-black mt-3">Tecnología para cada etapa de la atención visual</h1>
                 <p class="text-sky-100/85 text-lg mt-4 max-w-3xl">Explora nuestros equipos, compara sus funciones y solicita una cotización personalizada con asesoría profesional.</p>
               </div>
-              <a href="https://raw.githubusercontent.com/alexzanderj14/versior/main/CatalogoVersior_compressed.pdf" download="Catalogo_VERSIOR_2026.pdf" onClick=${() => trackEvent('file_download', { file_name: 'CatalogoVersior_compressed.pdf' })} class="inline-flex items-center justify-center gap-2 bg-white text-[#065581] font-black px-7 py-3.5 rounded-xl hover:bg-sky-50 transition-colors whitespace-nowrap">
+              <a href="CatalogoVersior_compressed.pdf" download="Catalogo_VERSIOR_2026.pdf" onClick=${() => trackEvent('file_download', { file_name: 'CatalogoVersior_compressed.pdf' })} class="inline-flex items-center justify-center gap-2 bg-white text-[#065581] font-black px-7 py-3.5 rounded-xl hover:bg-sky-50 transition-colors whitespace-nowrap">
                 <${Download} size=${20} /> Descargar catálogo PDF
               </a>
             </div>
@@ -955,7 +991,7 @@
 
             <div class="flex items-center justify-between mb-6">
               <p class="text-sm font-bold text-gray-500">${visibleProducts.length} ${visibleProducts.length === 1 ? 'equipo encontrado' : 'equipos encontrados'}</p>
-              <p class="hidden sm:flex items-center gap-2 text-sm text-gray-500"><${ShieldCheck} size=${17} class="text-[#1FB4FA]" /> Garantía y acompañamiento incluidos</p>
+              <p class="hidden sm:flex items-center gap-2 text-sm text-gray-500"><${ShieldCheck} size=${17} class="text-[#0675A8]" /> Garantía y acompañamiento incluidos</p>
             </div>
 
             ${visibleProducts.length > 0 ? html`
@@ -972,19 +1008,19 @@
                         <span class="absolute top-6 left-6 z-10 text-xs font-black text-[#065581]/45 tracking-[0.2em]">${String(index + 1).padStart(2, '0')} / ${String(visibleProducts.length).padStart(2, '0')}</span>
                         ${prod.highlight && html`<span class="absolute top-6 right-6 z-10 inline-flex items-center gap-1.5 bg-[#065581] text-white rounded-full px-3 py-1.5 text-[10px] font-black uppercase tracking-widest"><${Zap} size=${12} /> Destacado</span>`}
                         <div class="absolute inset-10 bg-[#1FB4FA]/10 rounded-full blur-[55px] opacity-0 group-hover/image:opacity-100 transition-opacity duration-500"></div>
-                        <img src=${prod.imageUrl} alt=${`${prod.name}, ${prod.type}`} loading=${index === 0 ? 'eager' : 'lazy'} class="product-float relative z-[1] w-full h-full object-contain drop-shadow-[0_22px_28px_rgba(6,85,129,.2)] group-hover/image:scale-105 transition-transform duration-700" />
+                        <img src=${prod.imageUrl} alt=${`${prod.name}, ${prod.type}`} width=${prod.imageWidth} height=${prod.imageHeight} loading=${index === 0 ? 'eager' : 'lazy'} decoding="async" class="product-float relative z-[1] w-full h-full object-contain drop-shadow-[0_22px_28px_rgba(6,85,129,.2)] group-hover/image:scale-105 transition-transform duration-700" />
                         <span class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 inline-flex items-center gap-2 bg-[#065581]/90 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold opacity-0 group-hover/image:opacity-100 group-focus-visible/image:opacity-100 transition-all"><${Maximize2} size=${15} /> Ver imagen en detalle</span>
                       </button>
 
                       <div data-reveal=${index % 2 === 0 ? 'right' : 'left'} class="lg:min-h-[calc(100vh-9rem)] flex flex-col justify-center ${index % 2 !== 0 ? 'lg:order-1' : ''}">
                         <div class="flex items-center gap-3 mb-5">
-                          <span class="text-xs text-[#1FB4FA] uppercase tracking-[0.2em] font-black">${prod.category}</span>
+                          <span class="text-xs text-[#0675A8] uppercase tracking-[0.2em] font-black">${prod.category}</span>
                           <span class="h-px w-10 bg-sky-200"></span>
                           <span class="text-xs text-gray-400 font-bold">VERSIOR</span>
                         </div>
                         <h2 class="text-4xl md:text-5xl font-black text-[#065581] tracking-tight">${prod.name}</h2>
                         <p class="text-lg md:text-xl font-bold text-gray-700 mt-3">${prod.type}</p>
-                        <p class="text-xl md:text-2xl text-[#1FB4FA] font-medium mt-6 leading-relaxed">${prod.tagline}</p>
+                        <p class="text-xl md:text-2xl text-[#0675A8] font-medium mt-6 leading-relaxed">${prod.tagline}</p>
                         <p class="text-gray-600 leading-relaxed mt-5 text-base md:text-lg">${prod.description}</p>
 
                         <div class="mt-8">
@@ -992,7 +1028,7 @@
                           <div class="reveal-grid space-y-3">
                             ${prod.features.map((feature) => html`
                               <div data-reveal key=${feature} class="flex items-start gap-3 bg-[#f8fbfd] border border-sky-100/70 rounded-2xl p-4">
-                                <div class="w-9 h-9 rounded-xl bg-white text-[#1FB4FA] shadow-sm flex items-center justify-center flex-shrink-0"><${CheckCircle2} size=${19} /></div>
+                                <div class="w-9 h-9 rounded-xl bg-white text-[#0675A8] shadow-sm flex items-center justify-center flex-shrink-0"><${CheckCircle2} size=${19} /></div>
                                 <span class="text-sm md:text-base text-gray-700 font-semibold pt-1.5">${feature}</span>
                               </div>
                             `)}
@@ -1000,7 +1036,7 @@
                         </div>
 
                         <div class="mt-8 flex flex-col sm:flex-row gap-3">
-                          <button onClick=${() => handleQuote(prod.name)} class="flex-1 inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3.5 rounded-xl font-black transition-colors shadow-[0_8px_20px_rgba(37,211,102,.18)]">
+                          <button onClick=${() => handleQuote(prod.name)} class="flex-1 inline-flex items-center justify-center gap-2 bg-[#0F7A42] hover:bg-[#0B6E3A] text-white px-5 py-3.5 rounded-xl font-black transition-colors shadow-[0_8px_20px_rgba(37,211,102,.18)]">
                             <${MessageCircle} size=${19} /> Cotizar ${prod.name}
                           </button>
                           <button onClick=${() => openProductViewer(prod)} class="inline-flex items-center justify-center gap-2 bg-sky-50 hover:bg-sky-100 text-[#065581] px-5 py-3.5 rounded-xl font-black transition-colors border border-sky-100">
@@ -1016,10 +1052,10 @@
               </div>
             ` : html`
               <div class="text-center bg-white border border-gray-100 rounded-3xl p-12">
-                <div class="w-14 h-14 rounded-full bg-sky-50 text-[#1FB4FA] flex items-center justify-center mx-auto"><${Search} size=${25} /></div>
+                <div class="w-14 h-14 rounded-full bg-sky-50 text-[#0675A8] flex items-center justify-center mx-auto"><${Search} size=${25} /></div>
                 <h2 class="text-xl font-black text-[#065581] mt-4">No encontramos ese equipo</h2>
                 <p class="text-gray-500 mt-2">Prueba con otro término o revisa todas las categorías.</p>
-                <button onClick=${() => { setSearch(''); setCategory('Todos'); }} class="mt-5 text-[#1FB4FA] font-black hover:text-[#065581]">Limpiar búsqueda</button>
+                <button onClick=${() => { setSearch(''); setCategory('Todos'); }} class="mt-5 text-[#0675A8] font-black hover:text-[#065581]">Limpiar búsqueda</button>
               </div>
             `}
           </section>
@@ -1039,7 +1075,7 @@
               <div role="dialog" aria-modal="true" aria-label=${`Vista ampliada de ${selectedProduct.name}`} class="bg-white w-full max-w-6xl max-h-[94vh] rounded-[2rem] shadow-[0_30px_90px_rgba(0,0,0,.4)] overflow-hidden flex flex-col" onClick=${(event) => event.stopPropagation()}>
                 <div class="flex items-center justify-between px-5 md:px-7 py-4 border-b border-gray-100">
                   <div>
-                    <p class="text-[10px] font-black uppercase tracking-[0.18em] text-[#1FB4FA]">${selectedProduct.category}</p>
+                    <p class="text-[10px] font-black uppercase tracking-[0.18em] text-[#0675A8]">${selectedProduct.category}</p>
                     <h2 class="text-xl md:text-2xl font-black text-[#065581]">${selectedProduct.name} <span class="text-sm font-semibold text-gray-400">${selectedProduct.type}</span></h2>
                   </div>
                   <button onClick=${closeProductViewer} aria-label="Cerrar imagen ampliada" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-red-50 hover:text-red-500 text-gray-500 flex items-center justify-center transition-colors"><${X} size=${21} /></button>
@@ -1048,7 +1084,7 @@
                 <div class="zoom-stage flex-grow min-h-0 bg-gradient-to-br from-sky-50 via-white to-sky-50 overflow-hidden relative flex items-center justify-center p-6 md:p-10">
                   <div class="absolute inset-16 bg-[#1FB4FA]/10 rounded-full blur-[70px]"></div>
                   <button onClick=${() => setZoomStep((step) => (step + 1) % zoomClasses.length)} aria-label="Aumentar imagen" class="relative w-full h-[52vh] md:h-[64vh] flex items-center justify-center cursor-zoom-in">
-                    <img src=${selectedProduct.imageUrl} alt=${`${selectedProduct.name} ampliado`} class="w-full h-full object-contain drop-shadow-[0_26px_35px_rgba(6,85,129,.24)] transition-transform duration-300 ease-out ${zoomClasses[zoomStep]}" />
+                    <img src=${selectedProduct.imageUrl} alt=${`${selectedProduct.name} ampliado`} width=${selectedProduct.imageWidth} height=${selectedProduct.imageHeight} decoding="async" class="w-full h-full object-contain drop-shadow-[0_26px_35px_rgba(6,85,129,.24)] transition-transform duration-300 ease-out ${zoomClasses[zoomStep]}" />
                   </button>
                   <span class="absolute left-5 bottom-5 bg-white/90 text-gray-500 px-3 py-2 rounded-full text-[11px] font-bold shadow-sm">Zoom ${[100, 150, 200, 250][zoomStep]}%</span>
                 </div>
@@ -1059,7 +1095,7 @@
                     <button onClick=${() => setZoomStep((step) => Math.max(step - 1, 0))} disabled=${zoomStep === 0} aria-label="Reducir zoom" class="w-10 h-10 rounded-xl border border-gray-200 text-[#065581] flex items-center justify-center hover:bg-sky-50 disabled:opacity-35"><${ZoomOut} size=${19} /></button>
                     <button onClick=${() => setZoomStep(0)} aria-label="Restablecer zoom" class="w-10 h-10 rounded-xl border border-gray-200 text-[#065581] flex items-center justify-center hover:bg-sky-50"><${RotateCcw} size=${18} /></button>
                     <button onClick=${() => setZoomStep((step) => Math.min(step + 1, zoomClasses.length - 1))} disabled=${zoomStep === zoomClasses.length - 1} aria-label="Aumentar zoom" class="w-10 h-10 rounded-xl border border-gray-200 text-[#065581] flex items-center justify-center hover:bg-sky-50 disabled:opacity-35"><${ZoomIn} size=${19} /></button>
-                    <button onClick=${() => handleQuote(selectedProduct.name)} class="ml-2 inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-xl font-black text-sm"><${MessageCircle} size=${18} /> Cotizar</button>
+                    <button onClick=${() => handleQuote(selectedProduct.name)} class="ml-2 inline-flex items-center gap-2 bg-[#0F7A42] hover:bg-[#0B6E3A] text-white px-5 py-2.5 rounded-xl font-black text-sm"><${MessageCircle} size=${18} /> Cotizar</button>
                   </div>
                 </div>
               </div>
@@ -1077,7 +1113,7 @@
           label: "A cargo de:",
           person: "Optómetra Eli Verdy",
           icon: Eye,
-          avatarUrl: "https://raw.githubusercontent.com/alexzanderj14/versior/main/Eli.svg",
+          avatarUrl: "assets/team/eli.webp",
           waLink: "https://wa.me/593963223843?text=Hola%20Opt%C3%B3metra%20Eli%20Verdy,%20deseo%20informaci%C3%B3n%20y%20cotizaci%C3%B3n%20de%20equipos%20cl%C3%ADnicos%20de%20VERSIOR.",
           btnText: "Solicitar Cotización"
         },
@@ -1087,7 +1123,7 @@
           label: "A cargo de:",
           person: "Arquitecta Laura Herrera",
           icon: Layout,
-          avatarUrl: "https://raw.githubusercontent.com/alexzanderj14/versior/main/Laura.svg",
+          avatarUrl: "assets/team/laura.webp",
           waLink: "https://wa.me/593990331482?text=Hola%20Arquitecta%20Laura%20Herrera,%20deseo%20informaci%C3%B3n%20sobre%20adecuaci%C3%B3n%20y%20dise%C3%B1o%20de%20%C3%B3pticas%20con%20VERSIOR.",
           btnText: "Planificar con Arquitectura"
         },
@@ -1097,7 +1133,7 @@
           label: "A cargo de:",
           person: "Dra. Oftalmóloga Julieta Siguencia",
           icon: Users,
-          avatarUrl: "https://raw.githubusercontent.com/alexzanderj14/versior/main/Julieta.svg",
+          avatarUrl: "assets/team/julieta.webp",
           waLink: "https://wa.me/593958951408?text=Hola%20Dra.%20Oftalm%C3%B3loga%20Julieta%20Siguencia,%20deseo%20agendar%20una%20capacitaci%C3%B3n%20sobre%20el%20uso%20de%20equipos%20adquiridos%20en%20VERSIOR.",
           btnText: "Agendar Capacitación"
         },
@@ -1107,7 +1143,7 @@
           label: "Soporte directo:",
           person: "Licenciado Alexander Jácome",
           icon: Wrench,
-          avatarUrl: "https://raw.githubusercontent.com/alexzanderj14/versior/main/Alex.svg",
+          avatarUrl: "assets/team/alexander.webp",
           waLink: "https://wa.me/593987654320?text=Hola%20Alexander%20J%C3%A1come,%20necesito%20soporte%20t%C3%A9cnico,%20mantenimiento%20o%20informaci%C3%B3n%20sobre%20la%20garant%C3%ADa%20de%20mi%20equipo%20VERSIOR.",
           btnText: "Solicitar Soporte Técnico"
         }
@@ -1139,6 +1175,10 @@
                         <img 
                           src=${srv.avatarUrl} 
                           alt=${srv.person} 
+                          width="800"
+                          height="800"
+                          loading="lazy"
+                          decoding="async"
                           class="w-full h-full object-contain object-bottom filter drop-shadow-[0_15px_15px_rgba(6,85,129,0.3)] transition-transform duration-700 ease-out transform scale-[1.65] group-hover:scale-[1.8] origin-bottom" 
                         />
                       </div>
@@ -1159,7 +1199,7 @@
                       target="_blank" 
                       rel="noopener noreferrer"
                       onClick=${() => trackEvent('generate_lead', { source: 'service_card', channel: 'whatsapp', service_name: srv.title })}
-                      class="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-[0_4px_14px_0_rgba(37,211,102,0.35)] border border-[#20ba5a]/20"
+                      class="w-full py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-[#0F7A42] hover:bg-[#0B6E3A] text-white shadow-[0_4px_14px_0_rgba(37,211,102,0.35)] border border-[#0B6E3A]/20"
                     >
                       <${Phone} size=${18} fill="white" /> ${srv.btnText} <${ArrowRight} size=${18} />
                     </a>
@@ -1167,13 +1207,13 @@
                     <div class="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
                       <span class="text-xs font-semibold text-gray-400">Canales de soporte:</span>
                       <div class="flex gap-2">
-                        <a href="https://www.facebook.com/share/1BNhBNCfNU/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-[#1877F2] text-white rounded-full flex items-center justify-center hover:scale-110 shadow-sm transition-transform">
+                        <a href="https://www.facebook.com/share/1BNhBNCfNU/?mibextid=wwXIfr" aria-label="Facebook de VERSIOR" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-[#1877F2] text-white rounded-full flex items-center justify-center hover:scale-110 shadow-sm transition-transform">
                           <${Facebook} size={14} fill="white" />
                         </a>
-                        <a href="https://www.instagram.com/versiorimports/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white rounded-full flex items-center justify-center hover:scale-110 shadow-sm transition-transform">
+                        <a href="https://www.instagram.com/versiorimports/" aria-label="Instagram de VERSIOR" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white rounded-full flex items-center justify-center hover:scale-110 shadow-sm transition-transform">
                           <${Instagram} size={14} />
                         </a>
-                        <a href="https://www.linkedin.com/company/versior-imports" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-[#0077b5] text-white rounded-full flex items-center justify-center hover:scale-110 shadow-sm transition-transform">
+                        <a href="https://www.linkedin.com/company/versior-imports" aria-label="LinkedIn de VERSIOR" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-[#0077b5] text-white rounded-full flex items-center justify-center hover:scale-110 shadow-sm transition-transform">
                           <${Linkedin} size={14} fill="white" />
                         </a>
                       </div>
@@ -1234,28 +1274,28 @@
                     </h3>
                     <div class="space-y-4">
                       <a href="https://wa.me/593963223843" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
-                        <div class="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><${Phone} size=${20} fill="white" /></div>
+                        <div class="bg-[#0F7A42] p-2 rounded-full transform group-hover:scale-110 transition-transform"><${Phone} size=${20} fill="white" /></div>
                         <div>
                           <p class="text-xs text-[#065581] font-extrabold uppercase tracking-wider">Ventas (Optómetra Eli Verdy)</p>
                           <p class="font-bold text-lg">+593 96 322 3843</p>
                         </div>
                       </a>
                       <a href="https://wa.me/593990331482" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
-                        <div class="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><${Phone} size=${20} fill="white" /></div>
+                        <div class="bg-[#0F7A42] p-2 rounded-full transform group-hover:scale-110 transition-transform"><${Phone} size=${20} fill="white" /></div>
                         <div>
                           <p class="text-xs text-[#065581] font-extrabold uppercase tracking-wider">Remodelación (Arq. Laura Herrera)</p>
                           <p class="font-bold text-lg">+593 99 033 1482</p>
                         </div>
                       </a>
                       <a href="https://wa.me/593958951408" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
-                        <div class="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><${Phone} size=${20} fill="white" /></div>
+                        <div class="bg-[#0F7A42] p-2 rounded-full transform group-hover:scale-110 transition-transform"><${Phone} size=${20} fill="white" /></div>
                         <div>
                           <p class="text-xs text-[#065581] font-extrabold uppercase tracking-wider">Capacitación (Dra. Julieta Siguencia)</p>
                           <p class="font-bold text-lg">+593 95 895 1408</p>
                         </div>
                       </a>
                       <a href="https://wa.me/593987654320?text=Hola%20Alexander%20J%C3%A1come,%20necesito%20ayuda%20con%20el%20servicio%20posventa%20de%20VERSIOR." target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 bg-[#065581]/20 p-4 rounded-2xl hover:bg-[#065581]/40 transition-colors border border-white/10 group">
-                        <div class="bg-[#25D366] p-2 rounded-full transform group-hover:scale-110 transition-transform"><${Phone} size=${20} fill="white" /></div>
+                        <div class="bg-[#0F7A42] p-2 rounded-full transform group-hover:scale-110 transition-transform"><${Phone} size=${20} fill="white" /></div>
                         <div>
                           <p class="text-xs text-[#065581] font-extrabold uppercase tracking-wider leading-tight">Servicio Posventa (Lic. Alexander Jácome)</p>
                           <p class="font-bold text-lg">+593 98 765 4320</p>
@@ -1265,7 +1305,7 @@
                   </div>
 
                   <div class="bg-gray-50 rounded-3xl p-8 border border-gray-100 animate-fade-in-up delay-200">
-                    <h3 class="text-xl font-bold text-[#1FB4FA] mb-6 flex items-center gap-3">
+                    <h3 class="text-xl font-bold text-[#0675A8] mb-6 flex items-center gap-3">
                       <${MapPin} class="text-[#065581]" /> Nuestras Sedes
                     </h3>
                     <div class="space-y-5">
@@ -1283,7 +1323,7 @@
                 </div>
 
                 <div data-reveal="right" class="lg:col-span-3 bg-white border border-gray-100 rounded-3xl p-8 md:p-12 shadow-xl shadow-gray-100/50">
-                  <h3 class="text-2xl font-bold text-[#1FB4FA] mb-8">Envíanos un mensaje</h3>
+                  <h3 class="text-2xl font-bold text-[#0675A8] mb-8">Envíanos un mensaje</h3>
                   <form class="space-y-6" onSubmit=${handleSubmit}>
                     <div class="grid md:grid-cols-2 gap-6">
                       <div>
@@ -1360,7 +1400,7 @@
                       <input type="checkbox" required class="mt-0.5 w-4 h-4 accent-[#1FB4FA]" />
                       <span>Acepto que VERSIOR use estos datos para responder mi solicitud. Puedo solicitar su actualización o eliminación según la <button type="button" onClick=${() => { setActiveTab('privacidad'); window.scrollTo(0,0); }} class="font-bold text-[#065581] underline">Política de Privacidad</button>.</span>
                     </label>
-                    <button type="submit" class="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-lg shadow-[#25D366]/20">
+                    <button type="submit" class="w-full bg-[#0F7A42] hover:bg-[#0B6E3A] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-lg shadow-[#25D366]/20">
                       <${MessageCircle} size=${20} /> Enviar solicitud por WhatsApp
                     </button>
                   </form>
@@ -1444,7 +1484,7 @@
         <div class="animate-fade-in w-full bg-white pb-24 pt-12">
           <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-12">
-              <div class="w-16 h-16 bg-[#f0f9ff] text-[#1FB4FA] rounded-3xl flex items-center justify-center mx-auto mb-4 border border-sky-100">
+              <div class="w-16 h-16 bg-[#f0f9ff] text-[#0675A8] rounded-3xl flex items-center justify-center mx-auto mb-4 border border-sky-100">
                 <${Scale} size=${32} />
               </div>
               <h1 class="text-3xl md:text-4xl font-extrabold text-black font-sans leading-tight">Política de Privacidad y Términos Legales</h1>
@@ -1533,6 +1573,7 @@
             ad_user_data: 'granted',
             ad_personalization: 'granted'
           });
+          window.loadGoogleTagManager();
         }
       }, []);
 
@@ -1544,6 +1585,7 @@
           ad_user_data: accepted ? 'granted' : 'denied',
           ad_personalization: accepted ? 'granted' : 'denied'
         });
+        if (accepted) window.loadGoogleTagManager();
         trackEvent('cookie_consent_update', { consent_choice: accepted ? 'accepted' : 'essential' });
         setIsVisible(false);
       };
@@ -1554,7 +1596,7 @@
         <div class="fixed z-[120] left-4 right-4 bottom-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-[760px] bg-white border border-gray-200 rounded-2xl shadow-[0_18px_60px_rgba(6,85,129,.22)] p-5 md:p-6 animate-fade-in-up" role="dialog" aria-label="Preferencias de cookies">
           <div class="flex flex-col md:flex-row md:items-center gap-5">
             <div class="flex gap-4 flex-grow">
-              <div class="hidden sm:flex w-11 h-11 rounded-xl bg-sky-50 text-[#1FB4FA] items-center justify-center flex-shrink-0"><${ShieldCheck} size=${23} /></div>
+              <div class="hidden sm:flex w-11 h-11 rounded-xl bg-sky-50 text-[#0675A8] items-center justify-center flex-shrink-0"><${ShieldCheck} size=${23} /></div>
               <div>
                 <h2 class="font-black text-[#065581]">Tu privacidad importa</h2>
                 <p class="text-xs md:text-sm text-gray-500 mt-1 leading-relaxed">Usamos cookies de medición para conocer el rendimiento del sitio y mejorar nuestras campañas. Puedes aceptar la medición o continuar solo con las funciones esenciales.</p>
@@ -1679,6 +1721,9 @@
       return html`
         <div>
           <button 
+            type="button"
+            aria-label=${isOpen ? 'Cerrar asistente virtual' : 'Abrir asistente virtual'}
+            aria-expanded=${isOpen}
             onClick=${() => setIsOpen(!isOpen)} 
             class="fixed bottom-6 right-6 w-16 h-16 rounded-full flex items-center justify-center text-white shadow-[0_8px_30px_rgba(6,85,129,0.3)] cursor-pointer transition-all duration-300 z-[100] ${isOpen ? 'bg-red-500 hover:bg-red-600 rotate-90' : 'bg-[#1FB4FA] hover:bg-[#0ea5e9] hover:scale-110'}"
           >
@@ -1691,12 +1736,12 @@
                 <div class="absolute top-[-50%] right-[-10%] w-32 h-32 rounded-full bg-[#1FB4FA] blur-[40px] opacity-40"></div>
                 <div class="relative z-10 flex items-center gap-3">
                   <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20">
-                    <${MessageCircle} size=${20} class="text-[#1FB4FA]" />
+                    <${MessageCircle} size=${20} class="text-[#BAE6FD]" />
                   </div>
                   <div>
                     <h3 class="font-bold text-sm tracking-wide">Asistente VERSIOR</h3>
                     <p class="text-[10px] text-white/70 flex items-center gap-1.5 font-medium tracking-wider uppercase mt-0.5">
-                      <span class="w-2.5 h-2.5 rounded-full bg-[#25D366] animate-pulse"></span> En línea
+                      <span class="w-2.5 h-2.5 rounded-full bg-[#0F7A42] animate-pulse"></span> En línea
                     </p>
                   </div>
                 </div>
@@ -1733,6 +1778,7 @@
                   />
                   <button 
                     type="submit" 
+                    aria-label="Enviar mensaje al asistente"
                     disabled=${isLoading || !input.trim()} 
                     class="bg-[#065581] text-white p-3 rounded-xl hover:bg-[#1FB4FA] transition-colors disabled:opacity-50 disabled:hover:bg-[#065581] shadow-md"
                   >
@@ -1848,8 +1894,10 @@
                 
                 <button aria-label="Ir al inicio" class="flex items-center cursor-pointer" onClick=${() => navigateTo('nosotros')}>
                   <img 
-                    src="https://raw.githubusercontent.com/alexzanderj14/Vonces-y-memorias-de-Zambiza/main/Versior.png" 
+                    src="assets/brand/versior-logo.webp"
                     alt="VERSIOR IMPORT'S Logo" 
+                    width="640"
+                    height="360"
                     class="h-11 md:h-12 w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform duration-300"
                   />
                 </button>
@@ -1868,8 +1916,8 @@
                 </div>
 
                 <div class="hidden md:flex items-center gap-3">
-                  <a href="https://www.instagram.com/versiorimports/" aria-label="Instagram de VERSIOR" target="_blank" rel="noopener noreferrer" class="text-[#065581] hover:text-[#1FB4FA] transition-colors"><${Instagram} size=${22} /></a>
-                  <a href=${buildWhatsAppLink("Hola VERSIOR IMPORT'S, quiero recibir información sobre sus equipos.")} target="_blank" rel="noopener noreferrer" onClick=${() => trackEvent('generate_lead', { source: 'navbar', channel: 'whatsapp' })} class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-xl text-sm font-black transition-colors shadow-sm">
+                  <a href="https://www.instagram.com/versiorimports/" aria-label="Instagram de VERSIOR" target="_blank" rel="noopener noreferrer" class="text-[#065581] hover:text-[#0675A8] transition-colors"><${Instagram} size=${22} /></a>
+                  <a href=${buildWhatsAppLink("Hola VERSIOR IMPORT'S, quiero recibir información sobre sus equipos.")} target="_blank" rel="noopener noreferrer" onClick=${() => trackEvent('generate_lead', { source: 'navbar', channel: 'whatsapp' })} class="inline-flex items-center gap-2 bg-[#0F7A42] hover:bg-[#0B6E3A] text-white px-5 py-2.5 rounded-xl text-sm font-black transition-colors shadow-sm">
                     <${MessageCircle} size=${18} /> Cotizar ahora
                   </a>
                 </div>
@@ -1889,12 +1937,12 @@
                       onClick=${() => {
                         navigateTo(tab.id);
                       }}
-                      class="p-4 rounded-xl text-left font-bold transition-colors ${activeTab === tab.id ? 'bg-[#f0f9ff] text-[#1FB4FA]' : 'text-gray-600 hover:bg-gray-50'}"
+                      class="p-4 rounded-xl text-left font-bold transition-colors ${activeTab === tab.id ? 'bg-[#f0f9ff] text-[#0675A8]' : 'text-gray-600 hover:bg-gray-50'}"
                     >
                       ${tab.label}
                     </button>
                   `)}
-                  <a href=${buildWhatsAppLink("Hola VERSIOR IMPORT'S, quiero recibir información sobre sus equipos.")} target="_blank" rel="noopener noreferrer" onClick=${() => trackEvent('generate_lead', { source: 'mobile_menu', channel: 'whatsapp' })} class="mt-2 inline-flex items-center justify-center gap-2 bg-[#25D366] text-white p-4 rounded-xl font-black"><${MessageCircle} size=${19} /> Cotizar por WhatsApp</a>
+                  <a href=${buildWhatsAppLink("Hola VERSIOR IMPORT'S, quiero recibir información sobre sus equipos.")} target="_blank" rel="noopener noreferrer" onClick=${() => trackEvent('generate_lead', { source: 'mobile_menu', channel: 'whatsapp' })} class="mt-2 inline-flex items-center justify-center gap-2 bg-[#0F7A42] text-white p-4 rounded-xl font-black"><${MessageCircle} size=${19} /> Cotizar por WhatsApp</a>
                 </div>
               </div>
             `}
@@ -1917,37 +1965,39 @@
                 <div class="flex flex-col items-center md:items-start mb-6 md:mb-0">
                   <button aria-label="Ir al inicio" class="flex items-center bg-white p-3 rounded-2xl shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300 mb-4" onClick=${() => navigateTo('nosotros')}>
                     <img 
-                      src="https://raw.githubusercontent.com/alexzanderj14/Vonces-y-memorias-de-Zambiza/main/Versior.png" 
+                      src="assets/brand/versior-logo.webp"
                       alt="VERSIOR IMPORT'S Logo" 
+                      width="640"
+                      height="360"
                       class="h-10 md:h-12 w-auto object-contain"
                     />
                   </button>
                   <div class="text-white/80 space-y-1 text-center md:text-left text-xs md:text-sm leading-relaxed max-w-md">
                     <p class="flex items-start gap-2 justify-center md:justify-start">
-                      <${MapPin} size=${16} class="text-[#1FB4FA] flex-shrink-0 mt-0.5" /> 
+                      <${MapPin} size=${16} class="text-[#BAE6FD] flex-shrink-0 mt-0.5" />
                       <span><strong>Quito:</strong> Pichincha, Quito - Calle Giovani Calles y Palermo, urbanización UTE</span>
                     </p>
                     <p class="flex items-start gap-2 justify-center md:justify-start">
-                      <${MapPin} size=${16} class="text-[#1FB4FA] flex-shrink-0 mt-0.5" />
+                      <${MapPin} size=${16} class="text-[#BAE6FD] flex-shrink-0 mt-0.5" />
                       <span><strong>La Luz:</strong> Quito - El Morlán y De los Álamos, barrio Damer II</span>
                     </p>
                     <p class="flex items-start gap-2 justify-center md:justify-start">
-                      <${MapPin} size=${16} class="text-[#1FB4FA] flex-shrink-0 mt-0.5" /> 
+                      <${MapPin} size=${16} class="text-[#BAE6FD] flex-shrink-0 mt-0.5" />
                       <span><strong>Biblián:</strong> Cañar, Biblián - Av. Mariscal Sucre y Benjamín Ochoa esquina</span>
                     </p>
                   </div>
                 </div>
                 
-                <div class="flex flex-wrap justify-center gap-6 text-sm font-bold text-white/70">
+                <div class="flex flex-wrap justify-center gap-6 text-sm font-bold text-white/90">
                   <button onClick=${() => navigateTo('nosotros')} class="hover:text-white transition-colors">Inicio</button>
-                  <a href="https://raw.githubusercontent.com/alexzanderj14/versior/main/CatalogoVersior_compressed.pdf" download="Catalogo_VERSIOR_2026.pdf" onClick=${() => trackEvent('file_download', { file_name: 'CatalogoVersior_compressed.pdf', source: 'footer' })} class="text-[#1FB4FA] hover:text-white transition-colors flex items-center gap-1"><${Download} size=${16} /> Descargar Catálogo</a>
+                  <a href="CatalogoVersior_compressed.pdf" download="Catalogo_VERSIOR_2026.pdf" onClick=${() => trackEvent('file_download', { file_name: 'CatalogoVersior_compressed.pdf', source: 'footer' })} class="text-white hover:text-sky-100 transition-colors flex items-center gap-1"><${Download} size=${16} /> Descargar Catálogo</a>
                   <button onClick=${() => navigateTo('servicios')} class="hover:text-white transition-colors">Servicios</button>
                   <button onClick=${() => navigateTo('contacto')} class="hover:text-white transition-colors">Contacto</button>
                   <button onClick=${() => navigateTo('privacidad')} class="hover:text-white transition-colors flex items-center gap-1.5"><${FileText} size=${16} /> Política de Privacidad</button>
                 </div>
               </div>
               
-              <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-semibold text-white/50">
+              <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-semibold text-white/85">
                 <p>&copy; ${new Date().getFullYear()} VERSIOR IMPORT'S. Todos los derechos reservados.</p>
                 <p class="mt-2 md:mt-0">Importamos tecnología, entregamos confianza.</p>
               </div>
