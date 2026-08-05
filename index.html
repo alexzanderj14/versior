@@ -72,8 +72,8 @@
       50% { opacity: 0.8; transform: scale(1.02); }
     }
     @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-300px * 9)); }
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-2700px, 0, 0); }
     }
     @keyframes slideInLeft {
       from {
@@ -185,9 +185,11 @@
     .slide-track {
       animation: scroll 35s linear infinite;
       display: flex;
-      width: calc(300px * 18);
+      width: 5400px;
+      will-change: transform;
     }
     .slide {
+      flex: 0 0 300px;
       height: 150px;
       width: 300px;
       display: flex;
@@ -259,7 +261,7 @@
       "areaServed": "Ecuador",
       "sameAs": [
         "https://www.instagram.com/versiorimports/",
-        "https://www.tiktok.com/@versior_imports",
+        "https://www.tiktok.com/@versiorimports",
         "https://www.linkedin.com/company/versior-imports"
       ],
       "address": {
@@ -473,6 +475,7 @@
       ],
       locations: [
         { city: 'Quito (Principal)', address: 'Pichincha, Quito - Calle Giovani Calles y Palermo, urbanización UTE' },
+        { city: 'La Luz (Quito)', address: 'El Morlán y De los Álamos, barrio Damer II' },
         { city: 'Biblián', address: 'Cañar, Biblián - Av. Mariscal Sucre y Benjamín Ochoa esquina' }
       ]
     };
@@ -1302,14 +1305,14 @@
                     <${ChevronRight} size=${24} class="opacity-70 group-hover:translate-x-1 transition-transform" />
                   </a>
 
-                  <a href="https://www.tiktok.com/@versior_imports" target="_blank" rel="noopener noreferrer" class="relative overflow-hidden rounded-3xl p-6 flex items-center justify-between bg-gradient-to-r from-gray-900 to-black text-white shadow-lg hover:scale-105 transition-transform duration-300 group border border-gray-800">
+                  <a href="https://www.tiktok.com/@versiorimports" target="_blank" rel="noopener noreferrer" class="relative overflow-hidden rounded-3xl p-6 flex items-center justify-between bg-gradient-to-r from-gray-900 to-black text-white shadow-lg hover:scale-105 transition-transform duration-300 group border border-gray-800">
                     <div class="flex items-center gap-4">
                       <div class="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center backdrop-blur-md">
                         <${TikTokIcon} size=${24} />
                       </div>
                       <div class="text-left">
                         <h4 class="font-extrabold text-lg">TikTok</h4>
-                        <p class="text-xs text-white/85 font-semibold">@versior_imports</p>
+                        <p class="text-xs text-white/85 font-semibold">@versiorimports</p>
                       </div>
                     </div>
                     <${ChevronRight} size=${24} class="opacity-70 group-hover:translate-x-1 transition-transform" />
@@ -1362,7 +1365,7 @@
                 <h3 class="text-xl font-bold text-[#065581] mb-3 flex items-center gap-2 font-sans">
                   <span class="w-2.5 h-2.5 rounded-full bg-[#1FB4FA]"></span> 1. Responsable del Tratamiento de Datos
                 </h3>
-                <p>El responsable del tratamiento de los datos de contacto recopilados mediante este sitio es <strong>VERSIOR IMPORT'S</strong>, con atención en Quito y Biblián, Ecuador. Aplicamos medidas razonables de seguridad y limitamos el uso de la información a las finalidades descritas en esta política.</p>
+                <p>El responsable del tratamiento de los datos de contacto recopilados mediante este sitio es <strong>VERSIOR IMPORT'S</strong>, con atención en Quito —incluida la sucursal La Luz— y Biblián, Ecuador. Aplicamos medidas razonables de seguridad y limitamos el uso de la información a las finalidades descritas en esta política.</p>
               </div>
 
               <div class="border-b border-gray-100 pb-6">
@@ -1831,6 +1834,10 @@
                     <p class="flex items-start gap-2 justify-center md:justify-start">
                       <${MapPin} size=${16} class="text-[#1FB4FA] flex-shrink-0 mt-0.5" /> 
                       <span><strong>Quito:</strong> Pichincha, Quito - Calle Giovani Calles y Palermo, urbanización UTE</span>
+                    </p>
+                    <p class="flex items-start gap-2 justify-center md:justify-start">
+                      <${MapPin} size=${16} class="text-[#1FB4FA] flex-shrink-0 mt-0.5" />
+                      <span><strong>La Luz:</strong> Quito - El Morlán y De los Álamos, barrio Damer II</span>
                     </p>
                     <p class="flex items-start gap-2 justify-center md:justify-start">
                       <${MapPin} size=${16} class="text-[#1FB4FA] flex-shrink-0 mt-0.5" /> 
