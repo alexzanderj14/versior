@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <script>
+    document.documentElement.classList.add('js');
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('consent', 'default', {
@@ -84,6 +85,21 @@
         transform: translateX(0);
       }
     }
+
+    @keyframes productSwap {
+      from { opacity: 0; transform: translateY(18px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes productFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-9px); }
+    }
+
+    @keyframes carouselProgress {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
     
     .animate-fade-in-up {
       animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -93,6 +109,47 @@
     }
     .animate-slide-in-left {
       animation: slideInLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .product-swap {
+      animation: productSwap 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .product-float {
+      animation: productFloat 4.5s ease-in-out infinite;
+    }
+
+    .carousel-progress {
+      animation: carouselProgress 5s linear forwards;
+      transform-origin: left;
+    }
+
+    .js [data-reveal] {
+      opacity: 0;
+      transform: translateY(34px);
+      transition:
+        opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .js [data-reveal="left"] { transform: translateX(-40px); }
+    .js [data-reveal="right"] { transform: translateX(40px); }
+    .js [data-reveal="scale"] { transform: scale(0.94); }
+
+    .js [data-reveal].is-visible {
+      opacity: 1;
+      transform: translate(0, 0) scale(1);
+    }
+
+    .reveal-grid > [data-reveal]:nth-child(2) { transition-delay: 80ms; }
+    .reveal-grid > [data-reveal]:nth-child(3) { transition-delay: 160ms; }
+    .reveal-grid > [data-reveal]:nth-child(4) { transition-delay: 240ms; }
+
+    .zoom-stage img {
+      will-change: transform;
+      user-select: none;
+      -webkit-user-drag: none;
     }
     
     .delay-100 { animation-delay: 100ms; }
@@ -173,6 +230,11 @@
         transition-duration: 0.01ms !important;
       }
       .slide-track { animation: none; }
+      .product-float, .carousel-progress { animation: none; }
+      .js [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
     }
   </style>
 
@@ -254,7 +316,14 @@
       GraduationCap,
       Headphones,
       Sparkles,
-      Search
+      Search,
+      ChevronLeft,
+      ZoomIn,
+      ZoomOut,
+      RotateCcw,
+      Maximize2,
+      Pause,
+      Play
     } from 'lucide-preact';
 
     const html = htm.bind(h);
@@ -421,11 +490,43 @@
     ];
 
     const NosotrosView = ({ setActiveTab }) => {
+      const [heroProductIndex, setHeroProductIndex] = useState(0);
+      const [isCarouselUserPaused, setIsCarouselUserPaused] = useState(() =>
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      );
+      const [isCarouselHovered, setIsCarouselHovered] = useState(false);
       const featuredProducts = [
         companyData.products[1],
         companyData.products[2],
         companyData.products[4]
       ];
+      const heroProduct = companyData.products[heroProductIndex];
+      const isCarouselPaused = isCarouselUserPaused || isCarouselHovered;
+
+      useEffect(() => {
+        companyData.products.forEach((product) => {
+          const image = new Image();
+          image.src = product.imageUrl;
+        });
+      }, []);
+
+      useEffect(() => {
+        if (isCarouselPaused) return undefined;
+        const timer = window.setTimeout(() => {
+          setHeroProductIndex((current) => (current + 1) % companyData.products.length);
+        }, 5000);
+        return () => window.clearTimeout(timer);
+      }, [heroProductIndex, isCarouselPaused]);
+
+      const showPreviousProduct = () => {
+        setHeroProductIndex((current) =>
+          (current - 1 + companyData.products.length) % companyData.products.length
+        );
+      };
+
+      const showNextProduct = () => {
+        setHeroProductIndex((current) => (current + 1) % companyData.products.length);
+      };
 
       const benefits = [
         { icon: ShieldCheck, title: '2 años de garantía', text: 'Respaldo real para proteger tu inversión.' },
@@ -476,31 +577,48 @@
                 </div>
               </div>
 
-              <div class="relative animate-fade-in-up delay-100">
+              <div class="relative animate-fade-in-up delay-100" onMouseEnter=${() => setIsCarouselHovered(true)} onMouseLeave=${() => setIsCarouselHovered(false)}>
                 <div class="absolute inset-8 bg-[#1FB4FA]/25 blur-[70px] rounded-full"></div>
-                <div class="relative bg-white rounded-[2rem] p-6 md:p-9 shadow-[0_30px_80px_rgba(0,0,0,.28)] border border-white/60">
+                <div class="relative bg-white rounded-[2rem] p-6 md:p-9 shadow-[0_30px_80px_rgba(0,0,0,.28)] border border-white/60 overflow-hidden" aria-live="polite">
                   <div class="flex items-center justify-between mb-4">
                     <span class="text-xs font-black text-[#065581] uppercase tracking-widest">Equipo destacado</span>
-                    <span class="inline-flex items-center gap-1.5 bg-sky-50 text-[#065581] px-3 py-1.5 rounded-full text-xs font-bold"><${Zap} size=${14} /> Alta precisión</span>
+                    <span class="inline-flex items-center gap-1.5 bg-sky-50 text-[#065581] px-3 py-1.5 rounded-full text-xs font-bold"><${Zap} size=${14} /> ${heroProductIndex + 1} de ${companyData.products.length}</span>
                   </div>
-                  <img src=${companyData.products[1].imageUrl} alt="Autorrefractómetro y queratómetro RK-600" class="w-full h-64 md:h-80 object-contain drop-shadow-2xl" fetchpriority="high" />
-                  <div class="border-t border-gray-100 pt-5 flex items-end justify-between gap-4">
-                    <div>
-                      <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Autorrefractómetro / Queratómetro</p>
-                      <h2 class="text-3xl font-black text-[#065581] mt-1">RK-600</h2>
+                  <div key=${heroProduct.id} class="product-swap">
+                    <img src=${heroProduct.imageUrl} alt=${`${heroProduct.name}, ${heroProduct.type}`} class="product-float w-full h-64 md:h-80 object-contain drop-shadow-2xl" fetchpriority=${heroProductIndex === 0 ? 'high' : 'auto'} />
+                    <div class="border-t border-gray-100 pt-5 flex items-end justify-between gap-4">
+                      <div>
+                        <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">${heroProduct.type}</p>
+                        <h2 class="text-3xl font-black text-[#065581] mt-1">${heroProduct.name}</h2>
+                      </div>
+                      <span class="text-sm font-bold text-gray-500 text-right max-w-[150px]">${heroProduct.features[0]}</span>
                     </div>
-                    <span class="text-sm font-bold text-gray-500 text-right">Medición<br/><strong class="text-[#1FB4FA]">en menos de 0.5 s</strong></span>
                   </div>
+
+                  <div class="mt-5 flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-1.5" aria-label="Seleccionar equipo destacado">
+                      ${companyData.products.map((product, index) => html`
+                        <button key=${product.id} onClick=${() => setHeroProductIndex(index)} aria-label=${`Mostrar ${product.name}`} aria-current=${index === heroProductIndex ? 'true' : undefined} class="h-2.5 rounded-full transition-all duration-300 ${index === heroProductIndex ? 'w-7 bg-[#1FB4FA]' : 'w-2.5 bg-gray-200 hover:bg-gray-300'}"></button>
+                      `)}
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <button onClick=${showPreviousProduct} aria-label="Equipo anterior" class="w-9 h-9 rounded-full border border-gray-200 text-[#065581] flex items-center justify-center hover:bg-sky-50 transition-colors"><${ChevronLeft} size=${18} /></button>
+                      <button onClick=${() => setIsCarouselUserPaused((paused) => !paused)} aria-label=${isCarouselUserPaused ? 'Reproducir carrusel' : 'Pausar carrusel'} class="w-9 h-9 rounded-full border border-gray-200 text-[#065581] flex items-center justify-center hover:bg-sky-50 transition-colors">${isCarouselUserPaused ? html`<${Play} size=${16} />` : html`<${Pause} size=${16} />`}</button>
+                      <button onClick=${showNextProduct} aria-label="Equipo siguiente" class="w-9 h-9 rounded-full border border-gray-200 text-[#065581] flex items-center justify-center hover:bg-sky-50 transition-colors"><${ChevronRight} size=${18} /></button>
+                    </div>
+                  </div>
+
+                  ${!isCarouselPaused && html`<div key=${`progress-${heroProduct.id}`} class="absolute left-0 right-0 bottom-0 h-1 bg-sky-50"><div class="carousel-progress h-full bg-[#1FB4FA]"></div></div>`}
                 </div>
               </div>
             </div>
           </section>
 
           <!-- Pruebas de confianza -->
-          <section class="relative z-20 max-w-7xl mx-auto px-6 -mt-1 md:-mt-8">
-            <div class="grid grid-cols-2 lg:grid-cols-4 bg-white rounded-3xl shadow-[0_16px_50px_rgba(6,85,129,.12)] border border-sky-100 overflow-hidden">
+          <section data-reveal="scale" class="relative z-20 max-w-7xl mx-auto px-6 -mt-1 md:-mt-8">
+            <div class="reveal-grid grid grid-cols-2 lg:grid-cols-4 bg-white rounded-3xl shadow-[0_16px_50px_rgba(6,85,129,.12)] border border-sky-100 overflow-hidden">
               ${benefits.map((item, idx) => html`
-                <div key=${item.title} class="p-5 md:p-7 border-b lg:border-b-0 ${idx % 2 === 0 ? 'border-r' : ''} lg:border-r last:border-r-0 border-sky-100">
+                <div data-reveal key=${item.title} class="p-5 md:p-7 border-b lg:border-b-0 ${idx % 2 === 0 ? 'border-r' : ''} lg:border-r last:border-r-0 border-sky-100">
                   <div class="w-11 h-11 rounded-xl bg-sky-50 text-[#1FB4FA] flex items-center justify-center mb-3"><${item.icon} size=${23} /></div>
                   <h3 class="font-extrabold text-[#065581] text-sm md:text-base">${item.title}</h3>
                   <p class="text-xs md:text-sm text-gray-500 mt-1 leading-relaxed">${item.text}</p>
@@ -510,7 +628,7 @@
           </section>
 
           <!-- Equipos principales -->
-          <section class="max-w-7xl mx-auto px-6 pt-20 md:pt-28">
+          <section data-reveal class="max-w-7xl mx-auto px-6 pt-20 md:pt-28">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-10">
               <div>
                 <span class="text-[#1FB4FA] font-black text-xs uppercase tracking-[0.2em]">Soluciones clínicas</span>
@@ -522,9 +640,9 @@
               </button>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-7">
+            <div class="reveal-grid grid md:grid-cols-3 gap-7">
               ${featuredProducts.map((prod) => html`
-                <article key=${prod.id} class="group rounded-3xl border border-gray-100 bg-white overflow-hidden shadow-[0_10px_35px_rgba(6,85,129,.07)] hover:shadow-[0_18px_45px_rgba(6,85,129,.14)] hover:-translate-y-1.5 transition-all duration-300">
+                <article data-reveal="scale" key=${prod.id} class="group rounded-3xl border border-gray-100 bg-white overflow-hidden shadow-[0_10px_35px_rgba(6,85,129,.07)] hover:shadow-[0_18px_45px_rgba(6,85,129,.14)] hover:-translate-y-1.5 transition-all duration-300">
                   <div class="h-64 bg-gradient-to-b from-sky-50/80 to-white p-7 relative">
                     ${prod.highlight && html`<span class="absolute top-5 left-5 z-10 bg-[#065581] text-white rounded-full px-3 py-1.5 text-[10px] font-black uppercase tracking-widest">Recomendado</span>`}
                     <img src=${prod.imageUrl} alt=${`${prod.name} - ${prod.type}`} loading="lazy" class="w-full h-full object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500" />
@@ -544,7 +662,7 @@
           </section>
 
           <!-- Diferenciación -->
-          <section class="max-w-7xl mx-auto px-6 pt-20 md:pt-28">
+          <section data-reveal="left" class="max-w-7xl mx-auto px-6 pt-20 md:pt-28">
             <div class="rounded-[2rem] bg-[#f2faff] border border-sky-100 p-7 md:p-12 grid lg:grid-cols-[.9fr_1.1fr] gap-10 items-center">
               <div>
                 <span class="text-[#1FB4FA] font-black text-xs uppercase tracking-[0.2em]">Más que una importadora</span>
@@ -572,7 +690,7 @@
           </section>
 
           <!-- Instituciones -->
-          <section class="w-full bg-white pt-20 md:pt-24">
+          <section data-reveal class="w-full bg-white pt-20 md:pt-24">
             <div class="text-center px-6 mb-5">
               <span class="text-[#1FB4FA] font-black text-xs uppercase tracking-[0.2em]">Experiencia comprobable</span>
               <h2 class="text-2xl md:text-3xl font-black text-[#065581] mt-3">Instituciones que confían en nuestra tecnología</h2>
@@ -592,7 +710,7 @@
           </section>
 
           <!-- Identidad y CTA final -->
-          <section class="max-w-7xl mx-auto px-6 pt-16">
+          <section data-reveal="scale" class="max-w-7xl mx-auto px-6 pt-16">
             <div class="grid md:grid-cols-2 gap-6 mb-16">
               <div class="p-7 md:p-9 rounded-3xl border border-gray-100 bg-white shadow-sm">
                 <div class="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-[#1FB4FA] mb-5"><${Target} size=${25} /></div>
@@ -624,6 +742,9 @@
     const ProductosView = ({ setActiveTab }) => {
       const [category, setCategory] = useState('Todos');
       const [search, setSearch] = useState('');
+      const [selectedProduct, setSelectedProduct] = useState(null);
+      const [zoomStep, setZoomStep] = useState(0);
+      const zoomClasses = ['scale-100', 'scale-150', 'scale-[2]', 'scale-[2.5]'];
       const categories = ['Todos', ...new Set(companyData.products.map((product) => product.category))];
       const normalizedSearch = search.toLowerCase().trim();
       const visibleProducts = companyData.products.filter((product) => {
@@ -631,6 +752,33 @@
         const searchableText = `${product.name} ${product.type} ${product.category} ${product.features.join(' ')}`.toLowerCase();
         return matchesCategory && searchableText.includes(normalizedSearch);
       });
+
+      useEffect(() => {
+        if (!selectedProduct) return undefined;
+        const previousOverflow = document.body.style.overflow;
+        const handleKeyDown = (event) => {
+          if (event.key === 'Escape') setSelectedProduct(null);
+          if (event.key === '+' || event.key === '=') setZoomStep((step) => Math.min(step + 1, zoomClasses.length - 1));
+          if (event.key === '-') setZoomStep((step) => Math.max(step - 1, 0));
+        };
+        document.body.style.overflow = 'hidden';
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+          document.body.style.overflow = previousOverflow;
+          window.removeEventListener('keydown', handleKeyDown);
+        };
+      }, [selectedProduct]);
+
+      const openProductViewer = (product) => {
+        setSelectedProduct(product);
+        setZoomStep(0);
+        trackEvent('view_item', { product_name: product.name, source: 'product_image_zoom' });
+      };
+
+      const closeProductViewer = () => {
+        setSelectedProduct(null);
+        setZoomStep(0);
+      };
 
       const handleQuote = (productName) => {
         trackEvent('generate_lead', { source: 'product_card', channel: 'whatsapp', product_name: productName });
@@ -671,26 +819,57 @@
             </div>
 
             ${visibleProducts.length > 0 ? html`
-              <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-7">
-                ${visibleProducts.map((prod) => html`
-                  <article key=${prod.id} class="group bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-[0_8px_28px_rgba(6,85,129,.06)] hover:shadow-[0_16px_42px_rgba(6,85,129,.13)] transition-all duration-300 flex flex-col">
-                    <div class="h-64 bg-gradient-to-b from-sky-50/80 to-white p-7 relative overflow-hidden">
-                      ${prod.highlight && html`<span class="absolute top-5 left-5 z-10 inline-flex items-center gap-1.5 bg-[#065581] text-white rounded-full px-3 py-1.5 text-[10px] font-black uppercase tracking-widest"><${Zap} size=${12} /> Destacado</span>`}
-                      <img src=${prod.imageUrl} alt=${`${prod.name}, ${prod.type}`} loading="lazy" class="w-full h-full object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                      <p class="text-[11px] text-[#1FB4FA] uppercase tracking-[0.16em] font-black">${prod.category}</p>
-                      <h2 class="text-2xl font-black text-[#065581] mt-2">${prod.name}</h2>
-                      <p class="text-sm font-bold text-gray-700 mt-1">${prod.type}</p>
-                      <p class="text-sm text-gray-500 leading-relaxed mt-4">${prod.description}</p>
-                      <div class="mt-5 pt-5 border-t border-gray-100 space-y-3 flex-grow">
-                        ${prod.features.slice(0, 3).map((feature) => html`
-                          <div key=${feature} class="flex items-start gap-2.5 text-sm text-gray-600"><${CheckCircle2} size=${17} class="text-[#1FB4FA] flex-shrink-0 mt-0.5" /><span>${feature}</span></div>
-                        `)}
-                      </div>
-                      <button onClick=${() => handleQuote(prod.name)} class="mt-6 w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3.5 rounded-xl font-black transition-colors shadow-[0_8px_20px_rgba(37,211,102,.18)]">
-                        <${MessageCircle} size=${19} /> Cotizar ${prod.name}
+              <div class="bg-white rounded-[2rem] border border-gray-100 shadow-[0_12px_45px_rgba(6,85,129,.06)] overflow-visible">
+                ${visibleProducts.map((prod, index) => html`
+                  <article key=${prod.id} class="relative border-b border-gray-100 last:border-b-0 px-5 md:px-8 lg:px-12">
+                    <div class="grid lg:grid-cols-2 gap-10 lg:gap-20 items-start py-12 lg:py-20">
+                      <button
+                        type="button"
+                        onClick=${() => openProductViewer(prod)}
+                        aria-label=${`Ampliar imagen de ${prod.name}`}
+                        class="group/image w-full lg:sticky lg:top-28 h-[390px] sm:h-[480px] lg:h-[calc(100vh-9rem)] lg:max-h-[720px] rounded-[2rem] bg-gradient-to-b from-sky-50 via-white to-sky-50/50 border border-sky-100 overflow-hidden p-8 relative cursor-zoom-in ${index % 2 !== 0 ? 'lg:order-2' : ''}"
+                      >
+                        <span class="absolute top-6 left-6 z-10 text-xs font-black text-[#065581]/45 tracking-[0.2em]">${String(index + 1).padStart(2, '0')} / ${String(visibleProducts.length).padStart(2, '0')}</span>
+                        ${prod.highlight && html`<span class="absolute top-6 right-6 z-10 inline-flex items-center gap-1.5 bg-[#065581] text-white rounded-full px-3 py-1.5 text-[10px] font-black uppercase tracking-widest"><${Zap} size=${12} /> Destacado</span>`}
+                        <div class="absolute inset-10 bg-[#1FB4FA]/10 rounded-full blur-[55px] opacity-0 group-hover/image:opacity-100 transition-opacity duration-500"></div>
+                        <img src=${prod.imageUrl} alt=${`${prod.name}, ${prod.type}`} loading=${index === 0 ? 'eager' : 'lazy'} class="product-float relative z-[1] w-full h-full object-contain drop-shadow-[0_22px_28px_rgba(6,85,129,.2)] group-hover/image:scale-105 transition-transform duration-700" />
+                        <span class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 inline-flex items-center gap-2 bg-[#065581]/90 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold opacity-0 group-hover/image:opacity-100 group-focus-visible/image:opacity-100 transition-all"><${Maximize2} size=${15} /> Ver imagen en detalle</span>
                       </button>
+
+                      <div data-reveal=${index % 2 === 0 ? 'right' : 'left'} class="lg:min-h-[calc(100vh-9rem)] flex flex-col justify-center ${index % 2 !== 0 ? 'lg:order-1' : ''}">
+                        <div class="flex items-center gap-3 mb-5">
+                          <span class="text-xs text-[#1FB4FA] uppercase tracking-[0.2em] font-black">${prod.category}</span>
+                          <span class="h-px w-10 bg-sky-200"></span>
+                          <span class="text-xs text-gray-400 font-bold">VERSIOR</span>
+                        </div>
+                        <h2 class="text-4xl md:text-5xl font-black text-[#065581] tracking-tight">${prod.name}</h2>
+                        <p class="text-lg md:text-xl font-bold text-gray-700 mt-3">${prod.type}</p>
+                        <p class="text-xl md:text-2xl text-[#1FB4FA] font-medium mt-6 leading-relaxed">${prod.tagline}</p>
+                        <p class="text-gray-600 leading-relaxed mt-5 text-base md:text-lg">${prod.description}</p>
+
+                        <div class="mt-8">
+                          <h3 class="text-xs font-black text-gray-400 uppercase tracking-[0.2em] mb-4">Características principales</h3>
+                          <div class="reveal-grid space-y-3">
+                            ${prod.features.map((feature) => html`
+                              <div data-reveal key=${feature} class="flex items-start gap-3 bg-[#f8fbfd] border border-sky-100/70 rounded-2xl p-4">
+                                <div class="w-9 h-9 rounded-xl bg-white text-[#1FB4FA] shadow-sm flex items-center justify-center flex-shrink-0"><${CheckCircle2} size=${19} /></div>
+                                <span class="text-sm md:text-base text-gray-700 font-semibold pt-1.5">${feature}</span>
+                              </div>
+                            `)}
+                          </div>
+                        </div>
+
+                        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                          <button onClick=${() => handleQuote(prod.name)} class="flex-1 inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3.5 rounded-xl font-black transition-colors shadow-[0_8px_20px_rgba(37,211,102,.18)]">
+                            <${MessageCircle} size=${19} /> Cotizar ${prod.name}
+                          </button>
+                          <button onClick=${() => openProductViewer(prod)} class="inline-flex items-center justify-center gap-2 bg-sky-50 hover:bg-sky-100 text-[#065581] px-5 py-3.5 rounded-xl font-black transition-colors border border-sky-100">
+                            <${ZoomIn} size=${19} /> Ampliar
+                          </button>
+                        </div>
+
+                        <p class="hidden lg:flex items-center gap-2 text-xs font-bold text-gray-400 mt-8"><span class="w-7 h-px bg-gray-300"></span> Continúa deslizando para descubrir el siguiente equipo</p>
+                      </div>
                     </div>
                   </article>
                 `)}
@@ -705,7 +884,7 @@
             `}
           </section>
 
-          <section class="max-w-7xl mx-auto px-6">
+          <section data-reveal="scale" class="max-w-7xl mx-auto px-6">
             <div class="rounded-3xl bg-sky-50 border border-sky-100 p-7 md:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-7">
               <div>
                 <h2 class="text-2xl md:text-3xl font-black text-[#065581]">¿Necesitas equipar una óptica completa?</h2>
@@ -714,6 +893,38 @@
               <button onClick=${() => { setActiveTab('servicios'); window.scrollTo(0,0); }} class="inline-flex items-center gap-2 bg-[#065581] text-white px-6 py-3.5 rounded-xl font-black hover:bg-[#054366] transition-colors whitespace-nowrap">Ver soluciones integrales <${ArrowRight} size=${19} /></button>
             </div>
           </section>
+
+          ${selectedProduct && html`
+            <div class="fixed inset-0 z-[150] bg-[#032d46]/85 backdrop-blur-md p-3 md:p-6 flex items-center justify-center animate-fade-in" onClick=${closeProductViewer}>
+              <div role="dialog" aria-modal="true" aria-label=${`Vista ampliada de ${selectedProduct.name}`} class="bg-white w-full max-w-6xl max-h-[94vh] rounded-[2rem] shadow-[0_30px_90px_rgba(0,0,0,.4)] overflow-hidden flex flex-col" onClick=${(event) => event.stopPropagation()}>
+                <div class="flex items-center justify-between px-5 md:px-7 py-4 border-b border-gray-100">
+                  <div>
+                    <p class="text-[10px] font-black uppercase tracking-[0.18em] text-[#1FB4FA]">${selectedProduct.category}</p>
+                    <h2 class="text-xl md:text-2xl font-black text-[#065581]">${selectedProduct.name} <span class="text-sm font-semibold text-gray-400">${selectedProduct.type}</span></h2>
+                  </div>
+                  <button onClick=${closeProductViewer} aria-label="Cerrar imagen ampliada" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-red-50 hover:text-red-500 text-gray-500 flex items-center justify-center transition-colors"><${X} size=${21} /></button>
+                </div>
+
+                <div class="zoom-stage flex-grow min-h-0 bg-gradient-to-br from-sky-50 via-white to-sky-50 overflow-hidden relative flex items-center justify-center p-6 md:p-10">
+                  <div class="absolute inset-16 bg-[#1FB4FA]/10 rounded-full blur-[70px]"></div>
+                  <button onClick=${() => setZoomStep((step) => (step + 1) % zoomClasses.length)} aria-label="Aumentar imagen" class="relative w-full h-[52vh] md:h-[64vh] flex items-center justify-center cursor-zoom-in">
+                    <img src=${selectedProduct.imageUrl} alt=${`${selectedProduct.name} ampliado`} class="w-full h-full object-contain drop-shadow-[0_26px_35px_rgba(6,85,129,.24)] transition-transform duration-300 ease-out ${zoomClasses[zoomStep]}" />
+                  </button>
+                  <span class="absolute left-5 bottom-5 bg-white/90 text-gray-500 px-3 py-2 rounded-full text-[11px] font-bold shadow-sm">Zoom ${[100, 150, 200, 250][zoomStep]}%</span>
+                </div>
+
+                <div class="px-5 md:px-7 py-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4 bg-white">
+                  <p class="text-xs text-gray-400 font-semibold hidden md:block">Haz clic sobre la imagen o usa los controles para ampliarla.</p>
+                  <div class="flex items-center gap-2">
+                    <button onClick=${() => setZoomStep((step) => Math.max(step - 1, 0))} disabled=${zoomStep === 0} aria-label="Reducir zoom" class="w-10 h-10 rounded-xl border border-gray-200 text-[#065581] flex items-center justify-center hover:bg-sky-50 disabled:opacity-35"><${ZoomOut} size=${19} /></button>
+                    <button onClick=${() => setZoomStep(0)} aria-label="Restablecer zoom" class="w-10 h-10 rounded-xl border border-gray-200 text-[#065581] flex items-center justify-center hover:bg-sky-50"><${RotateCcw} size=${18} /></button>
+                    <button onClick=${() => setZoomStep((step) => Math.min(step + 1, zoomClasses.length - 1))} disabled=${zoomStep === zoomClasses.length - 1} aria-label="Aumentar zoom" class="w-10 h-10 rounded-xl border border-gray-200 text-[#065581] flex items-center justify-center hover:bg-sky-50 disabled:opacity-35"><${ZoomIn} size=${19} /></button>
+                    <button onClick=${() => handleQuote(selectedProduct.name)} class="ml-2 inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-xl font-black text-sm"><${MessageCircle} size=${18} /> Cotizar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `}
         </div>
       `;
     };
@@ -779,8 +990,8 @@
                 return html`
                   <div 
                     key=${`service-card-${idx}`}
-                    class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 flex flex-col hover:-translate-y-1.5 hover:shadow-2xl transition-all duration-300 group animate-fade-in-up"
-                    style="animation-delay: ${idx * 150}ms;"
+                    data-reveal="scale"
+                    class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 flex flex-col hover:-translate-y-1.5 hover:shadow-2xl transition-all duration-300 group"
                   >
                     <!-- AVATARES REDISEÑADOS CON CORRECCIÓN DE TAMAÑO GIGANTE Y ANIMACIÓN -->
                     <div class="h-80 md:h-[400px] w-full relative overflow-hidden flex items-end justify-center mb-6 rounded-2xl bg-gradient-to-b from-sky-50 to-white border border-sky-100">
@@ -875,7 +1086,7 @@
               </div>
 
               <div class="grid lg:grid-cols-5 gap-12">
-                <div class="lg:col-span-2 space-y-6">
+                <div data-reveal="left" class="lg:col-span-2 space-y-6">
                   <div class="bg-[#1FB4FA] rounded-3xl p-8 text-white shadow-xl animate-fade-in-up delay-100 relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
                     <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
@@ -931,7 +1142,7 @@
                   </div>
                 </div>
 
-                <div class="lg:col-span-3 bg-white border border-gray-100 rounded-3xl p-8 md:p-12 shadow-xl shadow-gray-100/50 animate-fade-in-up delay-300">
+                <div data-reveal="right" class="lg:col-span-3 bg-white border border-gray-100 rounded-3xl p-8 md:p-12 shadow-xl shadow-gray-100/50">
                   <h3 class="text-2xl font-bold text-[#1FB4FA] mb-8">Envíanos un mensaje</h3>
                   <form class="space-y-6" onSubmit=${handleSubmit}>
                     <div class="grid md:grid-cols-2 gap-6">
@@ -1444,6 +1655,40 @@
         };
         document.title = pageTitles[activeTab];
         trackEvent('virtual_page_view', { page_name: activeTab });
+      }, [activeTab]);
+
+      useEffect(() => {
+        const main = document.querySelector('main');
+        if (!main) return undefined;
+
+        if (!('IntersectionObserver' in window)) {
+          main.querySelectorAll('[data-reveal]').forEach((element) => element.classList.add('is-visible'));
+          return undefined;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+        const registerAnimations = () => {
+          main.querySelectorAll('[data-reveal]:not([data-reveal-ready])').forEach((element) => {
+            element.setAttribute('data-reveal-ready', 'true');
+            observer.observe(element);
+          });
+        };
+
+        registerAnimations();
+        const mutationObserver = new MutationObserver(registerAnimations);
+        mutationObserver.observe(main, { childList: true, subtree: true });
+
+        return () => {
+          mutationObserver.disconnect();
+          observer.disconnect();
+        };
       }, [activeTab]);
 
       const tabs = [
