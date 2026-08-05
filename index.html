@@ -520,19 +520,23 @@
 
     const heroImages = [
       {
-        src: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/assets/hero/equipos-opticos-versior.webp',
+        src: 'assets/hero/equipos-opticos-versior.webp',
+        fallback: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/assets/hero/equipos-opticos-versior.webp',
         position: 'center center'
       },
       {
-        src: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/assets/hero/pantalla-optotipo-versior.webp',
+        src: 'assets/hero/pantalla-optotipo-versior.webp',
+        fallback: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/assets/hero/pantalla-optotipo-versior.webp',
         position: 'center center'
       },
       {
-        src: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/assets/hero/respaldo-entrega-versior.webp',
+        src: 'assets/hero/respaldo-entrega-versior.webp',
+        fallback: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/assets/hero/respaldo-entrega-versior.webp',
         position: 'center center'
       },
       {
-        src: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/assets/hero/autorrefractometro-instalado-versior.webp',
+        src: 'assets/hero/autorrefractometro-instalado-versior.webp',
+        fallback: 'https://raw.githubusercontent.com/alexzanderj14/versior/main/assets/hero/autorrefractometro-instalado-versior.webp',
         position: 'center center'
       }
     ];
@@ -630,6 +634,9 @@
                   fetchpriority=${index === 0 ? 'high' : 'auto'}
                   class=${`hero-photo ${index === heroBackgroundIndex ? 'is-active' : ''}`}
                   style=${`object-position: ${item.position}`}
+                  onError=${(event) => {
+                    if (event.currentTarget.src !== item.fallback) event.currentTarget.src = item.fallback;
+                  }}
                 />
               `)}
             </div>
