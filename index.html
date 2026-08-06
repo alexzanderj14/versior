@@ -42,7 +42,7 @@
 
   <link rel="preload" as="image" href="assets/hero/equipos-opticos-versior.webp" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/versior-20260805.min.css">
-  <link rel="modulepreload" href="assets/js/versior-app-20260805.min.js">
+  <link rel="modulepreload" href="assets/js/versior-app-20260806.min.js">
 
   <style>
     body {
@@ -185,6 +185,7 @@
     .slider::before { left: 0; top: 0; }
     .slide-track {
       animation: scroll 35s linear infinite;
+      animation-play-state: running;
       display: flex;
       width: max-content;
       will-change: transform;
@@ -349,9 +350,16 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
-      .slide-track { animation: none; }
-      .product-float, .carousel-progress { animation: none; }
-      .hero-photo { transform: none !important; }
+      .slide-track {
+        animation: scroll 35s linear infinite !important;
+        animation-play-state: running !important;
+      }
+      .carousel-progress { animation: carouselProgress 5s linear forwards !important; }
+      .product-float { animation: none; }
+      .hero-photo {
+        transform: none !important;
+        transition: opacity 0.2s linear !important;
+      }
       .js [data-reveal] {
         opacity: 1 !important;
         transform: none !important;
@@ -389,6 +397,6 @@
 
   <div id="app"></div>
 
-  <script type="module" src="assets/js/versior-app-20260805.min.js"></script>
+  <script type="module" src="assets/js/versior-app-20260806.min.js"></script>
 </body>
 </html>
