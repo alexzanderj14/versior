@@ -350,6 +350,12 @@
       box-shadow: 0 0 14px rgba(31, 180, 250, .5), 0 18px 40px rgba(6, 85, 129, .2);
     }
 
+    .qr-share-card img {
+      width: 10rem;
+      height: 10rem;
+      object-fit: contain;
+    }
+
     .section-nav {
       background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 50%, #eef8fc 100%);
       border-top: 1px solid #dbeafe;
@@ -438,6 +444,7 @@
       .hero-photo {
         object-position: var(--hero-position-mobile, var(--hero-position-desktop, center center));
       }
+      .qr-share-card img { width: 9rem; height: 9rem; }
       .section-nav { padding: 1.5rem 1rem 1.75rem; }
       .section-nav__inner { align-items: stretch; flex-direction: column; gap: 1rem; }
       .section-nav__controls { min-width: 0; width: 100%; }
