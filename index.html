@@ -12,8 +12,13 @@
       ad_personalization: 'denied',
       wait_for_update: 500
     });
+    gtag('set', 'ads_data_redaction', true);
   </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWYKXESHG4"></script>
   <script>
+    gtag('js', new Date());
+    gtag('config', 'G-PWYKXESHG4');
+
     let gtmLoaded = false;
     window.loadGoogleTagManager = () => {
       if (gtmLoaded) return;
@@ -25,6 +30,7 @@
       gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MZGKQPFH';
       firstScript.parentNode.insertBefore(gtmScript, firstScript);
     };
+    window.loadGoogleTagManager();
   </script>
 
   <meta charset="UTF-8">
