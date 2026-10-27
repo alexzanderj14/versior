@@ -4,7 +4,13 @@
   <script>
     document.documentElement.classList.add('js');
     window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
+    function gtag(){
+      dataLayer.push(arguments);
+      if (arguments[0] === 'consent' && arguments[1] === 'update' &&
+          typeof window.updateVersiorMetaPixelConsent === 'function') {
+        window.updateVersiorMetaPixelConsent(arguments[2] || {});
+      }
+    }
     gtag('consent', 'default', {
       ad_storage: 'denied',
       analytics_storage: 'denied',
@@ -32,6 +38,78 @@
     };
     window.loadGoogleTagManager();
   </script>
+
+  <!-- Meta Pixel Code: only loads after the visitor accepts measurement cookies. -->
+  <script id="versior-meta-pixel">
+    (function(w, d) {
+      if (w.updateVersiorMetaPixelConsent) return;
+
+      var initialized = false;
+      var pageViewSent = false;
+      var consentGranted = false;
+      var permissions = {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      };
+
+      w.updateVersiorMetaPixelConsent = function(consent) {
+        Object.keys(permissions).forEach(function(key) {
+          if (Object.prototype.hasOwnProperty.call(consent, key)) {
+            permissions[key] = consent[key];
+          }
+        });
+        var allowed = Object.keys(permissions).every(function(key) {
+          return permissions[key] === 'granted';
+        });
+
+        try {
+          if (!allowed) {
+            if (initialized && consentGranted) w.fbq('consent', 'revoke');
+            consentGranted = false;
+            return;
+          }
+
+          if (!initialized) {
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(w, d,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            w.fbq('consent', 'revoke');
+            w.fbq('init', '1176204758693621');
+            initialized = true;
+          }
+
+          if (!consentGranted) w.fbq('consent', 'grant');
+          consentGranted = true;
+          if (!pageViewSent) {
+            w.fbq('track', 'PageView');
+            pageViewSent = true;
+          }
+        } catch (error) {
+          console.warn('No se pudo iniciar el píxel de Meta.', error);
+        }
+      };
+
+      try {
+        if (w.localStorage.getItem('versior_cookie_consent') === 'accepted') {
+          w.updateVersiorMetaPixelConsent({
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted'
+          });
+        }
+      } catch (error) {
+        // Keep Meta blocked when a saved consent choice cannot be read.
+      }
+    })(window, document);
+  </script>
+  <!-- No noscript tracking image: it would bypass the cookie consent banner. -->
+  <!-- End Meta Pixel Code -->
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
