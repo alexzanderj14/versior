@@ -498,6 +498,31 @@ footer, .footer-privacy a, .footer-privacy button { font-size: 12px; line-height
 @media (max-width:760px) { .equipment-dom-word { font-size: clamp(25px, 8.7vw, 39px); } }
 
 </style>
+<style id="versior-catalog-blue-critical">
+/* Move the former story's brand-blue canvas to the equipment catalogue only. */
+#equipos { background: #065581; color: #FDFDFD; --muted: rgb(253 253 253 / .85); --line: rgb(253 253 253 / .26); }
+#equipos .chapter-label, #equipos .chapter-label span { color: rgb(253 253 253 / .9); }
+#equipos .section-heading h2, #equipos .section-heading h2 > span, #equipos .equipment-name h3 { color: #FDFDFD; }
+#equipos #equipment-title .catalog-invite { color: #1FB4FA; }
+#equipos .section-heading > div > p, #equipos .equipment-name p, #equipos .swipe-hint { color: rgb(253 253 253 / .9); }
+#equipos .catalog-download, #equipos .equipment-action { color: #FDFDFD; border-color: rgb(253 253 253 / .65); }
+#equipos .equipment-open { color: #FDFDFD; }
+#equipos .product-category { color: rgb(253 253 253 / .85); }
+#equipos .equipment-name > span { color: #1FB4FA; }
+#equipos .rail-controls button { color: #FDFDFD; border-color: rgb(253 253 253 / .6); }
+#equipos .rail-controls button:hover { color: #000000; background: #1FB4FA; border-color: #1FB4FA; }
+#equipos .equipment-rail { scrollbar-color: #1FB4FA rgb(253 253 253 / .15); }
+#equipos .equipment-image { background: transparent; }
+#equipos .equipment-image::before { background: radial-gradient(ellipse, rgb(0 0 0 / .17), transparent 66%); }
+#equipos .card-formation, #equipos .equipment-dom-formation { background: #065581; }
+#equipos .equipment-dom-word { color: #FDFDFD; }
+#equipos .equipment-dom-slice > img { filter: drop-shadow(0 16px 12px rgb(0 0 0 / .24)); }
+#equipos :focus-visible { outline-color: #FDFDFD; }
+/* The people section keeps its original light palette and existing content. */
+#servicios.service-people { margin: 0; padding: 64px var(--gutter); border-top: 0; background: #FDFDFD; color: #000000; }
+@media (max-width: 760px) { #servicios.service-people { padding-block: 45px; } }
+
+</style>
 </head>
 <body>
 <noscript><iframe title="Google Tag Manager" src="https://www.googletagmanager.com/ns.html?id=GTM-MZGKQPFH" height="0" width="0" class="gtm-hidden"></iframe></noscript>
@@ -520,7 +545,7 @@ footer, .footer-privacy a, .footer-privacy button { font-size: 12px; line-height
       <p class="eyebrow hero-enter">Tecnología optométrica y oftalmológica</p>
       <h1 id="hero-title" class="hero-enter">UNA VISIÓN<br><span>QUE AVANZA.</span></h1>
       <p class="hero-description hero-enter">Equipos, diseño de ópticas y respaldo profesional.<br>Tu visión, acompañada en cada paso.</p>
-      <a class="round-link hero-enter" href="#precision"><span class="round-arrow" aria-hidden="true">↓</span> Descubre la historia</a>
+      <a class="round-link hero-enter" href="#equipos"><span class="round-arrow" aria-hidden="true">↓</span> Descubre los equipos</a>
     </div>
     <div class="hero-product" role="region" aria-roledescription="carrusel" aria-label="Equipos destacados">
       <div class="product-scene">
@@ -549,81 +574,12 @@ footer, .footer-privacy a, .footer-privacy button { font-size: 12px; line-height
         <p class="sr-only" id="hero-carousel-status" role="status"></p>
       </div>
     </div>
-    <div class="hero-bottom"><span>VERSIOR IMPORT’S · ECUADOR</span><span class="hero-bottom-center">2 % de las ventas para obras sociales</span><a class="scroll-indicator" href="#precision">Desliza para explorar <i aria-hidden="true"></i></a></div>
+    <div class="hero-bottom"><span>VERSIOR IMPORT’S · ECUADOR</span><span class="hero-bottom-center">2 % de las ventas para obras sociales</span><a class="scroll-indicator" href="#equipos">Desliza para explorar <i aria-hidden="true"></i></a></div>
   </section>
   <section class="opening section-pad" aria-labelledby="opening-title">
     <div class="chapter-label reveal"><span>El punto de partida</span></div>
     <h2 id="opening-title" class="statement reveal">Tú tienes la visión.<br>Nosotros, <em>el respaldo.</em></h2>
     <div class="opening-bottom reveal"><p>Acercamos tecnología, conocimiento y acompañamiento a quienes cuidan la visión de las personas.</p></div>
-  </section>
-  <section class="scroll-story tone-blue" id="precision" aria-label="De la visión a la tecnología de VERSIOR">
-    <div class="story-stage">
-      <div class="story-kicker"><span class="eyebrow">De la idea al equipo</span><span class="story-index" aria-hidden="true">01 / 07</span></div>
-      <div class="story-visual" aria-hidden="true">
-        <div class="story-word">VISIÓN</div>
-        <div class="story-devices">
-          <img class="story-device is-current" src="assets/products/cutouts/vc-235.webp" width="719" height="548" loading="lazy" alt="">
-          <img class="story-device" src="assets/products/cutouts/ls-4.webp" width="608" height="860" loading="lazy" alt="">
-          <img class="story-device" src="assets/products/cutouts/rk-600.webp" width="593" height="684" loading="lazy" alt="">
-          <img class="story-device" src="assets/products/cutouts/ark-7610.webp" width="686" height="860" loading="lazy" alt="">
-          <img class="story-device" src="assets/products/cutouts/lm-260.webp" width="368" height="860" loading="lazy" alt="">
-          <img class="story-device" src="assets/products/cutouts/c-190a.webp" width="376" height="631" loading="lazy" alt="">
-          <img class="story-device" src="assets/products/cutouts/cp-266.webp" width="708" height="829" loading="lazy" alt="">
-        </div>
-        <canvas class="formation-canvas" aria-hidden="true"></canvas>
-        <span class="story-model">VC–235</span>
-      </div>
-      <div class="story-beats">
-        <article class="story-beat is-current" data-story-word="VISIÓN" data-story-model="VC–235" data-story-product="vc-235">
-          <p class="tiny-label">Visión</p>
-          <h2>Una idea que<br><span>mira más lejos.</span></h2>
-          <p>Todo empieza con tu visión de cómo quieres atender. Te acompañamos para convertir esa idea en una óptica o consultorio que refleje tu forma de trabajar.</p>
-          <img class="story-static-device" src="assets/products/cutouts/vc-235.webp" width="719" height="548" loading="lazy" alt="Pantalla optotipo VC-235">
-        </article>
-        <article class="story-beat" data-story-word="DETALLE" data-story-model="LS–4" data-story-product="ls-4">
-          <p class="tiny-label">Cuidar la vista</p>
-          <h2>Cuidar la vista<br><span>es ver el detalle.</span></h2>
-          <p>Desde la prueba de agudeza visual hasta el examen con lámpara de hendidura, cada observación te ayuda a conocer mejor la salud visual de tus pacientes.</p>
-          <img class="story-static-device" src="assets/products/cutouts/ls-4.webp" width="608" height="860" loading="lazy" alt="Lámpara de hendidura LS-4">
-        </article>
-        <article class="story-beat" data-story-word="TECNOLOGÍA" data-story-model="RK–600" data-story-product="rk-600">
-          <p class="tiny-label">Tecnología</p>
-          <h2>Precisión para<br><span>tu consulta.</span></h2>
-          <p>Acercamos equipos de refracción y diagnóstico con capacitación para que puedas incorporarlos al trabajo diario de tu equipo.</p>
-          <img class="story-static-device" src="assets/products/cutouts/rk-600.webp" width="593" height="684" loading="lazy" alt="Autorrefractómetro RK-600">
-        </article>
-        <article class="story-beat" data-story-word="PRECISIÓN" data-story-model="ARK–7610" data-story-product="ark-7610">
-          <p class="tiny-label">Refracción</p>
-          <h2>Medir con<br><span>confianza.</span></h2>
-          <p>Tu consulta merece herramientas a la altura de tu trabajo. Encuentra tecnología de refracción con acompañamiento para elegir y aprovechar tu equipo.</p>
-          <img class="story-static-device" src="assets/products/cutouts/ark-7610.webp" width="686" height="860" loading="lazy" alt="Autorrefractómetro ARK-7610">
-        </article>
-        <article class="story-beat" data-story-word="CLARIDAD" data-story-model="LM–260" data-story-product="lm-260">
-          <p class="tiny-label">Cada lente cuenta</p>
-          <h2>Claridad en<br><span>cada lente.</span></h2>
-          <p>Del equipo a tu rutina: tecnología, capacitación y respaldo para acompañar el trabajo de tu óptica.</p>
-          <img class="story-static-device" src="assets/products/cutouts/lm-260.webp" width="368" height="860" loading="lazy" alt="Lensómetro digital LM-260">
-        </article>
-        <article class="story-beat" data-story-word="ERGONOMÍA" data-story-model="C–190A" data-story-product="c-190a">
-          <p class="tiny-label">Tu espacio de trabajo</p>
-          <h2>Comodidad para<br><span>seguir avanzando.</span></h2>
-          <p>Una mesa de trabajo y una unidad clínica que se integran a tu espacio. Equipa tu consulta pensando en tu equipo y en las personas que atiendes.</p>
-          <img class="story-static-device" src="assets/products/cutouts/c-190a.webp" width="376" height="631" loading="lazy" alt="Unidad de diagnóstico y mesa de trabajo C-190A">
-        </article>
-        <article class="story-beat" data-story-word="CRECIMIENTO" data-story-model="266 LENTILLAS" data-story-product="cp-266">
-          <p class="tiny-label">Potencia tu negocio</p>
-          <h2>Más posibilidades.<br><span>Mismo respaldo.</span></h2>
-          <p>Equipa o remodela tu espacio con asesoría, instalación y soporte posventa para que tu negocio siga avanzando después de la compra.</p>
-          <img class="story-static-device" src="assets/products/cutouts/cp-266.webp" width="708" height="829" loading="lazy" alt="Caja de pruebas de 266 lentillas">
-          <a class="text-link light" href="#contacto">Hablemos de tu óptica <span aria-hidden="true">↗</span></a>
-        </article>
-      </div>
-      <div class="formation-footer">
-        <span class="formation-cue">Historia automática <button type="button" class="story-auto-pause" data-story-pause aria-label="Pausar historia" aria-pressed="false">Ⅱ</button></span>
-        <div class="story-progress" aria-hidden="true"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div>
-        <a class="formation-skip" href="#equipos">Ver equipos <span aria-hidden="true">↗</span></a>
-      </div>
-    </div>
   </section>
   <section class="equipment section-pad" id="equipos" aria-labelledby="equipment-title"><div class="chapter-label reveal"><span>Tecnología para avanzar</span><span>Elige tu siguiente paso</span></div><div class="section-heading reveal"><h2 id="equipment-title">TU PRÓXIMO<br><span>GRAN EQUIPO.</span><span class="catalog-invite">¡Elígelo!</span></h2><div><p>De la refracción al diagnóstico.<br>Explora las soluciones para tu práctica.</p><a class="catalog-download" href="CatalogoVersior_compressed.pdf" download="Catalogo_VERSIOR_2026.pdf">Descargar catálogo PDF <span aria-hidden="true">↓</span></a><div class="rail-controls"><button data-rail="-1" aria-label="Ver equipos anteriores">←</button><button data-rail="1" aria-label="Ver siguientes equipos">→</button><button type="button" data-catalog-motion aria-label="Pausar efectos del catálogo" aria-pressed="false">Ⅱ</button></div></div></div>
     <div class="equipment-rail" tabindex="0" aria-label="Catálogo de equipos; desliza para explorar">
@@ -635,7 +591,8 @@ footer, .footer-privacy a, .footer-privacy button { font-size: 12px; line-height
       <article class="equipment-item"><button class="equipment-open" data-product="c-190a" aria-label="Ver detalles de la C-190A"><span class="product-category">06 / Unidades clínicas</span><div class="equipment-image"><img src="assets/products/cutouts/c-190a.webp" width="376" height="631" loading="lazy" alt="C-190A"></div><div class="equipment-name"><div><h3>C–190A</h3><p>Unidad de diagnóstico</p></div><span aria-hidden="true">↗</span></div><span class="equipment-action">Explorar equipo</span></button></article>
       <article class="equipment-item"><button class="equipment-open" data-product="cp-266" aria-label="Ver detalles de la caja de pruebas"><span class="product-category">07 / Diagnóstico</span><div class="equipment-image"><img src="assets/products/cutouts/cp-266.webp" width="708" height="829" loading="lazy" alt="Caja de pruebas de 266 lentillas"></div><div class="equipment-name"><div><h3>266 LENTILLAS</h3><p>Caja de pruebas profesional</p></div><span aria-hidden="true">↗</span></div><span class="equipment-action">Explorar equipo</span></button></article>
     </div><p class="swipe-hint">Desliza para explorar la colección <span aria-hidden="true">⟷</span></p>
-    <section class="service-people" id="servicios" aria-labelledby="people-title">
+  </section>
+  <section class="service-people section-pad" id="servicios" aria-labelledby="people-title">
       <div class="support-heading"><div><p class="eyebrow">El respaldo tiene nombre</p><h2 id="people-title">TECNOLOGÍA CON<br><span>RESPALDO HUMANO.</span></h2></div><p>Garantía, conocimiento y orientación.<br>Personas que te acompañan.</p></div>
       <div class="support-tabs" role="tablist" aria-label="Nuestro acompañamiento">
         <button type="button" role="tab" id="support-tab-guarantee" aria-controls="support-guarantee" aria-selected="true" tabindex="0"><span>01 / Alex</span><strong>2 años de garantía</strong><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m4 20 16-16M4 4h16v16"/></svg></i></button>
@@ -657,7 +614,6 @@ footer, .footer-privacy a, .footer-privacy button { font-size: 12px; line-height
         </section>
       </div>
       <div class="support-controls"><p>De persona a persona.</p><button type="button" data-support-toggle hidden aria-label="Pausar la presentación de nuestro equipo"><span aria-hidden="true">Ⅱ</span> Pausar presentación</button><p class="sr-only" role="status" id="support-status"></p></div>
-    </section>
   </section>
   <section class="experience" id="experiencia" aria-labelledby="experience-title"><div class="experience-photo"><img src="assets/hero/versior-equipos-showroom-20260806.webp" width="1672" height="941" loading="lazy" alt="Equipos de salud visual presentados en un espacio óptico"></div><div class="experience-shade"></div><div class="experience-copy section-pad"><p class="eyebrow reveal">02 / Un espacio a la altura de tu visión</p><h2 id="experience-title" class="reveal">TU ESPACIO.<br><span>TU ESENCIA.</span></h2><div class="experience-bottom reveal"><p>La tecnología importa.<br>El lugar donde cobra vida, también.</p><div><p>Diseñamos espacios ópticos funcionales, cómodos y coherentes con tu marca. Construcción y remodelación, con acompañamiento profesional.</p><a class="round-link" href="https://wa.me/593990331482" target="_blank" rel="noopener"><span class="round-arrow" aria-hidden="true">↗</span> Hablemos de tu óptica</a></div></div></div></section>
   <section class="purpose tone-blue section-pad" id="proposito" aria-labelledby="purpose-title"><div class="chapter-label reveal"><span>04 / Nuestra razón para avanzar</span><span>Responsabilidad social</span></div><div class="purpose-layout"><div class="purpose-number reveal">2<span>%</span><div class="purpose-orbit" aria-hidden="true"></div></div><div class="purpose-copy reveal"><p class="tiny-label">De nuestras ventas. Para abrir oportunidades.</p><h2 id="purpose-title">HAY VISIONES<br>QUE MERECEN<br><em>UNA OPORTUNIDAD.</em></h2><p>Destinamos el <strong>2 % de nuestras ventas</strong> a realizar misiones y obras sociales en beneficio de personas de escasos recursos.</p><p class="purpose-closing">Porque avanzar también es ayudar a otros a ver un futuro mejor.</p></div></div>
@@ -1194,122 +1150,18 @@ heroControls.hidden = false;
 updateHeroControls();
 document.addEventListener('visibilitychange', scheduleHeroAdvance);
 
-const story = document.querySelector('.scroll-story');
-const storyStage = story.querySelector('.story-stage');
-const storyBeats = [...story.querySelectorAll('.story-beat')];
-const storyDevices = [...story.querySelectorAll('.story-device')];
-const storySegments = [...story.querySelectorAll('.story-progress i')];
-const storyWord = story.querySelector('.story-word');
-const storyModel = story.querySelector('.story-model');
-const storyIndex = story.querySelector('.story-index');
-const storyFormation = window.createVersiorFormation?.(story);
+// Shared scrolling behaviour remains after the story section is removed.
 const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
 const progressBar = document.querySelector('.reading-progress i');
 const experience = document.querySelector('.experience');
 const floatingContact = document.querySelector('.floating-contact');
 const contact = document.querySelector('.contact');
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
-
-let storyAnimated;
-let currentBeat = -1;
 let scrollFrame = 0;
-let scrollBeat = -1, storyInView = false, storyPaused = false;
-let storyAutoFrame = 0, storyElapsed = 0, storyClock = null;
-const storyPause = story.querySelector('[data-story-pause]');
-const storySceneDuration = 9000;
-
-function scheduleStoryPlayback() {
-  if (storyAutoFrame) cancelAnimationFrame(storyAutoFrame);
-  storyAutoFrame = 0;
-  storyClock = null;
-  const playing = storyAnimated && storyInView && !storyPaused && !document.hidden && !document.body.classList.contains('chat-open');
-  story.dataset.autoplayState = playing ? 'playing' : 'idle';
-  if (playing) storyAutoFrame = requestAnimationFrame(playStory);
-}
-
-function resetStoryScene(index) {
-  showStoryBeat(index);
-  storyElapsed = 0;
-  storyClock = null;
-  if (!motion.matches) storyFormation?.render(index, 0);
-}
-
-function playStory(now) {
-  storyAutoFrame = 0;
-  if (!storyAnimated || !storyInView || storyPaused || document.hidden || document.body.classList.contains('chat-open')) return;
-  if (storyClock !== null) storyElapsed += Math.max(0, now - storyClock);
-  storyClock = now;
-  if (storyElapsed >= storySceneDuration) {
-    resetStoryScene((currentBeat + 1) % storyBeats.length);
-    storyClock = now;
-  }
-  // Once a scene enters the viewport, its word-to-product build completes itself.
-  const progress = clamp((storyElapsed - 650) / 2400) * .82;
-  if (!motion.matches) storyFormation?.render(currentBeat, progress);
-  story.dataset.autoplayProgress = progress.toFixed(3);
-  story.dataset.autoplayBeat = String(currentBeat);
-  storySegments.forEach((segment, index) => segment.style.setProperty('--segment-progress', index < currentBeat ? '1' : index === currentBeat ? String(storyElapsed / storySceneDuration) : '0'));
-  storyAutoFrame = requestAnimationFrame(playStory);
-}
-
-storyPause?.addEventListener('click', () => {
-  storyPaused = !storyPaused;
-  storyPause.setAttribute('aria-label', storyPaused ? 'Reanudar historia' : 'Pausar historia');
-  storyPause.setAttribute('aria-pressed', String(storyPaused));
-  storyPause.textContent = storyPaused ? '▶' : 'Ⅱ';
-  scheduleStoryPlayback();
-});
-document.addEventListener('visibilitychange', scheduleStoryPlayback);
-document.addEventListener('versior:chat-toggle', scheduleStoryPlayback);
-
-function showStoryBeat(index) {
-  currentBeat = index;
-  storyBeats.forEach((beat, beatIndex) => {
-    const current = beatIndex === index;
-    const inactive = storyAnimated && !current;
-    beat.classList.toggle('is-current', current);
-    beat.toggleAttribute('inert', inactive);
-    if (inactive) beat.setAttribute('aria-hidden', 'true');
-    else beat.removeAttribute('aria-hidden');
-    storyDevices[beatIndex].classList.toggle('is-current', current);
-  });
-
-  const { storyWord: word, storyModel: model } = storyBeats[index].dataset;
-  storyWord.textContent = word;
-  storyModel.textContent = model;
-  storyIndex.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(storyBeats.length).padStart(2, '0');
-}
-
-function updateStoryMode() {
-  // Available on desktop and mobile, including short laptop windows.
-  storyAnimated = true;
-  story.classList.toggle('is-animated', storyAnimated);
-  storyFormation?.setMode(!motion.matches);
-  scrollBeat = -1;
-  resetStoryScene(0);
-  scheduleStoryPlayback();
-  scheduleScroll();
-}
-
-function updateStory(bounds) {
-  const travel = Math.max(1, bounds.height - storyStage.offsetHeight);
-  const progress = clamp(-bounds.top / travel);
-  const chapterProgress = progress * storyBeats.length;
-  const scrollLinked = getComputedStyle(storyStage).position === 'sticky';
-  const nextBeat = scrollLinked ? Math.min(storyBeats.length - 1, Math.floor(chapterProgress)) : Math.max(0, scrollBeat);
-  const visible = bounds.top < innerHeight * .65 && bounds.bottom > innerHeight * .35;
-  const changed = nextBeat !== scrollBeat;
-  if (changed) { scrollBeat = nextBeat; resetStoryScene(nextBeat); }
-  if (visible !== storyInView || changed) {
-    storyInView = visible;
-    scheduleStoryPlayback();
-  }
-}
 
 function updateScroll() {
   const viewport = innerHeight;
   const heroBounds = hero.getBoundingClientRect();
-  const storyBounds = story.getBoundingClientRect();
   const railBounds = rail.getBoundingClientRect();
   const experienceBounds = experience.getBoundingClientRect();
   const heroVisible = heroBounds.top < viewport && heroBounds.bottom > viewport * .18;
@@ -1327,7 +1179,6 @@ function updateScroll() {
     rail.style.setProperty('--equipment-depth', equipmentDepth.toFixed(4));
     experience.style.setProperty('--scene', experienceProgress.toFixed(4));
   }
-  updateStory(storyBounds);
 
   const scrollProgress = clamp(scrollY / Math.max(1, document.documentElement.scrollHeight - viewport));
   progressBar.style.transform = 'scaleX(' + scrollProgress + ')';
@@ -1347,9 +1198,8 @@ addEventListener('scroll', scheduleScroll, { passive: true });
 addEventListener('resize', scheduleScroll, { passive: true });
 motion.addEventListener('change', () => {
   updateHeroControls();
-  updateStoryMode();
 });
-updateStoryMode();
+scheduleScroll();
 
 function addPointerTilt(hitArea, styleTarget, xProperty, yProperty, range) {
   hitArea.addEventListener('pointermove', event => {
@@ -1543,7 +1393,7 @@ document.querySelector('#year').textContent=new Date().getFullYear();
       const images=document.createElement('div'); images.className='story-devices'; images.append(original.cloneNode());
       const meta=document.createElement('div'); meta.className='story-beat'; meta.dataset.storyWord=state.word; meta.dataset.storyProduct=button.dataset.product;
       visual.append(images,meta,canvas); board.append(visual); host.append(board); state.board=board;
-      try { state.controller=window.createVersiorFormation(board,{compact:true,wordColor:'#065581'}); } catch (error) { board.remove(); }
+      try { state.controller=window.createVersiorFormation(board,{compact:true,wordColor:'#FDFDFD'}); } catch (error) { board.remove(); }
     }
     host.dataset.effectState='ready'; states.push(state);
   });
@@ -1572,8 +1422,7 @@ document.querySelector('#year').textContent=new Date().getFullYear();
   });
   const beliefs=document.querySelector('.beliefs');
   if (beliefs) new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('corporate-visible',entry.isIntersecting)),{threshold:.12}).observe(beliefs);
-  document.documentElement.dataset.versiorEffects='visible-repeat-v5';
+  document.documentElement.dataset.versiorEffects='catalog-blue-v6';
 })();
-
 </script>
 </body></html>
