@@ -273,7 +273,7 @@ dialog#versior-chat[open] { display: flex; flex-direction: column; gap: 0; }
 .support-controls, .contact footer { padding-right: 70px; }
 
 </style>
-  <script src="versior-formation-20261112.js" defer></script><script src="versior-experience-20261112-r2.js" defer></script><script src="versior-assistant-20261112.js" defer></script><script src="versior-consent-20261112.js" defer></script>
+  <script src="versior-assistant-20261112.js" defer></script><script src="versior-consent-20261112.js" defer></script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -301,6 +301,50 @@ dialog#versior-chat[open] { display: flex; flex-direction: column; gap: 0; }
       }
     }
   </script>
+<style id="versior-visible-effects">
+/* Effect state is explicit; a device preference never fails silently. */
+.motion-on .formation-canvas { display: block; }
+.motion-paused .card-formation { display: none; }
+.motion-paused .equipment-image > img { opacity: 1 !important; }
+.equipment-image.formation-catalog-active > img { opacity: 0; }
+.card-formation {
+  position: absolute; inset: 0; z-index: 3; opacity: 0; background: var(--paper);
+  isolation: isolate; pointer-events: none; overflow: hidden;
+}
+.card-formation.has-formation { opacity: 1; }
+.card-formation .story-visual { position: absolute; inset: 0; width: 100%; height: 100% !important; min-height: 0; max-height: none; perspective: none; }
+.card-formation .story-devices, .card-formation .story-beat { display: none !important; }
+.card-formation .formation-canvas { opacity: 1; visibility: visible; }
+.motion-on .service-people.is-in-view .support-panel:not([hidden]) .portrait-base { animation: portrait-focus 1.35s cubic-bezier(.22,1,.36,1) both !important; }
+.motion-on .support-gallery-duo .support-person:nth-child(2) .portrait-base { animation-delay: .16s !important; }
+.motion-on .beliefs.corporate-visible .belief-icon svg { animation: corporate-icon-in 1s cubic-bezier(.22,1,.36,1) both !important; }
+.motion-on .beliefs.corporate-visible > .belief:nth-child(2) .belief-icon svg { animation-delay: .16s !important; }
+.motion-on .beliefs.corporate-visible > .belief:nth-child(3) .belief-icon svg { animation-delay: .32s !important; }
+.motion-on .belief[open] .belief-content { animation: corporate-content-in .55s ease-out both !important; }
+@keyframes corporate-icon-in {
+  from { opacity: 0; transform: translateY(12px) scale(.8); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes corporate-content-in {
+  from { opacity: 0; transform: translateY(9px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.motion-paused .logo-track { animation-play-state: paused !important; }
+.motion-on .logo-track { animation-play-state: running; }
+.motion-notice {
+  position: fixed; z-index: 110; bottom: 20px; left: 20px; width: min(360px, calc(100vw - 40px));
+  padding: 15px 17px; background: var(--paper); color: var(--blue); border: 1px solid rgb(6 85 129 / .3);
+  box-shadow: 0 8px 35px rgb(0 0 0 / .12); font-size: 11px; line-height: 1.7;
+}
+.motion-notice[hidden] { display: none; }
+.motion-notice button { background: var(--blue); color: var(--paper); border: 0; min-height: 44px; padding: 10px 16px; margin-top: 10px; font-size: 11px; font-weight: 700; }
+@media (prefers-reduced-motion: reduce) {
+  html.motion-on .formation-canvas { display: block !important; }
+  html.motion-on .logo-track { animation: logos-drift 35s linear infinite !important; }
+}
+@media (max-width: 760px) { .motion-notice { bottom: 85px; left: 14px; width: calc(100vw - 28px); } }
+
+</style>
 </head>
 <body>
 <noscript><iframe title="Google Tag Manager" src="https://www.googletagmanager.com/ns.html?id=GTM-MZGKQPFH" height="0" width="0" class="gtm-hidden"></iframe></noscript>
@@ -465,15 +509,7 @@ dialog#versior-chat[open] { display: flex; flex-direction: column; gap: 0; }
   <section class="experience" id="experiencia" aria-labelledby="experience-title"><div class="experience-photo"><img src="assets/hero/versior-equipos-showroom-20260806.webp" width="1672" height="941" loading="lazy" alt="Equipos de salud visual presentados en un espacio óptico"></div><div class="experience-shade"></div><div class="experience-copy section-pad"><p class="eyebrow reveal">02 / Un espacio a la altura de tu visión</p><h2 id="experience-title" class="reveal">TU ESPACIO.<br><span>TU ESENCIA.</span></h2><div class="experience-bottom reveal"><p>La tecnología importa.<br>El lugar donde cobra vida, también.</p><div><p>Diseñamos espacios ópticos funcionales, cómodos y coherentes con tu marca. Construcción y remodelación, con acompañamiento profesional.</p><a class="round-link" href="https://wa.me/593990331482" target="_blank" rel="noopener"><span class="round-arrow" aria-hidden="true">↗</span> Hablemos de tu óptica</a></div></div></div></section>
   <section class="purpose tone-blue section-pad" id="proposito" aria-labelledby="purpose-title"><div class="chapter-label reveal"><span>04 / Nuestra razón para avanzar</span><span>Responsabilidad social</span></div><div class="purpose-layout"><div class="purpose-number reveal">2<span>%</span><div class="purpose-orbit" aria-hidden="true"></div></div><div class="purpose-copy reveal"><p class="tiny-label">De nuestras ventas. Para abrir oportunidades.</p><h2 id="purpose-title">HAY VISIONES<br>QUE MERECEN<br><em>UNA OPORTUNIDAD.</em></h2><p>Destinamos el <strong>2 % de nuestras ventas</strong> a realizar misiones y obras sociales en beneficio de personas de escasos recursos.</p><p class="purpose-closing">Porque avanzar también es ayudar a otros a ver un futuro mejor.</p></div></div>
     <div class="beliefs reveal">
-      <details class="belief">
-        <summary>
-          <span class="belief-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg></span>
-          <span class="belief-title">Misión</span>
-          <span class="belief-toggle" aria-hidden="true"></span>
-        </summary>
-        <div class="belief-content"><p>Importar y comercializar tecnología optométrica y oftalmológica accesible, complementándola con capacitación profesional, asesoría en la creación de espacios ópticos y acompañamiento posventa, para impulsar el crecimiento y la excelencia de los profesionales de la salud visual.</p></div>
-      </details>
-      <details class="belief">
+      <details class="belief" id="corporate-vision" data-corporate="vision" open>
         <summary>
           <span class="belief-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="2.8"/></svg></span>
           <span class="belief-title">Visión</span>
@@ -481,7 +517,15 @@ dialog#versior-chat[open] { display: flex; flex-direction: column; gap: 0; }
         </summary>
         <div class="belief-content"><p>Ser la empresa referente en Ecuador en soluciones integrales para la salud visual, reconocida por combinar tecnología especializada, capacitación de alto nivel y acompañamiento estratégico para el desarrollo de ópticas y consultorios modernos.</p></div>
       </details>
-      <details class="belief">
+      <details class="belief" id="corporate-mission" data-corporate="mission">
+        <summary>
+          <span class="belief-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg></span>
+          <span class="belief-title">Misión</span>
+          <span class="belief-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="belief-content"><p>Importar y comercializar tecnología optométrica y oftalmológica accesible, complementándola con capacitación profesional, asesoría en la creación de espacios ópticos y acompañamiento posventa, para impulsar el crecimiento y la excelencia de los profesionales de la salud visual.</p></div>
+      </details>
+      <details class="belief" id="corporate-values" data-corporate="values">
         <summary>
           <span class="belief-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 9 4-5h10l4 5-9 11L3 9Zm0 0h18M9 9l3 11 3-11m-6 0 3-5 3 5"/></svg></span>
           <span class="belief-title">Valores</span>
@@ -514,7 +558,7 @@ dialog#versior-chat[open] { display: flex; flex-direction: column; gap: 0; }
     <div class="contact-main reveal"><div><p class="contact-intro">Cuéntanos qué imaginas para tu práctica.<br>Vamos a construir el siguiente paso contigo.</p><a class="text-link light" href="https://wa.me/593963223843" target="_blank" rel="noopener">Conversar por WhatsApp <span aria-hidden="true">↗</span></a></div><form id="contact-form"><label for="client-name">¿Cómo te llamas?</label><input id="client-name" name="name" autocomplete="name" placeholder="Tu nombre" required maxlength="80"><label for="client-interest">¿En qué podemos ayudarte?</label><select id="client-interest" name="interest"><option value="un equipo para mi práctica">Quiero cotizar un equipo</option><option value="diseñar o remodelar mi óptica">Diseño de mi óptica</option><option value="capacitación para mi equipo">Capacitación</option><option value="soporte posventa">Soporte posventa</option></select><label class="contact-permission"><input type="checkbox" name="privacy-consent" required><span>Acepto el uso de mis datos para responder mi solicitud, según la <a href="privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a>.</span></label><button type="submit">Iniciar conversación <span aria-hidden="true">↗</span></button><p class="form-note">Se abrirá WhatsApp con tu mensaje. No se envía automáticamente.</p></form></div>
     <div class="locations reveal"><a href="https://maps.app.goo.gl/UcRxmVZbiHxDkvoH8" target="_blank" rel="noopener"><span class="tiny-label">01 / Quito · Principal</span><h3>ESTAMOS CERCA.</h3><p>Calle Giovani Calles y Palermo,<br>urbanización UTE · Pichincha, Quito</p><span class="map-hint">Da clic para ir <i aria-hidden="true">↗</i></span></a><a href="https://www.google.com/maps/search/?api=1&amp;query=El%20Morl%C3%A1n%20y%20De%20los%20%C3%81lamos%2C%20barrio%20Damer%20II%2C%20Quito%2C%20Ecuador" target="_blank" rel="noopener"><span class="tiny-label">02 / La Luz · Quito</span><h3>ENCUÉNTRANOS.</h3><p>El Morlán y De los Álamos,<br>barrio Damer II · Quito</p><span class="map-hint">Da clic para ir <i aria-hidden="true">↗</i></span></a><a href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Mariscal%20Sucre%20y%20Benjam%C3%ADn%20Ochoa%2C%20Bibli%C3%A1n%2C%20Ca%C3%B1ar%2C%20Ecuador" target="_blank" rel="noopener"><span class="tiny-label">03 / Biblián · Cañar</span><h3>SIGAMOS EN CONTACTO.</h3><p>Av. Mariscal Sucre y Benjamín Ochoa,<br>esquina · Biblián</p><span class="map-hint">Da clic para ir <i aria-hidden="true">↗</i></span></a></div>
     <div class="social-share reveal"><div><p class="eyebrow">VERSIOR IMPORT’S</p><h3>COMPARTE LA VISIÓN.</h3><a class="footer-network-link" href="#redes">Ver nuestras redes sociales <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m4 20 16-16M4 4h16v16"/></svg></a></div><div class="qr-share"><img src="assets/brand/versior-qr-share.png" width="160" height="160" loading="lazy" alt="Código QR para compartir la página de VERSIOR"><p>Las buenas ideas<br>se comparten.<span>Escanea el código y comparte<br>nuestra página.</span></p></div></div>
-    <div class="footer-privacy"><a href="privacidad.html">Política de Privacidad</a><button type="button" data-cookie-preferences>Preferencias de cookies</button></div><footer><span>© <span id="year">2026</span> VERSIOR IMPORT’S</span><span>Tecnología. Personas. Propósito.</span><a href="#inicio">Volver al inicio ↑</a></footer>
+    <div class="footer-privacy"><a href="privacidad.html">Política de Privacidad</a><button type="button" data-cookie-preferences>Preferencias de cookies</button><button type="button" data-motion-toggle aria-pressed="true" hidden>Animaciones: activadas</button></div><footer><span>© <span id="year">2026</span> VERSIOR IMPORT’S</span><span>Tecnología. Personas. Propósito.</span><a href="#inicio">Volver al inicio ↑</a></footer>
   </section>
 </main>
 <div class="reading-progress" aria-hidden="true"><i></i></div><button class="floating-contact chat-launcher" type="button" id="chat-launcher" aria-controls="versior-chat" aria-expanded="false" aria-label="Abrir asistente automático de VERSIOR" hidden><span>Asistente VERSIOR</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 8h8M8 12h5"/></svg></button>
@@ -531,4 +575,795 @@ dialog#versior-chat[open] { display: flex; flex-direction: column; gap: 0; }
 
 <section id="cookie-banner" class="consent-banner" role="dialog" aria-modal="false" aria-label="Preferencias de cookies" hidden><div><h2>Tu privacidad importa</h2><p>Usamos cookies de medición para conocer el rendimiento del sitio y mejorar nuestras campañas. Puedes aceptar la medición o continuar solo con las funciones esenciales.</p><a href="privacidad.html">Ver Política de Privacidad</a></div><div class="consent-actions"><button type="button" data-cookie-choice="essential">Solo esenciales</button><button type="button" data-cookie-choice="accepted">Aceptar medición</button></div></section>
 <noscript><style>.reveal{opacity:1;transform:none}.support-panel[hidden]{display:grid}.support-tabs,.support-controls{display:none}.person-portrait{background-image:var(--portrait);background-size:var(--portrait-size);background-position:var(--portrait-position);background-repeat:no-repeat}</style></noscript>
+<aside class="motion-notice" id="motion-notice" aria-live="polite" hidden><p></p><button type="button" data-motion-enable>Activar animaciones</button></aside>
+<script id="versior-visible-runtime">
+'use strict';
+
+// Real product silhouettes, not floating 3D substitutes. Every frame is reversible.
+const versiorFormationPhotoCache = new Map();
+window.createVersiorFormation = function createVersiorFormation(root, options = {}) {
+  const visual = root.querySelector('.story-visual');
+  const canvas = visual.querySelector('.formation-canvas');
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return null;
+  const beats = [...root.querySelectorAll('.story-beat')];
+  const sources = [...root.querySelectorAll('.story-devices img')];
+  const clamp = value => Math.max(0, Math.min(1, value));
+  const smooth = (from, to, value) => {
+    const t = clamp((value - from) / (to - from));
+    return t * t * (3 - 2 * t);
+  };
+  const mix = (a, b, t) => a + (b - a) * t;
+  const seed = n => {
+    const value = Math.sin(n * 127.1 + 311.7) * 43758.5453;
+    return value - Math.floor(value);
+  };
+  const assets = [];
+  const words = new Map();
+  let width = 0, height = 0, enabled = false, lastIndex = 0, lastProgress = 0;
+  let count = 720;
+
+  function makeWord(word) {
+    if (words.has(word)) return words.get(word);
+    const surface = document.createElement('canvas');
+    surface.width = Math.max(1, Math.ceil(width));
+    surface.height = Math.max(1, Math.ceil(height));
+    const pen = surface.getContext('2d', { willReadFrequently: true });
+    let size = Math.min(145, height * .33);
+    pen.font = '800 ' + size + 'px Barlow, "Arial Narrow", sans-serif';
+    size *= Math.min(1, width * .9 / Math.max(1, pen.measureText(word).width));
+    pen.font = '800 ' + size + 'px Barlow, "Arial Narrow", sans-serif';
+    pen.textAlign = 'center';
+    pen.textBaseline = 'middle';
+    pen.fillStyle = '#FDFDFD';
+    pen.fillText(word, width * .5, height * .46);
+    const pixels = pen.getImageData(0, 0, surface.width, surface.height);
+    const points = [];
+    const step = width < 400 ? 2 : 3;
+    for (let y = 0; y < surface.height; y += step) {
+      for (let x = 0; x < surface.width; x += step) {
+        if (pixels.data[(y * surface.width + x) * 4 + 3] > 90) points.push({ x, y });
+      }
+    }
+    if (!points.length) points.push({ x: width / 2, y: height / 2 });
+    const result = { points, size, word };
+    words.set(word, result);
+    return result;
+  }
+
+  function analyzePhoto(image) {
+    const surface = document.createElement('canvas');
+    surface.width = 320;
+    surface.height = Math.round(320 * image.naturalHeight / image.naturalWidth);
+    const pen = surface.getContext('2d', { willReadFrequently: true });
+    pen.drawImage(image, 0, 0, surface.width, surface.height);
+    const { data } = pen.getImageData(0, 0, surface.width, surface.height);
+    const points = [];
+    const sw = surface.width, sh = surface.height;
+    const blueprint = document.createElement('canvas');
+    blueprint.width = sw;
+    blueprint.height = sh;
+    const bluePen = blueprint.getContext('2d');
+    const tracing = bluePen.createImageData(sw, sh);
+    const alpha = (x, y) => data[(y * sw + x) * 4 + 3] || 0;
+    for (let y = 2; y < sh - 2; y++) {
+      for (let x = 2; x < sw - 2; x++) {
+        const at = (y * sw + x) * 4;
+        if (data[at + 3] < 80) continue;
+        const contour = alpha(x - 1, y) < 80 || alpha(x + 1, y) < 80 ||
+          alpha(x, y - 1) < 80 || alpha(x, y + 1) < 80;
+        const horizontal = Math.abs(data[at] - data[at + 4]);
+        const vertical = Math.abs(data[at] - data[at + sw * 4]);
+        if (contour || horizontal + vertical > 48) {
+          tracing.data[at] = 31;
+          tracing.data[at + 1] = 180;
+          tracing.data[at + 2] = 250;
+          tracing.data[at + 3] = contour ? 240 : 165;
+        }
+        if (x % 2 === 0 && y % 2 === 0 && (contour || horizontal + vertical > 42 || (x + y) % 20 === 0))
+          points.push({ x: x / sw, y: y / sh });
+      }
+    }
+    if (!points.length) points.push({ x: .5, y: .5 });
+    bluePen.putImageData(tracing, 0, 0);
+    return { points, blueprint };
+  }
+
+  function photoBox(image) {
+    const scale = Math.min(width * .84 / image.naturalWidth, height * .85 / image.naturalHeight);
+    const w = image.naturalWidth * scale, h = image.naturalHeight * scale;
+    return { x: (width - w) / 2, y: height * .46 - h / 2, w, h };
+  }
+
+  function pointAt(word, photo, box, i, t, reverse = false) {
+    const start = word.points[Math.floor(seed(i + 13) * word.points.length)];
+    const target = photo.points[Math.floor(seed(i + 47) * photo.points.length)];
+    const endpoint = { x: box.x + target.x * box.w, y: box.y + target.y * box.h };
+    const a = reverse ? endpoint : start, b = reverse ? start : endpoint;
+    // Short filament paths; no globe, orbit, perpetual bobbing or scale pulse.
+    const curve = Math.sin(t * Math.PI);
+    return {
+      x: mix(a.x, b.x, t) + curve * (seed(i + 101) - .5) * width * .16,
+      y: mix(a.y, b.y, t) + curve * (seed(i + 173) - .5) * height * .15
+    };
+  }
+
+  function drawWord(word, opacity) {
+    if (opacity <= .001) return;
+    ctx.save();
+    ctx.globalAlpha = opacity;
+    ctx.font = '800 ' + word.size + 'px Barlow, "Arial Narrow", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = options.wordColor || '#FDFDFD';
+    ctx.fillText(word.word, width / 2, height * .46);
+    ctx.restore();
+  }
+
+  function drawNetwork(word, photo, box, t, opacity, reverse) {
+    if (opacity < .005) return;
+    const points = [];
+    ctx.save();
+    // Fine luminous filaments connect the letters to the actual equipment outline.
+    ctx.strokeStyle = 'rgba(31,180,250,' + (opacity * .33) + ')';
+    ctx.lineWidth = .75;
+    for (let lane = 0; lane < 28; lane++) {
+      const n = lane * 47;
+      const a = pointAt(word, photo, box, n, clamp(t - .28), reverse);
+      const b = pointAt(word, photo, box, n, t, reverse);
+      const c = pointAt(word, photo, box, n, clamp(t + .16), reverse);
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.quadraticCurveTo(b.x, b.y, c.x, c.y);
+      ctx.stroke();
+    }
+    for (let i = 0; i < count; i++) points.push(pointAt(word, photo, box, i, t, reverse));
+    ctx.strokeStyle = 'rgba(31,180,250,' + (opacity * .22) + ')';
+    ctx.beginPath();
+    for (let i = 0; i < points.length - 3; i += 3) {
+      const a = points[i], b = points[i + 3];
+      const distance = (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
+      if (distance < 54 ** 2 && distance > 6 ** 2) {
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+      }
+    }
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(31,180,250,' + opacity + ')';
+    ctx.beginPath();
+    points.forEach((point, i) => { if (i % 4 !== 0) ctx.rect(point.x, point.y, 1.4, 1.4); });
+    ctx.fill();
+    ctx.fillStyle = options.compact ? 'rgba(6,85,129,' + opacity * .92 + ')' : 'rgba(253,253,253,' + opacity * .92 + ')';
+    ctx.beginPath();
+    points.forEach((point, i) => { if (i % 4 === 0) ctx.rect(point.x, point.y, 1.8, 1.8); });
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawPhoto(image, box, progress, opacity) {
+    if (progress < .3 || opacity <= .001) return;
+    ctx.save();
+    ctx.globalAlpha = opacity;
+    if (progress >= .77) {
+      ctx.shadowColor = 'rgba(0,0,0,.2)';
+      ctx.shadowBlur = 16;
+      ctx.shadowOffsetY = 9;
+      ctx.drawImage(image, box.x, box.y, box.w, box.h);
+    } else {
+      const strips = width < 400 ? 10 : 16;
+      const stripWidth = box.w / strips;
+      for (let i = 0; i < strips; i++) {
+        const stagger = seed(i + 29) * .13;
+        const reveal = smooth(.32 + stagger, .62 + stagger, progress);
+        if (reveal <= 0) continue;
+        const x = box.x + i * stripWidth;
+        const h = box.h * reveal;
+        const y = i % 2 ? box.y + box.h - h : box.y;
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(x, y, stripWidth + .6, h);
+        ctx.clip();
+        ctx.drawImage(image, box.x, box.y, box.w, box.h);
+        ctx.restore();
+        if (reveal < .99) {
+          const scanY = i % 2 ? y : y + h;
+          ctx.strokeStyle = 'rgba(31,180,250,' + (1 - reveal) * .8 + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(x, scanY);
+          ctx.lineTo(x + stripWidth, scanY);
+          ctx.stroke();
+        }
+      }
+    }
+    ctx.restore();
+  }
+
+  function draw(index, progress) {
+    lastIndex = index;
+    lastProgress = progress;
+    const photo = assets[index];
+    if (!enabled || !width || !height || !photo?.ready) {
+      root.classList.remove('has-formation');
+      return false;
+    }
+    root.classList.add('has-formation');
+    ctx.clearRect(0, 0, width, height);
+    const word = makeWord(beats[index].dataset.storyWord);
+    const nextWord = makeWord(beats[Math.min(index + 1, beats.length - 1)].dataset.storyWord);
+    const box = photoBox(photo.image);
+    const formation = smooth(.12, .57, progress);
+    const exit = index < beats.length - 1 ? smooth(.88, 1, progress) : 0;
+    const wireOpacity = exit > 0 ? Math.sin(exit * Math.PI) :
+      smooth(.1, .22, progress) * (1 - smooth(.6, .79, progress));
+    const photoOpacity = 1 - smooth(0, .8, exit);
+
+    const blueprintOpacity = exit > 0 ? Math.sin(exit * Math.PI) * .8 :
+      smooth(.18, .4, progress) * (1 - smooth(.65, .78, progress)) * .92;
+    if (blueprintOpacity > .001) {
+      ctx.save();
+      ctx.globalAlpha = blueprintOpacity;
+      ctx.drawImage(photo.blueprint, box.x, box.y, box.w, box.h);
+      ctx.restore();
+    }
+    drawPhoto(photo.image, box, progress, photoOpacity);
+    drawNetwork(exit > 0 ? nextWord : word, photo, box, exit > 0 ? exit : formation, wireOpacity * .8, exit > 0);
+    drawWord(word, (1 - smooth(.1, .22, progress)) * (1 - exit));
+    if (exit > 0) drawWord(nextWord, smooth(.72, 1, exit));
+
+    const reveal = smooth(.57, .77, progress) * photoOpacity;
+    root.style.setProperty('--formation-photo', reveal.toFixed(3));
+    root.dataset.formationProduct = beats[index].dataset.storyProduct;
+    root.dataset.formationProgress = progress.toFixed(3);
+    root.dataset.formationStage = exit > 0 ? 'siguiente-palabra' : progress < .15 ? 'palabra' : progress < .65 ? 'trazado' : 'equipo';
+    return true;
+  }
+
+  function resize() {
+    const bounds = visual.getBoundingClientRect();
+    if (bounds.width < 1 || bounds.height < 1) return;
+    if (Math.abs(width - bounds.width) < 1 && Math.abs(height - bounds.height) < 1) return;
+    width = bounds.width;
+    height = bounds.height;
+    count = options.compact ? 220 : width < 400 ? 320 : 560;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    words.clear();
+    draw(lastIndex, lastProgress);
+  }
+
+  sources.forEach((source, index) => {
+    const image = new Image();
+    assets[index] = { image, ready: false, points: [] };
+    image.onload = () => {
+      try {
+        const key = image.currentSrc || image.src;
+        if (!versiorFormationPhotoCache.has(key)) versiorFormationPhotoCache.set(key, analyzePhoto(image));
+        Object.assign(assets[index], versiorFormationPhotoCache.get(key));
+        assets[index].ready = true;
+        draw(lastIndex, lastProgress);
+      } catch (error) {
+        // Keep the original photographs visible if canvas pixel access is unavailable.
+        assets[index].ready = false;
+        root.dataset.formationError = 'image-pixel-access-unavailable';
+      }
+    };
+    image.onerror = () => { root.dataset.formationError = 'image-unavailable'; };
+    image.src = source.getAttribute('src');
+  });
+  new ResizeObserver(resize).observe(visual);
+  document.fonts?.ready.then(() => { words.clear(); draw(lastIndex, lastProgress); });
+  return {
+    setMode(active) {
+      enabled = active;
+      canvas.hidden = !active;
+      if (!active) root.classList.remove('has-formation');
+      else { resize(); draw(lastIndex, lastProgress); }
+    },
+    render: draw,
+    isReady(index = 0) { return !!assets[index]?.ready; }
+  };
+};
+
+'use strict';
+document.documentElement.classList.add('js');
+const motion = (() => {
+  const system = matchMedia('(prefers-reduced-motion: reduce)');
+  const listeners = new Set();
+  let choice = null;
+  try { const saved = sessionStorage.getItem('versior_motion'); if (saved === 'enabled' || saved === 'paused') choice = saved; } catch (error) {}
+  let paused = choice ? choice === 'paused' : system.matches;
+  function paint() {
+    document.documentElement.classList.toggle('motion-on', !paused);
+    document.documentElement.classList.toggle('motion-paused', paused);
+    document.documentElement.dataset.motionStatus = paused ? 'paused' : 'enabled';
+    const notice = document.querySelector('#motion-notice');
+    if (notice) {
+      notice.hidden = !paused;
+      notice.querySelector('p').textContent = choice === 'paused' ? 'Las animaciones están pausadas.' : 'Tu dispositivo tiene activada la preferencia de reducir movimiento.';
+    }
+    document.querySelectorAll('[data-motion-toggle]').forEach(button => {
+      button.hidden = false;
+      button.textContent = paused ? 'Animaciones: pausadas' : 'Animaciones: activadas';
+      button.setAttribute('aria-pressed', String(!paused));
+    });
+  }
+  function setPaused(next, explicit = true) {
+    paused = next;
+    if (explicit) {
+      choice = paused ? 'paused' : 'enabled';
+      try { sessionStorage.setItem('versior_motion', choice); } catch (error) {}
+    }
+    paint();
+    listeners.forEach(listener => listener({ matches: paused }));
+  }
+  document.querySelectorAll('[data-motion-toggle]').forEach(button => button.addEventListener('click', () => setPaused(!paused)));
+  document.querySelectorAll('[data-motion-enable]').forEach(button => button.addEventListener('click', () => setPaused(false)));
+  system.addEventListener('change', () => { if (choice === null) setPaused(system.matches, false); });
+  paint();
+  return { get matches() { return paused; }, addEventListener(type, listener) { if (type === 'change') listeners.add(listener); } };
+})();
+const menuButton=document.querySelector('.menu-toggle'),mobileNav=document.querySelector('.mobile-nav');
+function closeMenu(){menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Abrir menú');mobileNav.hidden=true;document.body.classList.remove('menu-open');}
+menuButton.addEventListener('click',()=>{const opened=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!opened));menuButton.setAttribute('aria-label',opened?'Abrir menú':'Cerrar menú');mobileNav.hidden=opened;document.body.classList.toggle('menu-open',!opened);});
+mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
+matchMedia('(min-width: 981px)').addEventListener('change',e=>{if(e.matches)closeMenu();});
+
+const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}}),{threshold:.12,rootMargin:'0px 0px -25px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+const portraitBounds={eli:[281,314,568,625],laura:[286,339,513,625],julieta:[346,313,526,625],alexander:[273,265,474,625]};
+const portraitSizer=new ResizeObserver(entries=>entries.forEach(({target,contentRect})=>{
+  const [x1,y1,x2,y2]=portraitBounds[target.dataset.portrait],scale=contentRect.height*.98/(y2-y1),size=800*scale;
+  target.style.setProperty('--portrait-size',`${size.toFixed(1)}px ${size.toFixed(1)}px`);
+  target.style.setProperty('--portrait-position',`${(contentRect.width/2-(x1+x2)*scale/2).toFixed(1)}px ${(contentRect.height+8-y2*scale).toFixed(1)}px`);
+}));
+document.querySelectorAll('[data-portrait]').forEach(portrait=>{
+  const base=document.createElement('span');base.className='portrait-base';base.setAttribute('aria-hidden','true');portrait.append(base);
+  portraitSizer.observe(portrait);
+});
+// People use a whole-photo focus reveal, never product slices or particles.
+const support = document.querySelector('.service-people');
+const supportTabs = [...support.querySelectorAll('[role="tab"]')];
+const supportPanels = [...support.querySelectorAll('[role="tabpanel"]')];
+const supportToggle = support.querySelector('[data-support-toggle]');
+let supportIndex = 0, supportInView = false, supportHovered = false, supportFocused = false;
+let supportPaused = motion.matches, supportTimer;
+function scheduleSupport() {
+  clearTimeout(supportTimer);
+  if (supportInView && !supportPaused && !supportHovered && !supportFocused && !document.hidden && !motion.matches && !document.body.classList.contains('chat-open'))
+    supportTimer = setTimeout(() => selectSupport((supportIndex + 1) % supportTabs.length), 6500);
+}
+function selectSupport(index, announce = false) {
+  supportIndex = index;
+  supportTabs.forEach((tab, i) => {
+    tab.setAttribute('aria-selected', String(i === index));
+    tab.tabIndex = i === index ? 0 : -1;
+    supportPanels[i].hidden = i !== index;
+  });
+  if (announce) support.querySelector('#support-status').textContent = supportTabs[index].querySelector('strong').textContent;
+  scheduleSupport();
+}
+supportTabs.forEach((tab, i) => {
+  tab.addEventListener('click', () => selectSupport(i, true));
+  tab.addEventListener('keydown', event => {
+    let next;
+    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (i + 1) % supportTabs.length;
+    else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (i - 1 + supportTabs.length) % supportTabs.length;
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = supportTabs.length - 1;
+    if (next === undefined) return;
+    event.preventDefault(); selectSupport(next, true); supportTabs[next].focus();
+  });
+});
+function updateSupportToggle() {
+  supportToggle.hidden = motion.matches;
+  supportToggle.textContent = supportPaused ? '▶ Reproducir presentación' : 'Ⅱ Pausar presentación';
+  supportToggle.setAttribute('aria-label', supportPaused ? 'Reproducir la presentación de nuestro equipo' : 'Pausar la presentación de nuestro equipo');
+  scheduleSupport();
+}
+updateSupportToggle();
+supportToggle.addEventListener('click', () => { supportPaused = !supportPaused; updateSupportToggle(); });
+support.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') { supportHovered = true; scheduleSupport(); } });
+support.addEventListener('pointerleave', () => { supportHovered = false; scheduleSupport(); });
+support.addEventListener('focusin', () => { supportFocused = true; scheduleSupport(); });
+support.addEventListener('focusout', event => { supportFocused = support.contains(event.relatedTarget); scheduleSupport(); });
+new IntersectionObserver(entries => {
+  supportInView = entries[0].isIntersecting;
+  support.classList.toggle('is-in-view', supportInView);
+  scheduleSupport();
+}, { threshold: .2 }).observe(support);
+document.addEventListener('visibilitychange', scheduleSupport);
+document.addEventListener('versior:chat-toggle', scheduleSupport);
+motion.addEventListener('change', () => { supportPaused = motion.matches; updateSupportToggle(); });
+
+const rail=document.querySelector('.equipment-rail'),railButtons=[...document.querySelectorAll('[data-rail]')];
+railButtons.forEach(button=>button.addEventListener('click',()=>{const step=rail.querySelector('.equipment-item').getBoundingClientRect().width+parseFloat(getComputedStyle(rail).gap);rail.scrollBy({left:step*Number(button.dataset.rail),behavior:motion.matches?'auto':'smooth'});}));
+function railState(){railButtons[0].disabled=rail.scrollLeft<8;railButtons[1].disabled=rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-8;}
+rail.addEventListener('scroll',railState,{passive:true});addEventListener('resize',railState);railState();
+
+const products={
+  'rk-600':{name:'RK–600',category:'Refracción',type:'Autorrefractómetro y Queratómetro',description:'Diseñado para un flujo de alto volumen, minimiza el tiempo de acomodación gracias a su sistema inteligente de enfoque (Autotracking).',features:['Sistema LIO (lente intraocular).','Autotracking: enfoque automático.','Mentonera robótica.','Tiempo de medición inferior a 0,5 segundos.']},
+  'ark-7610':{name:'ARK–7610',category:'Refracción',type:'Autorrefractómetro / Queratómetro',description:'Equipo robusto con nuevo sistema óptico que incorpora la exclusiva impresión de imagen de Hartmann, garantizando mediciones rápidas y seguras.',features:['Pantalla táctil LCD TFT de 7 pulgadas con ángulo ajustable.','Medición de energía luminosa segura: <30 uW.','Medición en pupila mínima de 2,0 mm.']},
+  'lm-260':{name:'LM–260',category:'Agudeza visual',type:'Lensómetro digital',description:'Mediciones rápidas y eficientes sin compensación de Abbe, incorporando una cámara de alta resolución.',features:['Cámara de alta resolución Hartmann de 150 puntos.','Medición de transmitancia ultravioleta UV400–UVA.','Dos tipos de bolígrafos de puntos: recargable y tinta.']},
+  'vc-235':{name:'VC–235',category:'Agudeza visual',type:'Pantalla optotipo digital',description:'Sustituye proyectores tradicionales con una pantalla de diseño delgado y liviano para exámenes precisos.',features:['Monitor de 23,5 o 19,5 pulgadas HD.','Precisión de medición de 2,0 m a 6,5 m.','Pruebas de daltonismo y entrenamiento de ambliopía.']},
+  'ls-4':{name:'LS–4',category:'Biomicroscopía',type:'Lámpara de hendidura',description:'Óptica premium que proporciona una luz brillante y nítida, ideal para diagnósticos confiables y detallados.',features:['Cinco niveles de aumento.','Iluminación LED de alto rendimiento: más de 50.000 horas.','Filtro amarillo integrado y control continuo.']},
+  'c-190a':{name:'C–190A',category:'Unidades clínicas',type:'Unidad de diagnóstico',description:'Unidad integral diseñada con estructura robusta y estable para brindar comodidad al paciente y precisión al profesional.',features:['Silla con elevación eléctrica.','Brazo giratorio tipo bull eye con ajuste de 180 grados.','Mesa de trabajo deslizante con cajón y luz optométrica.']},
+  'cp-266':{name:'266 LENTILLAS',category:'Diagnóstico',type:'Caja de pruebas profesional',description:'Set profesional y completo con esferas, cilindros, prismas y accesorios en vidrio óptico premium.',features:['Vidrio óptico de alta calidad.','Lentillas con incrementos precisos de 0,25 D a 20,0 D.','Incluye estuche resistente.']}
+};
+const hero = document.querySelector('.hero');
+const heroDevices = hero.querySelector('.hero-devices');
+const heroBackdrops = [...hero.querySelectorAll('.hero-backdrop')];
+const heroControls = hero.querySelector('.hero-carousel-controls');
+const heroToggle = heroControls.querySelector('[data-hero-toggle]');
+const heroName = hero.querySelector('#hero-model-name');
+const heroType = hero.querySelector('#hero-model-type');
+const heroStatus = hero.querySelector('#hero-carousel-status');
+const productButtons = [...document.querySelectorAll('.equipment-open')];
+const heroSlides = productButtons.map((button, index) => {
+  const product = products[button.dataset.product];
+  const photo = index === 0 ? heroDevices.querySelector('img') : button.querySelector('img').cloneNode();
+
+  if (index > 0) {
+    photo.className = 'hero-equipment';
+    photo.loading = 'eager';
+    photo.fetchPriority = 'low';
+    photo.setAttribute('aria-hidden', 'true');
+    heroDevices.append(photo);
+  }
+
+  return { product, photo };
+});
+
+let heroIndex = 0;
+let heroInView = false;
+let heroPlaying = !motion.matches;
+let heroTimer;
+const slideDuration = 4700;
+
+function scheduleHeroAdvance() {
+  clearTimeout(heroTimer);
+  if (heroPlaying && heroInView && !document.hidden) {
+    heroTimer = setTimeout(() => selectHeroSlide(heroIndex + 1), slideDuration);
+  }
+}
+
+function selectHeroSlide(index, announce = false) {
+  heroIndex = (index + heroSlides.length) % heroSlides.length;
+  const { product } = heroSlides[heroIndex];
+
+  heroSlides.forEach(({ photo }, photoIndex) => {
+    const current = photoIndex === heroIndex;
+    photo.classList.toggle('is-current', current);
+    photo.setAttribute('aria-hidden', String(!current));
+  });
+  heroBackdrops.forEach((backdrop, backdropIndex) => {
+    backdrop.classList.toggle('is-current', backdropIndex === heroIndex % heroBackdrops.length);
+  });
+
+  heroName.textContent = product.name;
+  heroType.textContent = product.type;
+  if (announce) heroStatus.textContent = product.name + ', ' + product.type;
+  scheduleHeroAdvance();
+}
+
+function updateHeroControls() {
+  heroToggle.classList.toggle('is-paused', !heroPlaying);
+  heroToggle.setAttribute('aria-label', heroPlaying ? 'Pausar el carrusel' : 'Reproducir el carrusel');
+  scheduleHeroAdvance();
+}
+
+heroControls.querySelectorAll('[data-hero-step]').forEach(button => {
+  button.addEventListener('click', () => selectHeroSlide(heroIndex + Number(button.dataset.heroStep), true));
+});
+heroToggle.addEventListener('click', () => {
+  heroPlaying = !heroPlaying;
+  updateHeroControls();
+});
+heroControls.hidden = false;
+updateHeroControls();
+document.addEventListener('visibilitychange', scheduleHeroAdvance);
+
+const story = document.querySelector('.scroll-story');
+const storyStage = story.querySelector('.story-stage');
+const storyBeats = [...story.querySelectorAll('.story-beat')];
+const storyDevices = [...story.querySelectorAll('.story-device')];
+const storySegments = [...story.querySelectorAll('.story-progress i')];
+const storyWord = story.querySelector('.story-word');
+const storyModel = story.querySelector('.story-model');
+const storyIndex = story.querySelector('.story-index');
+const storyFormation = window.createVersiorFormation?.(story);
+const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+const progressBar = document.querySelector('.reading-progress i');
+const experience = document.querySelector('.experience');
+const floatingContact = document.querySelector('.floating-contact');
+const contact = document.querySelector('.contact');
+const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+
+let storyAnimated;
+let currentBeat = -1;
+let scrollFrame = 0;
+
+function showStoryBeat(index) {
+  currentBeat = index;
+  storyBeats.forEach((beat, beatIndex) => {
+    const current = beatIndex === index;
+    const inactive = storyAnimated && !current;
+    beat.classList.toggle('is-current', current);
+    beat.toggleAttribute('inert', inactive);
+    if (inactive) beat.setAttribute('aria-hidden', 'true');
+    else beat.removeAttribute('aria-hidden');
+    storyDevices[beatIndex].classList.toggle('is-current', current);
+  });
+
+  const { storyWord: word, storyModel: model } = storyBeats[index].dataset;
+  storyWord.textContent = word;
+  storyModel.textContent = model;
+  storyIndex.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(storyBeats.length).padStart(2, '0');
+}
+
+function updateStoryMode() {
+  // Available on desktop and mobile, including short laptop windows.
+  storyAnimated = !motion.matches;
+  story.classList.toggle('is-animated', storyAnimated);
+  storyFormation?.setMode(storyAnimated);
+  showStoryBeat(0);
+  scheduleScroll();
+}
+
+function updateStory(bounds) {
+  if (!storyAnimated) return;
+
+  const travel = Math.max(1, bounds.height - storyStage.offsetHeight);
+  const progress = clamp(-bounds.top / travel);
+  const chapterProgress = progress * storyBeats.length;
+  const nextBeat = Math.min(storyBeats.length - 1, Math.floor(chapterProgress));
+
+  if (nextBeat !== currentBeat) showStoryBeat(nextBeat);
+
+  // A reversible word → network → product transformation, driven only by scroll.
+  const localProgress = clamp(chapterProgress - nextBeat);
+  storyFormation?.render(nextBeat, localProgress);
+  storySegments.forEach((segment, index) => {
+    segment.style.setProperty('--segment-progress', clamp(chapterProgress - index).toFixed(4));
+  });
+}
+
+function updateScroll() {
+  const viewport = innerHeight;
+  const heroBounds = hero.getBoundingClientRect();
+  const storyBounds = story.getBoundingClientRect();
+  const railBounds = rail.getBoundingClientRect();
+  const experienceBounds = experience.getBoundingClientRect();
+  const heroVisible = heroBounds.top < viewport && heroBounds.bottom > viewport * .18;
+
+  if (heroVisible !== heroInView) {
+    heroInView = heroVisible;
+    scheduleHeroAdvance();
+  }
+
+  if (!motion.matches) {
+    const heroProgress = clamp(-heroBounds.top / heroBounds.height);
+    const equipmentDepth = clamp((viewport * .52 - railBounds.top - railBounds.height * .43) / (viewport * .68), -1, 1);
+    const experienceProgress = clamp((viewport - experienceBounds.top) / (viewport + experienceBounds.height));
+    hero.style.setProperty('--hero-progress', heroProgress.toFixed(4));
+    rail.style.setProperty('--equipment-depth', equipmentDepth.toFixed(4));
+    experience.style.setProperty('--scene', experienceProgress.toFixed(4));
+    updateStory(storyBounds);
+  }
+
+  const scrollProgress = clamp(scrollY / Math.max(1, document.documentElement.scrollHeight - viewport));
+  progressBar.style.transform = 'scaleX(' + scrollProgress + ')';
+  floatingContact.classList.remove('is-hidden');
+}
+
+function scheduleScroll() {
+  if (scrollFrame) return;
+
+  scrollFrame = requestAnimationFrame(() => {
+    scrollFrame = 0;
+    updateScroll();
+  });
+}
+
+addEventListener('scroll', scheduleScroll, { passive: true });
+addEventListener('resize', scheduleScroll, { passive: true });
+motion.addEventListener('change', () => {
+  heroPlaying = !motion.matches;
+  updateHeroControls();
+  updateStoryMode();
+});
+updateStoryMode();
+
+function addPointerTilt(hitArea, styleTarget, xProperty, yProperty, range) {
+  hitArea.addEventListener('pointermove', event => {
+    if (!finePointer.matches || motion.matches || event.pointerType !== 'mouse') return;
+
+    const bounds = hitArea.getBoundingClientRect();
+    const x = .5 - clamp((event.clientY - bounds.top) / bounds.height);
+    const y = clamp((event.clientX - bounds.left) / bounds.width) - .5;
+    styleTarget.style.setProperty(xProperty, (x * range * .7).toFixed(2) + 'deg');
+    styleTarget.style.setProperty(yProperty, (y * range).toFixed(2) + 'deg');
+  }, { passive: true });
+
+  hitArea.addEventListener('pointerleave', () => {
+    styleTarget.style.removeProperty(xProperty);
+    styleTarget.style.removeProperty(yProperty);
+  }, { passive: true });
+}
+
+addPointerTilt(hero, heroDevices, '--tilt-x', '--tilt-y', 13);
+productButtons.forEach(button => {
+  const image = button.querySelector('.equipment-image');
+  addPointerTilt(image, image, '--device-x', '--device-y', 22);
+});
+
+document.querySelectorAll('.beliefs > .belief').forEach(belief => {
+  const summary = belief.querySelector('summary');
+  let openedOnHover = false;
+
+  belief.addEventListener('pointerenter', event => {
+    if (!finePointer.matches || event.pointerType !== 'mouse' || belief.open) return;
+
+    openedOnHover = true;
+    belief.open = true;
+  });
+
+  belief.addEventListener('pointerleave', () => {
+    if (!openedOnHover) return;
+
+    openedOnHover = false;
+    belief.open = false;
+  });
+
+  summary.addEventListener('click', event => {
+    if (!openedOnHover) return;
+
+    event.preventDefault();
+    openedOnHover = false;
+  });
+});
+
+const dialog=document.querySelector('#product-dialog');let lastProductButton;
+document.querySelectorAll('.equipment-open').forEach(button=>button.addEventListener('click',()=>{
+  const id=button.dataset.product,p=products[id];if(!p)return;lastProductButton=button;
+  document.querySelector('#dialog-image').src=`assets/products/${id}.webp`;document.querySelector('#dialog-image').alt=p.name;
+  document.querySelector('#dialog-category').textContent=p.category;document.querySelector('#dialog-title').textContent=p.name;document.querySelector('#dialog-type').textContent=p.type;document.querySelector('#dialog-description').textContent=p.description;
+  document.querySelector('#dialog-features').replaceChildren(...p.features.map(feature=>{const li=document.createElement('li');li.textContent=feature;return li;}));
+  document.querySelector('#dialog-quote').href=`https://wa.me/593963223843?text=${encodeURIComponent(`Hola VERSIOR, me gustaría cotizar el equipo ${p.name}. ¿Me pueden ayudar con disponibilidad y condiciones?`)}`;
+  dialog.showModal();document.body.classList.add('dialog-open');
+}));
+document.querySelector('.dialog-close').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
+dialog.addEventListener('close',()=>{document.body.classList.remove('dialog-open');lastProductButton?.focus({preventScroll:true});});
+document.querySelector('#contact-form').addEventListener('submit',e=>{
+  e.preventDefault();const input=document.querySelector('#client-name'),name=input.value.trim();
+  if(!name){input.setCustomValidity('Escribe tu nombre para continuar.');input.reportValidity();return;}
+  const interest=document.querySelector('#client-interest').value,numbers={'diseñar o remodelar mi óptica':'593990331482','capacitación para mi equipo':'593958951408','soporte posventa':'593987654320'};
+  window.open(`https://wa.me/${numbers[interest]||'593963223843'}?text=${encodeURIComponent(`Hola VERSIOR, soy ${name}. Me gustaría conocer más sobre ${interest}.`)}`,'_blank','noopener,noreferrer');
+});
+document.querySelector('#client-name').addEventListener('input',e=>e.target.setCustomValidity(''));
+document.querySelector('#year').textContent=new Date().getFullYear();
+
+// Automatic product formation at the actual catalog, including direct menu arrivals.
+(() => {
+  const words = {
+    'rk-600': 'TECNOLOGÍA', 'ark-7610': 'PRECISIÓN', 'lm-260': 'CLARIDAD',
+    'vc-235': 'VISIÓN', 'ls-4': 'DETALLE', 'c-190a': 'ERGONOMÍA', 'cp-266': 'CONFIANZA'
+  };
+  const states = [];
+  let frame = 0;
+  let fontsReady = !document.fonts || document.fonts.status === 'loaded';
+  const min = (v, a, b) => Math.max(a, Math.min(b, v));
+  function requestFrame() {
+    if (!frame && !motion.matches && !document.hidden) frame = requestAnimationFrame(paint);
+  }
+  function arm(state) {
+    state.started = null;
+    state.waited = null;
+    state.done = false;
+    state.controller.setMode(!motion.matches && fontsReady && state.visible);
+    if (!motion.matches && fontsReady && state.visible) state.controller.render(0, 0);
+    if (state.visible) requestFrame();
+  }
+  function paint(now) {
+    frame = 0;
+    if (motion.matches || document.hidden) return;
+    let more = false;
+    for (const state of states) {
+      if (!state.visible || state.done) continue;
+      more = true;
+      if (!fontsReady) continue;
+      if (!state.controller.isReady()) {
+        state.waited ??= now;
+        if (now - state.waited > 4500) {
+          state.done = true;
+          state.controller.setMode(false);
+          state.host.classList.remove('formation-catalog-active');
+          state.host.dataset.effectState = 'photo-fallback';
+        }
+        continue;
+      }
+      state.started ??= now + state.delay;
+      const elapsed = Math.max(0, now - state.started);
+      const progress = min((elapsed - 550) / 2200, 0, 1) * .82;
+      if (state.controller.render(0, progress)) {
+        state.host.classList.add('formation-catalog-active');
+        state.host.dataset.effectState = progress < .15 ? 'word' : progress < .65 ? 'forming' : 'complete';
+        state.host.dataset.effectProgress = progress.toFixed(3);
+      }
+      if (elapsed >= 2750) state.done = true;
+    }
+    if (more) requestFrame();
+  }
+  document.querySelectorAll('.equipment-open').forEach((button, index) => {
+    const host = button.querySelector('.equipment-image');
+    const original = host?.querySelector('img');
+    if (!original || !window.createVersiorFormation) return;
+    const board = document.createElement('div');
+    board.className = 'card-formation';
+    board.setAttribute('aria-hidden', 'true');
+    const visual = document.createElement('div');
+    visual.className = 'story-visual';
+    const canvas = document.createElement('canvas');
+    canvas.className = 'formation-canvas';
+    const images = document.createElement('div');
+    images.className = 'story-devices';
+    images.append(original.cloneNode());
+    const meta = document.createElement('div');
+    meta.className = 'story-beat';
+    meta.dataset.storyWord = words[button.dataset.product] || 'VISIÓN';
+    meta.dataset.storyProduct = button.dataset.product;
+    visual.append(images, meta, canvas);
+    board.append(visual);
+    host.append(board);
+    const controller = window.createVersiorFormation(board, { compact: true, wordColor: '#065581' });
+    if (!controller) { board.remove(); return; }
+    host.dataset.effectState = 'ready';
+    states.push({ host, board, controller, visible: false, done: false, started: null, waited: null, delay: index % 3 * 140 });
+  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const state = states.find(s => s.host === entry.target);
+      if (!state) return;
+      const visible = entry.isIntersecting && entry.intersectionRatio >= .2;
+      if (visible && !state.visible) { state.visible = true; arm(state); }
+      else if (!entry.isIntersecting) {
+        state.visible = false;
+        state.controller.setMode(false);
+        state.host.classList.remove('formation-catalog-active');
+        state.host.dataset.effectState = 'ready';
+        state.done = false;
+      }
+    });
+  }, { threshold: [0, .2], rootMargin: '0px 0px -25px 0px' });
+  states.forEach(state => observer.observe(state.host));
+  document.fonts?.ready.then(() => { fontsReady = true; states.filter(s => s.visible).forEach(arm); });
+  motion.addEventListener('change', () => {
+    if (frame) cancelAnimationFrame(frame);
+    frame = 0;
+    states.forEach(state => {
+      state.controller.setMode(false);
+      state.host.classList.remove('formation-catalog-active');
+      state.host.dataset.effectState = motion.matches ? 'paused' : 'ready';
+      state.done = false;
+      if (!motion.matches && state.visible) arm(state);
+    });
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && frame) { cancelAnimationFrame(frame); frame = 0; }
+    else requestFrame();
+  });
+  const beliefs = document.querySelector('.beliefs');
+  if (beliefs) {
+    new IntersectionObserver(entries => entries.forEach(entry => {
+      entry.target.classList.toggle('corporate-visible', entry.isIntersecting);
+    }), { threshold: .12 }).observe(beliefs);
+  }
+  document.documentElement.dataset.versiorEffects = 'catalog-auto-v3';
+})();
+
+</script>
 </body></html>
