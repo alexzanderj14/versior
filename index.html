@@ -345,6 +345,144 @@ dialog#versior-chat[open] { display: flex; flex-direction: column; gap: 0; }
 @media (max-width: 760px) { .motion-notice { bottom: 85px; left: 14px; width: calc(100vw - 28px); } }
 
 </style>
+<style id="versior-readability-autoplay">
+/* Larger reading sizes without changing the established brand or display headings. */
+:root { --muted: rgb(0 0 0 / .74); }
+.eyebrow, .tiny-label, .chapter-label { font-size: 12px; line-height: 1.65; }
+.desktop-nav, .header-cta { font-size: 14px; }
+.proposal-tag { font-size: 11px; }
+.hero .hero-description { font-size: 18px; line-height: 1.75; }
+.hero .round-link, .text-link, .round-link { font-size: 14px; }
+.hero .hero-model b { font-size: 17px; }
+.hero .hero-model div > span { font-size: 13px; line-height: 1.6; }
+.hero .hero-bottom { font-size: 11px; line-height: 1.6; }
+.opening-bottom { font-size: 17px; line-height: 1.8; }
+.section-heading > p, .section-heading > div > p { font-size: 17px; line-height: 1.75; }
+.section-heading > div { min-width: 0; }
+.section-heading h2 .catalog-invite { display: block; margin-top: 18px; font: 800 clamp(30px, 3vw, 48px)/1.1 Barlow, sans-serif; letter-spacing: -.015em; color: var(--blue); }
+.catalog-download { font-size: 15px; line-height: 1.6; max-width: none; }
+.product-category { font-size: 12px; line-height: 1.6; }
+.equipment-name p { font-size: 15px; line-height: 1.65; max-width: 28ch; margin-top: 5px; }
+.equipment-action { font-size: 14px; min-height: 36px; padding-bottom: 8px; }
+.swipe-hint { font-size: 12px; line-height: 1.6; }
+.story-kicker .eyebrow, .story-beat .tiny-label, .story-index { font-size: 12px; }
+.story-beat > p:not(.tiny-label) { font-size: 17px; line-height: 1.7; max-width: 44ch; }
+.story-beat .text-link { font-size: 14px; }
+.scroll-story .story-model { font-size: 14px; }
+.formation-cue, .formation-skip { font-size: 12px; line-height: 1.5; }
+.formation-cue { gap: 12px; }
+.story-auto-pause { flex-shrink: 0; min-width: 38px; min-height: 38px; padding: 5px; border: 1px solid rgb(253 253 253 / .35); border-radius: 50%; background: transparent; color: var(--paper); font: 700 16px/1 Manrope, sans-serif; }
+.formation-footer { gap: 20px; }
+.support-heading .eyebrow, .support-copy .tiny-label { font-size: 12px; }
+.support-heading > p, .support-copy > p:not(.tiny-label) { font-size: 17px; line-height: 1.75; }
+.support-copy > p.support-note { font-size: 14px; }
+.support-tabs > button > span { font-size: 11px; }
+.support-tabs strong { font-size: clamp(16px, 1.5vw, 21px); }
+.support-person figcaption { font-size: 14px; line-height: 1.5; }
+.support-copy .text-link { font-size: 14px; }
+.support-controls > p, .support-controls button { font-size: 12px; }
+.experience-bottom > div > p { font-size: 17px; line-height: 1.8; }
+.purpose-copy > .tiny-label { font-size: 12px; }
+.purpose-copy > p:not(.tiny-label), .belief-content { font-size: 17px; line-height: 1.75; }
+.belief-title { font-size: clamp(21px, 2vw, 28px); }
+.social-heading > p { font-size: 17px; line-height: 1.8; }
+.social-card > p, .social-card-action { font-size: 13px; line-height: 1.65; }
+.footer-network-link { font-size: 14px; }
+.contact-intro { font-size: 18px; line-height: 1.8; }
+.contact .text-link { font-size: 15px; }
+.contact label, .contact .contact-permission { font-size: 14px; line-height: 1.7; }
+.contact input, .contact select { font-size: 18px; }
+.contact form > button { font-size: 16px; }
+.form-note, .locations .tiny-label, .map-hint { font-size: 13px; line-height: 1.7; }
+.locations p { font-size: 16px; line-height: 1.75; }
+.qr-share p span { font-size: 14px; line-height: 1.7; }
+footer, .footer-privacy a, .footer-privacy button { font-size: 12px; line-height: 1.7; }
+.footer-privacy { flex-wrap: wrap; }
+.dialog-copy > p, .dialog-copy ul { font-size: 16px; line-height: 1.8; }
+.dialog-copy .tiny-label { font-size: 12px; }
+.consent-banner p { font-size: 14px; line-height: 1.7; }
+.consent-banner a, .consent-actions button { font-size: 13px; }
+.chat-header .tiny-label, .chat-author { font-size: 11px; }
+.chat-header #chat-description, .chat-shortcuts button, .chat-actions a, .chat-direct { font-size: 13px; }
+.chat-message { font-size: 15px; line-height: 1.7; }
+.chat-privacy { font-size: 11px; line-height: 1.6; }
+#chat-input { font-size: 16px; }
+.motion-gentle .equipment-image[data-effect-state=gentle] > img { animation: gentle-photo-in .3s ease-out both !important; }
+@keyframes gentle-photo-in { from { opacity: .75; } to { opacity: 1; } }
+@media (min-width: 761px) and (max-height: 680px) {
+  .story-beat > p:not(.tiny-label) { font-size: 15px; line-height: 1.55; }
+  .story-beat .tiny-label, .story-kicker .eyebrow { font-size: 11px; }
+  .story-beat h2 { font-size: clamp(30px, 4.3vw, 52px); }
+}
+@media (min-width: 761px) and (max-height: 450px) {
+  .story-beat > p:not(.tiny-label) { font-size: 14px; line-height: 1.5; }
+  .story-beat h2 { font-size: clamp(27px, 3.8vw, 38px); }
+  .formation-cue, .formation-skip { font-size: 11px; }
+}
+@media (max-width: 760px) {
+  .eyebrow, .tiny-label, .chapter-label { font-size: 11px; letter-spacing: .05em; }
+  .chapter-label { gap: 18px; align-items: flex-start; }
+  .chapter-label span:last-child { max-width: 44%; }
+  .hero .hero-description { font-size: 16px; line-height: 1.7; }
+  .hero .round-link, .round-link, .text-link { font-size: 14px; }
+  .hero .hero-model b { font-size: 16px; }
+  .hero .hero-model div > span { font-size: 12px; }
+  .hero .hero-bottom { font-size: 10px; }
+  .opening-bottom, .section-heading > p, .section-heading > div > p { font-size: 15px; line-height: 1.75; }
+  .section-heading > div { display: block; }
+  .section-heading h2 .catalog-invite { font-size: 32px; margin-top: 14px; }
+  .catalog-download { font-size: 14px; }
+  .rail-controls { justify-content: flex-end; }
+  .product-category { font-size: 11px; }
+  .equipment-name p { font-size: 14px; line-height: 1.6; }
+  .equipment-action { font-size: 13px; }
+  .swipe-hint { font-size: 11px; }
+  /* One automatic scene fits its content, instead of trapping larger text in a viewport. */
+  .scroll-story.is-animated { height: auto; }
+  .is-animated .story-stage { position: relative; height: auto; min-height: 100svh; grid-template-rows: auto auto auto auto; padding-block: 28px; gap: 22px; overflow: visible; }
+  .is-animated .story-visual { height: clamp(190px, 66vw, 300px); min-height: 190px; max-height: none; }
+  .story-kicker .eyebrow, .story-beat .tiny-label, .story-index { font-size: 11px; }
+  .story-beat h2 { font-size: clamp(34px, 9.2vw, 60px); }
+  .story-beat > p:not(.tiny-label) { font-size: 15px; line-height: 1.7; margin-top: 16px; }
+  .scroll-story .story-model { font-size: 12px; }
+  .formation-cue, .formation-skip { font-size: 11px; }
+  .formation-cue { flex-wrap: wrap; gap: 8px; }
+  .formation-footer { gap: 12px; padding-right: 0; }
+  .formation-skip { min-height: 44px; }
+  .support-heading .eyebrow, .support-copy .tiny-label { font-size: 11px; }
+  .support-heading > p, .support-copy > p:not(.tiny-label) { font-size: 15px; line-height: 1.75; }
+  .support-copy > p.support-note { font-size: 13px; }
+  .support-tabs > button { padding: 13px 8px 15px; }
+  .support-tabs > button > span { font-size: 10px; min-height: 30px; line-height: 1.5; }
+  .support-tabs strong { font-size: 13px; line-height: 1.4; }
+  .support-person figcaption { font-size: 12px; }
+  .support-copy .text-link { font-size: 14px; }
+  .support-controls { align-items: flex-start; }
+  .support-controls > p, .support-controls button { font-size: 11px; }
+  .experience { height: auto; min-height: 100svh; max-height: none; }
+  .experience-bottom > div > p { font-size: 15px; line-height: 1.75; }
+  .purpose-copy > .tiny-label { font-size: 11px; }
+  .purpose-copy > p:not(.tiny-label), .belief-content { font-size: 15px; line-height: 1.75; }
+  .belief-title { font-size: 22px; }
+  .social-heading > p { font-size: 15px; line-height: 1.75; }
+  .social-card > p, .social-card-action { font-size: 12px; }
+  .social-card > p { overflow-wrap: anywhere; }
+  .social-card { min-height: 210px; }
+  .contact-intro { font-size: 16px; }
+  .contact .text-link { font-size: 14px; }
+  .contact label, .contact .contact-permission { font-size: 13px; }
+  .contact input, .contact select { font-size: 16px; }
+  .contact form > button { font-size: 15px; }
+  .form-note, .map-hint, .locations .tiny-label { font-size: 12px; }
+  .locations p { font-size: 15px; }
+  .qr-share p span { font-size: 13px; }
+  footer, .footer-privacy a, .footer-privacy button { font-size: 11px; }
+  .dialog-copy > p, .dialog-copy ul { font-size: 15px; }
+  .consent-banner p { font-size: 13px; }
+  .consent-banner a, .consent-actions button { font-size: 12px; }
+}
+
+</style>
 </head>
 <body>
 <noscript><iframe title="Google Tag Manager" src="https://www.googletagmanager.com/ns.html?id=GTM-MZGKQPFH" height="0" width="0" class="gtm-hidden"></iframe></noscript>
@@ -466,13 +604,13 @@ dialog#versior-chat[open] { display: flex; flex-direction: column; gap: 0; }
         </article>
       </div>
       <div class="formation-footer">
-        <span class="formation-cue">Desliza para transformar <span aria-hidden="true">↓</span></span>
+        <span class="formation-cue">Historia automática <button type="button" class="story-auto-pause" data-story-pause aria-label="Pausar historia" aria-pressed="false">Ⅱ</button></span>
         <div class="story-progress" aria-hidden="true"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div>
         <a class="formation-skip" href="#equipos">Ver equipos <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
-  <section class="equipment section-pad" id="equipos" aria-labelledby="equipment-title"><div class="chapter-label reveal"><span>Tecnología para avanzar</span><span>Elige tu siguiente paso</span></div><div class="section-heading reveal"><h2 id="equipment-title">TU PRÓXIMO<br><span>GRAN EQUIPO.</span></h2><div><p>De la refracción al diagnóstico.<br>Explora las soluciones para tu práctica.</p><a class="catalog-download" href="CatalogoVersior_compressed.pdf" download="Catalogo_VERSIOR_2026.pdf">Descargar catálogo PDF <span aria-hidden="true">↓</span></a><div class="rail-controls"><button data-rail="-1" aria-label="Ver equipos anteriores">←</button><button data-rail="1" aria-label="Ver siguientes equipos">→</button></div></div></div>
+  <section class="equipment section-pad" id="equipos" aria-labelledby="equipment-title"><div class="chapter-label reveal"><span>Tecnología para avanzar</span><span>Elige tu siguiente paso</span></div><div class="section-heading reveal"><h2 id="equipment-title">TU PRÓXIMO<br><span>GRAN EQUIPO.</span><span class="catalog-invite">¡Elígelo!</span></h2><div><p>De la refracción al diagnóstico.<br>Explora las soluciones para tu práctica.</p><a class="catalog-download" href="CatalogoVersior_compressed.pdf" download="Catalogo_VERSIOR_2026.pdf">Descargar catálogo PDF <span aria-hidden="true">↓</span></a><div class="rail-controls"><button data-rail="-1" aria-label="Ver equipos anteriores">←</button><button data-rail="1" aria-label="Ver siguientes equipos">→</button></div></div></div>
     <div class="equipment-rail" tabindex="0" aria-label="Catálogo de equipos; desliza para explorar">
       <article class="equipment-item"><button class="equipment-open" data-product="rk-600" aria-label="Ver detalles del RK-600"><span class="product-category">01 / Refracción</span><div class="equipment-image"><img src="assets/products/cutouts/rk-600.webp" width="593" height="684" loading="lazy" alt="RK-600"></div><div class="equipment-name"><div><h3>RK–600</h3><p>Autorrefractómetro + Queratómetro</p></div><span aria-hidden="true">↗</span></div><span class="equipment-action">Explorar equipo</span></button></article>
       <article class="equipment-item"><button class="equipment-open" data-product="ark-7610" aria-label="Ver detalles del ARK-7610"><span class="product-category">02 / Refracción</span><div class="equipment-image"><img src="assets/products/cutouts/ark-7610.webp" width="686" height="860" loading="lazy" alt="ARK-7610"></div><div class="equipment-name"><div><h3>ARK–7610</h3><p>Autorrefractómetro + Queratómetro</p></div><span aria-hidden="true">↗</span></div><span class="equipment-action">Explorar equipo</span></button></article>
@@ -558,7 +696,7 @@ dialog#versior-chat[open] { display: flex; flex-direction: column; gap: 0; }
     <div class="contact-main reveal"><div><p class="contact-intro">Cuéntanos qué imaginas para tu práctica.<br>Vamos a construir el siguiente paso contigo.</p><a class="text-link light" href="https://wa.me/593963223843" target="_blank" rel="noopener">Conversar por WhatsApp <span aria-hidden="true">↗</span></a></div><form id="contact-form"><label for="client-name">¿Cómo te llamas?</label><input id="client-name" name="name" autocomplete="name" placeholder="Tu nombre" required maxlength="80"><label for="client-interest">¿En qué podemos ayudarte?</label><select id="client-interest" name="interest"><option value="un equipo para mi práctica">Quiero cotizar un equipo</option><option value="diseñar o remodelar mi óptica">Diseño de mi óptica</option><option value="capacitación para mi equipo">Capacitación</option><option value="soporte posventa">Soporte posventa</option></select><label class="contact-permission"><input type="checkbox" name="privacy-consent" required><span>Acepto el uso de mis datos para responder mi solicitud, según la <a href="privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a>.</span></label><button type="submit">Iniciar conversación <span aria-hidden="true">↗</span></button><p class="form-note">Se abrirá WhatsApp con tu mensaje. No se envía automáticamente.</p></form></div>
     <div class="locations reveal"><a href="https://maps.app.goo.gl/UcRxmVZbiHxDkvoH8" target="_blank" rel="noopener"><span class="tiny-label">01 / Quito · Principal</span><h3>ESTAMOS CERCA.</h3><p>Calle Giovani Calles y Palermo,<br>urbanización UTE · Pichincha, Quito</p><span class="map-hint">Da clic para ir <i aria-hidden="true">↗</i></span></a><a href="https://www.google.com/maps/search/?api=1&amp;query=El%20Morl%C3%A1n%20y%20De%20los%20%C3%81lamos%2C%20barrio%20Damer%20II%2C%20Quito%2C%20Ecuador" target="_blank" rel="noopener"><span class="tiny-label">02 / La Luz · Quito</span><h3>ENCUÉNTRANOS.</h3><p>El Morlán y De los Álamos,<br>barrio Damer II · Quito</p><span class="map-hint">Da clic para ir <i aria-hidden="true">↗</i></span></a><a href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Mariscal%20Sucre%20y%20Benjam%C3%ADn%20Ochoa%2C%20Bibli%C3%A1n%2C%20Ca%C3%B1ar%2C%20Ecuador" target="_blank" rel="noopener"><span class="tiny-label">03 / Biblián · Cañar</span><h3>SIGAMOS EN CONTACTO.</h3><p>Av. Mariscal Sucre y Benjamín Ochoa,<br>esquina · Biblián</p><span class="map-hint">Da clic para ir <i aria-hidden="true">↗</i></span></a></div>
     <div class="social-share reveal"><div><p class="eyebrow">VERSIOR IMPORT’S</p><h3>COMPARTE LA VISIÓN.</h3><a class="footer-network-link" href="#redes">Ver nuestras redes sociales <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m4 20 16-16M4 4h16v16"/></svg></a></div><div class="qr-share"><img src="assets/brand/versior-qr-share.png" width="160" height="160" loading="lazy" alt="Código QR para compartir la página de VERSIOR"><p>Las buenas ideas<br>se comparten.<span>Escanea el código y comparte<br>nuestra página.</span></p></div></div>
-    <div class="footer-privacy"><a href="privacidad.html">Política de Privacidad</a><button type="button" data-cookie-preferences>Preferencias de cookies</button><button type="button" data-motion-toggle aria-pressed="true" hidden>Animaciones: activadas</button></div><footer><span>© <span id="year">2026</span> VERSIOR IMPORT’S</span><span>Tecnología. Personas. Propósito.</span><a href="#inicio">Volver al inicio ↑</a></footer>
+    <div class="footer-privacy"><a href="privacidad.html">Política de Privacidad</a><button type="button" data-cookie-preferences>Preferencias de cookies</button></div><footer><span>© <span id="year">2026</span> VERSIOR IMPORT’S</span><span>Tecnología. Personas. Propósito.</span><a href="#inicio">Volver al inicio ↑</a></footer>
   </section>
 </main>
 <div class="reading-progress" aria-hidden="true"><i></i></div><button class="floating-contact chat-launcher" type="button" id="chat-launcher" aria-controls="versior-chat" aria-expanded="false" aria-label="Abrir asistente automático de VERSIOR" hidden><span>Asistente VERSIOR</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 8h8M8 12h5"/></svg></button>
@@ -575,7 +713,7 @@ dialog#versior-chat[open] { display: flex; flex-direction: column; gap: 0; }
 
 <section id="cookie-banner" class="consent-banner" role="dialog" aria-modal="false" aria-label="Preferencias de cookies" hidden><div><h2>Tu privacidad importa</h2><p>Usamos cookies de medición para conocer el rendimiento del sitio y mejorar nuestras campañas. Puedes aceptar la medición o continuar solo con las funciones esenciales.</p><a href="privacidad.html">Ver Política de Privacidad</a></div><div class="consent-actions"><button type="button" data-cookie-choice="essential">Solo esenciales</button><button type="button" data-cookie-choice="accepted">Aceptar medición</button></div></section>
 <noscript><style>.reveal{opacity:1;transform:none}.support-panel[hidden]{display:grid}.support-tabs,.support-controls{display:none}.person-portrait{background-image:var(--portrait);background-size:var(--portrait-size);background-position:var(--portrait-position);background-repeat:no-repeat}</style></noscript>
-<aside class="motion-notice" id="motion-notice" aria-live="polite" hidden><p></p><button type="button" data-motion-enable>Activar animaciones</button></aside>
+
 <script id="versior-visible-runtime">
 'use strict';
 
@@ -869,42 +1007,16 @@ window.createVersiorFormation = function createVersiorFormation(root, options = 
 
 'use strict';
 document.documentElement.classList.add('js');
-const motion = (() => {
-  const system = matchMedia('(prefers-reduced-motion: reduce)');
-  const listeners = new Set();
-  let choice = null;
-  try { const saved = sessionStorage.getItem('versior_motion'); if (saved === 'enabled' || saved === 'paused') choice = saved; } catch (error) {}
-  let paused = choice ? choice === 'paused' : system.matches;
-  function paint() {
-    document.documentElement.classList.toggle('motion-on', !paused);
-    document.documentElement.classList.toggle('motion-paused', paused);
-    document.documentElement.dataset.motionStatus = paused ? 'paused' : 'enabled';
-    const notice = document.querySelector('#motion-notice');
-    if (notice) {
-      notice.hidden = !paused;
-      notice.querySelector('p').textContent = choice === 'paused' ? 'Las animaciones están pausadas.' : 'Tu dispositivo tiene activada la preferencia de reducir movimiento.';
-    }
-    document.querySelectorAll('[data-motion-toggle]').forEach(button => {
-      button.hidden = false;
-      button.textContent = paused ? 'Animaciones: pausadas' : 'Animaciones: activadas';
-      button.setAttribute('aria-pressed', String(!paused));
-    });
-  }
-  function setPaused(next, explicit = true) {
-    paused = next;
-    if (explicit) {
-      choice = paused ? 'paused' : 'enabled';
-      try { sessionStorage.setItem('versior_motion', choice); } catch (error) {}
-    }
-    paint();
-    listeners.forEach(listener => listener({ matches: paused }));
-  }
-  document.querySelectorAll('[data-motion-toggle]').forEach(button => button.addEventListener('click', () => setPaused(!paused)));
-  document.querySelectorAll('[data-motion-enable]').forEach(button => button.addEventListener('click', () => setPaused(false)));
-  system.addEventListener('change', () => { if (choice === null) setPaused(system.matches, false); });
-  paint();
-  return { get matches() { return paused; }, addEventListener(type, listener) { if (type === 'change') listeners.add(listener); } };
-})();
+// Automatic by default. Device accessibility settings select a gentle variant,
+// never an activation prompt or a previously saved paused preference.
+const motion = matchMedia('(prefers-reduced-motion: reduce)');
+function setAutomaticMotionMode() {
+  document.documentElement.classList.toggle('motion-on', !motion.matches);
+  document.documentElement.classList.toggle('motion-gentle', motion.matches);
+  document.documentElement.dataset.motionStatus = motion.matches ? 'automatic-gentle' : 'automatic';
+}
+motion.addEventListener('change', setAutomaticMotionMode);
+setAutomaticMotionMode();
 const menuButton=document.querySelector('.menu-toggle'),mobileNav=document.querySelector('.mobile-nav');
 function closeMenu(){menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Abrir menú');mobileNav.hidden=true;document.body.classList.remove('menu-open');}
 menuButton.addEventListener('click',()=>{const opened=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!opened));menuButton.setAttribute('aria-label',opened?'Abrir menú':'Cerrar menú');mobileNav.hidden=opened;document.body.classList.toggle('menu-open',!opened);});
@@ -930,10 +1042,10 @@ const supportTabs = [...support.querySelectorAll('[role="tab"]')];
 const supportPanels = [...support.querySelectorAll('[role="tabpanel"]')];
 const supportToggle = support.querySelector('[data-support-toggle]');
 let supportIndex = 0, supportInView = false, supportHovered = false, supportFocused = false;
-let supportPaused = motion.matches, supportTimer;
+let supportPaused = false, supportTimer;
 function scheduleSupport() {
   clearTimeout(supportTimer);
-  if (supportInView && !supportPaused && !supportHovered && !supportFocused && !document.hidden && !motion.matches && !document.body.classList.contains('chat-open'))
+  if (supportInView && !supportPaused && !supportFocused && !document.hidden && !document.body.classList.contains('chat-open'))
     supportTimer = setTimeout(() => selectSupport((supportIndex + 1) % supportTabs.length), 6500);
 }
 function selectSupport(index, announce = false) {
@@ -959,7 +1071,7 @@ supportTabs.forEach((tab, i) => {
   });
 });
 function updateSupportToggle() {
-  supportToggle.hidden = motion.matches;
+  supportToggle.hidden = false;
   supportToggle.textContent = supportPaused ? '▶ Reproducir presentación' : 'Ⅱ Pausar presentación';
   supportToggle.setAttribute('aria-label', supportPaused ? 'Reproducir la presentación de nuestro equipo' : 'Pausar la presentación de nuestro equipo');
   scheduleSupport();
@@ -977,7 +1089,7 @@ new IntersectionObserver(entries => {
 }, { threshold: .2 }).observe(support);
 document.addEventListener('visibilitychange', scheduleSupport);
 document.addEventListener('versior:chat-toggle', scheduleSupport);
-motion.addEventListener('change', () => { supportPaused = motion.matches; updateSupportToggle(); });
+motion.addEventListener('change', updateSupportToggle);
 
 const rail=document.querySelector('.equipment-rail'),railButtons=[...document.querySelectorAll('[data-rail]')];
 railButtons.forEach(button=>button.addEventListener('click',()=>{const step=rail.querySelector('.equipment-item').getBoundingClientRect().width+parseFloat(getComputedStyle(rail).gap);rail.scrollBy({left:step*Number(button.dataset.rail),behavior:motion.matches?'auto':'smooth'});}));
@@ -1019,7 +1131,7 @@ const heroSlides = productButtons.map((button, index) => {
 
 let heroIndex = 0;
 let heroInView = false;
-let heroPlaying = !motion.matches;
+let heroPlaying = true;
 let heroTimer;
 const slideDuration = 4700;
 
@@ -1085,6 +1197,54 @@ const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 let storyAnimated;
 let currentBeat = -1;
 let scrollFrame = 0;
+let scrollBeat = -1, storyInView = false, storyPaused = false;
+let storyAutoFrame = 0, storyElapsed = 0, storyClock = null;
+const storyPause = story.querySelector('[data-story-pause]');
+const storySceneDuration = 9000;
+
+function scheduleStoryPlayback() {
+  if (storyAutoFrame) cancelAnimationFrame(storyAutoFrame);
+  storyAutoFrame = 0;
+  storyClock = null;
+  const playing = storyAnimated && storyInView && !storyPaused && !document.hidden && !document.body.classList.contains('chat-open');
+  story.dataset.autoplayState = playing ? 'playing' : 'idle';
+  if (playing) storyAutoFrame = requestAnimationFrame(playStory);
+}
+
+function resetStoryScene(index) {
+  showStoryBeat(index);
+  storyElapsed = 0;
+  storyClock = null;
+  if (!motion.matches) storyFormation?.render(index, 0);
+}
+
+function playStory(now) {
+  storyAutoFrame = 0;
+  if (!storyAnimated || !storyInView || storyPaused || document.hidden || document.body.classList.contains('chat-open')) return;
+  if (storyClock !== null) storyElapsed += Math.max(0, now - storyClock);
+  storyClock = now;
+  if (storyElapsed >= storySceneDuration) {
+    resetStoryScene((currentBeat + 1) % storyBeats.length);
+    storyClock = now;
+  }
+  // Once a scene enters the viewport, its word-to-product build completes itself.
+  const progress = clamp((storyElapsed - 650) / 2400) * .82;
+  if (!motion.matches) storyFormation?.render(currentBeat, progress);
+  story.dataset.autoplayProgress = progress.toFixed(3);
+  story.dataset.autoplayBeat = String(currentBeat);
+  storySegments.forEach((segment, index) => segment.style.setProperty('--segment-progress', index < currentBeat ? '1' : index === currentBeat ? String(storyElapsed / storySceneDuration) : '0'));
+  storyAutoFrame = requestAnimationFrame(playStory);
+}
+
+storyPause?.addEventListener('click', () => {
+  storyPaused = !storyPaused;
+  storyPause.setAttribute('aria-label', storyPaused ? 'Reanudar historia' : 'Pausar historia');
+  storyPause.setAttribute('aria-pressed', String(storyPaused));
+  storyPause.textContent = storyPaused ? '▶' : 'Ⅱ';
+  scheduleStoryPlayback();
+});
+document.addEventListener('visibilitychange', scheduleStoryPlayback);
+document.addEventListener('versior:chat-toggle', scheduleStoryPlayback);
 
 function showStoryBeat(index) {
   currentBeat = index;
@@ -1106,29 +1266,28 @@ function showStoryBeat(index) {
 
 function updateStoryMode() {
   // Available on desktop and mobile, including short laptop windows.
-  storyAnimated = !motion.matches;
+  storyAnimated = true;
   story.classList.toggle('is-animated', storyAnimated);
-  storyFormation?.setMode(storyAnimated);
-  showStoryBeat(0);
+  storyFormation?.setMode(!motion.matches);
+  scrollBeat = -1;
+  resetStoryScene(0);
+  scheduleStoryPlayback();
   scheduleScroll();
 }
 
 function updateStory(bounds) {
-  if (!storyAnimated) return;
-
   const travel = Math.max(1, bounds.height - storyStage.offsetHeight);
   const progress = clamp(-bounds.top / travel);
   const chapterProgress = progress * storyBeats.length;
-  const nextBeat = Math.min(storyBeats.length - 1, Math.floor(chapterProgress));
-
-  if (nextBeat !== currentBeat) showStoryBeat(nextBeat);
-
-  // A reversible word → network → product transformation, driven only by scroll.
-  const localProgress = clamp(chapterProgress - nextBeat);
-  storyFormation?.render(nextBeat, localProgress);
-  storySegments.forEach((segment, index) => {
-    segment.style.setProperty('--segment-progress', clamp(chapterProgress - index).toFixed(4));
-  });
+  const scrollLinked = getComputedStyle(storyStage).position === 'sticky';
+  const nextBeat = scrollLinked ? Math.min(storyBeats.length - 1, Math.floor(chapterProgress)) : Math.max(0, scrollBeat);
+  const visible = bounds.top < innerHeight * .65 && bounds.bottom > innerHeight * .35;
+  const changed = nextBeat !== scrollBeat;
+  if (changed) { scrollBeat = nextBeat; resetStoryScene(nextBeat); }
+  if (visible !== storyInView || changed) {
+    storyInView = visible;
+    scheduleStoryPlayback();
+  }
 }
 
 function updateScroll() {
@@ -1151,8 +1310,8 @@ function updateScroll() {
     hero.style.setProperty('--hero-progress', heroProgress.toFixed(4));
     rail.style.setProperty('--equipment-depth', equipmentDepth.toFixed(4));
     experience.style.setProperty('--scene', experienceProgress.toFixed(4));
-    updateStory(storyBounds);
   }
+  updateStory(storyBounds);
 
   const scrollProgress = clamp(scrollY / Math.max(1, document.documentElement.scrollHeight - viewport));
   progressBar.style.transform = 'scaleX(' + scrollProgress + ')';
@@ -1171,7 +1330,6 @@ function scheduleScroll() {
 addEventListener('scroll', scheduleScroll, { passive: true });
 addEventListener('resize', scheduleScroll, { passive: true });
 motion.addEventListener('change', () => {
-  heroPlaying = !motion.matches;
   updateHeroControls();
   updateStoryMode();
 });
@@ -1264,6 +1422,13 @@ document.querySelector('#year').textContent=new Date().getFullYear();
     state.started = null;
     state.waited = null;
     state.done = false;
+    if (motion.matches) {
+      state.controller.setMode(false);
+      state.host.classList.remove('formation-catalog-active');
+      state.host.dataset.effectState = 'gentle';
+      state.done = true;
+      return;
+    }
     state.controller.setMode(!motion.matches && fontsReady && state.visible);
     if (!motion.matches && fontsReady && state.visible) state.controller.render(0, 0);
     if (state.visible) requestFrame();
@@ -1347,9 +1512,9 @@ document.querySelector('#year').textContent=new Date().getFullYear();
     states.forEach(state => {
       state.controller.setMode(false);
       state.host.classList.remove('formation-catalog-active');
-      state.host.dataset.effectState = motion.matches ? 'paused' : 'ready';
+      state.host.dataset.effectState = 'ready';
       state.done = false;
-      if (!motion.matches && state.visible) arm(state);
+      if (state.visible) arm(state);
     });
   });
   document.addEventListener('visibilitychange', () => {
@@ -1362,7 +1527,7 @@ document.querySelector('#year').textContent=new Date().getFullYear();
       entry.target.classList.toggle('corporate-visible', entry.isIntersecting);
     }), { threshold: .12 }).observe(beliefs);
   }
-  document.documentElement.dataset.versiorEffects = 'catalog-auto-v3';
+  document.documentElement.dataset.versiorEffects = 'scene-autoplay-readable-v4';
 })();
 
 </script>
