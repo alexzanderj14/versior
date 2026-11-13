@@ -483,6 +483,21 @@ footer, .footer-privacy a, .footer-privacy button { font-size: 12px; line-height
 }
 
 </style>
+<style id="versior-effects-v5-critical">
+/* Same display size and the exact brand sky blue requested. */
+#equipment-title .catalog-invite { font: inherit; font-size: inherit; line-height: inherit; letter-spacing: inherit; margin-top: 0; color: #1FB4FA; text-transform: uppercase; }
+.equipment-image.formation-catalog-active > img { opacity: 0; }
+.equipment-image .formation-canvas[hidden] { display: none !important; }
+.equipment-dom-formation { position: absolute; inset: 0; z-index: 4; pointer-events: none; background: var(--paper); overflow: hidden; }
+.equipment-dom-formation[hidden] { display: none; }
+.equipment-dom-word { position: absolute; inset: 0; display: grid; place-items: center; font: 800 clamp(23px, 4vw, 48px)/1 Barlow, sans-serif; color: var(--blue); letter-spacing: -.03em; }
+.equipment-dom-slice { position: absolute; inset: 0; }
+.equipment-dom-slice > img { position: absolute; width: 84%; height: 85%; inset: 3.5% 8% auto; object-fit: contain; max-width: none; }
+.equipment-dom-grid { position: absolute; inset: 0; background: repeating-linear-gradient(0deg,transparent 0 23px,rgb(31 180 250 / .22) 24px 25px),repeating-linear-gradient(90deg,transparent 0 23px,rgb(31 180 250 / .22) 24px 25px); }
+.rail-controls [data-catalog-motion] { font: 700 17px/1 Manrope,sans-serif; }
+@media (max-width:760px) { .equipment-dom-word { font-size: clamp(25px, 8.7vw, 39px); } }
+
+</style>
 </head>
 <body>
 <noscript><iframe title="Google Tag Manager" src="https://www.googletagmanager.com/ns.html?id=GTM-MZGKQPFH" height="0" width="0" class="gtm-hidden"></iframe></noscript>
@@ -610,7 +625,7 @@ footer, .footer-privacy a, .footer-privacy button { font-size: 12px; line-height
       </div>
     </div>
   </section>
-  <section class="equipment section-pad" id="equipos" aria-labelledby="equipment-title"><div class="chapter-label reveal"><span>Tecnología para avanzar</span><span>Elige tu siguiente paso</span></div><div class="section-heading reveal"><h2 id="equipment-title">TU PRÓXIMO<br><span>GRAN EQUIPO.</span><span class="catalog-invite">¡Elígelo!</span></h2><div><p>De la refracción al diagnóstico.<br>Explora las soluciones para tu práctica.</p><a class="catalog-download" href="CatalogoVersior_compressed.pdf" download="Catalogo_VERSIOR_2026.pdf">Descargar catálogo PDF <span aria-hidden="true">↓</span></a><div class="rail-controls"><button data-rail="-1" aria-label="Ver equipos anteriores">←</button><button data-rail="1" aria-label="Ver siguientes equipos">→</button></div></div></div>
+  <section class="equipment section-pad" id="equipos" aria-labelledby="equipment-title"><div class="chapter-label reveal"><span>Tecnología para avanzar</span><span>Elige tu siguiente paso</span></div><div class="section-heading reveal"><h2 id="equipment-title">TU PRÓXIMO<br><span>GRAN EQUIPO.</span><span class="catalog-invite">¡Elígelo!</span></h2><div><p>De la refracción al diagnóstico.<br>Explora las soluciones para tu práctica.</p><a class="catalog-download" href="CatalogoVersior_compressed.pdf" download="Catalogo_VERSIOR_2026.pdf">Descargar catálogo PDF <span aria-hidden="true">↓</span></a><div class="rail-controls"><button data-rail="-1" aria-label="Ver equipos anteriores">←</button><button data-rail="1" aria-label="Ver siguientes equipos">→</button><button type="button" data-catalog-motion aria-label="Pausar efectos del catálogo" aria-pressed="false">Ⅱ</button></div></div></div>
     <div class="equipment-rail" tabindex="0" aria-label="Catálogo de equipos; desliza para explorar">
       <article class="equipment-item"><button class="equipment-open" data-product="rk-600" aria-label="Ver detalles del RK-600"><span class="product-category">01 / Refracción</span><div class="equipment-image"><img src="assets/products/cutouts/rk-600.webp" width="593" height="684" loading="lazy" alt="RK-600"></div><div class="equipment-name"><div><h3>RK–600</h3><p>Autorrefractómetro + Queratómetro</p></div><span aria-hidden="true">↗</span></div><span class="equipment-action">Explorar equipo</span></button></article>
       <article class="equipment-item"><button class="equipment-open" data-product="ark-7610" aria-label="Ver detalles del ARK-7610"><span class="product-category">02 / Refracción</span><div class="equipment-image"><img src="assets/products/cutouts/ark-7610.webp" width="686" height="860" loading="lazy" alt="ARK-7610"></div><div class="equipment-name"><div><h3>ARK–7610</h3><p>Autorrefractómetro + Queratómetro</p></div><span aria-hidden="true">↗</span></div><span class="equipment-action">Explorar equipo</span></button></article>
@@ -714,7 +729,7 @@ footer, .footer-privacy a, .footer-privacy button { font-size: 12px; line-height
 <section id="cookie-banner" class="consent-banner" role="dialog" aria-modal="false" aria-label="Preferencias de cookies" hidden><div><h2>Tu privacidad importa</h2><p>Usamos cookies de medición para conocer el rendimiento del sitio y mejorar nuestras campañas. Puedes aceptar la medición o continuar solo con las funciones esenciales.</p><a href="privacidad.html">Ver Política de Privacidad</a></div><div class="consent-actions"><button type="button" data-cookie-choice="essential">Solo esenciales</button><button type="button" data-cookie-choice="accepted">Aceptar medición</button></div></section>
 <noscript><style>.reveal{opacity:1;transform:none}.support-panel[hidden]{display:grid}.support-tabs,.support-controls{display:none}.person-portrait{background-image:var(--portrait);background-size:var(--portrait-size);background-position:var(--portrait-position);background-repeat:no-repeat}</style></noscript>
 
-<script id="versior-visible-runtime">
+<script id="versior-formation-runtime">
 'use strict';
 
 // Real product silhouettes, not floating 3D substitutes. Every frame is reversible.
@@ -1004,7 +1019,8 @@ window.createVersiorFormation = function createVersiorFormation(root, options = 
     isReady(index = 0) { return !!assets[index]?.ready; }
   };
 };
-
+</script>
+<script id="versior-experience-runtime">
 'use strict';
 document.documentElement.classList.add('js');
 // Automatic by default. Device accessibility settings select a gentle variant,
@@ -1404,130 +1420,159 @@ document.querySelector('#contact-form').addEventListener('submit',e=>{
 });
 document.querySelector('#client-name').addEventListener('input',e=>e.target.setCustomValidity(''));
 document.querySelector('#year').textContent=new Date().getFullYear();
-
-// Automatic product formation at the actual catalog, including direct menu arrivals.
+</script>
+<script id="versior-catalog-runtime">
+// Automatic, repeating formation. Start only once a product is clearly visible.
 (() => {
-  const words = {
-    'rk-600': 'TECNOLOGÍA', 'ark-7610': 'PRECISIÓN', 'lm-260': 'CLARIDAD',
-    'vc-235': 'VISIÓN', 'ls-4': 'DETALLE', 'c-190a': 'ERGONOMÍA', 'cp-266': 'CONFIANZA'
-  };
+  'use strict';
+  const preference = matchMedia('(prefers-reduced-motion: reduce)');
+  const words = { 'rk-600':'TECNOLOGÍA', 'ark-7610':'PRECISIÓN', 'lm-260':'CLARIDAD', 'vc-235':'VISIÓN', 'ls-4':'DETALLE', 'c-190a':'ERGONOMÍA', 'cp-266':'CONFIANZA' };
   const states = [];
-  let frame = 0;
+  const period = 10000;
+  const pauseButton = document.querySelector('[data-catalog-motion]');
+  let paused = false, frame = 0, wake = 0;
   let fontsReady = !document.fonts || document.fonts.status === 'loaded';
-  const min = (v, a, b) => Math.max(a, Math.min(b, v));
+  const clamp = v => Math.max(0, Math.min(1, v));
+  function phaseAt(elapsed) {
+    const time = Math.max(0, elapsed) % period;
+    if (time < 900) return { progress:0, phase:'word', wait:900-time, moving:false };
+    if (time < 4500) return { progress:(time-900)/3600*.82, phase:'forming', moving:true };
+    if (time < 8800) return { progress:.82, phase:'complete', wait:8800-time, moving:false };
+    return { progress:(1-(time-8800)/1200)*.82, phase:'dissolving', moving:true };
+  }
+  function clearSchedule() {
+    if (frame) cancelAnimationFrame(frame);
+    if (wake) clearTimeout(wake);
+    frame = 0; wake = 0;
+  }
   function requestFrame() {
-    if (!frame && !motion.matches && !document.hidden) frame = requestAnimationFrame(paint);
+    if (document.hidden || paused || !states.some(s => s.visible)) return;
+    if (wake) { clearTimeout(wake); wake = 0; }
+    if (!frame) frame = requestAnimationFrame(paint);
+  }
+  function hideBoard(state) {
+    state.controller?.setMode(false);
+    state.board?.classList.remove('has-formation');
+    if (state.dom) state.dom.hidden = true;
+    state.host.classList.remove('formation-catalog-active');
+    state.lastProgress = null;
+  }
+  function makeDOM(state) {
+    if (state.dom) return;
+    const dom = document.createElement('div');
+    dom.className = 'equipment-dom-formation';
+    dom.setAttribute('aria-hidden', 'true');
+    const word = document.createElement('span');
+    word.className = 'equipment-dom-word'; word.textContent = state.word;
+    const grid = document.createElement('span'); grid.className = 'equipment-dom-grid';
+    const strips = [];
+    for (let i=0;i<10;i++) {
+      const strip = document.createElement('span'); strip.className = 'equipment-dom-slice';
+      const photo = state.original.cloneNode(); photo.alt=''; photo.loading='eager';
+      strip.append(photo); dom.append(strip); strips.push(strip);
+    }
+    dom.append(grid,word); state.host.append(dom);
+    state.dom=dom; state.domWord=word; state.domGrid=grid; state.strips=strips;
+  }
+  function renderDOM(state, progress) {
+    makeDOM(state); state.dom.hidden=false;
+    state.domWord.style.opacity=String(1-clamp((progress-.08)/.18));
+    state.domGrid.style.opacity=String(clamp((progress-.08)/.16)*(1-clamp((progress-.6)/.18))*.6);
+    state.strips.forEach((strip,i) => {
+      const reveal=clamp((progress-.18-(i%3)*.028)/.46), left=i*10, right=left+10.1;
+      const top=i%2 ? (1-reveal)*100 : 0, bottom=i%2 ? 100 : reveal*100;
+      strip.style.clipPath=`polygon(${left}% ${top}%,${right}% ${top}%,${right}% ${bottom}%,${left}% ${bottom}%)`;
+    });
+    state.host.classList.add('formation-catalog-active');
+    state.host.dataset.effectEngine='compatible';
   }
   function arm(state) {
-    state.started = null;
-    state.waited = null;
-    state.done = false;
-    if (motion.matches) {
-      state.controller.setMode(false);
-      state.host.classList.remove('formation-catalog-active');
-      state.host.dataset.effectState = 'gentle';
-      state.done = true;
+    state.started=null; state.waited=null; state.lastProgress=null;
+    hideBoard(state);
+    if (preference.matches) {
+      state.host.dataset.effectState='gentle';
       return;
     }
-    state.controller.setMode(!motion.matches && fontsReady && state.visible);
-    if (!motion.matches && fontsReady && state.visible) state.controller.render(0, 0);
-    if (state.visible) requestFrame();
+    state.controller?.setMode(true);
+    state.controller?.render(0,0);
+    state.host.dataset.effectState='word';
+    requestFrame();
   }
   function paint(now) {
-    frame = 0;
-    if (motion.matches || document.hidden) return;
-    let more = false;
+    frame=0;
+    if (document.hidden || paused) return;
+    let moving=false, nextWake=Infinity;
     for (const state of states) {
-      if (!state.visible || state.done) continue;
-      more = true;
-      if (!fontsReady) continue;
-      if (!state.controller.isReady()) {
-        state.waited ??= now;
-        if (now - state.waited > 4500) {
-          state.done = true;
-          state.controller.setMode(false);
-          state.host.classList.remove('formation-catalog-active');
-          state.host.dataset.effectState = 'photo-fallback';
+      if (!state.visible || preference.matches) continue;
+      if (!fontsReady || !state.original.complete || !state.original.naturalWidth) { nextWake=Math.min(nextWake,100); continue; }
+      state.waited ??=now;
+      const ready=state.controller?.isReady();
+      if (state.controller && !ready && !state.board.dataset.formationError && now-state.waited<1800) { nextWake=Math.min(nextWake,80); continue; }
+      state.started ??=now+state.delay;
+      const elapsed=Math.max(0,now-state.started);
+      const value=phaseAt(elapsed);
+      if (state.lastProgress===null || Math.abs(value.progress-state.lastProgress)>.0005) {
+        let rendered=false;
+        if (ready) {
+          try { rendered=state.controller.render(0,value.progress); } catch (error) { state.board.dataset.formationError='render-unavailable'; }
         }
-        continue;
+        if (rendered) {
+          if (state.dom) state.dom.hidden=true;
+          state.host.classList.add('formation-catalog-active');
+          state.host.dataset.effectEngine='traced-photo';
+        } else { state.controller?.setMode(false); renderDOM(state,value.progress); }
+        state.lastProgress=value.progress;
       }
-      state.started ??= now + state.delay;
-      const elapsed = Math.max(0, now - state.started);
-      const progress = min((elapsed - 550) / 2200, 0, 1) * .82;
-      if (state.controller.render(0, progress)) {
-        state.host.classList.add('formation-catalog-active');
-        state.host.dataset.effectState = progress < .15 ? 'word' : progress < .65 ? 'forming' : 'complete';
-        state.host.dataset.effectProgress = progress.toFixed(3);
-      }
-      if (elapsed >= 2750) state.done = true;
+      state.host.dataset.effectState=value.phase;
+      state.host.dataset.effectProgress=value.progress.toFixed(3);
+      state.host.dataset.effectCycle=String(Math.floor(elapsed/period)+1);
+      if (value.moving) moving=true;
+      else nextWake=Math.min(nextWake,value.wait+Math.max(0,state.started-now));
     }
-    if (more) requestFrame();
+    if (moving) requestFrame();
+    else if (Number.isFinite(nextWake)) wake=setTimeout(()=>{wake=0;requestFrame();},Math.max(16,nextWake));
   }
-  document.querySelectorAll('.equipment-open').forEach((button, index) => {
-    const host = button.querySelector('.equipment-image');
-    const original = host?.querySelector('img');
-    if (!original || !window.createVersiorFormation) return;
-    const board = document.createElement('div');
-    board.className = 'card-formation';
-    board.setAttribute('aria-hidden', 'true');
-    const visual = document.createElement('div');
-    visual.className = 'story-visual';
-    const canvas = document.createElement('canvas');
-    canvas.className = 'formation-canvas';
-    const images = document.createElement('div');
-    images.className = 'story-devices';
-    images.append(original.cloneNode());
-    const meta = document.createElement('div');
-    meta.className = 'story-beat';
-    meta.dataset.storyWord = words[button.dataset.product] || 'VISIÓN';
-    meta.dataset.storyProduct = button.dataset.product;
-    visual.append(images, meta, canvas);
-    board.append(visual);
-    host.append(board);
-    const controller = window.createVersiorFormation(board, { compact: true, wordColor: '#065581' });
-    if (!controller) { board.remove(); return; }
-    host.dataset.effectState = 'ready';
-    states.push({ host, board, controller, visible: false, done: false, started: null, waited: null, delay: index % 3 * 140 });
+  document.querySelectorAll('.equipment-open').forEach((button,index) => {
+    const host=button.querySelector('.equipment-image'), original=host?.querySelector('img');
+    if (!original) return;
+    const state={host,original,word:words[button.dataset.product]||'VISIÓN',controller:null,board:null,visible:false,started:null,waited:null,lastProgress:null,delay:index%3*220};
+    if (typeof window.createVersiorFormation==='function') {
+      const board=document.createElement('div'); board.className='card-formation'; board.setAttribute('aria-hidden','true');
+      const visual=document.createElement('div'); visual.className='story-visual';
+      const canvas=document.createElement('canvas'); canvas.className='formation-canvas';
+      const images=document.createElement('div'); images.className='story-devices'; images.append(original.cloneNode());
+      const meta=document.createElement('div'); meta.className='story-beat'; meta.dataset.storyWord=state.word; meta.dataset.storyProduct=button.dataset.product;
+      visual.append(images,meta,canvas); board.append(visual); host.append(board); state.board=board;
+      try { state.controller=window.createVersiorFormation(board,{compact:true,wordColor:'#065581'}); } catch (error) { board.remove(); }
+    }
+    host.dataset.effectState='ready'; states.push(state);
   });
-  const observer = new IntersectionObserver(entries => {
+  const observer=new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      const state = states.find(s => s.host === entry.target);
+      const state=states.find(s=>s.host===entry.target);
       if (!state) return;
-      const visible = entry.isIntersecting && entry.intersectionRatio >= .2;
-      if (visible && !state.visible) { state.visible = true; arm(state); }
-      else if (!entry.isIntersecting) {
-        state.visible = false;
-        state.controller.setMode(false);
-        state.host.classList.remove('formation-catalog-active');
-        state.host.dataset.effectState = 'ready';
-        state.done = false;
-      }
+      if (entry.isIntersecting && entry.intersectionRatio>=.55 && !state.visible) { state.visible=true; arm(state); }
+      else if ((!entry.isIntersecting || entry.intersectionRatio<.15) && state.visible) { state.visible=false; hideBoard(state); state.host.dataset.effectState='ready'; }
     });
-  }, { threshold: [0, .2], rootMargin: '0px 0px -25px 0px' });
-  states.forEach(state => observer.observe(state.host));
-  document.fonts?.ready.then(() => { fontsReady = true; states.filter(s => s.visible).forEach(arm); });
-  motion.addEventListener('change', () => {
-    if (frame) cancelAnimationFrame(frame);
-    frame = 0;
-    states.forEach(state => {
-      state.controller.setMode(false);
-      state.host.classList.remove('formation-catalog-active');
-      state.host.dataset.effectState = 'ready';
-      state.done = false;
-      if (state.visible) arm(state);
-    });
+    if (!states.some(s=>s.visible)) clearSchedule();
+  },{threshold:[0,.15,.55],rootMargin:'0px 0px -12px 0px'});
+  states.forEach(state=>observer.observe(state.host));
+  document.fonts?.ready.then(()=>{fontsReady=true;states.filter(s=>s.visible).forEach(arm);});
+  preference.addEventListener('change',()=>{clearSchedule();states.filter(s=>s.visible).forEach(arm);});
+  document.addEventListener('visibilitychange',()=>{
+    clearSchedule();
+    if (!document.hidden) states.filter(s=>s.visible).forEach(arm);
   });
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden && frame) { cancelAnimationFrame(frame); frame = 0; }
-    else requestFrame();
+  pauseButton?.addEventListener('click',()=>{
+    paused=!paused; clearSchedule();
+    pauseButton.setAttribute('aria-label',paused?'Reanudar efectos del catálogo':'Pausar efectos del catálogo');
+    pauseButton.setAttribute('aria-pressed',String(paused));
+    pauseButton.textContent=paused?'▶':'Ⅱ';
+    if (!paused) states.filter(s=>s.visible).forEach(arm);
   });
-  const beliefs = document.querySelector('.beliefs');
-  if (beliefs) {
-    new IntersectionObserver(entries => entries.forEach(entry => {
-      entry.target.classList.toggle('corporate-visible', entry.isIntersecting);
-    }), { threshold: .12 }).observe(beliefs);
-  }
-  document.documentElement.dataset.versiorEffects = 'scene-autoplay-readable-v4';
+  const beliefs=document.querySelector('.beliefs');
+  if (beliefs) new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('corporate-visible',entry.isIntersecting)),{threshold:.12}).observe(beliefs);
+  document.documentElement.dataset.versiorEffects='visible-repeat-v5';
 })();
 
 </script>
