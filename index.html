@@ -523,6 +523,44 @@ footer, .footer-privacy a, .footer-privacy button { font-size: 12px; line-height
 @media (max-width: 760px) { #servicios.service-people { padding-block: 45px; } }
 
 </style>
+<style id="versior-native-motion-v7">
+/* Keep the existing catalogue palette and authentic equipment photography. */
+#equipos .native-formation { position:absolute; inset:0; z-index:3; pointer-events:none; opacity:0; --motion-play:paused; transform:perspective(1000px) rotateX(var(--device-x,0deg)) rotateY(var(--device-y,0deg)); transition:transform .25s ease-out; }
+#equipos .native-effect-ready .native-formation { opacity:1; }
+#equipos .native-effect-ready > img { opacity:0 !important; }
+#equipos .native-in-view .native-formation { --motion-play:running; }
+#equipos.native-effects-hidden .native-formation, #equipos.native-effects-paused .native-formation { --motion-play:paused; }
+#equipos.native-effects-paused .native-formation { opacity:0; }
+#equipos.native-effects-paused .equipment-image > img { opacity:1 !important; }
+#equipos .native-slices { position:absolute; inset:0; filter:drop-shadow(0 16px 12px rgb(0 0 0 / .24)); }
+#equipos .native-slice { position:absolute; inset:0; clip-path:var(--closed); animation:versior-native-build 10s cubic-bezier(.4,0,.2,1) infinite both !important; animation-delay:calc(var(--card-delay) + var(--slice-delay)) !important; animation-play-state:var(--motion-play) !important; }
+#equipos .native-slice > .native-formation-photo { position:absolute; inset:3.5% 8% auto; width:84%; height:85%; object-fit:contain; max-width:none; mix-blend-mode:normal; filter:none; transform:none !important; transition:none !important; opacity:1; }
+#equipos .native-word { position:absolute; inset:0; display:grid; place-items:center; color:#FDFDFD; font:800 clamp(26px,3.6vw,50px)/1 Barlow,'Arial Narrow',sans-serif; letter-spacing:-.025em; animation:versior-native-word 10s ease-in-out infinite both !important; animation-delay:var(--card-delay) !important; animation-play-state:var(--motion-play) !important; }
+#equipos .native-grid { position:absolute; inset:6% 3%; background:repeating-linear-gradient(0deg,transparent 0 29px,rgb(31 180 250 / .42) 30px 31px),repeating-linear-gradient(90deg,transparent 0 29px,rgb(31 180 250 / .42) 30px 31px); mask-image:radial-gradient(ellipse,#000 10%,transparent 72%); opacity:0; animation:versior-native-grid 10s ease-in-out infinite both !important; animation-delay:var(--card-delay) !important; animation-play-state:var(--motion-play) !important; }
+#equipos .native-scan { position:absolute; top:7%; left:10%; right:10%; height:2px; background:linear-gradient(90deg,transparent,#1FB4FA,#FDFDFD,#1FB4FA,transparent); box-shadow:0 0 14px rgb(31 180 250 / .5); opacity:0; animation:versior-native-scan 10s linear infinite both !important; animation-delay:var(--card-delay) !important; animation-play-state:var(--motion-play) !important; }
+@keyframes versior-native-build { 0%,12% {clip-path:var(--closed);opacity:.2;} 44%,86% {clip-path:var(--formed);opacity:1;} 100% {clip-path:var(--closed);opacity:.2;} }
+@keyframes versior-native-word { 0%,10% {opacity:1;filter:blur(0);transform:translateY(0);} 24% {opacity:.15;filter:blur(3px);transform:translateY(-8px);} 33%,87% {opacity:0;filter:blur(4px);transform:translateY(-12px);} 100% {opacity:1;filter:blur(0);transform:translateY(0);} }
+@keyframes versior-native-grid { 0%,8% {opacity:0;} 22%,34% {opacity:.7;} 49%,86% {opacity:0;} 93% {opacity:.4;} 100% {opacity:0;} }
+@keyframes versior-native-scan { 0%,10% {top:7%;opacity:0;} 15% {opacity:.95;} 44% {top:88%;opacity:0;} 86% {top:88%;opacity:0;} 91% {opacity:.7;} 100% {top:7%;opacity:0;} }
+.reveal.native-enter.is-visible { animation:versior-native-enter .85s cubic-bezier(.22,1,.36,1) both; }
+@keyframes versior-native-enter { from {opacity:0;transform:translateY(20px);} to {opacity:1;transform:translateY(0);} }
+/* Reduced movement still has an automatic optical dissolve, never a static gate. */
+#equipos[data-effect-mode=gentle] .native-formation { transform:none !important; }
+#equipos[data-effect-mode=gentle] .native-slice { clip-path:var(--formed); animation:versior-gentle-photo 10s ease-in-out infinite both !important; animation-delay:var(--card-delay) !important; animation-play-state:var(--motion-play) !important; }
+#equipos[data-effect-mode=gentle] .native-slice:not(:first-child) { display:none; }
+#equipos[data-effect-mode=gentle] .native-slice:first-child { clip-path:none; }
+#equipos[data-effect-mode=gentle] .native-word { animation:versior-gentle-word 10s ease-in-out infinite both !important; animation-delay:var(--card-delay) !important; animation-play-state:var(--motion-play) !important; }
+#equipos[data-effect-mode=gentle] .native-grid, #equipos[data-effect-mode=gentle] .native-scan { display:none; }
+@keyframes versior-gentle-photo { 0%,12% {opacity:0;} 23%,87% {opacity:1;} 100% {opacity:0;} }
+@keyframes versior-gentle-word { 0%,12% {opacity:1;} 23%,87% {opacity:0;} 100% {opacity:1;} }
+@media (prefers-reduced-motion:reduce) { .reveal.native-enter.is-visible { animation:none; } }
+@supports not (clip-path:polygon(0 0,100% 0,100% 100%,0 100%)) {
+  #equipos .native-slice { animation:versior-gentle-photo 10s ease-in-out infinite both !important; animation-delay:var(--card-delay) !important; animation-play-state:var(--motion-play) !important; }
+  #equipos .native-slice:not(:first-child) { display:none; }
+}
+@media (max-width:760px) { #equipos .native-word { font-size:clamp(25px,8.7vw,39px); } }
+
+</style>
 </head>
 <body>
 <noscript><iframe title="Google Tag Manager" src="https://www.googletagmanager.com/ns.html?id=GTM-MZGKQPFH" height="0" width="0" class="gtm-hidden"></iframe></noscript>
@@ -685,297 +723,6 @@ footer, .footer-privacy a, .footer-privacy button { font-size: 12px; line-height
 <section id="cookie-banner" class="consent-banner" role="dialog" aria-modal="false" aria-label="Preferencias de cookies" hidden><div><h2>Tu privacidad importa</h2><p>Usamos cookies de medición para conocer el rendimiento del sitio y mejorar nuestras campañas. Puedes aceptar la medición o continuar solo con las funciones esenciales.</p><a href="privacidad.html">Ver Política de Privacidad</a></div><div class="consent-actions"><button type="button" data-cookie-choice="essential">Solo esenciales</button><button type="button" data-cookie-choice="accepted">Aceptar medición</button></div></section>
 <noscript><style>.reveal{opacity:1;transform:none}.support-panel[hidden]{display:grid}.support-tabs,.support-controls{display:none}.person-portrait{background-image:var(--portrait);background-size:var(--portrait-size);background-position:var(--portrait-position);background-repeat:no-repeat}</style></noscript>
 
-<script id="versior-formation-runtime">
-'use strict';
-
-// Real product silhouettes, not floating 3D substitutes. Every frame is reversible.
-const versiorFormationPhotoCache = new Map();
-window.createVersiorFormation = function createVersiorFormation(root, options = {}) {
-  const visual = root.querySelector('.story-visual');
-  const canvas = visual.querySelector('.formation-canvas');
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return null;
-  const beats = [...root.querySelectorAll('.story-beat')];
-  const sources = [...root.querySelectorAll('.story-devices img')];
-  const clamp = value => Math.max(0, Math.min(1, value));
-  const smooth = (from, to, value) => {
-    const t = clamp((value - from) / (to - from));
-    return t * t * (3 - 2 * t);
-  };
-  const mix = (a, b, t) => a + (b - a) * t;
-  const seed = n => {
-    const value = Math.sin(n * 127.1 + 311.7) * 43758.5453;
-    return value - Math.floor(value);
-  };
-  const assets = [];
-  const words = new Map();
-  let width = 0, height = 0, enabled = false, lastIndex = 0, lastProgress = 0;
-  let count = 720;
-
-  function makeWord(word) {
-    if (words.has(word)) return words.get(word);
-    const surface = document.createElement('canvas');
-    surface.width = Math.max(1, Math.ceil(width));
-    surface.height = Math.max(1, Math.ceil(height));
-    const pen = surface.getContext('2d', { willReadFrequently: true });
-    let size = Math.min(145, height * .33);
-    pen.font = '800 ' + size + 'px Barlow, "Arial Narrow", sans-serif';
-    size *= Math.min(1, width * .9 / Math.max(1, pen.measureText(word).width));
-    pen.font = '800 ' + size + 'px Barlow, "Arial Narrow", sans-serif';
-    pen.textAlign = 'center';
-    pen.textBaseline = 'middle';
-    pen.fillStyle = '#FDFDFD';
-    pen.fillText(word, width * .5, height * .46);
-    const pixels = pen.getImageData(0, 0, surface.width, surface.height);
-    const points = [];
-    const step = width < 400 ? 2 : 3;
-    for (let y = 0; y < surface.height; y += step) {
-      for (let x = 0; x < surface.width; x += step) {
-        if (pixels.data[(y * surface.width + x) * 4 + 3] > 90) points.push({ x, y });
-      }
-    }
-    if (!points.length) points.push({ x: width / 2, y: height / 2 });
-    const result = { points, size, word };
-    words.set(word, result);
-    return result;
-  }
-
-  function analyzePhoto(image) {
-    const surface = document.createElement('canvas');
-    surface.width = 320;
-    surface.height = Math.round(320 * image.naturalHeight / image.naturalWidth);
-    const pen = surface.getContext('2d', { willReadFrequently: true });
-    pen.drawImage(image, 0, 0, surface.width, surface.height);
-    const { data } = pen.getImageData(0, 0, surface.width, surface.height);
-    const points = [];
-    const sw = surface.width, sh = surface.height;
-    const blueprint = document.createElement('canvas');
-    blueprint.width = sw;
-    blueprint.height = sh;
-    const bluePen = blueprint.getContext('2d');
-    const tracing = bluePen.createImageData(sw, sh);
-    const alpha = (x, y) => data[(y * sw + x) * 4 + 3] || 0;
-    for (let y = 2; y < sh - 2; y++) {
-      for (let x = 2; x < sw - 2; x++) {
-        const at = (y * sw + x) * 4;
-        if (data[at + 3] < 80) continue;
-        const contour = alpha(x - 1, y) < 80 || alpha(x + 1, y) < 80 ||
-          alpha(x, y - 1) < 80 || alpha(x, y + 1) < 80;
-        const horizontal = Math.abs(data[at] - data[at + 4]);
-        const vertical = Math.abs(data[at] - data[at + sw * 4]);
-        if (contour || horizontal + vertical > 48) {
-          tracing.data[at] = 31;
-          tracing.data[at + 1] = 180;
-          tracing.data[at + 2] = 250;
-          tracing.data[at + 3] = contour ? 240 : 165;
-        }
-        if (x % 2 === 0 && y % 2 === 0 && (contour || horizontal + vertical > 42 || (x + y) % 20 === 0))
-          points.push({ x: x / sw, y: y / sh });
-      }
-    }
-    if (!points.length) points.push({ x: .5, y: .5 });
-    bluePen.putImageData(tracing, 0, 0);
-    return { points, blueprint };
-  }
-
-  function photoBox(image) {
-    const scale = Math.min(width * .84 / image.naturalWidth, height * .85 / image.naturalHeight);
-    const w = image.naturalWidth * scale, h = image.naturalHeight * scale;
-    return { x: (width - w) / 2, y: height * .46 - h / 2, w, h };
-  }
-
-  function pointAt(word, photo, box, i, t, reverse = false) {
-    const start = word.points[Math.floor(seed(i + 13) * word.points.length)];
-    const target = photo.points[Math.floor(seed(i + 47) * photo.points.length)];
-    const endpoint = { x: box.x + target.x * box.w, y: box.y + target.y * box.h };
-    const a = reverse ? endpoint : start, b = reverse ? start : endpoint;
-    // Short filament paths; no globe, orbit, perpetual bobbing or scale pulse.
-    const curve = Math.sin(t * Math.PI);
-    return {
-      x: mix(a.x, b.x, t) + curve * (seed(i + 101) - .5) * width * .16,
-      y: mix(a.y, b.y, t) + curve * (seed(i + 173) - .5) * height * .15
-    };
-  }
-
-  function drawWord(word, opacity) {
-    if (opacity <= .001) return;
-    ctx.save();
-    ctx.globalAlpha = opacity;
-    ctx.font = '800 ' + word.size + 'px Barlow, "Arial Narrow", sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillStyle = options.wordColor || '#FDFDFD';
-    ctx.fillText(word.word, width / 2, height * .46);
-    ctx.restore();
-  }
-
-  function drawNetwork(word, photo, box, t, opacity, reverse) {
-    if (opacity < .005) return;
-    const points = [];
-    ctx.save();
-    // Fine luminous filaments connect the letters to the actual equipment outline.
-    ctx.strokeStyle = 'rgba(31,180,250,' + (opacity * .33) + ')';
-    ctx.lineWidth = .75;
-    for (let lane = 0; lane < 28; lane++) {
-      const n = lane * 47;
-      const a = pointAt(word, photo, box, n, clamp(t - .28), reverse);
-      const b = pointAt(word, photo, box, n, t, reverse);
-      const c = pointAt(word, photo, box, n, clamp(t + .16), reverse);
-      ctx.beginPath();
-      ctx.moveTo(a.x, a.y);
-      ctx.quadraticCurveTo(b.x, b.y, c.x, c.y);
-      ctx.stroke();
-    }
-    for (let i = 0; i < count; i++) points.push(pointAt(word, photo, box, i, t, reverse));
-    ctx.strokeStyle = 'rgba(31,180,250,' + (opacity * .22) + ')';
-    ctx.beginPath();
-    for (let i = 0; i < points.length - 3; i += 3) {
-      const a = points[i], b = points[i + 3];
-      const distance = (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
-      if (distance < 54 ** 2 && distance > 6 ** 2) {
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-      }
-    }
-    ctx.stroke();
-    ctx.fillStyle = 'rgba(31,180,250,' + opacity + ')';
-    ctx.beginPath();
-    points.forEach((point, i) => { if (i % 4 !== 0) ctx.rect(point.x, point.y, 1.4, 1.4); });
-    ctx.fill();
-    ctx.fillStyle = options.compact ? 'rgba(6,85,129,' + opacity * .92 + ')' : 'rgba(253,253,253,' + opacity * .92 + ')';
-    ctx.beginPath();
-    points.forEach((point, i) => { if (i % 4 === 0) ctx.rect(point.x, point.y, 1.8, 1.8); });
-    ctx.fill();
-    ctx.restore();
-  }
-
-  function drawPhoto(image, box, progress, opacity) {
-    if (progress < .3 || opacity <= .001) return;
-    ctx.save();
-    ctx.globalAlpha = opacity;
-    if (progress >= .77) {
-      ctx.shadowColor = 'rgba(0,0,0,.2)';
-      ctx.shadowBlur = 16;
-      ctx.shadowOffsetY = 9;
-      ctx.drawImage(image, box.x, box.y, box.w, box.h);
-    } else {
-      const strips = width < 400 ? 10 : 16;
-      const stripWidth = box.w / strips;
-      for (let i = 0; i < strips; i++) {
-        const stagger = seed(i + 29) * .13;
-        const reveal = smooth(.32 + stagger, .62 + stagger, progress);
-        if (reveal <= 0) continue;
-        const x = box.x + i * stripWidth;
-        const h = box.h * reveal;
-        const y = i % 2 ? box.y + box.h - h : box.y;
-        ctx.save();
-        ctx.beginPath();
-        ctx.rect(x, y, stripWidth + .6, h);
-        ctx.clip();
-        ctx.drawImage(image, box.x, box.y, box.w, box.h);
-        ctx.restore();
-        if (reveal < .99) {
-          const scanY = i % 2 ? y : y + h;
-          ctx.strokeStyle = 'rgba(31,180,250,' + (1 - reveal) * .8 + ')';
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(x, scanY);
-          ctx.lineTo(x + stripWidth, scanY);
-          ctx.stroke();
-        }
-      }
-    }
-    ctx.restore();
-  }
-
-  function draw(index, progress) {
-    lastIndex = index;
-    lastProgress = progress;
-    const photo = assets[index];
-    if (!enabled || !width || !height || !photo?.ready) {
-      root.classList.remove('has-formation');
-      return false;
-    }
-    root.classList.add('has-formation');
-    ctx.clearRect(0, 0, width, height);
-    const word = makeWord(beats[index].dataset.storyWord);
-    const nextWord = makeWord(beats[Math.min(index + 1, beats.length - 1)].dataset.storyWord);
-    const box = photoBox(photo.image);
-    const formation = smooth(.12, .57, progress);
-    const exit = index < beats.length - 1 ? smooth(.88, 1, progress) : 0;
-    const wireOpacity = exit > 0 ? Math.sin(exit * Math.PI) :
-      smooth(.1, .22, progress) * (1 - smooth(.6, .79, progress));
-    const photoOpacity = 1 - smooth(0, .8, exit);
-
-    const blueprintOpacity = exit > 0 ? Math.sin(exit * Math.PI) * .8 :
-      smooth(.18, .4, progress) * (1 - smooth(.65, .78, progress)) * .92;
-    if (blueprintOpacity > .001) {
-      ctx.save();
-      ctx.globalAlpha = blueprintOpacity;
-      ctx.drawImage(photo.blueprint, box.x, box.y, box.w, box.h);
-      ctx.restore();
-    }
-    drawPhoto(photo.image, box, progress, photoOpacity);
-    drawNetwork(exit > 0 ? nextWord : word, photo, box, exit > 0 ? exit : formation, wireOpacity * .8, exit > 0);
-    drawWord(word, (1 - smooth(.1, .22, progress)) * (1 - exit));
-    if (exit > 0) drawWord(nextWord, smooth(.72, 1, exit));
-
-    const reveal = smooth(.57, .77, progress) * photoOpacity;
-    root.style.setProperty('--formation-photo', reveal.toFixed(3));
-    root.dataset.formationProduct = beats[index].dataset.storyProduct;
-    root.dataset.formationProgress = progress.toFixed(3);
-    root.dataset.formationStage = exit > 0 ? 'siguiente-palabra' : progress < .15 ? 'palabra' : progress < .65 ? 'trazado' : 'equipo';
-    return true;
-  }
-
-  function resize() {
-    const bounds = visual.getBoundingClientRect();
-    if (bounds.width < 1 || bounds.height < 1) return;
-    if (Math.abs(width - bounds.width) < 1 && Math.abs(height - bounds.height) < 1) return;
-    width = bounds.width;
-    height = bounds.height;
-    count = options.compact ? 220 : width < 400 ? 320 : 560;
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    words.clear();
-    draw(lastIndex, lastProgress);
-  }
-
-  sources.forEach((source, index) => {
-    const image = new Image();
-    assets[index] = { image, ready: false, points: [] };
-    image.onload = () => {
-      try {
-        const key = image.currentSrc || image.src;
-        if (!versiorFormationPhotoCache.has(key)) versiorFormationPhotoCache.set(key, analyzePhoto(image));
-        Object.assign(assets[index], versiorFormationPhotoCache.get(key));
-        assets[index].ready = true;
-        draw(lastIndex, lastProgress);
-      } catch (error) {
-        // Keep the original photographs visible if canvas pixel access is unavailable.
-        assets[index].ready = false;
-        root.dataset.formationError = 'image-pixel-access-unavailable';
-      }
-    };
-    image.onerror = () => { root.dataset.formationError = 'image-unavailable'; };
-    image.src = source.getAttribute('src');
-  });
-  new ResizeObserver(resize).observe(visual);
-  document.fonts?.ready.then(() => { words.clear(); draw(lastIndex, lastProgress); });
-  return {
-    setMode(active) {
-      enabled = active;
-      canvas.hidden = !active;
-      if (!active) root.classList.remove('has-formation');
-      else { resize(); draw(lastIndex, lastProgress); }
-    },
-    render: draw,
-    isReady(index = 0) { return !!assets[index]?.ready; }
-  };
-};
-</script>
 <script id="versior-experience-runtime">
 'use strict';
 document.documentElement.classList.add('js');
@@ -1272,157 +1019,76 @@ document.querySelector('#client-name').addEventListener('input',e=>e.target.setC
 document.querySelector('#year').textContent=new Date().getFullYear();
 </script>
 <script id="versior-catalog-runtime">
-// Automatic, repeating formation. Start only once a product is clearly visible.
+// Browser-native equipment formation. No canvas, pixel reads, font gate or RAF loop.
 (() => {
   'use strict';
-  const preference = matchMedia('(prefers-reduced-motion: reduce)');
-  const words = { 'rk-600':'TECNOLOGÍA', 'ark-7610':'PRECISIÓN', 'lm-260':'CLARIDAD', 'vc-235':'VISIÓN', 'ls-4':'DETALLE', 'c-190a':'ERGONOMÍA', 'cp-266':'CONFIANZA' };
-  const states = [];
-  const period = 10000;
-  const pauseButton = document.querySelector('[data-catalog-motion]');
-  let paused = false, frame = 0, wake = 0;
-  let fontsReady = !document.fonts || document.fonts.status === 'loaded';
-  const clamp = v => Math.max(0, Math.min(1, v));
-  function phaseAt(elapsed) {
-    const time = Math.max(0, elapsed) % period;
-    if (time < 900) return { progress:0, phase:'word', wait:900-time, moving:false };
-    if (time < 4500) return { progress:(time-900)/3600*.82, phase:'forming', moving:true };
-    if (time < 8800) return { progress:.82, phase:'complete', wait:8800-time, moving:false };
-    return { progress:(1-(time-8800)/1200)*.82, phase:'dissolving', moving:true };
+  const root=document.documentElement;
+  const catalog=document.querySelector('#equipos');
+  if (!catalog) return;
+  const preference=matchMedia('(prefers-reduced-motion: reduce)');
+  const words={'rk-600':'TECNOLOGÍA','ark-7610':'PRECISIÓN','lm-260':'CLARIDAD','vc-235':'VISIÓN','ls-4':'DETALLE','c-190a':'ERGONOMÍA','cp-266':'CONFIANZA'};
+  const states=[];
+  const pause=document.querySelector('[data-catalog-motion]');
+  let paused=false;
+  function updateMode() {
+    catalog.dataset.effectMode=preference.matches?'gentle':'full';
+    states.forEach(state=>state.host.dataset.effectEngine=preference.matches?'native-gentle':'native-css');
   }
-  function clearSchedule() {
-    if (frame) cancelAnimationFrame(frame);
-    if (wake) clearTimeout(wake);
-    frame = 0; wake = 0;
+  function updatePlayback() {
+    catalog.classList.toggle('native-effects-paused',paused);
+    catalog.classList.toggle('native-effects-hidden',document.hidden);
+    catalog.dataset.effectsPlaying=String(!paused&&!document.hidden);
   }
-  function requestFrame() {
-    if (document.hidden || paused || !states.some(s => s.visible)) return;
-    if (wake) { clearTimeout(wake); wake = 0; }
-    if (!frame) frame = requestAnimationFrame(paint);
-  }
-  function hideBoard(state) {
-    state.controller?.setMode(false);
-    state.board?.classList.remove('has-formation');
-    if (state.dom) state.dom.hidden = true;
-    state.host.classList.remove('formation-catalog-active');
-    state.lastProgress = null;
-  }
-  function makeDOM(state) {
-    if (state.dom) return;
-    const dom = document.createElement('div');
-    dom.className = 'equipment-dom-formation';
-    dom.setAttribute('aria-hidden', 'true');
-    const word = document.createElement('span');
-    word.className = 'equipment-dom-word'; word.textContent = state.word;
-    const grid = document.createElement('span'); grid.className = 'equipment-dom-grid';
-    const strips = [];
-    for (let i=0;i<10;i++) {
-      const strip = document.createElement('span'); strip.className = 'equipment-dom-slice';
-      const photo = state.original.cloneNode(); photo.alt=''; photo.loading='eager';
-      strip.append(photo); dom.append(strip); strips.push(strip);
+  document.querySelectorAll('.equipment-open').forEach((button,index)=>{
+    const host=button.querySelector('.equipment-image'),photo=host?.querySelector(':scope > img');
+    if (!host||!photo) return;
+    const scene=document.createElement('div');
+    scene.className='native-formation';scene.setAttribute('aria-hidden','true');
+    scene.style.setProperty('--card-delay',String(index%3*.18)+'s');
+    const slices=document.createElement('div');slices.className='native-slices';
+    for(let i=0;i<10;i++) {
+      const slice=document.createElement('span');slice.className='native-slice';
+      const left=i*10,right=Math.min(100,(i+1)*10+.15),origin=i%2?100:0;
+      slice.style.setProperty('--slice-delay',String((i%4)*.07)+'s');
+      slice.style.setProperty('--closed',`polygon(${left}% ${origin}%,${right}% ${origin}%,${right}% ${origin}%,${left}% ${origin}%)`);
+      slice.style.setProperty('--formed',`polygon(${left}% 0%,${right}% 0%,${right}% 100%,${left}% 100%)`);
+      const image=photo.cloneNode();image.className='native-formation-photo';image.alt='';image.loading='eager';
+      slice.append(image);slices.append(slice);
     }
-    dom.append(grid,word); state.host.append(dom);
-    state.dom=dom; state.domWord=word; state.domGrid=grid; state.strips=strips;
-  }
-  function renderDOM(state, progress) {
-    makeDOM(state); state.dom.hidden=false;
-    state.domWord.style.opacity=String(1-clamp((progress-.08)/.18));
-    state.domGrid.style.opacity=String(clamp((progress-.08)/.16)*(1-clamp((progress-.6)/.18))*.6);
-    state.strips.forEach((strip,i) => {
-      const reveal=clamp((progress-.18-(i%3)*.028)/.46), left=i*10, right=left+10.1;
-      const top=i%2 ? (1-reveal)*100 : 0, bottom=i%2 ? 100 : reveal*100;
-      strip.style.clipPath=`polygon(${left}% ${top}%,${right}% ${top}%,${right}% ${bottom}%,${left}% ${bottom}%)`;
-    });
-    state.host.classList.add('formation-catalog-active');
-    state.host.dataset.effectEngine='compatible';
-  }
-  function arm(state) {
-    state.started=null; state.waited=null; state.lastProgress=null;
-    hideBoard(state);
-    if (preference.matches) {
-      state.host.dataset.effectState='gentle';
-      return;
-    }
-    state.controller?.setMode(true);
-    state.controller?.render(0,0);
-    state.host.dataset.effectState='word';
-    requestFrame();
-  }
-  function paint(now) {
-    frame=0;
-    if (document.hidden || paused) return;
-    let moving=false, nextWake=Infinity;
-    for (const state of states) {
-      if (!state.visible || preference.matches) continue;
-      if (!fontsReady || !state.original.complete || !state.original.naturalWidth) { nextWake=Math.min(nextWake,100); continue; }
-      state.waited ??=now;
-      const ready=state.controller?.isReady();
-      if (state.controller && !ready && !state.board.dataset.formationError && now-state.waited<1800) { nextWake=Math.min(nextWake,80); continue; }
-      state.started ??=now+state.delay;
-      const elapsed=Math.max(0,now-state.started);
-      const value=phaseAt(elapsed);
-      if (state.lastProgress===null || Math.abs(value.progress-state.lastProgress)>.0005) {
-        let rendered=false;
-        if (ready) {
-          try { rendered=state.controller.render(0,value.progress); } catch (error) { state.board.dataset.formationError='render-unavailable'; }
-        }
-        if (rendered) {
-          if (state.dom) state.dom.hidden=true;
-          state.host.classList.add('formation-catalog-active');
-          state.host.dataset.effectEngine='traced-photo';
-        } else { state.controller?.setMode(false); renderDOM(state,value.progress); }
-        state.lastProgress=value.progress;
-      }
-      state.host.dataset.effectState=value.phase;
-      state.host.dataset.effectProgress=value.progress.toFixed(3);
-      state.host.dataset.effectCycle=String(Math.floor(elapsed/period)+1);
-      if (value.moving) moving=true;
-      else nextWake=Math.min(nextWake,value.wait+Math.max(0,state.started-now));
-    }
-    if (moving) requestFrame();
-    else if (Number.isFinite(nextWake)) wake=setTimeout(()=>{wake=0;requestFrame();},Math.max(16,nextWake));
-  }
-  document.querySelectorAll('.equipment-open').forEach((button,index) => {
-    const host=button.querySelector('.equipment-image'), original=host?.querySelector('img');
-    if (!original) return;
-    const state={host,original,word:words[button.dataset.product]||'VISIÓN',controller:null,board:null,visible:false,started:null,waited:null,lastProgress:null,delay:index%3*220};
-    if (typeof window.createVersiorFormation==='function') {
-      const board=document.createElement('div'); board.className='card-formation'; board.setAttribute('aria-hidden','true');
-      const visual=document.createElement('div'); visual.className='story-visual';
-      const canvas=document.createElement('canvas'); canvas.className='formation-canvas';
-      const images=document.createElement('div'); images.className='story-devices'; images.append(original.cloneNode());
-      const meta=document.createElement('div'); meta.className='story-beat'; meta.dataset.storyWord=state.word; meta.dataset.storyProduct=button.dataset.product;
-      visual.append(images,meta,canvas); board.append(visual); host.append(board); state.board=board;
-      try { state.controller=window.createVersiorFormation(board,{compact:true,wordColor:'#FDFDFD'}); } catch (error) { board.remove(); }
-    }
-    host.dataset.effectState='ready'; states.push(state);
+    const grid=document.createElement('span');grid.className='native-grid';
+    const scan=document.createElement('span');scan.className='native-scan';
+    const word=document.createElement('span');word.className='native-word';word.textContent=words[button.dataset.product]||'VISIÓN';
+    scene.append(grid,slices,scan,word);host.append(scene);
+    const state={host,photo};states.push(state);
+    function ready(){if(photo.naturalWidth>0){host.classList.add('native-effect-ready');host.dataset.effectState='automatic';}}
+    photo.addEventListener('load',ready,{once:true});
+    if(photo.complete) ready();
   });
-  const observer=new IntersectionObserver(entries => {
-    entries.forEach(entry => {
+  function setVisible(state,visible) {
+    state.host.classList.toggle('native-in-view',visible);
+    state.host.dataset.effectVisible=String(visible);
+  }
+  // A single visible part is sufficient; short PC windows must not suppress effects.
+  if(typeof IntersectionObserver==='function') {
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
       const state=states.find(s=>s.host===entry.target);
-      if (!state) return;
-      if (entry.isIntersecting && entry.intersectionRatio>=.55 && !state.visible) { state.visible=true; arm(state); }
-      else if ((!entry.isIntersecting || entry.intersectionRatio<.15) && state.visible) { state.visible=false; hideBoard(state); state.host.dataset.effectState='ready'; }
-    });
-    if (!states.some(s=>s.visible)) clearSchedule();
-  },{threshold:[0,.15,.55],rootMargin:'0px 0px -12px 0px'});
-  states.forEach(state=>observer.observe(state.host));
-  document.fonts?.ready.then(()=>{fontsReady=true;states.filter(s=>s.visible).forEach(arm);});
-  preference.addEventListener('change',()=>{clearSchedule();states.filter(s=>s.visible).forEach(arm);});
-  document.addEventListener('visibilitychange',()=>{
-    clearSchedule();
-    if (!document.hidden) states.filter(s=>s.visible).forEach(arm);
+      if(state) setVisible(state,entry.isIntersecting);
+    }),{threshold:0,rootMargin:'0px'});
+    states.forEach(state=>observer.observe(state.host));
+    const reveal=new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('native-enter',entry.isIntersecting)),{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(element=>reveal.observe(element));
+  } else states.forEach(state=>setVisible(state,true));
+  pause?.addEventListener('click',()=>{
+    paused=!paused;
+    pause.setAttribute('aria-label',paused?'Reanudar efectos del catálogo':'Pausar efectos del catálogo');
+    pause.setAttribute('aria-pressed',String(paused));pause.textContent=paused?'▶':'Ⅱ';
+    updatePlayback();
   });
-  pauseButton?.addEventListener('click',()=>{
-    paused=!paused; clearSchedule();
-    pauseButton.setAttribute('aria-label',paused?'Reanudar efectos del catálogo':'Pausar efectos del catálogo');
-    pauseButton.setAttribute('aria-pressed',String(paused));
-    pauseButton.textContent=paused?'▶':'Ⅱ';
-    if (!paused) states.filter(s=>s.visible).forEach(arm);
-  });
-  const beliefs=document.querySelector('.beliefs');
-  if (beliefs) new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('corporate-visible',entry.isIntersecting)),{threshold:.12}).observe(beliefs);
-  document.documentElement.dataset.versiorEffects='catalog-blue-v6';
+  preference.addEventListener('change',updateMode);
+  document.addEventListener('visibilitychange',updatePlayback);
+  updateMode();updatePlayback();
+  root.dataset.versiorEffects='native-motion-v7';
 })();
+
 </script>
 </body></html>
