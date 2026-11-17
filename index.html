@@ -569,6 +569,83 @@ footer, .footer-privacy a, .footer-privacy button { font-size: 12px; line-height
 #marcas .brand-motion-toggle:focus-visible{outline:3px solid #1FB4FA;outline-offset:3px}
 @keyframes versior-brands-continuous{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 </style>
+<style id="versior-usability-v11">
+/* Focused catalogue and contact refinements. Existing animation layers stay untouched. */
+#equipos .equipment-action {
+  display: inline-flex; align-items: center; justify-content: space-between; gap: 30px;
+  width: 100%; min-height: 54px; margin-top: 22px; padding: 14px 18px;
+  border: 1px solid rgb(253 253 253 / .65); border-radius: 6px;
+  background: rgb(31 180 250 / .09); color: #FDFDFD;
+  font-size: 17px; font-weight: 700; line-height: 1.4;
+  transition: background .28s ease, color .28s ease, border-color .28s ease, transform .28s ease, box-shadow .28s ease;
+}
+#equipos .equipment-action::after { content: ''; flex-shrink: 0; width: 17px; height: 17px; background: currentColor; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 20 20 4M4 4h16v16' fill='none' stroke='black' stroke-width='1.8'/%3E%3C/svg%3E") center/contain no-repeat; }
+#equipos .equipment-open:focus-visible .equipment-action { background: #1FB4FA; border-color: #1FB4FA; color: #000000; outline: 2px solid #FDFDFD; outline-offset: 4px; }
+@media (hover: hover) {
+  #equipos .equipment-open:hover .equipment-action { background: #1FB4FA; border-color: #1FB4FA; color: #000000; transform: translateY(-3px); box-shadow: 0 10px 24px rgb(0 0 0 / .18); }
+}
+#contacto { background: #FDFDFD; color: #000000; border-top: 1px solid rgb(6 85 129 / .18); }
+#contacto .chapter-label, #contacto .chapter-label span:last-child { color: #065581; }
+#contacto .contact-heading h2 { color: #000000; }
+#contacto .contact-heading h2 span { color: #065581; }
+#contacto .contact-circle { color: #065581; border-color: rgb(6 85 129 / .45); }
+#contacto .contact-circle:hover { background: #1FB4FA; color: #000000; border-color: #1FB4FA; }
+#contacto .contact-main, #contacto .locations, #contacto .social-share, #contacto footer { border-color: rgb(6 85 129 / .2); }
+#contacto .contact-intro, #contacto .locations p { color: rgb(0 0 0 / .75); }
+#contacto .text-link, #contacto .footer-network-link { color: #065581; border-color: rgb(6 85 129 / .5); }
+#contacto label, #contacto .contact-permission { color: rgb(0 0 0 / .8); }
+#contacto input, #contacto select { color: #000000; border-color: rgb(6 85 129 / .4); }
+#contacto input::placeholder { color: rgb(0 0 0 / .55); }
+#contacto .contact-permission a { color: #065581; }
+#contacto form > button:hover { background: #065581; border-color: #065581; color: #FDFDFD; }
+#contacto .form-note, #contacto .social-share .eyebrow, #contacto .qr-share p span, #contacto footer { color: rgb(0 0 0 / .68); }
+#contacto .locations .tiny-label { display: inline-flex; align-items: center; gap: 9px; color: #065581; font-size: 14px; font-weight: 700; line-height: 1.6; }
+#contacto .location-pin { width: 22px; height: 22px; flex-shrink: 0; }
+#contacto .locations > a:hover h3 { color: #065581; }
+#contacto .map-hint { color: #065581; border-color: rgb(6 85 129 / .2); }
+#contacto .map-hint i, #contacto .text-link span, #contacto .footer-network-link svg { color: #065581; }
+#contacto .qr-share { border-color: rgb(6 85 129 / .18); }
+#contacto .qr-share img { border: 1px solid rgb(6 85 129 / .15); }
+#contacto .footer-privacy a, #contacto .footer-privacy button, #contacto footer a { color: #065581; }
+#product-dialog .dialog-image { padding: 30px; }
+.dialog-image-trigger { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; width: 100%; min-width: 0; border: 0; padding: 10px; background: #FDFDFD; color: #065581; cursor: zoom-in; }
+.dialog-image-trigger:focus-visible { outline: 2px solid #065581; outline-offset: 4px; }
+.image-zoom-hint { display: inline-flex; gap: 9px; align-items: center; font-size: 14px; line-height: 1.5; font-weight: 700; border: 1px solid rgb(6 85 129 / .3); border-radius: 5px; padding: 9px 13px; }
+.image-zoom-hint svg { width: 18px; height: 18px; }
+.dialog-image-trigger:hover .image-zoom-hint { background: #065581; color: #FDFDFD; }
+#product-zoom { width: min(1280px, 94vw); height: min(880px, 94dvh); max-height: 94dvh; margin: auto; padding: 0; border: 1px solid rgb(6 85 129 / .15); border-radius: 8px; background: #FDFDFD; color: #000000; overflow: hidden; }
+#product-zoom[open] { display: flex; flex-direction: column; }
+.zoom-header { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-shrink: 0; padding: 16px 20px; border-bottom: 1px solid rgb(6 85 129 / .15); }
+.zoom-header p { font-size: 11px; color: #065581; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 3px; }
+.zoom-header h2 { font: 800 30px/1.05 Barlow, sans-serif; margin: 0; }
+.zoom-close { width: 44px; height: 44px; flex-shrink: 0; border: 1px solid rgb(6 85 129 / .3); border-radius: 50%; background: #FDFDFD; color: #000000; font: 28px/1 Arial, sans-serif; }
+.zoom-close:hover { background: #065581; color: #FDFDFD; }
+.zoom-viewport { flex: 1; min-height: 0; position: relative; overflow: hidden; touch-action: none; cursor: zoom-in; background: #FDFDFD; }
+.zoom-viewport.is-zoomed { cursor: grab; }
+.zoom-viewport.is-dragging { cursor: grabbing; }
+#zoom-image { display: block; width: 100%; height: 100%; max-width: none; object-fit: contain; transform-origin: 50% 50%; user-select: none; -webkit-user-drag: none; pointer-events: none; }
+.zoom-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-shrink: 0; padding: 12px 20px; border-top: 1px solid rgb(6 85 129 / .15); }
+.zoom-instructions { max-width: 45ch; font-size: 13px; line-height: 1.6; color: rgb(0 0 0 / .7); margin: 0; }
+.zoom-tools { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.zoom-tools button { min-width: 44px; min-height: 44px; border: 1px solid rgb(6 85 129 / .4); border-radius: 4px; padding: 8px 12px; background: #FDFDFD; color: #065581; font-size: 20px; font-weight: 700; }
+.zoom-tools button[data-zoom-action="reset"] { font-size: 13px; }
+.zoom-tools button:hover:not(:disabled) { background: #065581; color: #FDFDFD; }
+.zoom-tools button:disabled { opacity: .35; cursor: default; }
+#zoom-level { min-width: 48px; text-align: center; color: #065581; font-size: 14px; font-weight: 700; }
+#product-zoom :focus-visible { outline: 2px solid #065581; outline-offset: 3px; }
+@media (max-width: 760px) {
+  #equipos .equipment-action { font-size: 16px; min-height: 52px; padding: 13px 16px; }
+  #product-dialog .dialog-image { padding: 42px 20px 10px; }
+  .dialog-image-trigger { gap: 12px; }
+  #product-zoom { width: calc(100vw - 16px); height: calc(100dvh - 20px); max-height: calc(100dvh - 20px); }
+  .zoom-header { padding: 12px 14px; }
+  .zoom-header h2 { font-size: 27px; }
+  .zoom-footer { flex-direction: column; gap: 10px; padding: 12px; }
+  .zoom-instructions { font-size: 12px; text-align: center; }
+  .zoom-tools { justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { #equipos .equipment-action { transition: none; } #equipos .equipment-open:hover .equipment-action { transform: none; } }
+</style>
 </head>
 <body>
 <noscript><iframe title="Google Tag Manager" src="https://www.googletagmanager.com/ns.html?id=GTM-MZGKQPFH" height="0" width="0" class="gtm-hidden"></iframe></noscript>
@@ -711,7 +788,7 @@ footer, .footer-privacy a, .footer-privacy button { font-size: 12px; line-height
   </section>
   <section class="contact section-pad" id="contacto" aria-labelledby="contact-title"><div class="chapter-label reveal"><span>06 / Hagámoslo posible</span><span>De tu visión, al siguiente paso</span></div><div class="contact-heading reveal"><h2 id="contact-title">EL SIGUIENTE<br>PASO <span>ES TUYO.</span></h2><a class="contact-circle" href="https://wa.me/593963223843" target="_blank" rel="noopener" aria-label="Iniciar una conversación por WhatsApp"><span aria-hidden="true">↗</span></a></div>
     <div class="contact-main reveal"><div><p class="contact-intro">Cuéntanos qué imaginas para tu práctica.<br>Vamos a construir el siguiente paso contigo.</p><a class="text-link light" href="https://wa.me/593963223843" target="_blank" rel="noopener">Conversar por WhatsApp <span aria-hidden="true">↗</span></a></div><form id="contact-form"><label for="client-name">¿Cómo te llamas?</label><input id="client-name" name="name" autocomplete="name" placeholder="Tu nombre" required maxlength="80"><label for="client-interest">¿En qué podemos ayudarte?</label><select id="client-interest" name="interest"><option value="un equipo para mi práctica">Quiero cotizar un equipo</option><option value="diseñar o remodelar mi óptica">Diseño de mi óptica</option><option value="capacitación para mi equipo">Capacitación</option><option value="soporte posventa">Soporte posventa</option></select><label class="contact-permission"><input type="checkbox" name="privacy-consent" required><span>Acepto el uso de mis datos para responder mi solicitud, según la <a href="privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a>.</span></label><button type="submit">Iniciar conversación <span aria-hidden="true">↗</span></button><p class="form-note">Se abrirá WhatsApp con tu mensaje. No se envía automáticamente.</p></form></div>
-    <div class="locations reveal"><a href="https://maps.app.goo.gl/UcRxmVZbiHxDkvoH8" target="_blank" rel="noopener"><span class="tiny-label">01 / Quito · Principal</span><h3>ESTAMOS CERCA.</h3><p>Calle Giovani Calles y Palermo,<br>urbanización UTE · Pichincha, Quito</p><span class="map-hint">Da clic para ir <i aria-hidden="true">↗</i></span></a><a href="https://www.google.com/maps/search/?api=1&amp;query=El%20Morl%C3%A1n%20y%20De%20los%20%C3%81lamos%2C%20barrio%20Damer%20II%2C%20Quito%2C%20Ecuador" target="_blank" rel="noopener"><span class="tiny-label">02 / La Luz · Quito</span><h3>ENCUÉNTRANOS.</h3><p>El Morlán y De los Álamos,<br>barrio Damer II · Quito</p><span class="map-hint">Da clic para ir <i aria-hidden="true">↗</i></span></a><a href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Mariscal%20Sucre%20y%20Benjam%C3%ADn%20Ochoa%2C%20Bibli%C3%A1n%2C%20Ca%C3%B1ar%2C%20Ecuador" target="_blank" rel="noopener"><span class="tiny-label">03 / Biblián · Cañar</span><h3>SIGAMOS EN CONTACTO.</h3><p>Av. Mariscal Sucre y Benjamín Ochoa,<br>esquina · Biblián</p><span class="map-hint">Da clic para ir <i aria-hidden="true">↗</i></span></a></div>
+    <div class="locations reveal"><a href="https://maps.app.goo.gl/UcRxmVZbiHxDkvoH8" target="_blank" rel="noopener"><span class="tiny-label"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>01 / Quito · Principal</span><h3>ESTAMOS CERCA.</h3><p>Calle Giovani Calles y Palermo,<br>urbanización UTE · Pichincha, Quito</p><span class="map-hint">Da clic para ir <i aria-hidden="true">↗</i></span></a><a href="https://www.google.com/maps/search/?api=1&amp;query=El%20Morl%C3%A1n%20y%20De%20los%20%C3%81lamos%2C%20barrio%20Damer%20II%2C%20Quito%2C%20Ecuador" target="_blank" rel="noopener"><span class="tiny-label"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>02 / La Luz · Quito</span><h3>ENCUÉNTRANOS.</h3><p>El Morlán y De los Álamos,<br>barrio Damer II · Quito</p><span class="map-hint">Da clic para ir <i aria-hidden="true">↗</i></span></a><a href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Mariscal%20Sucre%20y%20Benjam%C3%ADn%20Ochoa%2C%20Bibli%C3%A1n%2C%20Ca%C3%B1ar%2C%20Ecuador" target="_blank" rel="noopener"><span class="tiny-label"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>03 / Biblián · Cañar</span><h3>SIGAMOS EN CONTACTO.</h3><p>Av. Mariscal Sucre y Benjamín Ochoa,<br>esquina · Biblián</p><span class="map-hint">Da clic para ir <i aria-hidden="true">↗</i></span></a></div>
     <div class="social-share reveal"><div><p class="eyebrow">VERSIOR IMPORT’S</p><h3>COMPARTE LA VISIÓN.</h3><a class="footer-network-link" href="#redes">Ver nuestras redes sociales <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m4 20 16-16M4 4h16v16"/></svg></a></div><div class="qr-share"><img src="assets/brand/versior-qr-share.png" width="160" height="160" loading="lazy" alt="Código QR para compartir la página de VERSIOR"><p>Las buenas ideas<br>se comparten.<span>Escanea el código y comparte<br>nuestra página.</span></p></div></div>
     <div class="footer-privacy"><a href="privacidad.html">Política de Privacidad</a><button type="button" data-cookie-preferences>Preferencias de cookies</button></div><footer><span>© <span id="year">2026</span> VERSIOR IMPORT’S</span><span>Tecnología. Personas. Propósito.</span><a href="#inicio">Volver al inicio ↑</a></footer>
   </section>
@@ -726,7 +803,12 @@ footer, .footer-privacy a, .footer-privacy button { font-size: 12px; line-height
   <a class="chat-direct" href="https://wa.me/593987654320" target="_blank" rel="noopener">Hablar con un asesor · +593 98 765 4320 <span aria-hidden="true">↗</span></a>
 </dialog>
 <noscript><a class="floating-contact" href="https://wa.me/593987654320" target="_blank" rel="noopener">Contactar por WhatsApp</a></noscript>
-<dialog id="product-dialog" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="Cerrar detalles">×</button><div class="dialog-image"><img id="dialog-image" alt="" width="1000" height="1000"></div><div class="dialog-copy"><span class="tiny-label" id="dialog-category"></span><h2 id="dialog-title"></h2><h3 id="dialog-type"></h3><p id="dialog-description"></p><ul id="dialog-features"></ul><a id="dialog-quote" class="solid-link" target="_blank" rel="noopener">Cotizar este equipo <span aria-hidden="true">↗</span></a><small>Consulta disponibilidad y condiciones con nuestro equipo.</small></div></dialog>
+<dialog id="product-dialog" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="Cerrar detalles">×</button><div class="dialog-image"><button type="button" class="dialog-image-trigger" aria-label="Ampliar imagen del equipo" aria-haspopup="dialog" aria-controls="product-zoom"><img id="dialog-image" alt="" width="1000" height="1000"><span class="image-zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5M10.5 7v7M7 10.5h7"/></svg>Ampliar imagen</span></button></div><div class="dialog-copy"><span class="tiny-label" id="dialog-category"></span><h2 id="dialog-title"></h2><h3 id="dialog-type"></h3><p id="dialog-description"></p><ul id="dialog-features"></ul><a id="dialog-quote" class="solid-link" target="_blank" rel="noopener">Cotizar este equipo <span aria-hidden="true">↗</span></a><small>Consulta disponibilidad y condiciones con nuestro equipo.</small></div></dialog>
+<dialog id="product-zoom" aria-labelledby="zoom-title" aria-describedby="zoom-help">
+  <header class="zoom-header"><div><p>Vista ampliada</p><h2 id="zoom-title">Equipo VERSIOR</h2></div><button class="zoom-close" type="button" aria-label="Cerrar imagen ampliada" autofocus>×</button></header>
+  <div class="zoom-viewport" aria-label="Imagen ampliable del equipo"><img id="zoom-image" alt="" draggable="false" width="1000" height="1000"></div>
+  <div class="zoom-footer"><p id="zoom-help" class="zoom-instructions">Toca o haz clic para ampliar. Arrastra para explorar; también puedes usar la rueda o pellizcar con dos dedos.</p><div class="zoom-tools" role="group" aria-label="Controles de zoom"><button type="button" data-zoom-action="out" aria-label="Alejar imagen">−</button><output id="zoom-level" aria-live="polite" aria-label="Nivel de zoom">100%</output><button type="button" data-zoom-action="in" aria-label="Acercar imagen">+</button><button type="button" data-zoom-action="reset">Restablecer</button></div></div>
+</dialog>
 
 <section id="cookie-banner" class="consent-banner" role="dialog" aria-modal="false" aria-label="Preferencias de cookies" hidden><div><h2>Tu privacidad importa</h2><p>Usamos cookies de medición para conocer el rendimiento del sitio y mejorar nuestras campañas. Puedes aceptar la medición o continuar solo con las funciones esenciales.</p><a href="privacidad.html">Ver Política de Privacidad</a></div><div class="consent-actions"><button type="button" data-cookie-choice="essential">Solo esenciales</button><button type="button" data-cookie-choice="accepted">Aceptar medición</button></div></section>
 <noscript><style>.reveal{opacity:1;transform:none}.support-panel[hidden]{display:grid}.support-tabs,.support-controls{display:none}.person-portrait{background-image:var(--portrait);background-size:var(--portrait-size);background-position:var(--portrait-position);background-repeat:no-repeat}</style></noscript>
@@ -1493,6 +1575,133 @@ window.createVersiorNetworkFormation = function createVersiorNetworkFormation(ro
   document.addEventListener('visibilitychange',update);
   preference.addEventListener('change',update);
   update();
+})();
+</script>
+<script id="versior-product-zoom-v11">
+(() => {
+  'use strict';
+  const trigger = document.querySelector('.dialog-image-trigger');
+  const zoom = document.querySelector('#product-zoom');
+  const viewport = document.querySelector('.zoom-viewport');
+  const image = document.querySelector('#zoom-image');
+  const level = document.querySelector('#zoom-level');
+  const source = document.querySelector('#dialog-image');
+  const detail = document.querySelector('#product-dialog');
+  const less = zoom.querySelector('[data-zoom-action="out"]');
+  const more = zoom.querySelector('[data-zoom-action="in"]');
+  const pointers = new Map();
+  let scale = 1, x = 0, y = 0, gesture = null, moved = false;
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+  function render() {
+    const bounds = viewport.getBoundingClientRect();
+    x = clamp(x, -bounds.width * (scale - 1) / 2, bounds.width * (scale - 1) / 2);
+    y = clamp(y, -bounds.height * (scale - 1) / 2, bounds.height * (scale - 1) / 2);
+    image.style.transform = `translate(${x.toFixed(2)}px, ${y.toFixed(2)}px) scale(${scale.toFixed(3)})`;
+    level.textContent = `${Math.round(scale * 100)}%`;
+    viewport.classList.toggle('is-zoomed', scale > 1.001);
+    less.disabled = scale <= 1.001;
+    more.disabled = scale >= 3.999;
+    zoom.dataset.zoom = scale.toFixed(2);
+  }
+  function setScale(next, clientX, clientY) {
+    const bounds = viewport.getBoundingClientRect();
+    const anchorX = Number.isFinite(clientX) ? clientX - bounds.left - bounds.width / 2 : 0;
+    const anchorY = Number.isFinite(clientY) ? clientY - bounds.top - bounds.height / 2 : 0;
+    const ratio = clamp(next, 1, 4) / scale;
+    x = anchorX - (anchorX - x) * ratio;
+    y = anchorY - (anchorY - y) * ratio;
+    scale = clamp(next, 1, 4);
+    render();
+  }
+  function reset() { scale = 1; x = y = 0; render(); }
+  function beginGesture() {
+    const points = [...pointers.values()];
+    if (points.length >= 2) {
+      const [a, b] = points;
+      gesture = { kind: 'pinch', distance: Math.max(1, Math.hypot(a.x - b.x, a.y - b.y)), centerX: (a.x + b.x) / 2, centerY: (a.y + b.y) / 2 };
+      moved = true;
+    } else if (points.length === 1) {
+      gesture = { kind: 'pan', startX: points[0].x, startY: points[0].y, originX: x, originY: y };
+    } else { gesture = null; }
+  }
+  trigger.addEventListener('click', () => {
+    image.src = source.currentSrc || source.src;
+    image.alt = source.alt;
+    document.querySelector('#zoom-title').textContent = document.querySelector('#dialog-title').textContent;
+    pointers.clear(); moved = false; gesture = null;
+    if (!zoom.open) zoom.showModal();
+    reset();
+  });
+  zoom.querySelector('.zoom-close').addEventListener('click', () => zoom.close());
+  zoom.querySelectorAll('[data-zoom-action]').forEach(button => button.addEventListener('click', () => {
+    if (button.dataset.zoomAction === 'reset') reset();
+    else setScale(scale + (button.dataset.zoomAction === 'in' ? .5 : -.5));
+  }));
+  viewport.addEventListener('wheel', event => {
+    if (!zoom.open || event.ctrlKey) return;
+    event.preventDefault();
+    const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewport.clientHeight : 1);
+    setScale(scale * Math.exp(-clamp(delta, -120, 120) * .0025), event.clientX, event.clientY);
+  }, { passive: false });
+  viewport.addEventListener('pointerdown', event => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    event.preventDefault();
+    if (!pointers.size) moved = false;
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    viewport.setPointerCapture(event.pointerId);
+    viewport.classList.add('is-dragging');
+    beginGesture();
+  });
+  viewport.addEventListener('pointermove', event => {
+    if (!pointers.has(event.pointerId)) return;
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (gesture?.kind === 'pinch') {
+      const [a, b] = [...pointers.values()];
+      if (!b) return;
+      const distance = Math.max(1, Math.hypot(a.x - b.x, a.y - b.y));
+      const centerX = (a.x + b.x) / 2, centerY = (a.y + b.y) / 2;
+      setScale(scale * distance / gesture.distance, centerX, centerY);
+      x += centerX - gesture.centerX; y += centerY - gesture.centerY;
+      gesture = { kind: 'pinch', distance, centerX, centerY };
+      render();
+    } else if (gesture?.kind === 'pan') {
+      const dx = event.clientX - gesture.startX, dy = event.clientY - gesture.startY;
+      if (Math.hypot(dx, dy) > 5) moved = true;
+      if (scale > 1) { x = gesture.originX + dx; y = gesture.originY + dy; render(); }
+    }
+  });
+  function endPointer(event) {
+    if (!pointers.has(event.pointerId)) return;
+    const tapped = event.type === 'pointerup' && pointers.size === 1 && !moved;
+    pointers.delete(event.pointerId);
+    if (viewport.hasPointerCapture(event.pointerId)) viewport.releasePointerCapture(event.pointerId);
+    if (tapped) setScale(scale <= 1.001 ? 2.5 : 1, event.clientX, event.clientY);
+    viewport.classList.toggle('is-dragging', pointers.size > 0);
+    beginGesture();
+  }
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(type => viewport.addEventListener(type, endPointer));
+  zoom.addEventListener('keydown', event => {
+    if (event.key === '+' || event.key === '=') { event.preventDefault(); setScale(scale + .5); }
+    else if (event.key === '-') { event.preventDefault(); setScale(scale - .5); }
+    else if (event.key === '0') { event.preventDefault(); reset(); }
+    else if (scale > 1 && ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) {
+      event.preventDefault();
+      x += event.key === 'ArrowLeft' ? 45 : event.key === 'ArrowRight' ? -45 : 0;
+      y += event.key === 'ArrowUp' ? 45 : event.key === 'ArrowDown' ? -45 : 0;
+      render();
+    }
+  });
+  zoom.addEventListener('click', event => {
+    if (event.target !== zoom) return;
+    const bounds = zoom.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) zoom.close();
+  });
+  zoom.addEventListener('close', () => {
+    pointers.clear(); gesture = null; viewport.classList.remove('is-dragging');
+    if (detail.open) trigger.focus({ preventScroll: true });
+  });
+  detail.addEventListener('close', () => { if (zoom.open) zoom.close(); });
+  window.addEventListener('resize', () => { if (zoom.open) render(); });
 })();
 </script>
 </body></html>
