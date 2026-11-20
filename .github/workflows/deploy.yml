@@ -5,15 +5,20 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   deploy:
-    name: Subir archivos via FTP
+    name: Subir archivos via FTPS
     runs-on: ubuntu-latest
     steps:
       - name: Descargar el codigo del repositorio
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
-      - name: Sincronizar con InfinityFree (FTP)
+      - name: Sincronizar con InfinityFree (FTPS)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ftpupload.net
@@ -21,7 +26,8 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           # Esta es la ruta exacta de tu dominio que vimos en tu File Manager
           server-dir: versiorimports.is-best.net/htdocs/
-          protocol: ftp
+          protocol: ftps
+          security: strict
           port: 21
           exclude: |
             **/.git*
