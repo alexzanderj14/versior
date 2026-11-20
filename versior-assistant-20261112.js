@@ -9,7 +9,14 @@
     ['vc-235', /\bvc[\s-]?235\b/, 'VC–235: pantalla de optotipos.'],
     ['ls-4', /\bls[\s-]?4\b/, 'LS–4: lámpara de hendidura.'],
     ['c-190a', /\bc[\s-]?190\s?a\b/, 'C–190A: unidad de diagnóstico con mesa de trabajo.'],
-    ['cp-266', /\bcp[\s-]?266\b|266.*lentill|caja de pruebas/, 'Caja de pruebas de 266 lentillas.']
+    ['cp-266', /\bcp[\s-]?266\b|266.*lentill|caja de pruebas/, 'CP-266: caja de pruebas de 266 lentillas.'],
+    ['yz30r', /\byz[\s-]?30r\b|tonometro/, 'YZ30R: tonómetro de aplanación.'],
+    ['pedestal para pantallas', /pedestal/, 'Pedestal de piso ajustable para pantallas de hasta 32 pulgadas.'],
+    ['biseladora semiautomática', /biseladora semiautomatica/, 'Biseladora semiautomática de sobremesa con punta diamantada.'],
+    ['cp-6a', /\bcp[\s-]?6a\b|biseladora manual|tres muelas|rectificadora/, 'CP-6A: biseladora manual de tres muelas.'],
+    ['perforador de patrones', /perforador|perforadora? de patrones/, 'Perforador de patrones para preparar plantillas de biselado.'],
+    ['centrador de lentes', /centrador/, 'Centrador de lentes oftálmicos para alinear y fijar antes del biselado.'],
+    ['ts-2027', /\bts[\s-]?2027\b|maleta|180.*monturas/, 'TS-2027: maleta con capacidad para 180 monturas.']
   ];
   function handoff(question, label = 'Continuar con un asesor por WhatsApp') {
     const text = 'Hola VERSIOR, me gustaría recibir atención. Mi consulta es: ' + String(question).slice(0, 500);
@@ -37,8 +44,8 @@
       return { kind: 'purpose', text: 'VERSIOR destina el 2 % de sus ventas a misiones y obras sociales en beneficio de personas de escasos recursos.', actions: [{ label: 'Conocer nuestro propósito', href: '#proposito' }, human] };
     if (model)
       return { kind: 'equipment', text: model[2] + ' Puedes explorar el equipo en nuestro catálogo. Para confirmar detalles, disponibilidad y condiciones, conversa con un asesor.', actions: [{ label: 'Explorar los equipos', href: '#equipos' }, human] };
-    if (/equipo|producto|catalogo|ofrecen|autorrefract|lensomet|lampara|optotipo|lentilla/.test(q))
-      return { kind: 'catalog', text: 'Contamos con RK–600, ARK–7610, lensómetro LM–260, pantalla VC–235, lámpara LS–4, unidad C–190A y caja de pruebas de 266 lentillas. Explora el catálogo o pide una cotización personalizada.', actions: [{ label: 'Explorar equipos', href: '#equipos' }, { label: 'Abrir catálogo PDF', href: 'CatalogoVersior_compressed.pdf' }, human] };
+    if (/equipo|producto|catalogo|ofrecen|autorrefract|lensomet|lampara|optotipo|lentilla|biseladora|montura/.test(q))
+      return { kind: 'catalog', text: 'Tenemos equipos de refracción y diagnóstico, accesorios para pantallas, equipos para taller óptico y maletas para monturas. Explora las fichas o consulta el catálogo completo.', actions: [{ label: 'Explorar equipos', href: '#equipos' }, { label: 'Abrir catálogo PDF', href: 'catalogo-versior-2026-20261120.pdf' }, human] };
     if (/^(hola|buenas|buenos dias|buenas tardes|buenas noches|ayuda|menu|gracias)[!?.\s]*$/.test(q))
       return { kind: 'welcome', text: '¡Hola! Soy el asistente automático de VERSIOR. Puedo orientarte sobre equipos, garantía, capacitación y ubicaciones. Para comprar o para información que no tenga confirmada, te conectaré con un asesor por WhatsApp.', actions: [human] };
     return { kind: 'unknown', text: 'No tengo esa información confirmada. Para no darte un dato incorrecto, te conecto con un asesor de VERSIOR al +593 98 765 4320.', actions: [human] };
